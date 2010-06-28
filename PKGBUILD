@@ -3,9 +3,9 @@
 
 pkgname=siis-ca-cert
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SIIS CA certificate'
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://siis.cse.psu.edu/ca.html'
 license=('GPL')
 source=("http://siis.cse.psu.edu/siis-ca-cert.pem"
@@ -19,8 +19,8 @@ build() {
 	cd ${srcdir}
 
 	gpg --verify siis-ca-cert.pem.asc siis-ca-cert.pem || {
-		echo "GPG verification failed.  Make sure you have imported Will's public key" 1>&2
-		echo "using \`gpg --import'" 1>&2
+		echo "GPG verification failed.  Make sure you have Will's public key" 1>&2
+		echo "in your trust database." 1>&2
 		exit 1
 	}
 
