@@ -3,7 +3,7 @@
 
 pkgname=siis-ca-cert
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='SIIS CA certificate'
 arch=('any')
 url='http://siis.cse.psu.edu/ca.html'
@@ -11,6 +11,7 @@ license=('GPL')
 source=("http://siis.cse.psu.edu/siis-ca-cert.pem"
 	"http://siis.cse.psu.edu/siis-ca-cert.pem.asc")
 depends=('ca-certificates')
+makedepends=('gnupg')
 install=siis-ca-cert.install
 md5sums=('30bcc8233641d1861f1063f87b240782'
          'f77f76b457f09fb7628802121d10c640')
