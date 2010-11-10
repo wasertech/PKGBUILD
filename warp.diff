@@ -1,0 +1,113 @@
+diff -r 406003e3a01f dwm.c
+--- a/dwm.c	Mon Sep 27 07:53:44 2010 +0000
++++ b/dwm.c	Wed Nov 10 16:26:34 2010 -0500
+@@ -231,16 +231,17 @@ static Bool updategeom(void);
+ static void updatebarpos(Monitor *m);
+ static void updatebars(void);
+ static void updatenumlockmask(void);
+ static void updatesizehints(Client *c);
+ static void updatestatus(void);
+ static void updatetitle(Client *c);
+ static void updatewmhints(Client *c);
+ static void view(const Arg *arg);
++static void warp(const Client *c);
+ static Client *wintoclient(Window w);
+ static Monitor *wintomon(Window w);
+ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
+ static void zoom(const Arg *arg);
+ 
+ /* variables */
+@@ -388,16 +389,18 @@ arrange(Monitor *m) {
+ 		showhide(m->stack);
+ 	else for(m = mons; m; m = m->next)
+ 		showhide(m->stack);
+ 	focus(NULL);
+ 	if(m)
+ 		arrangemon(m);
+ 	else for(m = mons; m; m = m->next)
+ 		arrangemon(m);
++	if(m == selmon)
++		warp(m->sel);
+ }
+ 
+ void
+ arrangemon(Monitor *m) {
+ 	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
+ 	if(m->lt[m->sellt]->arrange)
+ 		m->lt[m->sellt]->arrange(m);
+ 	restack(m);
+@@ -847,16 +850,17 @@ focusmon(const Arg *arg) {
+ 
+ 	if(!mons->next)
+ 		return;
+ 	if((m = getmon(arg->ui)) == selmon)
+ 		return;
+ 	unfocus(selmon->sel, True);
+ 	selmon = m;
+ 	focus(NULL);
++	warp(m->sel);
+ }
+ 
+ void
+ focusstack(const Arg *arg) {
+ 	Client *c = NULL, *i;
+ 
+ 	if(!selmon->sel)
+ 		return;
+@@ -1414,16 +1418,18 @@ restack(Monitor *m) {
+ 		for(c = m->stack; c; c = c->snext)
+ 			if(!c->isfloating && ISVISIBLE(c)) {
+ 				XConfigureWindow(dpy, c->win, CWSibling|CWStackMode, &wc);
+ 				wc.sibling = c->win;
+ 			}
+ 	}
+ 	XSync(dpy, False);
+ 	while(XCheckMaskEvent(dpy, EnterWindowMask, &ev));
++	if(m == selmon)
++		warp(m->sel);
+ }
+ 
+ void
+ run(void) {
+ 	XEvent ev;
+ 	/* main event loop */
+ 	XSync(dpy, False);
+ 	while(running && !XNextEvent(dpy, &ev)) {
+@@ -1953,16 +1959,35 @@ view(const Arg *arg) {
+ 	if((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+ 		return;
+ 	selmon->seltags ^= 1; /* toggle sel tagset */
+ 	if(arg->ui & TAGMASK)
+ 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+ 	arrange(selmon);
+ }
+ 
++void
++warp(const Client *c) {
++	Window dummy;
++	int x, y, di;
++	unsigned int dui;
++
++	if(!c)
++		return;
++	XQueryPointer(dpy, root, &dummy, &dummy, &x, &y, &di, &di, &dui);
++	if(x > c->x && y > c->y && x < c->y + c->w && y < c->y + c->h)
++		return;
++	XSelectInput(dpy, root, SubstructureRedirectMask
++		& EnterWindowMask);
++	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0,
++		c->w / 2, c->h / 2);
++	XSelectInput(dpy, root, SubstructureRedirectMask | SubstructureNotifyMask
++		| EnterWindowMask | LeaveWindowMask | StructureNotifyMask);
++}
++
+ Client *
+ wintoclient(Window w) {
+ 	Client *c;
+ 	Monitor *m;
+ 
+ 	for(m = mons; m; m = m->next)
+ 		for(c = m->clients; c; c = c->next)
+ 			if(c->win == w)
