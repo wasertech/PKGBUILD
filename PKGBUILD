@@ -5,7 +5,7 @@
 
 pkgname=dtach-mod
 pkgver=0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="emulates the detach feature of screen"
 arch=('i686' 'x86_64')
 url="http://dtach.sourceforge.net/"
@@ -15,7 +15,8 @@ license=('GPL')
 depends=('ncurses')
 source=(http://downloads.sourceforge.net/sourceforge/dtach/dtach-$pkgver.tar.gz
         parser.patch)
-md5sums=('ec5999f3b6bb67da19754fcb2e5221f3')
+md5sums=('ec5999f3b6bb67da19754fcb2e5221f3'
+         'dcf3093419200ef4e01c26a7cc55499e')
 
 build() {
   cd "${srcdir}/dtach-${pkgver}"
@@ -35,7 +36,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('ec5999f3b6bb67da19754fcb2e5221f3'
-         '90c1f23b4002f53020be16ecb40d2fa2')
-md5sums=('ec5999f3b6bb67da19754fcb2e5221f3'
-         '0c59fd38d471bffecad6dec83402ebd2')

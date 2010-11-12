@@ -278,7 +278,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
 diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.c
 --- dtach-0.8.orig/parser.c	1969-12-31 19:00:00.000000000 -0500
 +++ dtach-0.8/parser.c	2010-07-27 13:32:19.000000000 -0400
-@@ -0,0 +1,235 @@
+@@ -0,0 +1,242 @@
 +#include <string.h>
 +#include <stdlib.h>
 +#include <curses.h>
@@ -306,9 +306,16 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +** Set up common answerback needles. Since none has any KMP fallback matches, we
 +** can use the same table for all of them.
 +*/
-+static short anstables[] = {-1, 0, 0, 0};
-+static struct needle ans3 = {
++static short anstables[] = {-1, 0, 0, 0, 0};
++static struct needle ans4 = {
 +	.next = NULL,
++	.str = "\033[>0c",
++	.table = anstables,
++	.j = 0,
++	.action = MATCH_DELETE,
++};
++static struct needle ans3 = {
++	.next = &ans4,
 +	.str = "\033[>c",
 +	.table = anstables,
 +	.j = 0,
@@ -350,7 +357,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +	.action = MATCH_RMKX,
 +};
 +
-+static struct needle *pincushion = &ans0, *pctail = &ans3;
++static struct needle *pincushion = &ans0, *pctail = &ans4;
 +
 +/*
 +** Sets up the KMP fallback table for a needle.  Note that the table must be
