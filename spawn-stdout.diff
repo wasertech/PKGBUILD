@@ -1,0 +1,21 @@
+diff -r 406003e3a01f dwm.c
+--- a/dwm.c	Mon Sep 27 07:53:44 2010 +0000
++++ b/dwm.c	Sat Nov 13 22:18:02 2010 -0500
+@@ -1587,16 +1587,17 @@ sigchld(int unused) {
+ 	while(0 < waitpid(-1, NULL, WNOHANG));
+ }
+ 
+ void
+ spawn(const Arg *arg) {
+ 	if(fork() == 0) {
+ 		if(dpy)
+ 			close(ConnectionNumber(dpy));
++		dup2(STDERR_FILENO, STDOUT_FILENO);
+ 		setsid();
+ 		execvp(((char **)arg->v)[0], (char **)arg->v);
+ 		fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]);
+ 		perror(" failed");
+ 		exit(0);
+ 	}
+ }
+ 

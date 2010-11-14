@@ -15,7 +15,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 static const Bool autofocus         = False;    /* Focus follows mouse */
-static const unsigned int topgap    = 26;
+static const unsigned int topgap    = 21;
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
