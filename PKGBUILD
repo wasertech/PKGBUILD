@@ -19,7 +19,7 @@ md5sums=('3fcf56f13b27c267f6c7177dd7a4a831'
          '2c0b81d25742a010799d5bce27c66408'
          '689534c579b1782440ddcaf71537d8fd'
          'cf168ef9a096c6e462f94a9227cf22be'
-         'e64b3233f351d6e8a9b1cf0dce83cb49'
+         '096dc7980e520a4408a62e545d2e3359'
          '45196c5e80feaac59ce40cc56a3fcb6f')
 
 _hgroot='http://code.suckless.org/hg'

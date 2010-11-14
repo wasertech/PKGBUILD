@@ -24,7 +24,7 @@ diff -r 72e52c5333ef dwm.c
 +			unfocus(selmon->sel, True);
 +			selmon = m;
 +		}
-+	focus((wintoclient(ev->window)));
++		focus((wintoclient(ev->window)));
  	}
 -	focus((wintoclient(ev->window)));
  }
