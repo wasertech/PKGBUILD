@@ -14,6 +14,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
+static const Bool autofocus         = False;    /* Focus follows mouse */
 static const unsigned int topgap    = 26;
 
 /* tagging */
@@ -51,13 +52,15 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *dmenucmd[] = { "bash", "-c", "exe=\"`dmenu_path | dmenu`\" && eval \"$exe\"", NULL };
+static const char *rootcmd[]  = { "sh", "-c", "exe=\"`dmenu_path | rdmenu`\" && exec sudo -A bash -c \"$exe\"", NULL };
 static const char *termcmd[]  = { "/usr/bin/env", "SHLVL=0", "st", NULL };
 static const char *lockcmd[]  = { "i3lock", "-c", "3465a4", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = rootcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_t,      focusstack,     {.i = +1 } },
