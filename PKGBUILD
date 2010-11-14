@@ -11,12 +11,14 @@ depends=('libx11')
 makedepends=('mercurial')
 conflicts=('dwm')
 provides=('dwm')
-source=(config.h warp.diff restart.diff abs-mon.diff push.c)
-md5sums=('16142d4ff0297d307b27fc2a15164847'
+source=(config.h attachabove.diff warp.diff restart.diff abs-mon.diff push.c nobar.diff)
+md5sums=('1ca14b2f34d48f27796c6643b90b337d'
+         'fc8f44ea8ff83ca8745277a2501c55f1'
          '46e62c0979acf19ad41c30d1814f0f9b'
          '0f9db2c77bdf4023661e6e42d5e25a5b'
          '2c0b81d25742a010799d5bce27c66408'
-         '689534c579b1782440ddcaf71537d8fd')
+         '689534c579b1782440ddcaf71537d8fd'
+         'a9efd6cec7d63f07cde1fb9415daa5ef')
 
 _hgroot='http://code.suckless.org/hg'
 _hgrepo='dwm'
@@ -27,10 +29,10 @@ build() {
 
   if [ -d $_hgrepo ] ; then
     cd $_hgrepo
-    hg pull -u || return 1
+    hg pull -u
     msg "The local files are updated."
   else
-    hg clone $_hgroot $_hgrepo || return 1
+    hg clone $_hgroot $_hgrepo
   fi
 
   msg "Mercurial checkout done or server timeout"
@@ -42,9 +44,11 @@ build() {
 
   cp ../config.h .
   cp ../push.c .
-  patch -Np1 < ../abs-mon.diff || return 1
-  patch -Np1 < ../restart.diff || return 1
-  patch -Np1 < ../warp.diff || return 1
+  patch -Np1 < ../attachabove.diff
+  patch -Np1 < ../abs-mon.diff
+  patch -Np1 < ../restart.diff
+  patch -Np1 < ../warp.diff
+  patch -Np1 < ../nobar.diff
 
   # add correct settings to config.mk
   sed -i "s|^PREFIX =.*|PREFIX = /usr|" config.mk
@@ -52,7 +56,7 @@ build() {
   sed -i "s|^X11LIB =.*|X11LIB = /usr/lib/X11|" config.mk
 
   msg "Starting build process."
-  make || return 1
+  make
 }
 
 package() {

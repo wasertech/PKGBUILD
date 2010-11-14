@@ -12,9 +12,9 @@ static const char selbgcolor[]      = "#babdb6";
 static const char selfgcolor[]      = "#000000";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const Bool showbar           = False;    /* False means no bar */
+static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
-static const unsigned int bargap    = 18;
+static const unsigned int topgap    = 26;
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -53,7 +53,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "/usr/bin/env", "SHLVL=0", "st", NULL };
-static const char *lockcmd[]  = { "i3lock", NULL };
+static const char *lockcmd[]  = { "i3lock", "-c", "3465a4", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -71,7 +71,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape, killclient,     {0} },
 	{ MODKEY,                       XK_l,      setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_l,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_f,      togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
