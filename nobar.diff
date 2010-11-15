@@ -217,7 +217,7 @@ diff -ru dwm-orig/dwm.c dwm/dwm.c
  	}
  }
  
-@@ -682,9 +626,7 @@
+@@ -682,9 +626,9 @@
  
  void
  drawbar(Monitor *m) {
@@ -226,6 +226,8 @@ diff -ru dwm-orig/dwm.c dwm/dwm.c
 -	unsigned long *col;
  	Client *c;
  
++	if(m != selmon)
++		return;
  	for(c = m->clients; c; c = c->next) {
 @@ -692,42 +634,25 @@
  		if(c->isurgent)

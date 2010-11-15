@@ -12,13 +12,13 @@ makedepends=('mercurial')
 conflicts=('dwm')
 provides=('dwm')
 source=(config.h attachabove.diff warp.diff restart.diff abs-mon.diff push.c nobar.diff autofocus.diff spawn-stdout.diff)
-md5sums=('3fcf56f13b27c267f6c7177dd7a4a831'
+md5sums=('a5aa6195fa83c64de510a5e474666ec6'
          'fc8f44ea8ff83ca8745277a2501c55f1'
-         '46e62c0979acf19ad41c30d1814f0f9b'
+         '3bb8df7d2d65b51e843b1cc5519e936d'
          '0f9db2c77bdf4023661e6e42d5e25a5b'
          '2c0b81d25742a010799d5bce27c66408'
          '689534c579b1782440ddcaf71537d8fd'
-         'cf168ef9a096c6e462f94a9227cf22be'
+         '584a9de289e22a440ab3e68e0ff0cb23'
          '096dc7980e520a4408a62e545d2e3359'
          '45196c5e80feaac59ce40cc56a3fcb6f')
 

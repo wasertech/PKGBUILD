@@ -93,7 +93,7 @@ diff -r 406003e3a01f dwm.c
 +	if(!c)
 +		return;
 +	XQueryPointer(dpy, root, &dummy, &dummy, &x, &y, &di, &di, &dui);
-+	if(x > c->x && y > c->y && x < c->y + c->w && y < c->y + c->h)
++	if(x > c->x && y > c->y && x < c->x + c->w && y < c->y + c->h)
 +		return;
 +	XSelectInput(dpy, root, SubstructureRedirectMask
 +		& EnterWindowMask);
