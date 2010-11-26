@@ -362,7 +362,7 @@ diff -ru dwm-orig/dwm.c dwm/dwm.c
  focus(Client *c) {
  	if(!c || !ISVISIBLE(c))
  		for(c = selmon->stack; c && !ISVISIBLE(c); c = c->snext);
-@@ -994,42 +861,6 @@
+@@ -994,41 +861,6 @@
  	}
  }
  
@@ -379,12 +379,11 @@ diff -ru dwm-orig/dwm.c dwm/dwm.c
 -		XFreeStringList(missing);
 -	}
 -	if(dc.font.set) {
--		XFontSetExtents *font_extents;
 -		XFontStruct **xfonts;
 -		char **font_names;
 -
 -		dc.font.ascent = dc.font.descent = 0;
--		font_extents = XExtentsOfFontSet(dc.font.set);
+-		XExtentsOfFontSet(dc.font.set);
 -		n = XFontsOfFontSet(dc.font.set, &xfonts, &font_names);
 -		for(i = 0, dc.font.ascent = 0, dc.font.descent = 0; i < n; i++) {
 -			dc.font.ascent = MAX(dc.font.ascent, (*xfonts)->ascent);

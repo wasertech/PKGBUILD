@@ -1,7 +1,7 @@
 # Contributer: v2punkt0 <v2punkt0@gmail.com>
 
 pkgname='dwm-hg'
-pkgver=1527
+pkgver=1528
 pkgrel=1
 pkgdesc="The latest hg pull of dwm"
 url="http://dwm.suckless.org"
