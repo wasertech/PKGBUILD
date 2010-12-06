@@ -1,12 +1,7 @@
-diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/Makefile.in dtach-0.8/Makefile.in
---- dtach-0.8.orig/Makefile.in	2008-01-31 00:59:54.000000000 -0500
-+++ dtach-0.8/Makefile.in	2010-07-27 11:04:43.000000000 -0400
-@@ -4,16 +4,21 @@
- LDFLAGS = @LDFLAGS@
- LIBS = @LIBS@
- VERSION = @PACKAGE_VERSION@
- VPATH = $(srcdir)
- 
+diff -rupN dtach-0.8.orig/Makefile.in dtach-0.8/Makefile.in
+--- dtach-0.8.orig/Makefile.in	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/Makefile.in	2010-11-18 17:04:29.010842914 -0500
+@@ -9,6 +9,11 @@ VPATH = $(srcdir)
  OBJ = attach.o master.o main.o
  SRC = $(srcdir)/attach.c $(srcdir)/master.c $(srcdir)/main.c
  
@@ -18,20 +13,10 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/Makefile.in dtach-0.8/Make
  TARFILES = $(srcdir)/README $(srcdir)/COPYING $(srcdir)/Makefile.in \
  	   $(srcdir)/config.h.in $(SRC) \
  	   $(srcdir)/dtach.h $(srcdir)/dtach.spec $(srcdir)/configure \
- 	   $(srcdir)/configure.ac $(srcdir)/dtach.1
- 
- dtach: $(OBJ)
- 	$(CC) -o $@ $(LDFLAGS) $(OBJ) $(LIBS)
- 
-diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/configure.ac dtach-0.8/configure.ac
---- dtach-0.8.orig/configure.ac	2008-01-31 00:59:54.000000000 -0500
-+++ dtach-0.8/configure.ac	2010-07-27 11:04:43.000000000 -0400
-@@ -27,10 +27,20 @@
- AC_TYPE_PID_T
- 
- # Checks for library functions.
- AC_TYPE_SIGNAL
- AC_CHECK_FUNCS(atexit dup2 memset)
+diff -rupN dtach-0.8.orig/configure.ac dtach-0.8/configure.ac
+--- dtach-0.8.orig/configure.ac	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/configure.ac	2010-11-18 17:04:29.010842914 -0500
+@@ -32,5 +32,15 @@ AC_CHECK_FUNCS(atexit dup2 memset)
  AC_CHECK_FUNCS(select socket strerror)
  AC_CHECK_FUNCS(openpty forkpty ptsname grantpt unlockpt)
  
@@ -47,15 +32,10 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/configure.ac dtach-0.8/con
 +
  AC_CONFIG_FILES(Makefile)
  AC_OUTPUT
-diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
---- dtach-0.8.orig/dtach.h	2008-01-31 00:59:54.000000000 -0500
-+++ dtach-0.8/dtach.h	2010-07-27 13:33:29.000000000 -0400
-@@ -129,8 +129,40 @@
- 
- int attach_main(int noerror);
- int master_main(char **argv, int waitattach);
- 
- #ifdef sun
+diff -rupN dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
+--- dtach-0.8.orig/dtach.h	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/dtach.h	2010-11-18 17:04:29.010842914 -0500
+@@ -134,3 +134,37 @@ int master_main(char **argv, int waitatt
  #define BROKEN_MASTER
  #endif
  #endif
@@ -83,6 +63,8 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
 +	int leftover;
 +	/* Keypad mode */
 +	int smkx;
++	/* Alt-screen mode */
++	int smcup;
 +#endif
 +};
 +
@@ -91,15 +73,10 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
 +int parse_buf(struct pty *p, unsigned int count, unsigned int *rem);
 +int restore_state(struct pty *p, int fd);
 +#endif
-diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.c
---- dtach-0.8.orig/master.c	2008-01-31 00:59:54.000000000 -0500
-+++ dtach-0.8/master.c	2010-07-27 13:33:33.000000000 -0400
-@@ -13,34 +13,16 @@
-     GNU General Public License for more details.
- 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+diff -rupN dtach-0.8.orig/master.c dtach-0.8/master.c
+--- dtach-0.8.orig/master.c	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/master.c	2010-11-18 17:07:29.227732312 -0500
+@@ -18,24 +18,6 @@
  */
  #include "dtach.h"
  
@@ -124,17 +101,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
  /* A connected client */
  struct client
  {
- 	/* The next client in the linked list. */
- 	struct client *next;
- 	/* The previous client in the linked list. */
- 	struct client **pprev;
- 	/* File descriptor of the client. */
-@@ -214,39 +196,55 @@
- 	return s;
- }
- 
- /* Process activity on the pty - Input and terminal changes are sent out to
- ** the attached clients. If the pty goes away, we die. */
+@@ -219,18 +201,30 @@ create_socket(char *name)
  static void
  pty_activity(int s)
  {
@@ -167,11 +134,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
  
  #ifdef BROKEN_MASTER
  	/* Get the current terminal settings. */
- 	if (tcgetattr(the_pty.slave, &the_pty.term) < 0)
- 		exit(1);
- #else
- 	/* Get the current terminal settings. */
- 	if (tcgetattr(the_pty.fd, &the_pty.term) < 0)
+@@ -242,6 +236,10 @@ pty_activity(int s)
  		exit(1);
  #endif
  
@@ -182,17 +145,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
  top:
  	/*
  	** Wait until at least one client is writable. Also wait on the control
- 	** socket in case a new client tries to connect.
- 	*/
- 	FD_ZERO(&readfds);
- 	FD_ZERO(&writefds);
- 	FD_SET(s, &readfds);
-@@ -271,17 +269,18 @@
- 		int written;
- 
- 		if (!FD_ISSET(p->fd, &writefds))
- 			continue;
- 
+@@ -276,7 +274,8 @@ top:
  		written = 0;
  		while (written < len)
  		{
@@ -202,17 +155,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
  
  			if (n > 0)
  			{
- 				written += n;
- 				continue;
- 			}
- 			else if (n < 0 && errno == EINTR)
- 				continue;
-@@ -291,16 +290,21 @@
- 		}
- 		if (nclients != -1 && written == len)
- 			nclients++;
- 	}
- 
+@@ -296,6 +295,11 @@ top:
  	/* Try again if nothing happened. */
  	if (!FD_ISSET(s, &readfds) && nclients == 0)
  		goto top;
@@ -224,36 +167,17 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
  }
  
  /* Process activity on the control socket */
- static void
- control_activity(int s)
- {
- 	int fd;
- 	struct client *p;
-@@ -319,16 +323,18 @@
- 	p = malloc(sizeof(struct client));
- 	p->fd = fd;
- 	p->attached = 0;
- 	p->pprev = &clients;
- 	p->next = *(p->pprev);
+@@ -324,6 +328,9 @@ control_activity(int s)
  	if (p->next)
  		p->next->pprev = &p->next;
  	*(p->pprev) = p;
-+
++#ifdef PARSER
 +	restore_state(&the_pty, fd);
++#endif
  }
  
  /* Process activity from a client. */
- static void
- client_activity(struct client *p)
- {
- 	int len;
- 	struct packet pkt;
-@@ -432,16 +438,26 @@
- 	/* Create a pty in which the process is running. */
- 	if (init_pty(argv, statusfd) < 0)
- 	{
- 		if (statusfd != -1)
- 			dup2(statusfd, 1);
+@@ -437,6 +444,16 @@ master_process(int s, char **argv, int w
  		printf("%s: init_pty: %s\n", progname, strerror(errno));
  		exit(1);
  	}
@@ -270,15 +194,10 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/master.c dtach-0.8/master.
  	
  	/* Close statusfd, since we don't need it anymore. */
  	if (statusfd != -1)
- 		close(statusfd);
- 
- 	/* Make sure stdin/stdout/stderr point to /dev/null. We are now a
- 	** daemon. */
- 	nullfd = open("/dev/null", O_RDWR);
-diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.c
+diff -rupN dtach-0.8.orig/parser.c dtach-0.8/parser.c
 --- dtach-0.8.orig/parser.c	1969-12-31 19:00:00.000000000 -0500
-+++ dtach-0.8/parser.c	2010-07-27 13:32:19.000000000 -0400
-@@ -0,0 +1,242 @@
++++ dtach-0.8/parser.c	2010-11-18 17:06:08.804353980 -0500
+@@ -0,0 +1,251 @@
 +#include <string.h>
 +#include <stdlib.h>
 +#include <curses.h>
@@ -288,9 +207,11 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +
 +enum
 +{
-+	MATCH_DELETE = 0,
-+	MATCH_SMKX = 1,
-+	MATCH_RMKX = 2,
++	MATCH_DELETE,
++	MATCH_SMKX,
++	MATCH_RMKX,
++	MATCH_SMCUP,
++	MATCH_RMCUP,
 +};
 +
 +struct needle
@@ -342,20 +263,7 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +	.j = 0,
 +	.action = MATCH_DELETE,
 +};
-+static struct needle smkx = {
-+	.next = NULL,
-+	.str = NULL,
-+	.table = NULL,
-+	.j = 0,
-+	.action = MATCH_SMKX,
-+};
-+static struct needle rmkx = {
-+	.next = NULL,
-+	.str = NULL,
-+	.table = NULL,
-+	.j = 0,
-+	.action = MATCH_RMKX,
-+};
++static struct needle smkx, rmkx, smcup, rmcup;
 +
 +static struct needle *pincushion = &ans0, *pctail = &ans4;
 +
@@ -375,6 +283,21 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +	}
 +}
 +
++static int terminfo_needle(char *id, struct needle *n, unsigned short action)
++{
++	n->str = tigetstr(id);
++	if (!n->str)
++		return 0;
++	n->table = malloc(strlen(n->str) * sizeof (int));
++	if (!n->table)
++		return 1;
++	kmp_setup(n);
++	n->action = action;
++	pctail->next = n;
++	pctail = n;
++	return 0;
++}
++
 +/*
 +** Initializes the parser.
 +*/
@@ -382,30 +305,12 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +{
 +	p->leftover = 0;
 +	p->smkx = 0;
-+	if (setupterm(NULL, p->fd, NULL) == ERR)
-+		return 1;
-+
-+	smkx.str = tigetstr("smkx");
-+	if (smkx.str)
-+	{
-+		smkx.table = malloc(strlen(smkx.str) * sizeof (int));
-+		if (!smkx.table)
-+			return 1;
-+		kmp_setup(&smkx);
-+		pctail->next = &smkx;
-+		pctail = &smkx;
-+	}
-+	rmkx.str = tigetstr("rmkx");
-+	if (rmkx.str)
-+	{
-+		rmkx.table = malloc(strlen(rmkx.str) * sizeof (int));
-+		if (!rmkx.table)
-+			return 1;
-+		kmp_setup(&rmkx);
-+		pctail->next = &rmkx;
-+		pctail = &rmkx;
-+	}
-+	return 0;
++	p->smcup = 0;
++	return (setupterm(NULL, p->fd, NULL) == ERR ||
++			terminfo_needle("smkx", &smkx, MATCH_SMKX) ||
++			terminfo_needle("rmkx", &rmkx, MATCH_RMKX) ||
++			terminfo_needle("smcup", &smcup, MATCH_SMCUP) ||
++			terminfo_needle("rmcup", &rmcup, MATCH_RMCUP));
 +}
 +
 +/*
@@ -472,6 +377,12 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +			case MATCH_RMKX:
 +				p->smkx = 0;
 +				break;
++			case MATCH_SMCUP:
++				p->smcup = 1;
++				break;
++			case MATCH_RMCUP:
++				p->smcup = 0;
++				break;
 +		}
 +		if (c > 0)
 +			memmove(end, next, c);
@@ -509,6 +420,23 @@ diff -rNU8 -x configure -x config.h.in dtach-0.8.orig/parser.c dtach-0.8/parser.
 +		for (written = 0; written < len; written += n)
 +		{
 +			n = write(fd, smkx.str + written, len - written);
++			if (n <= 0)
++			{
++				if (n == 0 || errno == EAGAIN)
++					break;
++				if (errno != EINTR)
++					return errno;
++				n = 0;
++			}
++		}
++	}
++	if (p->smcup)
++	{
++		len = strlen(smcup.str);
++		n = 0;
++		for (written = 0; written < len; written += n)
++		{
++			n = write(fd, smcup.str + written, len - written);
 +			if (n <= 0)
 +			{
 +				if (n == 0 || errno == EAGAIN)
