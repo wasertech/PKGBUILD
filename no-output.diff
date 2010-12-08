@@ -1,0 +1,97 @@
+diff -rup dtach-0.8.orig/attach.c dtach-0.8/attach.c
+--- dtach-0.8.orig/attach.c	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/attach.c	2010-11-19 13:32:34.938671926 -0500
+@@ -81,11 +81,6 @@ connect_socket(char *name)
+ static RETSIGTYPE
+ die(int sig)
+ {
+-	/* Print a nice pretty message for some things. */
+-	if (sig == SIGHUP || sig == SIGINT)
+-		printf(EOS "\r\n[detached]\r\n");
+-	else
+-		printf(EOS "\r\n[got signal %d - dying]\r\n", sig);
+ 	exit(1);
+ }
+ 
+@@ -110,7 +105,6 @@ process_kbd(int s, struct packet *pkt)
+ 
+ 		/* And suspend... */
+ 		tcsetattr(0, TCSADRAIN, &orig_term);
+-		printf(EOS "\r\n");
+ 		kill(getpid(), SIGTSTP);
+ 		tcsetattr(0, TCSADRAIN, &cur_term);
+ 
+@@ -127,10 +121,7 @@ process_kbd(int s, struct packet *pkt)
+ 	}
+ 	/* Detach char? */
+ 	else if (pkt->u.buf[0] == detach_char)
+-	{
+-		printf(EOS "\r\n[detached]\r\n");
+ 		exit(0);
+-	}
+ 	/* Just in case something pukes out. */
+ 	else if (pkt->u.buf[0] == '\f')
+ 		win_changed = 1;
+@@ -186,9 +177,6 @@ attach_main(int noerror)
+ 	cur_term.c_cc[VTIME] = 0;
+ 	tcsetattr(0, TCSADRAIN, &cur_term);
+ 
+-	/* Clear the screen. This assumes VT100. */
+-	write(1, "\33[H\33[J", 6);
+-
+ 	/* Tell the master that we want to attach. */
+ 	pkt.type = MSG_ATTACH;
+ 	write(s, &pkt, sizeof(struct packet));
+@@ -209,10 +197,7 @@ attach_main(int noerror)
+ 		FD_SET(s, &readfds);
+ 		n = select(s + 1, &readfds, NULL, NULL, NULL);
+ 		if (n < 0 && errno != EINTR && errno != EAGAIN)
+-		{
+-			printf(EOS "\r\n[select failed]\r\n");
+ 			exit(1);
+-		}
+ 
+ 		/* Pty activity */
+ 		if (n > 0 && FD_ISSET(s, &readfds))
+@@ -220,16 +205,9 @@ attach_main(int noerror)
+ 			int len = read(s, buf, sizeof(buf));
+ 
+ 			if (len == 0)
+-			{
+-				printf(EOS "\r\n[EOF - dtach terminating]"
+-					"\r\n");
+ 				exit(0);
+-			}
+ 			else if (len < 0)
+-			{
+-				printf(EOS "\r\n[read returned an error]\r\n");
+ 				exit(1);
+-			}
+ 			/* Send the data to the terminal. */
+ 			write(1, buf, len);
+ 			n--;
+diff -rup dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
+--- dtach-0.8.orig/dtach.h	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/dtach.h	2010-11-19 13:32:31.042650294 -0500
+@@ -124,9 +124,6 @@ struct packet
+ */
+ #define BUFSIZE 4096
+ 
+-/* This hopefully moves to the bottom of the screen */
+-#define EOS "\033[999H"
+-
+ int attach_main(int noerror);
+ int master_main(char **argv, int waitattach);
+ 
+diff -rup dtach-0.8.orig/master.c dtach-0.8/master.c
+--- dtach-0.8.orig/master.c	2010-11-15 12:56:45.529835250 -0500
++++ dtach-0.8/master.c	2010-11-19 13:32:31.042650294 -0500
+@@ -129,8 +129,6 @@ init_pty(char **argv, int statusfd)
+ 		** can't. */
+ 		if (statusfd != -1)
+ 			dup2(statusfd, 1);
+-		else
+-			printf(EOS "\r\n");
+ 
+ 		printf("%s: could not execute %s: %s\r\n", progname,
+ 		       *argv, strerror(errno));
