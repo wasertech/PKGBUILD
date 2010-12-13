@@ -43,7 +43,7 @@ build() {
   msg "Starting make..."
 
   rm -rf "$srcdir/$_hgrepo-build"
-  cp -r "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
+  hg clone "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
   cd "$srcdir/$_hgrepo-build"
 
   cp ../config.h ../config.mk ../push.c .
