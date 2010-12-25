@@ -56,6 +56,15 @@ static const char *dmenucmd[] = { "bash", "-c", "exe=\"`dmenu_path | dmenu`\" &&
 static const char *rootcmd[]  = { "sh", "-c", "exe=\"`dmenu_path | rdmenu`\" && exec sudo -A bash -c \"$exe\"", NULL };
 static const char *termcmd[]  = { "/usr/bin/env", "SHLVL=0", "st", NULL };
 static const char *lockcmd[]  = { "i3lock", "-c", "3465a4", NULL };
+static const char *lowervolcmd[]  = { "amixer", "sset", "Master", "3%-", NULL };
+static const char *raisevolcmd[]  = { "amixer", "sset", "Master", "3%+", NULL };
+static const char *mutecmd[]  = { "amixer", "sset", "Master", "toggle", NULL };
+static const char *playcmd[]  = { "mpc", "toggle", NULL };
+static const char *stopcmd[]  = { "mpc", "stop", NULL };
+static const char *prevcmd[]  = { "mpc", "prev", NULL };
+static const char *nextcmd[]  = { "mpc", "next", NULL };
+
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -92,6 +101,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_q,      state,          {.ui = StRestart} },
 	{ MODKEY|ShiftMask,             XK_q,      state,          {.ui = StShutdown} },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = lowervolcmd} },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = raisevolcmd} },
+	{ 0,                            XF86XK_AudioMute, spawn,      {.v = mutecmd} },
+	{ 0,                            XF86XK_AudioPlay, spawn,      {.v = playcmd} },
+	{ 0,                            XF86XK_AudioStop, spawn,      {.v = stopcmd} },
+	{ 0,                            XF86XK_AudioPrev, spawn,      {.v = nextcmd} },
+	{ 0,                            XF86XK_AudioNext, spawn,      {.v = prevcmd} },
 };
 
 /* button definitions */

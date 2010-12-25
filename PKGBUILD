@@ -1,7 +1,7 @@
 # Contributer: v2punkt0 <v2punkt0@gmail.com>
 
 pkgname='dwm-hg'
-pkgver=1528
+pkgver=1529
 pkgrel=1
 pkgdesc="The latest hg pull of dwm"
 url="http://dwm.suckless.org"
@@ -13,7 +13,7 @@ conflicts=('dwm')
 provides=('dwm')
 source=(config.h config.mk attachabove.diff warp.diff restart.diff abs-mon.diff push.c
         nobar.diff autofocus.diff spawn-stdout.diff)
-md5sums=('a5aa6195fa83c64de510a5e474666ec6'
+md5sums=('be159a351dab3f74b04d1fb716326708'
          'e3bf2c24b6ffb8eecbd0c9525c3a92c3'
          'fc8f44ea8ff83ca8745277a2501c55f1'
          '3bb8df7d2d65b51e843b1cc5519e936d'
