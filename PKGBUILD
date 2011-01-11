@@ -1,7 +1,7 @@
 # Contributer: v2punkt0 <v2punkt0@gmail.com>
 
 pkgname='dwm-hg'
-pkgver=1529
+pkgver=1530
 pkgrel=1
 pkgdesc="The latest hg pull of dwm"
 url="http://dwm.suckless.org"
@@ -20,7 +20,7 @@ md5sums=('be159a351dab3f74b04d1fb716326708'
          'd40280e45b246ec98f3b61e42dabe264'
          '2c0b81d25742a010799d5bce27c66408'
          '689534c579b1782440ddcaf71537d8fd'
-         '042f413c64725f84d031aeedb6188fa0'
+         '166da5cb94c670e5eff686be0d026347'
          '096dc7980e520a4408a62e545d2e3359'
          '45196c5e80feaac59ce40cc56a3fcb6f')
 

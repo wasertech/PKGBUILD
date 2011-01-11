@@ -369,7 +369,7 @@ diff -ru dwm-orig/dwm.c dwm/dwm.c
 -void
 -initfont(const char *fontstr) {
 -	char *def, **missing;
--	int i, n;
+-	int n;
 -
 -	missing = NULL;
 -	dc.font.set = XCreateFontSet(dpy, fontstr, &missing, &n, &def);
@@ -385,7 +385,7 @@ diff -ru dwm-orig/dwm.c dwm/dwm.c
 -		dc.font.ascent = dc.font.descent = 0;
 -		XExtentsOfFontSet(dc.font.set);
 -		n = XFontsOfFontSet(dc.font.set, &xfonts, &font_names);
--		for(i = 0, dc.font.ascent = 0, dc.font.descent = 0; i < n; i++) {
+-		while(n--) {
 -			dc.font.ascent = MAX(dc.font.ascent, (*xfonts)->ascent);
 -			dc.font.descent = MAX(dc.font.descent,(*xfonts)->descent);
 -			xfonts++;
