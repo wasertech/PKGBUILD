@@ -14,7 +14,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
-static const Bool autofocus         = False;    /* Focus follows mouse */
+static const Bool autofocus         = True;     /* Focus follows mouse */
 static const unsigned int topgap    = 19;
 
 /* tagging */
@@ -106,8 +106,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioMute, spawn,      {.v = mutecmd} },
 	{ 0,                            XF86XK_AudioPlay, spawn,      {.v = playcmd} },
 	{ 0,                            XF86XK_AudioStop, spawn,      {.v = stopcmd} },
-	{ 0,                            XF86XK_AudioPrev, spawn,      {.v = nextcmd} },
-	{ 0,                            XF86XK_AudioNext, spawn,      {.v = prevcmd} },
+	{ 0,                            XF86XK_AudioPrev, spawn,      {.v = prevcmd} },
+	{ 0,                            XF86XK_AudioNext, spawn,      {.v = nextcmd} },
 };
 
 /* button definitions */
