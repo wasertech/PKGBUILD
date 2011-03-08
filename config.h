@@ -52,8 +52,8 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "bash", "-c", "exe=\"`dmenu_path | dmenu`\" && eval \"$exe\"", NULL };
-static const char *rootcmd[]  = { "sh", "-c", "exe=\"`dmenu_path | rdmenu`\" && exec sudo -A bash -c \"$exe\"", NULL };
+static const char *dmenucmd[] = { "bash", "-c", "exe=\"$(dmenu_path | dmenu)\" && eval \"$exe\"", NULL };
+static const char *rootcmd[]  = { "sh", "-c", "exe=\"$(dmenu_path | rdmenu)\" && SUDO_ASKPASS=~/bin/dpass exec sudo -A bash -c \"$exe\"", NULL };
 static const char *termcmd[]  = { "/usr/bin/env", "SHLVL=0", "st", NULL };
 static const char *lockcmd[]  = { "i3lock", "-c", "3465a4", NULL };
 static const char *lowervolcmd[]  = { "amixer", "sset", "Master", "3%-", NULL };

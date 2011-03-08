@@ -13,7 +13,7 @@ conflicts=('dwm')
 provides=('dwm')
 source=(config.h config.mk attachabove.diff warp.diff restart.diff abs-mon.diff push.c
         nobar.diff autofocus.diff spawn-stdout.diff)
-md5sums=('06848a2f74e48deacfd251ad63f61298'
+md5sums=('8c59be251559fab591676bc875925a8b'
          'e3bf2c24b6ffb8eecbd0c9525c3a92c3'
          'fc8f44ea8ff83ca8745277a2501c55f1'
          '3bb8df7d2d65b51e843b1cc5519e936d'
