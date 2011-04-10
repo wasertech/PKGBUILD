@@ -1,9 +1,9 @@
 # Contributer: v2punkt0 <v2punkt0@gmail.com>
 
-pkgname='dwm-hg'
-pkgver=1530
+pkgname='dwm-djp-hg'
+pkgver=1533.13
 pkgrel=1
-pkgdesc="The latest hg pull of dwm"
+pkgdesc="The latest hg pull of dwm, with my own patchqueue"
 url="http://dwm.suckless.org"
 license='MIT'
 arch=('i686' 'x86_64')
@@ -11,21 +11,12 @@ depends=('libx11')
 makedepends=('mercurial')
 conflicts=('dwm')
 provides=('dwm')
-source=(config.h config.mk attachabove.diff warp.diff restart.diff abs-mon.diff push.c
-        nobar.diff autofocus.diff spawn-stdout.diff)
-md5sums=('8c59be251559fab591676bc875925a8b'
-         'e3bf2c24b6ffb8eecbd0c9525c3a92c3'
-         'fc8f44ea8ff83ca8745277a2501c55f1'
-         '3bb8df7d2d65b51e843b1cc5519e936d'
-         'd40280e45b246ec98f3b61e42dabe264'
-         '2c0b81d25742a010799d5bce27c66408'
-         '689534c579b1782440ddcaf71537d8fd'
-         '166da5cb94c670e5eff686be0d026347'
-         '096dc7980e520a4408a62e545d2e3359'
-         '45196c5e80feaac59ce40cc56a3fcb6f')
+source=(config.mk)
+md5sums=('e3bf2c24b6ffb8eecbd0c9525c3a92c3')
 
-_hgroot='http://code.suckless.org/hg'
+_hgroot='http://hg.suckless.org'
 _hgrepo='dwm'
+_hgmq='https://bitbucket.org/djpohly/dwm-patches'
 
 build() {
   cd "$srcdir"
@@ -34,26 +25,22 @@ build() {
   if [ -d $_hgrepo ] ; then
     cd $_hgrepo
     hg pull -u
+    hg pull -u --mq
     msg "The local files are updated."
   else
-    hg clone $_hgroot $_hgrepo
+    hg qclone -p $_hgmq $_hgroot $_hgrepo
   fi
 
   msg "Mercurial checkout done or server timeout"
   msg "Starting make..."
 
   rm -rf "$srcdir/$_hgrepo-build"
-  hg clone "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
+  hg qclone "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
   cd "$srcdir/$_hgrepo-build"
 
-  cp ../config.h ../config.mk ../push.c .
-  patch -Np1 < ../autofocus.diff
-  patch -Np1 < ../attachabove.diff
-  patch -Np1 < ../abs-mon.diff
-  patch -Np1 < ../restart.diff
-  patch -Np1 < ../warp.diff
-  patch -Np1 < ../spawn-stdout.diff
-  patch -Np1 < ../nobar.diff
+  # Apply patches
+  hg qgoto myprefs
+  cp ../config.mk .
 
   # add correct settings to config.mk
   sed -i "s|^PREFIX =.*|PREFIX = /usr|" config.mk
