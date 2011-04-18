@@ -1,7 +1,8 @@
 # Contributer: v2punkt0 <v2punkt0@gmail.com>
+# Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
 
 pkgname='dwm-djp-hg'
-pkgver=1533.13
+pkgver=1537.19
 pkgrel=1
 pkgdesc="The latest hg pull of dwm, with my own patchqueue"
 url="http://dwm.suckless.org"
@@ -11,8 +12,6 @@ depends=('libx11')
 makedepends=('mercurial')
 conflicts=('dwm')
 provides=('dwm')
-source=(config.mk)
-md5sums=('e3bf2c24b6ffb8eecbd0c9525c3a92c3')
 
 _hgroot='http://hg.suckless.org'
 _hgrepo='dwm'
@@ -40,12 +39,14 @@ build() {
 
   # Apply patches
   hg qgoto myprefs
-  cp ../config.mk .
 
   # add correct settings to config.mk
   sed -i "s|^PREFIX =.*|PREFIX = /usr|" config.mk
   sed -i "s|^X11INC =.*|X11INC = /usr/include/X11|" config.mk
   sed -i "s|^X11LIB =.*|X11LIB = /usr/lib/X11|" config.mk
+  sed -i "s|^CFLAGS =|CFLAGS +=|" config.mk
+  sed -i "/^CFLAGS/s| -Os\b||" config.mk
+  sed -i "s|^LDFLAGS =|LDFLAGS +=|" config.mk
 
   msg "Starting build process."
   make
