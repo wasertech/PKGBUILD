@@ -47,6 +47,7 @@ build() {
   sed -i "s|^CFLAGS =|CFLAGS +=|" config.mk
   sed -i "/^CFLAGS/s| -Os\b||" config.mk
   sed -i "s|^LDFLAGS =|LDFLAGS +=|" config.mk
+  sed -i "/^LDFLAGS/s| -s\b||" config.mk
 
   msg "Starting build process."
   make
