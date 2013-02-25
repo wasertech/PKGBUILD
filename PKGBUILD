@@ -1,63 +1,58 @@
-# Contributer: v2punkt0 <v2punkt0@gmail.com>
-# Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
-
-pkgname='dwm-djp-hg'
-pkgver=1537.19
+# Maintainer: Devin J. Pohly <djpohly@gmail.com>
+pkgname=dwm-djp-git
+pkgver=1625.10
 pkgrel=1
-pkgdesc="The latest hg pull of dwm, with my own patchqueue"
+pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
-license='MIT'
 arch=('i686' 'x86_64')
-depends=('libx11')
-makedepends=('mercurial')
-conflicts=('dwm')
+license=('MIT')
+options=(zipman)
+depends=('libx11' 'libxinerama')
+makedepends=('git')
+install=
 provides=('dwm')
+conflicts=('dwm')
+source=("git+https://github.com/djpohly/dwm.git" dwm.desktop)
+_upstream="http://git.suckless.org/dwm"
+md5sums=(SKIP '939f403a71b6e85261d09fc3412269ee')
 
-_hgroot='http://hg.suckless.org'
-_hgrepo='dwm'
-_hgmq='https://bitbucket.org/djpohly/dwm-patches'
+pkgver() {
+  cd "$srcdir/dwm"
+
+  git remote add upstream "$_upstream"
+  git fetch upstream
+
+  local upstream=$(git rev-list --count upstream/master)
+  local behind=$(git rev-list --count ..upstream/master)
+  local ahead=$(git rev-list --count upstream/master..)
+
+  [[ $behind -gt 0 ]] && warning "Patched version is %s commits behind upstream" "$behind"
+
+  printf "%s.%s\n" "$upstream" "$ahead"
+}
+
+prepare() {
+  cd "$srcdir/dwm"
+
+  sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+  sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
+  sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
+  sed -i 's/^LDFLAGS =/LDFLAGS +=/g' config.mk
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to Mercurial server...."
+  cd "$srcdir/dwm"
 
-  if [ -d $_hgrepo ] ; then
-    cd $_hgrepo
-    hg pull -u
-    hg pull -u --mq
-    msg "The local files are updated."
-  else
-    hg qclone -p $_hgmq $_hgroot $_hgrepo
-  fi
-
-  msg "Mercurial checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_hgrepo-build"
-  hg qclone "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
-  cd "$srcdir/$_hgrepo-build"
-
-  # Apply patches
-  hg qgoto myprefs
-
-  # add correct settings to config.mk
-  sed -i "s|^PREFIX =.*|PREFIX = /usr|" config.mk
-  sed -i "s|^X11INC =.*|X11INC = /usr/include/X11|" config.mk
-  sed -i "s|^X11LIB =.*|X11LIB = /usr/lib/X11|" config.mk
-  sed -i "s|^CFLAGS =|CFLAGS +=|" config.mk
-  sed -i "/^CFLAGS/s| -Os\b||" config.mk
-  sed -i "s|^LDFLAGS =|LDFLAGS +=|" config.mk
-  sed -i "/^LDFLAGS/s| -s\b||" config.mk
-
-  msg "Starting build process."
-  make
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd "$srcdir/$_hgrepo-build"
-  make PREFIX="$pkgdir/usr" install
+  cd "$srcdir/dwm"
 
-  mkdir -p "$pkgdir/usr/share/licenses/dwm"
-  cp LICENSE "$pkgdir/usr/share/licenses/dwm"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -m644 -D "$srcdir/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
+
 # vim:set ts=2 sw=2 et:
