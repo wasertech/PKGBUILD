@@ -15,7 +15,7 @@ makedepends=('pcf2bdf')
 provides=('dina-font')
 conflicts=('dina-font')
 install=${pkgname}.install
-source=(http://omploader.org/vMjIwNA/dina-pcf-2.89.tar.gz
+source=("http://gentoo.mirrors.pair.com/distfiles/dina-pcf-$pkgver.tar.gz"
         LICENSE)
 md5sums=('d6c425c007a9a576b4bb88c88cf57076'
          'd7f8fbff7893c52e94b29c30369f2037')
