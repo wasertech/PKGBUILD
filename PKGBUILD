@@ -20,16 +20,19 @@ md5sums=('ec5999f3b6bb67da19754fcb2e5221f3'
          'c3415f07c985d7fcdeab14a8065e398e'
          '5f26eaa56a3466871668a8f0706e9fab')
 
-build() {
+prepare() {
   cd "${srcdir}/dtach-${pkgver}"
 
   patch -Np1 < ../no-output.diff
   patch -Np1 < ../parser.patch
-  autoheader
-  autoconf
+  autoreconf -i
+}
+
+build() {
+  cd "${srcdir}/dtach-${pkgver}"
 
   ./configure --prefix=/usr --enable-parser
-  make || return 1
+  make
 }
 
 package() {
