@@ -1,6 +1,6 @@
-diff -ru xcompmgr-1.1.5.orig/xcompmgr.1 xcompmgr-1.1.5/xcompmgr.1
---- xcompmgr-1.1.5.orig/xcompmgr.1	2009-11-02 15:54:33.000000000 -0500
-+++ xcompmgr-1.1.5/xcompmgr.1	2010-08-03 15:21:29.000000000 -0400
+diff -u xcompmgr-1.1.6.orig/xcompmgr.1 xcompmgr-1.1.6/xcompmgr.1
+--- xcompmgr-1.1.6.orig/xcompmgr.1	2011-10-07 01:32:21.000000000 -0400
++++ xcompmgr-1.1.6/xcompmgr.1	2013-08-17 04:21:26.572051546 -0400
 @@ -3,63 +3,20 @@
  .SH NAME
  xcompmgr \- sample X compositing manager
@@ -29,7 +29,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.1 xcompmgr-1.1.5/xcompmgr.1
 -Specifies the left offset for client-side shadows.
 -.TP
 -.BI \-t\  top-offset
--Specifies the top offset for client-side shadows. 
+-Specifies the top offset for client-side shadows.
 -.TP
 -.BI \-I\  fade-in-step
 -Specifies the opacity change between steps while fading in.
@@ -67,10 +67,10 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.1 xcompmgr-1.1.5/xcompmgr.1
  .BI \-S
  Enables synchronous operation.  Useful for debugging.
  .SH BUGS
-diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
---- xcompmgr-1.1.5.orig/xcompmgr.c	2009-10-19 18:44:23.000000000 -0400
-+++ xcompmgr-1.1.5/xcompmgr.c	2010-08-03 15:19:46.000000000 -0400
-@@ -33,8 +33,6 @@
+diff -u xcompmgr-1.1.6.orig/xcompmgr.c xcompmgr-1.1.6/xcompmgr.c
+--- xcompmgr-1.1.6.orig/xcompmgr.c	2011-11-19 02:49:52.000000000 -0500
++++ xcompmgr-1.1.6/xcompmgr.c	2013-08-17 04:19:54.765386345 -0400
+@@ -34,8 +34,6 @@
  #include <string.h>
  #include <math.h>
  #include <sys/poll.h>
@@ -79,7 +79,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  #include <unistd.h>
  #include <getopt.h>
  #include <X11/Xlib.h>
-@@ -71,14 +69,8 @@
+@@ -73,14 +71,8 @@
      Damage		damage;
      Picture		picture;
      Picture		alphaPict;
@@ -94,7 +94,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      unsigned int	opacity;
      Atom                windowType;
      unsigned long	damage_sequence;    /* sequence when damage was created */
-@@ -88,31 +80,13 @@
+@@ -92,30 +84,12 @@
      struct _win		*prev_trans;
  } win;
  
@@ -116,7 +116,6 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -
  static win		*list;
 -static fade		*fades;
- static Display		*dpy;
  static int		scr;
  static Window		root;
  static Picture		rootPicture;
@@ -126,7 +125,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  static Picture		rootTile;
  static XserverRegion	allDamage;
  static Bool		clipChanged;
-@@ -131,548 +105,29 @@
+@@ -135,550 +109,30 @@
  /* find these once and be done with it */
  static Atom		opacityAtom;
  static Atom		winTypeAtom;
@@ -154,7 +153,8 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -#define TRANS_OPACITY	0.75
 -
  #define DEBUG_REPAINT 0
- #define DEBUG_EVENTS 0
+ #define DEBUG_EVENTS  0
+ #define DEBUG_SHAPE   0
  #define MONITOR_REPAINT 0
  
 -#define SHADOWS		1
@@ -168,7 +168,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -
  static void
  determine_mode(Display *dpy, win *w);
-     
+ 
 -static double
 -get_opacity_percent(Display *dpy, win *w, double def);
 -
@@ -210,7 +210,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -find_fade (win *w)
 -{
 -    fade    *f;
--    
+-
 -    for (f = fades; f; f = f->next)
 -    {
 -	if (f->w == w)
@@ -393,7 +393,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -    int		    x, y;
 -    double	    t;
 -    double	    g;
--    
+-
 -    c = malloc (sizeof (conv) + size * size * sizeof (double));
 -    c->size = size;
 -    c->data = (double *) (c + 1);
@@ -430,7 +430,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 - * height+  |     |                   |     |
 - *  center  +-----+-------------------+-----+
 - */
-- 
+-
 -static unsigned char
 -sum_gaussian (conv *map, double opacity, int x, int y, int width, int height)
 -{
@@ -442,7 +442,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -    int	    fx_start, fx_end;
 -    int	    fy_start, fy_end;
 -    double  v;
--    
+-
 -    /*
 -     * Compute set of filter values which are "in range",
 -     * that's the set with:
@@ -468,19 +468,19 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -	fy_end = g_size;
 -
 -    g_line = g_line + fy_start * g_size + fx_start;
--    
+-
 -    v = 0;
 -    for (fy = fy_start; fy < fy_end; fy++)
 -    {
 -	g_data = g_line;
 -	g_line += g_size;
--	
+-
 -	for (fx = fx_start; fx < fx_end; fx++)
 -	    v += *g_data++;
 -    }
 -    if (v > 1)
 -	v = 1;
--    
+-
 -    return ((unsigned char) (v * opacity * 255.0));
 -}
 -
@@ -500,7 +500,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -
 -    shadowCorner = (unsigned char *)(malloc ((Gsize + 1) * (Gsize + 1) * 26));
 -    shadowTop = (unsigned char *)(malloc ((Gsize + 1) * 26));
--    
+-
 -    for (x = 0; x <= Gsize; x++)
 -    {
 -	shadowTop[25 * (Gsize + 1) + x] = sum_gaussian (map, 1, x - center, center, Gsize * 2, Gsize * 2);
@@ -561,7 +561,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -    else
 -	d = sum_gaussian (gaussianMap, opacity, center, center, width, height);
 -    memset(data, d, sheight * swidth);
--    
+-
 -    /*
 -     * corners
 -     */
@@ -605,7 +605,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -    /*
 -     * sides
 -     */
--    
+-
 -    for (x = 0; x < xlimit; x++)
 -    {
 -	if (xlimit == Gsize)
@@ -629,11 +629,11 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -    Pixmap  shadowPixmap;
 -    Picture shadowPicture;
 -    GC	    gc;
--    
+-
 -    shadowImage = make_shadow (dpy, opacity, width, height);
 -    if (!shadowImage)
 -	return None;
--    shadowPixmap = XCreatePixmap (dpy, root, 
+-    shadowPixmap = XCreatePixmap (dpy, root,
 -				  shadowImage->width,
 -				  shadowImage->height,
 -				  8);
@@ -661,8 +661,8 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -	XRenderFreePicture (dpy, shadowPicture);
 -	return (Picture)None;
 -    }
--    
--    XPutImage (dpy, shadowPixmap, gc, shadowImage, 0, 0, 0, 0, 
+-
+-    XPutImage (dpy, shadowPixmap, gc, shadowImage, 0, 0, 0, 0,
 -	       shadowImage->width,
 -	       shadowImage->height);
 -    *wp = shadowImage->width;
@@ -672,10 +672,11 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -    XFreePixmap (dpy, shadowPixmap);
 -    return shadowPicture;
 -}
- 
+-
  static Picture
  solid_picture (Display *dpy, Bool argb, double a, double r, double g, double b)
-@@ -830,54 +285,6 @@
+ {
+@@ -835,54 +289,6 @@
      r.y = w->a.y;
      r.width = w->a.width + w->a.border_width * 2;
      r.height = w->a.height + w->a.border_width * 2;
@@ -730,7 +731,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      return XFixesCreateRegion (dpy, &r, 1);
  }
  
-@@ -1036,38 +443,6 @@
+@@ -1042,38 +448,6 @@
      for (w = t; w; w = w->prev_trans)
      {
  	XFixesSetPictureClipRegion (dpy, rootBuffer, 0, 0, w->borderClip);
@@ -746,7 +747,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -		w->shadowPict = solid_picture (dpy, True,
 -					       (double) w->opacity / OPAQUE * 0.3,
 -					       0, 0, 0);
--	    XRenderComposite (dpy, PictOpOver, 
+-	    XRenderComposite (dpy, PictOpOver,
 -			      w->shadowPict ? w->shadowPict : transBlackPicture,
 -			      w->picture, rootBuffer,
 -			      0, 0, 0, 0,
@@ -767,9 +768,9 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 -	    break;
 -	}
  	if (w->opacity != OPAQUE && !w->alphaPict)
- 	    w->alphaPict = solid_picture (dpy, False, 
+ 	    w->alphaPict = solid_picture (dpy, False,
  					  (double) w->opacity / OPAQUE, 0, 0, 0);
-@@ -1146,21 +521,12 @@
+@@ -1152,21 +526,12 @@
      }
      else
      {
@@ -791,7 +792,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      }
      add_damage (dpy, parts);
      w->damaged = 1;
-@@ -1170,7 +536,7 @@
+@@ -1176,7 +541,7 @@
  get_opacity_prop (Display *dpy, win *w, unsigned int def);
  
  static void
@@ -800,7 +801,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  {
      win		*w = find_win (dpy, id);
  
-@@ -1191,9 +557,6 @@
+@@ -1197,9 +562,6 @@
      w->damage_bounds.width = w->damage_bounds.height = 0;
  #endif
      w->damaged = 0;
@@ -810,7 +811,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  }
  
  static void
-@@ -1234,11 +597,6 @@
+@@ -1240,11 +602,6 @@
      	XFixesDestroyRegion (dpy, w->borderSize);
      	w->borderSize = None;
      }
@@ -822,7 +823,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      if (w->borderClip)
      {
  	XFixesDestroyRegion (dpy, w->borderClip);
-@@ -1248,27 +606,14 @@
+@@ -1254,27 +611,14 @@
      clipChanged = True;
  }
  
@@ -852,7 +853,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  }
  
  /* Get the opacity prop from window
-@@ -1296,18 +641,6 @@
+@@ -1302,18 +646,6 @@
      return def;
  }
  
@@ -871,7 +872,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  /* determine mode for window all in one place.
     Future might check for menu flag and other cool things
  */
-@@ -1347,11 +680,6 @@
+@@ -1353,11 +685,6 @@
  	XRenderFreePicture (dpy, w->alphaPict);
  	w->alphaPict = None;
      }
@@ -883,8 +884,8 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  
      if (w->a.class == InputOnly)
      {
-@@ -1460,14 +788,8 @@
- 	new->damage = XDamageCreate (dpy, id, XDamageReportNonEmpty);
+@@ -1472,14 +799,8 @@
+ 	XShapeSelectInput (dpy, id, ShapeNotifyMask);
      }
      new->alphaPict = None;
 -    new->shadowPict = None;
@@ -898,7 +899,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      new->opacity = OPAQUE;
  
      new->borderClip = None;
-@@ -1478,7 +800,7 @@
+@@ -1490,7 +811,7 @@
      new->next = *p;
      *p = new;
      if (new->a.map_state == IsViewable)
@@ -907,7 +908,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  }
  
  static void
-@@ -1555,11 +877,6 @@
+@@ -1569,11 +890,6 @@
  	    }
  	}
  #endif
@@ -919,7 +920,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      }
      w->a.width = ce->width;
      w->a.height = ce->height;
-@@ -1594,7 +911,7 @@
+@@ -1616,7 +932,7 @@
  }
  
  static void
@@ -928,7 +929,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  {
      win	**prev, *w;
  
-@@ -1615,50 +932,17 @@
+@@ -1637,50 +953,17 @@
  		XRenderFreePicture (dpy, w->alphaPict);
  		w->alphaPict = None;
  	    }
@@ -979,7 +980,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  /*
  static void
  dump_win (win *w)
-@@ -1727,8 +1011,6 @@
+@@ -1749,8 +1032,6 @@
  	    w->a.height <= w->damage_bounds.y + w->damage_bounds.height)
  	{
  	    clipChanged = True;
@@ -988,7 +989,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  	    w->usable = True;
  	}
      }
-@@ -1790,7 +1072,7 @@
+@@ -1884,7 +1165,7 @@
  }
  
  static void
@@ -996,8 +997,8 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
 +expose_root (Display *dpy, XRectangle *rects, int nrects)
  {
      XserverRegion  region = XFixesCreateRegion (dpy, rects, nrects);
-     
-@@ -1858,20 +1140,7 @@
+ 
+@@ -1964,20 +1245,7 @@
      fprintf (stderr, "usage: %s [options]\n", program);
      fprintf (stderr, "Options\n");
      fprintf (stderr, "   -d display\n      Specifies which display should be managed.\n");
@@ -1018,7 +1019,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      fprintf (stderr, "   -S\n      Enable synchronous operation (for debugging).\n");
      exit (1);
  }
-@@ -1945,63 +1214,18 @@
+@@ -2052,63 +1320,18 @@
      char	    *display = NULL;
      int		    o;
  
@@ -1083,7 +1084,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  	default:
  	    usage (argv[0]);
  	    break;
-@@ -2056,23 +1280,10 @@
+@@ -2168,23 +1391,10 @@
      /* get atoms */
      opacityAtom = XInternAtom (dpy, OPACITY_PROP, False);
      winTypeAtom = XInternAtom (dpy, "_NET_WM_WINDOW_TYPE", False);
@@ -1107,7 +1108,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      root_width = DisplayWidth (dpy, scr);
      root_height = DisplayHeight (dpy, scr);
  
-@@ -2082,8 +1293,6 @@
+@@ -2194,8 +1404,6 @@
  					CPSubwindowMode,
  					&pa);
      blackPicture = solid_picture (dpy, True, 1, 0, 0, 0);
@@ -1116,7 +1117,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
      allDamage = None;
      clipChanged = True;
      XGrabServer (dpy);
-@@ -2109,17 +1318,13 @@
+@@ -2222,17 +1430,13 @@
  	paint_all (dpy, None);
      for (;;)
      {
@@ -1135,7 +1136,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  	    }
  
  	    XNextEvent (dpy, &ev);
-@@ -2137,19 +1342,19 @@
+@@ -2250,19 +1454,19 @@
  		configure_win (dpy, &ev.xconfigure);
  		break;
  	    case DestroyNotify:
@@ -1159,7 +1160,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  		break;
  	    case CirculateNotify:
  		circulate_win (dpy, &ev.xcirculate);
-@@ -2180,7 +1385,7 @@
+@@ -2293,7 +1497,7 @@
  		    n_expose++;
  		    if (ev.xexpose.count == 0)
  		    {
@@ -1168,7 +1169,7 @@ diff -ru xcompmgr-1.1.5.orig/xcompmgr.c xcompmgr-1.1.5/xcompmgr.c
  			n_expose = 0;
  		    }
  		}
-@@ -2206,20 +1411,8 @@
+@@ -2319,20 +1523,8 @@
  		    win * w = find_win(dpy, ev.xproperty.window);
  		    if (w)
  		    {
