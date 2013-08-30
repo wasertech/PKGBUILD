@@ -2,8 +2,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=siis-ca-cert
-pkgver=0.2
-pkgrel=1
+pkgver=0.3
+pkgrel=2
 pkgdesc='SIIS CA certificate'
 arch=('any')
 url='http://siis.cse.psu.edu/ca.html'
@@ -13,17 +13,17 @@ source=("http://siis.cse.psu.edu/siis-ca-cert.pem"
 depends=('ca-certificates')
 makedepends=('gnupg')
 install=siis-ca-cert.install
-md5sums=('5375bd32740dbed5ea182a0b6d0e988e'
-         '47db708a3c0827b4915d0313b437943b')
+md5sums=('478845645d748fbbc5795d291556dd4a'
+         '2355767d9b8d0b9df02afb8ee137e59f')
 
 build() {
 	cd ${srcdir}
 
-	gpg --verify siis-ca-cert.pem.sig siis-ca-cert.pem || {
+	if ! gpg --verify siis-ca-cert.pem.sig siis-ca-cert.pem; then
 		echo "GPG verification failed.  Make sure you have Steve's public key" 1>&2
 		echo "in your trust database." 1>&2
 		exit 1
-	}
+	fi
 }
 
 package() {

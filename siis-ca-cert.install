@@ -1,14 +1,14 @@
 post_install() {
 	sed -i -e'/^siis\.cse\.psu\.edu\//d' /etc/ca-certificates.conf
 	echo siis.cse.psu.edu/siis-ca.crt >> /etc/ca-certificates.conf
-	usr/sbin/update-ca-certificates --fresh
+	/usr/bin/update-ca-certificates --fresh
 }
 
 post_upgrade() {
-	usr/sbin/update-ca-certificates
+	/usr/bin/update-ca-certificates
 }
 
 post_remove() {
 	sed -i -e'/^siis\.cse\.psu\.edu\//d' /etc/ca-certificates.conf
-	usr/sbin/update-ca-certificates --fresh
+	/usr/bin/update-ca-certificates --fresh
 }
