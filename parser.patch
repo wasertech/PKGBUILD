@@ -13,7 +13,6 @@ diff -rupN dtach-0.8.orig/Makefile.in dtach-0.8/Makefile.in
  TARFILES = $(srcdir)/README $(srcdir)/COPYING $(srcdir)/Makefile.in \
  	   $(srcdir)/config.h.in $(SRC) \
  	   $(srcdir)/dtach.h $(srcdir)/dtach.spec $(srcdir)/configure \
-diff -rupN dtach-0.8.orig/configure.ac dtach-0.8/configure.ac
 --- dtach-0.8.orig/configure.ac	2010-11-15 12:56:45.529835250 -0500
 +++ dtach-0.8/configure.ac	2010-11-18 17:04:29.010842914 -0500
 @@ -32,5 +32,15 @@ AC_CHECK_FUNCS(atexit dup2 memset)
@@ -32,7 +31,6 @@ diff -rupN dtach-0.8.orig/configure.ac dtach-0.8/configure.ac
 +
  AC_CONFIG_FILES(Makefile)
  AC_OUTPUT
-diff -rupN dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
 --- dtach-0.8.orig/dtach.h	2010-11-15 12:56:45.529835250 -0500
 +++ dtach-0.8/dtach.h	2010-11-18 17:04:29.010842914 -0500
 @@ -134,3 +134,37 @@ int master_main(char **argv, int waitatt
@@ -73,7 +71,6 @@ diff -rupN dtach-0.8.orig/dtach.h dtach-0.8/dtach.h
 +int parse_buf(struct pty *p, unsigned int count, unsigned int *rem);
 +int restore_state(struct pty *p, int fd);
 +#endif
-diff -rupN dtach-0.8.orig/master.c dtach-0.8/master.c
 --- dtach-0.8.orig/master.c	2010-11-15 12:56:45.529835250 -0500
 +++ dtach-0.8/master.c	2010-11-18 17:07:29.227732312 -0500
 @@ -18,24 +18,6 @@
@@ -194,10 +191,9 @@ diff -rupN dtach-0.8.orig/master.c dtach-0.8/master.c
  	
  	/* Close statusfd, since we don't need it anymore. */
  	if (statusfd != -1)
-diff -rupN dtach-0.8.orig/parser.c dtach-0.8/parser.c
 --- dtach-0.8.orig/parser.c	1969-12-31 19:00:00.000000000 -0500
 +++ dtach-0.8/parser.c	2010-11-18 17:06:08.804353980 -0500
-@@ -0,0 +1,251 @@
+@@ -0,0 +1,246 @@
 +#include <string.h>
 +#include <stdlib.h>
 +#include <curses.h>
@@ -228,23 +224,16 @@ diff -rupN dtach-0.8.orig/parser.c dtach-0.8/parser.c
 +** can use the same table for all of them.
 +*/
 +static short anstables[] = {-1, 0, 0, 0, 0};
-+static struct needle ans4 = {
++static struct needle ans3 = {
 +	.next = NULL,
 +	.str = "\033[>0c",
 +	.table = anstables,
 +	.j = 0,
 +	.action = MATCH_DELETE,
 +};
-+static struct needle ans3 = {
-+	.next = &ans4,
-+	.str = "\033[>c",
-+	.table = anstables,
-+	.j = 0,
-+	.action = MATCH_DELETE,
-+};
 +static struct needle ans2 = {
 +	.next = &ans3,
-+	.str = "\033[c",
++	.str = "\033[>c",
 +	.table = anstables,
 +	.j = 0,
 +	.action = MATCH_DELETE,
@@ -263,9 +252,9 @@ diff -rupN dtach-0.8.orig/parser.c dtach-0.8/parser.c
 +	.j = 0,
 +	.action = MATCH_DELETE,
 +};
-+static struct needle smkx, rmkx, smcup, rmcup;
++static struct needle smkx, rmkx, smcup, rmcup, u7, u9;
 +
-+static struct needle *pincushion = &ans0, *pctail = &ans4;
++static struct needle *pincushion = &ans0, *pctail = &ans3;
 +
 +/*
 +** Sets up the KMP fallback table for a needle.  Note that the table must be
@@ -310,7 +299,9 @@ diff -rupN dtach-0.8.orig/parser.c dtach-0.8/parser.c
 +			terminfo_needle("smkx", &smkx, MATCH_SMKX) ||
 +			terminfo_needle("rmkx", &rmkx, MATCH_RMKX) ||
 +			terminfo_needle("smcup", &smcup, MATCH_SMCUP) ||
-+			terminfo_needle("rmcup", &rmcup, MATCH_RMCUP));
++			terminfo_needle("rmcup", &rmcup, MATCH_RMCUP) ||
++			terminfo_needle("u7", &u7, MATCH_DELETE) ||
++			terminfo_needle("u9", &u9, MATCH_DELETE));
 +}
 +
 +/*

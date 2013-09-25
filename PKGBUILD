@@ -5,7 +5,7 @@
 
 pkgname=dtach-mod
 pkgver=0.8
-pkgrel=6
+pkgrel=8
 pkgdesc="emulates the detach feature of screen"
 arch=('i686' 'x86_64')
 url="http://dtach.sourceforge.net/"
@@ -18,7 +18,7 @@ source=(http://downloads.sourceforge.net/sourceforge/dtach/dtach-$pkgver.tar.gz
         parser.patch)
 md5sums=('ec5999f3b6bb67da19754fcb2e5221f3'
          'c3415f07c985d7fcdeab14a8065e398e'
-         '5f26eaa56a3466871668a8f0706e9fab')
+         'db4d024ddb7b0ace83502f3259deb3d5')
 
 prepare() {
   cd "${srcdir}/dtach-${pkgver}"
