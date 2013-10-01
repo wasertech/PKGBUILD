@@ -1,0 +1,23 @@
+keymaps 0-2,4-6,8-9,12,16
+include "dvorak.map"
+
+# Caps Lock key
+keycode 58 = Control
+
+# Left/Right Alt keys
+keycode 56 = ShiftL
+keycode 100 = Alt
+
+# Left/Right Win keys
+keycode 125 = Alt
+keycode 126 = AltGr
+
+shiftl keycode 2 = Console_1
+shiftl keycode 3 = Console_2
+shiftl keycode 4 = Console_3
+shiftl keycode 5 = Console_4
+shiftl keycode 6 = Console_5
+shiftl keycode 7 = Console_6
+shiftl keycode 8 = Console_7
+shiftl keycode 9 = Console_8
+shiftl keycode 10 = Console_9
