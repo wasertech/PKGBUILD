@@ -1,6 +1,6 @@
 # Maintainer: Devin J. Pohly <djpohly@gmail.com>
 pkgname=dwm-djp-git
-pkgver=1626.13
+pkgver=1625.10
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
