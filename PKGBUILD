@@ -13,7 +13,7 @@ depends=('perl')
 provides=('strace')
 conflicts=('strace')
 source=("http://downloads.sourceforge.net/strace/strace-$pkgver.tar.xz" nanoseconds.patch)
-md5sums=('e537b2b1afeec70c0e6e27a0d0fd671e'
+md5sums=('c575ef43829586801f514fd91bfe7575'
          '062fe6024e74da2fbfb2504e84b4e78c')
 
 build() {
