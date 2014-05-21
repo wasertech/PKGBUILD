@@ -1,6 +1,6 @@
 # Maintainer: Devin J. Pohly <djpohly@gmail.com>
 pkgname=dtach-djp-git
-pkgver=5edca60
+pkgver=0.8.30.g8056b47
 pkgrel=1
 pkgdesc="Emulates the detach feature of screen (dj devin rmx)"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ _gitname=dtach
 pkgver() {
   cd "$srcdir/$_gitname"
 
-  git describe --always | tr - .
+  git describe --always --tags | tr - .
 }
 
 build() {
