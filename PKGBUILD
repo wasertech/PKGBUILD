@@ -3,7 +3,7 @@
 
 pkgname=siis-ca-cert
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='SIIS CA certificate'
 arch=('any')
 url='http://siis.cse.psu.edu/ca.html'
@@ -28,4 +28,6 @@ build() {
 
 package() {
 	install -D -m644 "$srcdir/siis-ca-cert.pem" "$pkgdir/usr/share/ca-certificates/siis.cse.psu.edu/siis-ca.crt"
+	install -d "$pkgdir/etc/ca-certificates/conf.d/"
+	echo 'siis.cse.psu.edu/siis-ca.crt' > "$pkgdir/etc/ca-certificates/conf.d/siis-ca-cert.conf"
 }
