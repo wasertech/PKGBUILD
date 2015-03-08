@@ -1,6 +1,6 @@
 # Maintainer: Devin J. Pohly <djpohly@gmail.com>
 pkgname=dtach-djp-git
-pkgver=0.8.30.g8056b47
+pkgver=0.8.43.ge645348
 pkgrel=1
 pkgdesc="Emulates the detach feature of screen (dj devin rmx)"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=('ncurses')
 makedepends=('git')
 provides=('dtach')
 conflicts=('dtach')
-source=("git+https://github.com/djpohly/dtach")
+source=("git+https://github.com/djpohly/dtach#branch=parser")
 md5sums=(SKIP)
 _gitname=dtach
 
