@@ -1,6 +1,6 @@
 # Maintainer: Devin J. Pohly <djpohly@gmail.com>
 pkgname=dwm-djp-git
-pkgver=1625.10
+pkgver=1630.18
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -12,19 +12,18 @@ makedepends=('git')
 install=
 provides=('dwm')
 conflicts=('dwm')
-source=("git+https://github.com/djpohly/dwm.git" dwm.desktop)
+source=("git+https://github.com/djpohly/dwm.git#branch=myprefs" dwm.desktop)
 _upstream="http://git.suckless.org/dwm"
 md5sums=(SKIP '939f403a71b6e85261d09fc3412269ee')
 
 pkgver() {
   cd "$srcdir/dwm"
 
-  git remote add upstream "$_upstream"
-  git fetch upstream
+  git fetch "$_upstream" master
 
-  local upstream=$(git rev-list --count upstream/master)
-  local behind=$(git rev-list --count ..upstream/master)
-  local ahead=$(git rev-list --count upstream/master..)
+  local upstream=$(git rev-list --count FETCH_HEAD)
+  local behind=$(git rev-list --count ..FETCH_HEAD)
+  local ahead=$(git rev-list --count FETCH_HEAD..)
 
   [[ $behind -gt 0 ]] && warning "Patched version is %s commits behind upstream" "$behind"
 
