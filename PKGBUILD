@@ -37,6 +37,8 @@ prepare() {
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
   sed -i 's/^LDFLAGS =/LDFLAGS +=/g' config.mk
+
+  rm -f config.h
 }
 
 build() {
