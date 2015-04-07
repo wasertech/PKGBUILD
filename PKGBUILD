@@ -18,7 +18,7 @@ install=
 source=(ReSonance-cp437.psf)
 md5sums=('c4de6540bcf28da6bbe2ba0aadb3f8ef')
 
-build() {
+package() {
   cd "$srcdir"
 
   install -d "$pkgdir/usr/share/kbd/consolefonts"
