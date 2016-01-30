@@ -12,9 +12,16 @@ backup=('etc/Muttrc')
 arch=('i686' 'x86_64')
 optdepends=('smtp-forwarder: to send mail')
 depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')
-source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898' 'SKIP')
+source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc}
+        reply-filter.patch)
+sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898' 'SKIP'
+          '72ecfc2f137662cc69b002fcdfde2d5df4413e70')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -Np1 -i "$srcdir/reply-filter.patch"
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
