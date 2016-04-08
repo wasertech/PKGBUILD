@@ -13,13 +13,17 @@ arch=('i686' 'x86_64')
 optdepends=('smtp-forwarder: to send mail')
 depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')
 source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc}
-        reply-filter.patch)
-sha1sums=('bab62759af0873a94dc8b85a62a7a9e09e33c6bb' 'SKIP')
+        reply-filter.patch
+	smtp-samepass.patch)
+sha1sums=('bab62759af0873a94dc8b85a62a7a9e09e33c6bb' 'SKIP'
+          '72ecfc2f137662cc69b002fcdfde2d5df4413e70'
+          '58b03322b0c049d9be3e37e281ee786cd257dc4d')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -Np1 -i "$srcdir/reply-filter.patch"
+	patch -Np1 -i "$srcdir/smtp-samepass.patch"
 }
 
 build() {
