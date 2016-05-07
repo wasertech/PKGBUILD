@@ -3,7 +3,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=mutt
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Small but very powerful text-based mail client'
 url='http://www.mutt.org/'
@@ -15,7 +15,7 @@ depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb
 source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc}
         reply-filter.patch
 	smtp-samepass.patch)
-sha1sums=('bab62759af0873a94dc8b85a62a7a9e09e33c6bb' 'SKIP'
+sha1sums=('ff1c76209a5c299018fc72b9e2e1ab98bf5138dd' 'SKIP'
           '72ecfc2f137662cc69b002fcdfde2d5df4413e70'
           '58b03322b0c049d9be3e37e281ee786cd257dc4d')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
