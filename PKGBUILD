@@ -3,7 +3,7 @@
 
 pkgname=siis-ca-cert
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='SIIS CA certificate'
 arch=('any')
 url='http://siis.cse.psu.edu/ca.html'
@@ -12,7 +12,6 @@ source=("http://siis.cse.psu.edu/siis-ca-cert.pem"
 	"http://siis.cse.psu.edu/siis-ca-cert.pem.sig")
 depends=('ca-certificates')
 makedepends=('gnupg')
-install=siis-ca-cert.install
 md5sums=('478845645d748fbbc5795d291556dd4a'
          '2355767d9b8d0b9df02afb8ee137e59f')
 
@@ -27,7 +26,5 @@ build() {
 }
 
 package() {
-	install -D -m644 "$srcdir/siis-ca-cert.pem" "$pkgdir/etc/ca-certificates/trust-source/anchors/siis-ca.crt"
-	#install -d "$pkgdir/etc/ca-certificates/conf.d/"
-	#echo 'siis-ca.crt' > "$pkgdir/etc/ca-certificates/conf.d/siis-ca-cert.conf"
+	install -D -m644 "$srcdir/siis-ca-cert.pem" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/siis-ca.crt"
 }
