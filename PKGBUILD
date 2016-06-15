@@ -6,15 +6,16 @@
 # Maintainer: boyska <piuttosto@logorroici.org>
 pkgname=libgfshare-git
 _basename=libgfshare
-pkgver=r86.8bc91dd
+pkgver=r100.a0670e6
 pkgrel=1
 pkgdesc="Library and utilities for multi-way secret-sharing"
 arch=( 'i686' 'x86_64' )
 url="http://www.digital-scurf.org/software/$_basename"
+depends=('glibc')
 provides=('libgfshare')
 conflicts=('libgfshare')
 license=('custom')
-source=("git+https://github.com/djpohly/$_basename.git")
+source=("git+https://github.com/djpohly/$_basename.git#branch=integrity")
 md5sums=(SKIP)
 
 pkgver() {
