@@ -1,0 +1,33 @@
+services:
+  - docker
+
+before_install:
+  - docker build -t localnet/aurci .
+  - docker run -d -t --name aurci localnet/aurci bash
+
+install:
+  - docker cp pkgrepository.sh aurci:/home/pkguser
+  - docker exec aurci bash pkgrepository.sh
+
+before_script:
+  - docker cp pkglist aurci:/home/pkguser
+  - docker cp pkgbuild.sh aurci:/home/pkguser
+
+script:
+  - docker exec aurci bash pkgbuild.sh
+
+before_deploy:
+  - docker cp aurci:/home/pkguser/bin repository
+
+deploy:
+  provider: releases
+  api_key: ${GITHUB_TOKEN}
+  file_glob: true
+  file: repository/*{db,files,gz,xz}
+  overwrite: true
+  skip_cleanup: true
+  on:
+    tags: true
+
+notifications:
+  email: false
