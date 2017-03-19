@@ -2,7 +2,8 @@
 
 set -ex
 
-# Export path to AUR download.
+# Environment variables.
+export PACKAGER="Admin Localnet"
 export AURDEST="$(pwd)/src"
 
 # Variables declaration.
@@ -19,6 +20,6 @@ done < <(comm -23 <(pacman -Sl "aurci" | cut -d" " -f2 | sort) <(aurchain ${pkgl
 cd ".."
 
 # Build outdated packages.
-aursync -n --repo "aurci" --root "bin" ${pkglist[@]}
+aursync --repo "aurci" --root "bin" -nr ${pkglist[@]}
 
 { set +ex; } 2>/dev/null
