@@ -3,7 +3,7 @@
 set -ex
 
 # Environment variables.
-export PACKAGER="Admin Localnet"
+export PACKAGER="${1}"
 export AURDEST="$(pwd)/src"
 
 # Variables declaration.

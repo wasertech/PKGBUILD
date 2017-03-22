@@ -10,14 +10,14 @@ before_install:
 
 install:
   - docker cp pkgrepository.sh aurci:/home/pkguser
-  - docker exec aurci bash pkgrepository.sh
+  - docker exec aurci bash pkgrepository.sh ${TRAVIS_REPO_SLUG}
 
 before_script:
   - docker cp pkglist aurci:/home/pkguser
   - docker cp pkgbuild.sh aurci:/home/pkguser
 
 script:
-  - docker exec aurci bash pkgbuild.sh
+  - docker exec aurci bash pkgbuild.sh ${USER}
 
 before_deploy:
   - docker cp aurci:/home/pkguser/bin repository
