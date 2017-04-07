@@ -17,7 +17,7 @@ before_script:
   - docker cp pkgbuild.sh aurci:/home/pkguser
 
 script:
-  - docker exec aurci bash pkgbuild.sh ${USER}
+  - docker exec aurci bash pkgbuild.sh ${TRAVIS_REPO_SLUG} ${TRAVIS_BUILD_ID}
 
 before_deploy:
   - docker cp aurci:/home/pkguser/bin repository
