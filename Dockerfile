@@ -20,7 +20,3 @@ WORKDIR /home/pkguser
 
 # Create dirs.
 RUN mkdir src bin
-
-# Travis environment variables.
-ENV TRAVIS_REPO_SLUG ${TRAVIS_REPO_SLUG}
-ENV TRAVIS_BUILD_ID ${TRAVIS_BUILD_ID}
