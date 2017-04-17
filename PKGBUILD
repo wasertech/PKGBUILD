@@ -19,8 +19,8 @@ validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
 source+=(reply-filter.patch
 	 smtp-samepass.patch)
-sha1sums+=('72ecfc2f137662cc69b002fcdfde2d5df4413e70'
-           '58b03322b0c049d9be3e37e281ee786cd257dc4d')
+sha256sums+=('a0d77346530ee5d7ab0a6005c205eb9577d4832e2f7d22e91ad4ebc06469c53a'
+             'be33e45656a8fff366d855de996569ed25b7b7ab3a9b1cebe16243934a8cf277')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
