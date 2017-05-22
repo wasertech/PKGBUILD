@@ -10,7 +10,7 @@ install:
   - docker exec aurci bash pkgrepository.sh ${TRAVIS_REPO_SLUG} ${TRAVIS_TAG}
 
 before_script:
-  - docker cp pkglist aurci:/home/pkguser
+  - docker cp pkglist pkgkeys aurci:/home/pkguser
   - docker cp pkgbuild.sh aurci:/home/pkguser
 
 script:
