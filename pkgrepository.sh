@@ -6,7 +6,7 @@ set -ex
 declare pkgslug="${1}"
 declare pkgtag="${2}"
 
-# Download or create repository database repository "aurci"
+# Download or create repository database for "aurci"
 cd "bin"
 if curl -f -L "https://github.com/${pkgslug}/releases/download/${pkgtag}/aurci.{db,files}.tar.gz" -o "aurci.#1.tar.gz"; then
   ln -s "aurci.db.tar.gz" "aurci.db"
