@@ -11,9 +11,10 @@ install:
 
 before_script:
   - docker cp pkglist aurci:/home/pkguser
-  - docker cp pkgbuild.sh aurci:/home/pkguser
+  - docker cp pkgkeys aurci:/home/pkguser
 
 script:
+  - docker cp pkgbuild.sh aurci:/home/pkguser
   - docker exec aurci bash pkgbuild.sh ${TRAVIS_REPO_SLUG} ${TRAVIS_BUILD_ID}
 
 before_deploy:
