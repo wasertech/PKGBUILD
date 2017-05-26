@@ -11,6 +11,11 @@ export VSCODE_NONFREE=1
 declare -a pkglist=()
 declare -a pkgkey=()
 
+# Remove comments or blank lines.
+for file in "pkglist" "pkgkeys"; do
+  sed -i -e "/^\s*#.*$/d" -e "/^\s*$/d" ${file}
+done
+
 # Load files.
 mapfile pkglist < "pkglist"
 mapfile pkgkeys < "pkgkeys"
