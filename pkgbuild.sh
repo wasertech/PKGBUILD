@@ -13,7 +13,7 @@ declare -a pkgkey=()
 
 # Remove comments or blank lines.
 for file in "pkglist" "pkgkeys"; do
-  sed -i -e "/^\s*#.*$/d" -e "/^\s*$/d" ${file}
+  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" ${file}
 done
 
 # Load files.

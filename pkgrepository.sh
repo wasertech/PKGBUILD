@@ -18,7 +18,7 @@ fi
 cd ".."
 
 # Enable "multilib" repository.
-sudo sed -i "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
+sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 
 # Add configuration for repository "aurci".
 sudo tee -a "/etc/pacman.d/aurci" << EOF
