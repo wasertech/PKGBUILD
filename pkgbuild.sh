@@ -9,11 +9,11 @@ export VSCODE_NONFREE=1
 
 # Variables declaration.
 declare -a pkglist=()
-declare -a pkgkey=()
+declare -a pkgkeys=()
 
 # Remove comments or blank lines.
-for file in "pkglist" "pkgkeys"; do
-  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" ${file}
+for pkgfile in "pkglist" "pkgkeys"; do
+  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" ${pkgfile}
 done
 
 # Load files.
@@ -22,14 +22,14 @@ mapfile pkgkeys < "pkgkeys"
 
 # Remove packages from repository.
 cd "bin"
-while read pkg; do
-  repo-remove "aurci.db.tar.gz" ${pkg}
+while read pkgpackage; do
+  repo-remove "aurci.db.tar.gz" ${pkgpackage}
 done < <(comm -23 <(pacman -Sl "aurci" | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
 cd ".."
 
 # Get package gpg keys.
-for key in ${pkgkeys[@]}; do
-  gpg --recv-keys --keyserver hkp://pgp.mit.edu ${key}
+for pkgkey in ${pkgkeys[@]}; do
+  gpg --recv-keys --keyserver hkp://pgp.mit.edu ${pkgkey}
 done
 
 # Build outdated packages.
