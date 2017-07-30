@@ -8,6 +8,7 @@ export AURDEST="$(pwd)/src"
 export VSCODE_NONFREE=1
 
 # Variables declaration.
+declare pkgrepo="${1#*/}"
 declare -a pkglist=()
 declare -a pkgkeys=()
 
@@ -23,8 +24,8 @@ mapfile pkgkeys < "pkgkeys"
 # Remove packages from repository.
 cd "bin"
 while read pkgpackage; do
-  repo-remove "aurci.db.tar.gz" ${pkgpackage}
-done < <(comm -23 <(pacman -Sl "aurci" | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
+  repo-remove "${pkgrepo}.db.tar.gz" ${pkgpackage}
+done < <(comm -23 <(pacman -Sl ${pkgrepo} | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
 cd ".."
 
 # Get package gpg keys.
@@ -33,6 +34,6 @@ for pkgkey in ${pkgkeys[@]}; do
 done
 
 # Build outdated packages.
-aursync --repo "aurci" --root "bin" -nr ${pkglist[@]}
+aursync --repo ${pkgrepo} --root "bin" -nr ${pkglist[@]}
 
 { set +ex; } 2>/dev/null
