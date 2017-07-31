@@ -9,7 +9,7 @@ declare pkgrepo="${1#*/}"
 
 # Download or create repository database for ${pkgrepo}
 cd "bin"
-if curl -f -L "https://github.com/${pkgslug}/releases/download/${pkgtag}/${pkgrepo}.{db,files}.tar.gz" -o "${pkgrepo}.#1.tar.gz"; then
+if curl -L -O -O -f "https://github.com/${pkgslug}/releases/download/${pkgtag}/${pkgrepo}.{db,files}.tar.gz"; then
   ln -fs "${pkgrepo}.db.tar.gz" "${pkgrepo}.db"
   ln -fs "${pkgrepo}.files.tar.gz" "${pkgrepo}.files"
 else
