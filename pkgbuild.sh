@@ -8,7 +8,7 @@ export AURDEST="$(pwd)/src"
 export VSCODE_NONFREE=1
 
 # Variables declaration.
-declare pkgrepo="${1#*/}"
+declare -r pkgrepo="${1#*/}"
 declare -a pkglist=()
 declare -a pkgkeys=()
 

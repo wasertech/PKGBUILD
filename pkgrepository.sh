@@ -3,9 +3,9 @@
 set -ex
 
 # Variables declaration.
-declare pkgslug="${1}"
-declare pkgtag="${2}"
-declare pkgrepo="${1#*/}"
+declare -r pkgslug="${1}"
+declare -r pkgtag="${2}"
+declare -r pkgrepo="${1#*/}"
 
 # Download or create repository database for ${pkgrepo}
 cd "bin"
