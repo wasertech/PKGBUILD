@@ -28,9 +28,10 @@ For build the [AUR](https://aur.archlinux.org) packages of your election fork th
 
   - Fork this GitHub repository and edit `pkglist`.
   - Create a release for your new forked repository.
-  - Generate a personal access token with scope "public_repo".
+  - Generate a personal access token with scope `public_repo`.
   - Enable Travis CI for your new forked repository.
+  - In Travis CI repository settings disable build pull request updates, for security.
   - In Travis CI repository settings declare two environment variables:
-    - `GITHUB_TOKEN`: The previously created personal access token.
+    - `GITHUB_TOKEN`: The previously created personal access token (disable: display value).
     - `TRAVIS_TAG`: The name of your previosly created release.
   - Optionally, enable a cron job in Travis CI repository settings.
