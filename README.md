@@ -32,6 +32,6 @@ For build the [AUR](https://aur.archlinux.org) packages of your election fork th
   - Enable Travis CI for your new forked repository.
   - In Travis CI repository settings disable build pull request updates, for security.
   - In Travis CI repository settings declare two environment variables:
-    - `GITHUB_TOKEN`: The previously created personal access token (disable: display value).
+    - `GITHUB_TOKEN`: The previously created personal access token, disable display value.
     - `TRAVIS_TAG`: The name of your previosly created release.
   - Optionally, enable a cron job in Travis CI repository settings.
