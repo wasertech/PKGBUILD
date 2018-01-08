@@ -13,7 +13,7 @@ declare -a pkgkeys=()
 
 # Remove comments or blank lines.
 for pkgfile in "pkglist" "pkgkeys"; do
-  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" ${pkgfile}
+  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" $pkgfile
 done
 
 # Load files.
@@ -23,16 +23,16 @@ mapfile pkgkeys < "pkgkeys"
 # Remove packages from repository.
 cd "bin"
 while read pkgpackage; do
-  repo-remove "${pkgrepo}.db.tar.gz" ${pkgpackage}
-done < <(comm -23 <(pacman -Sl ${pkgrepo} | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
+  repo-remove "${pkgrepo}.db.tar.gz" $pkgpackage
+done < <(comm -23 <(pacman -Sl $pkgrepo | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
 cd ".."
 
 # Get package gpg keys.
 for pkgkey in ${pkgkeys[@]}; do
-  gpg --recv-keys --keyserver hkp://pgp.mit.edu ${pkgkey}
+  gpg --recv-keys --keyserver "hkp://pool.sks-keyservers.net" $pkgkey
 done
 
 # Build outdated packages.
-aursync --repo ${pkgrepo} --root "bin" -nr ${pkglist[@]}
+aursync --repo $pkgrepo --root "bin" -nr ${pkglist[@]}
 
 { set +ex; } 2>/dev/null

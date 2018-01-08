@@ -3,11 +3,11 @@
 set -ex
 
 # Variables declaration.
-declare -r pkgslug="${1}"
-declare -r pkgtag="${2}"
+declare -r pkgslug="$1"
+declare -r pkgtag="$2"
 declare -r pkgrepo="${1#*/}"
 
-# Download or create repository database for ${pkgrepo}
+# Download or create repository database.
 cd "bin"
 if curl -L -O -O -f "https://github.com/${pkgslug}/releases/download/${pkgtag}/${pkgrepo}.{db,files}.tar.gz"; then
   ln -fs "${pkgrepo}.db.tar.gz" "${pkgrepo}.db"
@@ -21,7 +21,7 @@ cd ".."
 # Enable multilib repository.
 sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 
-# Add configuration for repository ${pkgrepo}.
+# Add configuration for repository.
 sudo tee -a "/etc/pacman.d/${pkgrepo}" << EOF
 [options]
 CacheDir = /var/cache/pacman/pkg
@@ -34,7 +34,7 @@ Server = file://$(pwd)/bin
 Server = https://github.com/${pkgslug}/releases/download/${pkgtag}
 EOF
 
-# Add repository aurutilsci and incude ${pkgrepo}.
+# Add repository aurutilsci and incude this repository.
 sudo tee -a "/etc/pacman.conf" << EOF
 
 [aurutilsci]
