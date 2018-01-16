@@ -28,6 +28,9 @@ prepare() {
 
   # https://lists.gnu.org/archive/html/bug-indent/2011-08/msg00000.html
   patch -Np1 -i ../indent-2.2.11-decimal_format.patch
+
+  # Add -bss and -nbss
+  patch -Np1 -i ../indent-2.2.11-bss.patch
    
   sed -i 's/-number/-number-sections/' doc/Makefile.in
 }
@@ -47,3 +50,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" docdir=/usr/share/doc/indent install
 }
+
+source+=(indent-2.2.11-bss.patch)
+sha1sums+=('6208c4b0e560081d24fe3507075900375330d190')
