@@ -4,7 +4,7 @@ set -ex
 
 # Environment variables.
 export PACKAGER="https://travis-ci.org/${1}/builds/${2}"
-export AURDEST="$(pwd)/src"
+export AURDEST="$(pwd)/aur"
 
 # Variables declaration.
 declare -r pkgrepo="${1#*/}"

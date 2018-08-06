@@ -19,4 +19,4 @@ USER pkguser
 WORKDIR /home/pkguser
 
 # Create dirs.
-RUN mkdir src repo
+RUN mkdir aur repo
