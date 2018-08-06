@@ -8,7 +8,7 @@ declare -r pkgtag="$2"
 declare -r pkgrepo="${1#*/}"
 
 # Download or create repository database.
-cd "bin"
+cd "repo"
 if curl -L -O -O -f "https://github.com/${pkgslug}/releases/download/${pkgtag}/${pkgrepo}.{db,files}.tar.gz"; then
   ln -fs "${pkgrepo}.db.tar.gz" "${pkgrepo}.db"
   ln -fs "${pkgrepo}.files.tar.gz" "${pkgrepo}.files"
@@ -25,12 +25,12 @@ sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 sudo tee -a "/etc/pacman.d/${pkgrepo}" << EOF
 [options]
 CacheDir = /var/cache/pacman/pkg
-CacheDir = $(pwd)/bin
+CacheDir = $(pwd)/repo
 CleanMethod = KeepCurrent
 
 [${pkgrepo}]
 SigLevel = Optional TrustAll
-Server = file://$(pwd)/bin
+Server = file://$(pwd)/repo
 Server = https://github.com/${pkgslug}/releases/download/${pkgtag}
 EOF
 

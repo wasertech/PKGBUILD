@@ -21,7 +21,7 @@ mapfile pkglist < "pkglist"
 mapfile pkgkeys < "pkgkeys"
 
 # Remove packages from repository.
-cd "bin"
+cd "repo"
 while read pkgpackage; do
   repo-remove "${pkgrepo}.db.tar.gz" $pkgpackage
 done < <(comm -23 <(pacman -Sl $pkgrepo | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
@@ -33,6 +33,6 @@ for pkgkey in ${pkgkeys[@]}; do
 done
 
 # Build outdated packages.
-aursync --repo $pkgrepo --root "bin" -nr ${pkglist[@]}
+aursync --repo $pkgrepo --root "repo" -nr ${pkglist[@]}
 
 { set +ex; } 2>/dev/null
