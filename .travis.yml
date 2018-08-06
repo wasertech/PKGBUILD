@@ -3,15 +3,10 @@ services:
   - docker
 before_install:
   - docker build -f .Dockerfile -t localnet/aurci .
-  - docker run -d -t --name aurci localnet/aurci bash
-install:
-  - docker cp pkgrepository.sh aurci:/home/pkguser
-  - docker cp pkgbuild.sh aurci:/home/pkguser
-before_script:
-  - docker cp pkglist aurci:/home/pkguser
+  - docker run -d -t --name aurci --mount type=bind,source="$(pwd)",target=/home/pkguser/bin localnet/aurci bash
 script:
-  - docker exec aurci bash pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
-  - docker exec aurci bash pkgbuild.sh $TRAVIS_REPO_SLUG $TRAVIS_BUILD_ID
+  - docker exec aurci bash bin/pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
+  - docker exec aurci bash bin/pkgbuild.sh $TRAVIS_REPO_SLUG $TRAVIS_BUILD_ID
 before_deploy:
   - docker cp aurci:/home/pkguser/repo $TRAVIS_TAG
 deploy:

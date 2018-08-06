@@ -11,12 +11,12 @@ declare -r pkgrepo="${1#*/}"
 declare -a pkglist=()
 
 # Remove comments or blank lines.
-for pkgfile in "pkglist"; do
+for pkgfile in "bin/pkglist"; do
   sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" $pkgfile
 done
 
 # Load files.
-mapfile pkglist < "pkglist"
+mapfile pkglist < "bin/pkglist"
 
 # Remove packages from repository.
 cd "repo"
