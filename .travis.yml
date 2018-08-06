@@ -2,7 +2,7 @@ language: generic
 services:
   - docker
 before_install:
-  - docker build -t localnet/aurci .
+  - docker build -f .Dockerfile -t localnet/aurci .
   - docker run -d -t --name aurci localnet/aurci bash
 install:
   - docker cp pkgrepository.sh aurci:/home/pkguser
