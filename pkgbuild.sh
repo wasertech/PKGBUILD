@@ -9,16 +9,14 @@ export AURDEST="$(pwd)/aur"
 # Variables declaration.
 declare -r pkgrepo="${1#*/}"
 declare -a pkglist=()
-declare -a pkgkeys=()
 
 # Remove comments or blank lines.
-for pkgfile in "pkglist" "pkgkeys"; do
+for pkgfile in "pkglist"; do
   sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" $pkgfile
 done
 
 # Load files.
 mapfile pkglist < "pkglist"
-mapfile pkgkeys < "pkgkeys"
 
 # Remove packages from repository.
 cd "repo"
@@ -26,11 +24,6 @@ while read pkgpackage; do
   repo-remove "${pkgrepo}.db.tar.gz" $pkgpackage
 done < <(comm -23 <(pacman -Sl $pkgrepo | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
 cd ".."
-
-# Get package gpg keys.
-for pkgkey in ${pkgkeys[@]}; do
-  gpg --recv-keys --keyserver "hkp://ipv4.pool.sks-keyservers.net" $pkgkey
-done
 
 # Build outdated packages.
 aursync --repo $pkgrepo --root "repo" -nr ${pkglist[@]}
