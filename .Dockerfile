@@ -16,7 +16,8 @@ RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
 USER pkguser
 
 # Set working dir.
-WORKDIR /home/pkguser
+WORKDIR /home/pkguser/src
 
 # Create dirs.
+COPY . .
 RUN mkdir aur repo
