@@ -5,6 +5,7 @@ branches:
 services:
   - docker
 before_install:
+  - git fetch --depth=1 origin master
   - git checkout origin/master -- pkgrepository.sh pkgbuild.sh
   - docker build -f .Dockerfile -t localnet/aurci .
   - docker run -d -t --name aurci localnet/aurci bash
