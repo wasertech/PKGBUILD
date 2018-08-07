@@ -3,7 +3,7 @@ services:
   - docker
 before_install:
   - docker build -f .Dockerfile -t localnet/aurci .
-  - docker run -d -t --name aurci --mount type=bind,source="$(git rev-parse --git-dir)",target=/home/pkguser/src.git localnet/aurci bash
+  - docker run -d -t --name aurci --mount type=bind,source="$(git rev-parse --absolute-git-dir)",target=/home/pkguser/src.git localnet/aurci bash
 install:
   - docker exec aurci git clone -b master src.git bin
 script:
