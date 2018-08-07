@@ -9,12 +9,8 @@ export PACKAGER="https://travis-ci.org/${1}/builds/${2}"
 declare -r pkgrepo="${1#*/}"
 
 # Build package
-
-#declare -a gpg_args=(--detach-sign --no-armor --verbose --batch)
-source /usr/share/makepkg/util.sh
-mkdir -p pkgs
 PKGDEST=pkgs LC_MESSAGES=C makepkg -Lcs --noconfirm
-#signing
+#declare -a gpg_args=(--detach-sign --no-armor --verbose --batch)
 #gpg_args+=(-u "$GPGKEY")
 #for f in pkgs/*; do
 #    gpg "${gpg_args[@]}" "$f"
