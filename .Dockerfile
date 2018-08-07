@@ -19,5 +19,5 @@ USER pkguser
 WORKDIR /home/pkguser/src
 
 # Create dirs.
-COPY . .
+COPY --chown=pkguser . .
 RUN mkdir aur repo
