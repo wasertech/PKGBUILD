@@ -70,7 +70,7 @@ quickcheck() {
 }
 
 aurver() {
-    xargs -r ./aursearch -Fr | jq -er '.[].results[] | [.Name,.Version,.Maintainer] | @tsv'
+    xargs -r aursearch -Fr | jq -er '.[].results[] | [.Name,.Version,.Maintainer] | @tsv'
 }
 
 syncver() {

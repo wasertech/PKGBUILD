@@ -103,7 +103,7 @@ regexp() {
         aurgrep_args+=(-e "$pattern")
     done
 
-    ./aurgrep "${aurgrep_args[@]}"
+    aurgrep "${aurgrep_args[@]}"
 }
 
 trap_exit() {
