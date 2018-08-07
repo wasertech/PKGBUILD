@@ -1,4 +1,7 @@
 language: generic
+branches:
+  except:
+    - master
 services:
   - docker
 before_install:
