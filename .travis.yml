@@ -21,4 +21,5 @@ deploy:
   file: ${TRAVIS_TAG}/*{db,files,gz,xz}
   overwrite: true
   skip_cleanup: true
-  all_branches: true
+  on:
+    all_branches: true
