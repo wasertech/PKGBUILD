@@ -6,8 +6,8 @@ services:
   - docker
 before_install:
   - git fetch --depth=1 origin master
-  - git checkout FETCH_HEAD -- pkgrepository.sh pkgbuild.sh
-  - docker build -f .Dockerfile -t localnet/aurci .
+  - git checkout FETCH_HEAD -- Dockerfile pkgrepository.sh pkgbuild.sh
+  - docker build -t localnet/aurci .
   - docker run -d -t --name aurci localnet/aurci bash
 script:
   - docker exec aurci bash pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
