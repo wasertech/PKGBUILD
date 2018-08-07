@@ -1,0 +1,189 @@
+#!/bin/bash
+readonly argv0=aurbuild
+readonly basedir=$PWD
+readonly PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+set -e
+
+declare -a gpg_args=(--detach-sign --no-armor --verbose --batch)
+declare -a makechrootpkg_args=(-cnu) makepkg_args=(-Lcrs)
+declare -i chroot=0 sign_pkg=0
+
+conf_chroot() {
+    printf '[options]\n#CacheDir =\n' # arch-nspawn: copy_hostconf()
+    pacconf --config="$1" --options --raw
+
+    pacconf --repo-list | while IFS= read -r p; do
+        printf '[%s]\n' "$p"
+        pacconf --repo="$p" --raw
+    done
+}
+
+conf_custom() {
+    printf '[options]\n'
+    pacconf --options --raw
+
+    printf '[%s]\n' "$1"
+    pacconf --repo="$1" --raw
+}
+
+db_replaces() {
+    bsdcat "$1" | awk '/%REPLACES%/ {
+        while(NF != 0) {getline; print}
+    }'
+}
+
+trap_exit() {
+    if [[ ! -o xtrace ]]; then
+        rm -rf "$tmp" "$var_tmp"
+    fi
+}
+
+usage() {
+    plain "usage: $argv0 [-cs] -d <database> [-Capr] [--] <makepkg args>"
+    exit 1
+}
+
+readonly -f conf_custom conf_chroot db_replaces trap_exit usage
+
+source /usr/share/makepkg/util.sh
+
+if [[ -t 2 ]]; then
+    colorize
+fi
+
+unset queue container database root
+while getopts a:cC:d:r:s OPT; do
+    case $OPT in
+        a) queue=$OPTARG      ;;
+        c) chroot=1           ;;
+        C) container=$OPTARG  ;;
+        d) database=$OPTARG   ;;
+        r) root=$OPTARG       ;;
+        s) sign_pkg=1         ;;
+        *) usage              ;;
+    esac
+done
+shift $((OPTIND - 1))
+OPTIND=1
+
+tmp=$(mktemp -d "${TMPDIR:-/tmp}/$argv0".XXXXXXXX)
+var_tmp=$(mktemp -d "${TMPDIR:-/var/tmp}/$argv0".XXXXXXXX)
+
+trap 'trap_exit' EXIT
+trap 'exit' INT
+
+# Reset option array if arguments are specified after --
+if (($#)); then
+    if ((chroot)); then
+        makechrootpkg_args=("$@")
+    else
+        makepkg_args=("$@")
+    fi
+fi
+
+if [[ -v GPGKEY ]] && gpg --list-keys "$GPGKEY"; then
+    gpg_args+=(-u "$GPGKEY")
+fi
+
+if [[ -v queue ]]; then
+    if [[ -r $queue && ! -d $queue ]]; then
+        exec {fd}< "$queue"
+    else
+        error "$argv0: queue: must be a readable file"
+        exit 13
+    fi
+else
+    # http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap04.html#tag_04_11
+    exec {fd}<<< '//'
+fi
+
+if [[ -v database ]]; then
+    server=$(pacconf --single --repo="$database" Server)
+    server=${server#*://}
+else
+    error "$argv0: database: missing argument"
+    usage
+fi
+
+root=$(canonicalize_path "${root-$server}")
+
+if [[ -w $root/ && -r $root/ ]]; then
+    # File: custom.db -> custom.db.tar
+    db_path=$(readlink -f "$root/$database".db)
+else
+    error "$argv0: $root: permission denied"
+    exit 13
+fi
+
+if ((chroot)); then
+    machine=$(uname -m)
+    container=${container-/var/lib/aurbuild}/$machine
+    makepkg_conf=/usr/share/devtools/makepkg-$machine.conf
+
+    conf_chroot /usr/share/devtools/pacman-extra.conf > "$tmp"/pacman.conf
+
+    if [[ -f $container/root/.arch-chroot ]]; then
+        sudo arch-nspawn -C "$tmp"/pacman.conf -M "$makepkg_conf" \
+            "$container"/root pacman -Syu --noconfirm
+    else
+        sudo install -d "$container" -m 755 -v
+        sudo mkarchroot  -C "$tmp"/pacman.conf -M "$makepkg_conf" \
+            "$container"/root base-devel
+    fi
+
+    # Check if target repository is configured in chroot (#161)
+    pacconf --root="$container"/root --repo="$database" >/dev/null
+else
+    conf_custom "$database" > "$tmp"/custom.conf
+fi
+
+while read -r -u "$fd" pkg _; do
+    cd_safe "$basedir/$pkg"
+
+    if ((chroot)); then
+        sudo PKGDEST="$var_tmp" makechrootpkg \
+            -d "$root" -r "$container" "${makechrootpkg_args[@]}"
+    else
+        PKGDEST="$var_tmp" LC_MESSAGES=C makepkg "${makepkg_args[@]}"
+    fi
+
+    # https://github.com/vodik/repose/issues/49
+    basename -a "$var_tmp"/* > "$tmp"/pkglist
+    cd_safe "$var_tmp"
+
+    # https://bugs.archlinux.org/task/49946
+    if ((sign_pkg)); then
+        xargs -a "$tmp"/pkglist -n1 gpg "${gpg_args[@]}"
+    fi
+
+    mv -bv "$var_tmp"/* -t "$root"
+    cd_safe "$root"
+
+    # https://bugs.archlinux.org/task/49342
+    if type -P repose >/dev/null; then
+        LANG=C repose -fv "$database"
+    else
+        LANG=C xargs -a "$tmp"/pkglist repo-add -v "$db_path"
+    fi
+
+    # https://github.com/vodik/repose/issues/46
+    if ((sign_pkg)); then
+        gpg "${gpg_args[@]}" --output "$var_tmp/${db_path##*/}".sig "$db_path"
+        mv -bv "$var_tmp/${db_path##*/}".sig -t "$root"
+    fi
+
+    if ((chroot)); then
+        continue
+    else
+        # https://github.com/andrewgregory/pacutils/issues/15
+        replaces=$(grep -Fxf <(db_replaces "$db_path") <(pacman -Qq) | paste -s -d, -)
+
+        # https://github.com/andrewgregory/pacutils/issues/4
+        sudo pacman -Fy  --config="$tmp"/custom.conf
+        sudo pacman -Syu --config="$tmp"/custom.conf --ignore="$replaces" --noconfirm
+    fi
+done
+
+exec {fd}<&-
+
+# vim: set et sw=4 sts=4 ft=sh:
