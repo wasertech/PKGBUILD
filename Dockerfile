@@ -21,6 +21,4 @@ WORKDIR /home/pkguser
 # Create dirs.
 COPY --chown=pkguser . src
 WORKDIR /home/pkguser/src
-RUN ls -ld
-RUN ls -l
 RUN mkdir aur repo
