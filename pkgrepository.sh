@@ -34,7 +34,17 @@ Server = file://$(pwd)/repo
 Server = https://github.com/${pkgslug}/releases/download/${pkgtag}
 EOF
 
-# Sync repositories
-sudo pacman -Sy
+# Add repository aurutilsci and incude this repository.
+sudo tee -a "/etc/pacman.conf" << EOF
+
+[aurutilsci]
+SigLevel = Optional TrustAll
+Server = https://github.com/localnet/aurutilsci/releases/download/repository
+
+Include = /etc/pacman.d/${pkgrepo}
+EOF
+
+# Sync repositories and install aurutils.
+sudo pacman -Sy --noconfirm aurutils
 
 { set +ex; } 2>/dev/null

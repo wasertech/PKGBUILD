@@ -14,10 +14,10 @@ declare -a pkglist=('extraf')
 cd "repo"
 while read pkgpackage; do
   repo-remove "${pkgrepo}.db.tar.gz" $pkgpackage
-done < <(comm -23 <(pacman -Sl $pkgrepo | cut -d" " -f2 | sort) <(./aurchain ${pkglist[@]} | sort))
+done < <(comm -23 <(pacman -Sl $pkgrepo | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
 cd ".."
 
 # Build outdated packages.
-./aursync --repo $pkgrepo --root "repo" -nr ${pkglist[@]}
+aursync --repo $pkgrepo --root "repo" -nr ${pkglist[@]}
 
 { set +ex; } 2>/dev/null
