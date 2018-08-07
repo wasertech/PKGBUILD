@@ -1,7 +1,7 @@
 FROM archimg/base-devel
 
 # Update packages.
-RUN pacman -Syu --noconfirm
+RUN pacman -Syu --noconfirm git
 
 # Clear cache.
 RUN pacman -Scc --noconfirm
