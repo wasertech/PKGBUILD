@@ -8,15 +8,7 @@ export AURDEST="$(pwd)/aur"
 
 # Variables declaration.
 declare -r pkgrepo="${1#*/}"
-declare -a pkglist=()
-
-# Remove comments or blank lines.
-for pkgfile in "bin/pkglist"; do
-  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" $pkgfile
-done
-
-# Load files.
-mapfile pkglist < "bin/pkglist"
+declare -a pkglist=('extraf')
 
 # Remove packages from repository.
 cd "repo"
