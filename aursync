@@ -93,7 +93,7 @@ while true; do
 done
 
 if ((rotate)); then
-    if { hash rot13 && target=$(aurgrep .+ | shuf -n 1); } 2>/dev/null; then
+    if { hash rot13 && target=$(./aurgrep .+ | shuf -n 1); } 2>/dev/null; then
         exec bash -c "{ \"$argv0\" -c \"$target\" && repo-elephant | rot13; } 2>&1 | rot13"
     else
         echo '?'; exit 16 # EBUSY
@@ -151,7 +151,7 @@ if [[ ! -w $root/ || ! -r $root/ ]]; then
 fi
 
 if ((update)); then
-    mapfile -t < <(aurcheck -d "$repo" -q); wait "$!"
+    mapfile -t < <(./aurcheck -d "$repo" -q); wait "$!"
     set -- "$@" "${MAPFILE[@]}"
 fi
 
@@ -175,7 +175,7 @@ cd_safe "$tmp"
 mkdir {tsv,json,patch}
 
 msg "Resolving dependencies..."
-aurchain -a -t "$tmp" -- "$@" > queue_0
+./aurchain -a -t "$tmp" -- "$@" > queue_0
 json_set=(json/*)
 
 jq -r '.[].results[] | [.Name,.PackageBase]    | @tsv' "${json_set[@]}" > tsv/pkgbase
@@ -186,7 +186,7 @@ jq -r '.[].results[] | [.PackageBase,.URLPath] | @tsv' "${json_set[@]}" > tsv/ur
 lib32 queue_0 | ign | sub tsv/pkgbase - > queue_1
 
 if ((chkver)); then
-    aurcheck -d "$repo" -r "$root" -c < tsv/pkgver | sub tsv/pkgbase -
+    ./aurcheck -d "$repo" -r "$root" -c < tsv/pkgver | sub tsv/pkgbase -
 fi >sift
 
 if ! grep -Fxvf sift queue_1 > queue; then
@@ -197,10 +197,10 @@ msg "Retrieving build files..."
 if ((snapshot)); then
     cd_safe "$AURDEST"/snapshot
     awk 'NR == FNR {x[$0]; next} $1 in x {print $2}' \
-        "$tmp"/queue "$tmp"/tsv/urlpath | aurfetch -t
+        "$tmp"/queue "$tmp"/tsv/urlpath | ./aurfetch -t
 else
     cd_safe "$AURDEST"
-    aurfetch -L "$tmp"/patch < "$tmp"/queue
+    ./aurfetch -L "$tmp"/patch < "$tmp"/queue
 fi
 
 # View changes and build files in one window (#77)
@@ -215,7 +215,7 @@ if ((printonly)); then
     xargs -a "$tmp"/queue printf "$(pwd -P)/%s\n"
 else
     aurbuild_args+=(-d "$repo" -r "$root" -a "$tmp"/queue)
-    aurbuild "${aurbuild_args[@]}" -- "${makepkg_args[@]}"
+    ./aurbuild "${aurbuild_args[@]}" -- "${makepkg_args[@]}"
 fi
 
 # vim: set et sw=4 sts=4 ft=sh:
