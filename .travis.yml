@@ -5,8 +5,8 @@ branches:
 services:
   - docker
 before_install:
-  - git fetch --depth=1 origin master
-  - git checkout FETCH_HEAD -- Dockerfile pkgrepository.sh pkgbuild.sh
+  - git fetch --depth=1 origin refs/heads/master:refs/heads/master
+  - git checkout master -- Dockerfile pkgrepository.sh pkgbuild.sh
   - docker build -t localnet/aurci .
   - docker run -d -t --name aurci localnet/aurci bash
 script:
