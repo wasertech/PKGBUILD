@@ -11,6 +11,15 @@ declare -r pkgrepo="${1#*/}"
 declare -r pkg="$3"
 
 # Build outdated packages.
-aursync --repo $pkgrepo --root "repo" -nr "$pkg"
+trap_exit() {
+    if [[ ! -o xtrace ]]; then
+        rm -rf "$tmp"
+    fi
+}
+
+aurbuild_args+=(-d "$pkgrepo" -r repo)
+#signing
+#aurbuild_args+=(-s)
+aurbuild "${aurbuild_args[@]}" -- -Lcs --noconfirm
 
 { set +ex; } 2>/dev/null
