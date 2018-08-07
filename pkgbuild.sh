@@ -19,8 +19,8 @@ PKGDEST=pkgs LC_MESSAGES=C makepkg -Lcs --noconfirm
 #for f in pkgs/*; do
 #    gpg "${gpg_args[@]}" "$f"
 #done
-mv -v pkgs/* -t repo
 LANG=C repo-add -v $(readlink -f repo/"$pkgrepo".db) pkgs/*
+mv -v pkgs/* -t repo
 #gpg "${gpg_args[@]}" --output "pkgs/${db_path##*/}".sig "$db_path"
 #mv -v "pkgs/${db_path##*/}".sig -t repo
 
