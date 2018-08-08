@@ -15,7 +15,7 @@ before_install:
   - docker run -d -t
       --name aurci
       --mount type=bind,source="$(pwd)",target=/home/pkguser/src
-      --security-opt seccomp=undefined
+      --security-opt seccomp=unconfined
       localnet/aurci bash
 script:
   - docker exec aurci bash master/pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
