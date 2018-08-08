@@ -13,7 +13,7 @@ before_install:
   - git worktree add master master
   - docker build -f master/Dockerfile -t localnet/aurci .
   - docker run -d -t --name aurci localnet/aurci bash
-  - docker exec id
+  - docker exec aurci id
 script:
   - docker exec aurci bash master/pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
   - docker exec aurci bash master/pkgbuild.sh $TRAVIS_REPO_SLUG $TRAVIS_BUILD_ID $TRAVIS_BRANCH
