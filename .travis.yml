@@ -13,10 +13,12 @@ before_install:
   - docker build
       -f master/Dockerfile
       -t localnet/aurci
-      --mount type=bind,source="$(pwd)",target=/home/pkguser/src
       --build-arg userid=$TRAVIS_UID
       .
-  - docker run -d -t --name aurci localnet/aurci bash
+  - docker run -d -t
+      --name aurci
+      --mount type=bind,source="$(pwd)",target=/home/pkguser/src
+      localnet/aurci bash
   - docker exec aurci id
   - docker exec aurci ls -lan
 script:
