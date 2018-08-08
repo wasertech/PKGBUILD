@@ -12,6 +12,7 @@ pkgdesc="Library and utilities for multi-way secret-sharing"
 arch=( 'i686' 'x86_64' )
 url="http://www.digital-scurf.org/software/$_basename"
 depends=('glibc')
+makedepends=('git')
 provides=('libgfshare')
 conflicts=('libgfshare')
 license=('custom')
