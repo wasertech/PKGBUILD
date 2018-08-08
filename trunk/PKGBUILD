@@ -8,7 +8,7 @@ pkgbase=linux               # Build stock -ARTIX kernel
 _artix=4.17.13-artix1
 _srcver=4.17.13-arch1
 pkgver=${_artix//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/archlinux/linux/commits/v$_srcver"
 license=(GPL2)
@@ -28,7 +28,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '79ece6d325e4b7bad7b752a4efe82a386b86a1850088f682217949d379d5fe00'
+            '0e6226b7b8218d0887d05187958b084a8fcf6093f1c71934c22b232eaafe3099'
             '36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
