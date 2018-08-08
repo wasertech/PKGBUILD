@@ -52,4 +52,4 @@ package() {
 }
 
 source+=(indent-2.2.11-bss.patch)
-sha1sums+=('6208c4b0e560081d24fe3507075900375330d190')
+sha1sums+=('37f3425fb5bfd644f75546ef25ad26bd2c3b0dd9')
