@@ -18,7 +18,7 @@ pkgname=(
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -27,7 +27,7 @@ license=('GPL')
 package_djp-meta-base() { depends=(
 	bc
 	curl
-	dtach-djp-git
+	dtach
 	efibootmgr
 	git
 	grub
@@ -66,7 +66,7 @@ package_djp-meta-laptop() { depends=(
 package_djp-meta-xorg() { depends=(
 	conky-cli
 	dmenu
-	dwm-djp-git
+	dwm
 	dzen2
 	gvim
 	hsetroot
@@ -97,13 +97,15 @@ package_djp-meta-xorg-apps() { depends=(
 	tabbed
 	vimb
 	zathura
+	zathura-pdf-poppler
+	zathura-ps
 ); }
 
 package_djp-meta-anopa() { depends=(
-	anopa-musl
-	execline-musl-git
-	s6-musl-git
-	skalibs-musl-git
+	anopa
+	execline
+	s6
+	skalibs
 ); }
 
 package_djp-meta-surface4() { depends=(
@@ -131,9 +133,10 @@ package_djp-meta-players() { depends=(
 
 package_djp-meta-present() { depends=(
 	djp-meta-xorg
-	farbfeld-git
-	impressive
-	sent-git
+	farbfeld
+	#impressive
+	pdfpc
+	sent
 ); }
 
 package_djp-meta-email() { depends=(
@@ -142,8 +145,8 @@ package_djp-meta-email() { depends=(
 
 package_djp-meta-calendar() { depends=(
 	davmail
-	khal-git
-	vdirsyncer-git
+	khal
+	vdirsyncer
 ); }
 
 package_djp-meta-latex() { depends=(
