@@ -1,4 +1,5 @@
 FROM archimg/base-devel
+ARG userid
 
 # Update packages.
 RUN pacman -Syu --noconfirm git
@@ -7,7 +8,7 @@ RUN pacman -Syu --noconfirm git
 RUN pacman -Scc --noconfirm
 
 # Create an unprivileged user.
-RUN useradd -m -G wheel -s /bin/bash pkguser
+RUN useradd -m -u ${userid} -G wheel -s /bin/bash pkguser
 
 # Grant group wheel sudo rights without password.
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel

@@ -11,7 +11,7 @@ before_install:
   - ls -l
   - git fetch --depth=1 origin refs/heads/master:refs/heads/master
   - git worktree add master master
-  - docker build -f master/Dockerfile -t localnet/aurci .
+  - docker build -f master/Dockerfile -t localnet/aurci --build-arg userid=$TRAVIS_UID .
   - docker run -d -t --name aurci localnet/aurci bash
   - docker exec aurci id
 script:
