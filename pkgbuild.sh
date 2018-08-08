@@ -9,6 +9,7 @@ export PACKAGER="https://travis-ci.org/${1}/builds/${2}"
 declare -r pkgrepo="${1#*/}"
 
 # Set up gpg options
+mkdir "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 #echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
 
