@@ -8,7 +8,8 @@ declare -r pkgtag="$2"
 declare -r pkgrepo="${1#*/}"
 
 # Download or create repository database.
-cd "repo"
+mkdir repo
+cd repo
 if curl -L -O -O -f "https://github.com/${pkgslug}/releases/download/${pkgtag}/${pkgrepo}.{db,files}.tar.gz"; then
   ln -fs "${pkgrepo}.db.tar.gz" "${pkgrepo}.db"
   ln -fs "${pkgrepo}.files.tar.gz" "${pkgrepo}.files"

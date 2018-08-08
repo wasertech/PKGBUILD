@@ -19,7 +19,11 @@ USER pkguser
 # Set working dir.
 WORKDIR /home/pkguser
 
+RUN ls -ld
+RUN ls -l
+
 # Create dirs.
 COPY . src
 WORKDIR /home/pkguser/src
-RUN mkdir repo pkgs
+RUN ls -ld
+RUN ls -l

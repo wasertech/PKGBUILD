@@ -13,6 +13,7 @@ echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 #echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
 
 # Build package
+mkdir pkgs
 PKGDEST=pkgs LC_MESSAGES=C makepkg -Lcs --noconfirm
 #declare -a gpg_args=(--detach-sign --no-armor --verbose --batch)
 #gpg_args+=(-u "$GPGKEY")
