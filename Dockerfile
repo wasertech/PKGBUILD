@@ -2,7 +2,7 @@ FROM archimg/base-devel
 ARG userid
 
 # Update packages.
-RUN pacman -Syu --noconfirm git
+RUN pacman -Syu --noconfirm
 
 # Clear cache.
 RUN pacman -Scc --noconfirm
