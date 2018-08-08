@@ -6,14 +6,19 @@ services:
   - docker
 before_install:
   - printenv
-  - id
-  - ls -ld
-  - ls -l
   - git fetch --depth=1 origin refs/heads/master:refs/heads/master
   - git worktree add master master
-  - docker build -f master/Dockerfile -t localnet/aurci --build-arg userid=$TRAVIS_UID .
+  - id
+  - ls -lan
+  - docker build
+      -f master/Dockerfile
+      -t localnet/aurci
+      --mount type=bind,source="$(pwd)",target=/home/pkguser/src
+      --build-arg userid=$TRAVIS_UID
+      .
   - docker run -d -t --name aurci localnet/aurci bash
   - docker exec aurci id
+  - docker exec aurci ls -lan
 script:
   - docker exec aurci bash master/pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
   - docker exec aurci bash master/pkgbuild.sh $TRAVIS_REPO_SLUG $TRAVIS_BUILD_ID $TRAVIS_BRANCH
