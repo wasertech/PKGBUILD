@@ -20,6 +20,6 @@ USER pkguser
 WORKDIR /home/pkguser
 
 # Create dirs.
-COPY --chown=pkguser . src
+COPY . src
 WORKDIR /home/pkguser/src
 RUN mkdir repo pkgs
