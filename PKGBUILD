@@ -18,7 +18,7 @@ pkgname=(
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -68,6 +68,7 @@ package_djp-meta-xorg() { depends=(
 	dmenu
 	dwm-djp-git
 	dzen2
+	gvim
 	hsetroot
 	hsetroot
 	redshift
