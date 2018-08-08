@@ -23,7 +23,7 @@ cd ".."
 sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 
 # Add configuration for repository.
-sudo tee -a "/etc/pacman.d/${pkgrepo}" << EOF
+sudo tee -a "/etc/pacman.conf" << EOF
 [options]
 CacheDir = /var/cache/pacman/pkg
 CacheDir = $(pwd)/repo
