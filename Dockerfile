@@ -1,4 +1,5 @@
 FROM archimg/base-devel
+ARG userid
 
 # Update packages.
 RUN pacman -Syu --noconfirm
@@ -7,7 +8,7 @@ RUN pacman -Syu --noconfirm
 RUN pacman -Scc --noconfirm
 
 # Create an unprivileged user.
-RUN useradd -m -G wheel -s /bin/bash pkguser
+RUN useradd -m -u ${userid} -G wheel -s /bin/bash pkguser
 
 # Grant group wheel sudo rights without password.
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
@@ -16,7 +17,4 @@ RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
 USER pkguser
 
 # Set working dir.
-WORKDIR /home/pkguser
-
-# Create dirs.
-RUN mkdir src bin
+WORKDIR /home/pkguser/src

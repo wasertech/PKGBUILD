@@ -3,36 +3,52 @@
 set -ex
 
 # Environment variables.
-export PACKAGER="https://travis-ci.org/${1}/builds/${2}"
-export AURDEST="$(pwd)/src"
+export PACKAGER="https://travis-ci.org/${1}/builds/${3}"
 
 # Variables declaration.
+declare -r pkgslug="$1"
+declare -r pkgtag="$2"
 declare -r pkgrepo="${1#*/}"
-declare -a pkglist=()
-declare -a pkgkeys=()
 
-# Remove comments or blank lines.
-for pkgfile in "pkglist" "pkgkeys"; do
-  sed -i -e "/\s*#.*/s/\s*#.*//" -e "/^\s*$/d" $pkgfile
-done
+# Enable multilib repository.
+sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 
-# Load files.
-mapfile pkglist < "pkglist"
-mapfile pkgkeys < "pkgkeys"
+# Add configuration for repository.
+sudo tee -a "/etc/pacman.conf" << EOF
+[${pkgrepo}]
+SigLevel = Optional TrustAll
+Server = https://github.com/${pkgslug}/releases/download/${pkgtag}
+EOF
 
-# Remove packages from repository.
-cd "bin"
-while read pkgpackage; do
-  repo-remove "${pkgrepo}.db.tar.gz" $pkgpackage
-done < <(comm -23 <(pacman -Sl $pkgrepo | cut -d" " -f2 | sort) <(aurchain ${pkglist[@]} | sort))
-cd ".."
+# Sync repositories
+sudo pacman -Sy
 
-# Get package gpg keys.
-for pkgkey in ${pkgkeys[@]}; do
-  gpg --recv-keys --keyserver "hkp://ipv4.pool.sks-keyservers.net" $pkgkey
-done
+# Set up gpg options
+mkdir "$HOME/.gnupg"
+echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
+#echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
+#gpg --import signing.key
 
-# Build outdated packages.
-aursync --repo $pkgrepo --root "bin" -nr ${pkglist[@]}
+# Build and sign packages
+PKGDEST=repo LC_MESSAGES=C makepkg -Lcs --noconfirm --sign
+
+## Build repo update
+#LANG=C repo-add master/temp.db.tar repo/*.pkg.*
+#
+#commit_tarball() {
+#  tarball=$1
+#
+#  git pull --ff-only
+#  bsdtar -xf "$tarball" -C files
+#  git add files
+#  git ci -m "update package $TRAVIS_BRANCH"
+#  git push
+#}
+#
+#pushd master >/dev/null
+#until commit_files temp.files.tar; do
+#  git reset --hard origin/master
+#done
+#popd >/dev/null
 
 { set +ex; } 2>/dev/null
