@@ -1,20 +1,26 @@
 language: generic
+branches:
+  except:
+    - pkgbase
 services:
   - docker
 before_install:
-  - docker build -t localnet/aurci .
-  - docker run -d -t --name aurci localnet/aurci bash
-install:
-  - docker cp pkgrepository.sh aurci:/home/pkguser
-  - docker cp pkgbuild.sh aurci:/home/pkguser
-before_script:
-  - docker cp pkglist aurci:/home/pkguser
-  - docker cp pkgkeys aurci:/home/pkguser
+  - git fetch --depth=1 origin refs/heads/master:refs/heads/master
+  - git worktree add master master
+  - docker build
+      -f master/Dockerfile
+      -t djpohly/pkgbuild
+      --build-arg userid=$TRAVIS_UID
+      .
+  - docker run -d -t
+      --name pkgbuild
+      --mount type=bind,source="$(pwd)",target=/home/pkguser/src
+      -e MAN_DISABLE_SECCOMP=1
+      djpohly/pkgbuild bash
 script:
-  - docker exec aurci bash pkgrepository.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG
-  - docker exec aurci bash pkgbuild.sh $TRAVIS_REPO_SLUG $TRAVIS_BUILD_ID
+  - docker exec pkgbuild bash master/pkgbuild.sh $TRAVIS_REPO_SLUG $TRAVIS_TAG $TRAVIS_BUILD_ID
 before_deploy:
-  - docker cp aurci:/home/pkguser/bin $TRAVIS_TAG
+  - docker cp pkgbuild:/home/pkguser/src/repo $TRAVIS_TAG
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
@@ -23,4 +29,4 @@ deploy:
   overwrite: true
   skip_cleanup: true
   on:
-    branch: master
+    all_branches: true
