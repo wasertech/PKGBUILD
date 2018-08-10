@@ -24,13 +24,13 @@ md5sums=("SKIP")
 pkgver() {
     cd "$srcdir/$_gitname"
 
-    git fetch "$_upstream" master
+    git fetch -q "$_upstream" master
 
     local upstream=$(git rev-list --count FETCH_HEAD)
     local behind=$(git rev-list --count ..FETCH_HEAD)
     local ahead=$(git rev-list --count FETCH_HEAD..)
 
-    [[ $behind -gt 0 ]] && warning "Patched version is %s commits behind upstream" "$behind"
+    [[ $behind -gt 0 ]] && error "Patched version is %s commits behind upstream" "$behind"
 
     printf "%s.%s\n" "$upstream" "$ahead"
 }
