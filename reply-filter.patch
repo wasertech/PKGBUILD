@@ -1,0 +1,73 @@
+diff -ur mutt-1.5.24.orig/globals.h mutt-1.5.24/globals.h
+--- mutt-1.5.24.orig/globals.h	2015-08-30 13:06:38.000000000 -0400
++++ mutt-1.5.24/globals.h	2016-01-30 13:24:39.010725982 -0500
+@@ -114,6 +114,7 @@
+ WHERE char *QueryCmd;
+ WHERE char *QueryFormat;
+ WHERE char *Realname;
++WHERE char *ReplyFilter;
+ WHERE short SearchContext;
+ WHERE char *SendCharset;
+ WHERE char *Sendmail;
+diff -ur mutt-1.5.24.orig/init.h mutt-1.5.24/init.h
+--- mutt-1.5.24.orig/init.h	2015-08-30 13:06:38.000000000 -0400
++++ mutt-1.5.24/init.h	2016-01-30 13:51:12.934538942 -0500
+@@ -2383,6 +2383,13 @@
+   ** .pp
+   ** Also see $$wrap.
+   */
++  { "reply_filter",	DT_PATH, R_NONE, UL &ReplyFilter, UL "" },
++  /*
++  ** .pp
++  ** When set, specifies a command used to filter quoted replies.  When a quoted
++  ** message is about to be included in a reply it is passed as standard input to
++  ** $$reply_filter, and the text to include is read from the standard output.
++  */
+   { "reply_regexp",	DT_RX,	 R_INDEX|R_RESORT, UL &ReplyRegexp, UL "^(re([\\[0-9\\]+])*|aw):[ \t]*" },
+   /*
+   ** .pp
+diff -ur mutt-1.5.24.orig/send.c mutt-1.5.24/send.c
+--- mutt-1.5.24.orig/send.c	2015-08-30 13:06:38.000000000 -0400
++++ mutt-1.5.24/send.c	2016-01-30 16:35:21.502204993 -0500
+@@ -757,6 +757,8 @@
+   int i;
+   HEADER *h;
+   BODY *tmp;
++  FILE *filterfp = NULL;
++  pid_t filterpid = -1;
+ 
+   if (flags & SENDREPLY)
+   {
+@@ -766,6 +768,18 @@
+     if (i == M_YES)
+     {
+       mutt_message _("Including quoted message...");
++      if (ReplyFilter && *ReplyFilter) 
++      {
++	filterfp = tempfp;
++	tempfp = NULL;
++	filterpid = mutt_create_filter_fd (ReplyFilter, &tempfp, NULL, NULL,
++					   -1, fileno(filterfp), -1);
++	if (filterpid < 0)
++	{
++	  mutt_error (_("Could not create reply filter"));
++	  return (-1);
++	}
++      }
+       if (!cur)
+       {
+ 	for (i = 0; i < ctx->vcount; i++)
+@@ -785,6 +799,13 @@
+       else
+ 	include_reply (ctx, cur, tempfp);
+ 
++      if (filterfp != NULL)
++      {
++	safe_fclose(&tempfp);
++	if (mutt_wait_filter (filterpid) != 0)
++	  mutt_any_key_to_continue (NULL);
++	tempfp = filterfp;
++      }
+     }
+   }
+   else if (flags & SENDFORWARD)
