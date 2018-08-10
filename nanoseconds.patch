@@ -1,0 +1,617 @@
+diff -ur strace-4.6.orig/configure.ac strace-4.6/configure.ac
+--- strace-4.6.orig/configure.ac	2011-03-15 13:19:09.000000000 -0400
++++ strace-4.6/configure.ac	2011-12-19 18:02:15.695467056 -0500
+@@ -221,6 +221,8 @@
+ AC_CHECK_LIB(nsl, main)
+ fi
+ 
++AC_SEARCH_LIBS([clock_gettime], [rt])
++
+ AC_CHECK_FUNCS([ \
+ 	fork \
+ 	getdents \
+diff -ur strace-4.6.orig/count.c strace-4.6/count.c
+--- strace-4.6.orig/count.c	2010-09-06 20:59:18.000000000 -0400
++++ strace-4.6/count.c	2011-12-19 15:42:53.949392370 -0500
+@@ -38,17 +38,17 @@
+ #include "defs.h"
+ 
+ struct call_counts {
+-	struct timeval time;
++	struct timespec time;
+ 	int calls, errors;
+ };
+ 
+ static struct call_counts *countv[SUPPORTED_PERSONALITIES];
+ #define counts (countv[current_personality])
+ 
+-static struct timeval shortest = { 1000000, 0 };
++static struct timespec shortest = { 1000000, 0 };
+ 
+ int
+-count_syscall(struct tcb *tcp, struct timeval *tv)
++count_syscall(struct tcb *tcp, struct timespec *ts)
+ {
+ 	if (tcp->scno < 0 || tcp->scno >= nsyscalls)
+ 		return 0;
+@@ -68,38 +68,29 @@
+ 	if (tcp->u_error)
+ 		counts[tcp->scno].errors++;
+ 
+-	tv_sub(tv, tv, &tcp->etime);
++	ts_sub(ts, ts, &tcp->etime);
+ #ifdef LINUX
+-	if (tv_cmp(tv, &tcp->dtime) > 0)
++	if (ts_cmp(ts, &tcp->dtime) > 0)
+ 	{
+-		static struct timeval one_tick;
++		static struct timespec one_tick;
+ 
+-		if (one_tick.tv_usec == 0)
+-		{
+-			/* Initialize it.  */
+-			struct itimerval it;
+-
+-			memset(&it, 0, sizeof it);
+-			it.it_interval.tv_usec = 1;
+-			setitimer(ITIMER_REAL, &it, NULL);
+-			getitimer(ITIMER_REAL, &it);
+-			one_tick = it.it_interval;
+-		}
++		if (one_tick.tv_nsec == 0)
++			clock_getres(CLOCK_MONOTONIC, &one_tick);
+ 
+-		if (tv_nz(&tcp->dtime))
+-			*tv = tcp->dtime;
+-		else if (tv_cmp(tv, &one_tick) > 0)
++		if (ts_nz(&tcp->dtime))
++			*ts = tcp->dtime;
++		else if (ts_cmp(ts, &one_tick) > 0)
+ 		{
+-			if (tv_cmp(&shortest, &one_tick) < 0)
+-				*tv = shortest;
++			if (ts_cmp(&shortest, &one_tick) < 0)
++				*ts = shortest;
+ 			else
+-				*tv = one_tick;
++				*ts = one_tick;
+ 		}
+ 	}
+ #endif /* LINUX */
+-	if (tv_cmp(tv, &shortest) < 0)
+-		shortest = *tv;
+-	tv_add(&counts[tcp->scno].time, &counts[tcp->scno].time, tv);
++	if (ts_cmp(ts, &shortest) < 0)
++		shortest = *ts;
++	ts_add(&counts[tcp->scno].time, &counts[tcp->scno].time, ts);
+ 
+ 	return 0;
+ }
+@@ -107,7 +98,7 @@
+ static int
+ time_cmp(void *a, void *b)
+ {
+-	return -tv_cmp(&counts[*((int *) a)].time,
++	return -ts_cmp(&counts[*((int *) a)].time,
+ 		       &counts[*((int *) b)].time);
+ }
+ 
+@@ -128,7 +119,7 @@
+ }
+ 
+ static int (*sortfun)();
+-static struct timeval overhead = { -1, -1 };
++static struct timespec overhead = { -1, -1 };
+ 
+ void
+ set_sortby(const char *sortby)
+@@ -148,10 +139,10 @@
+ 	}
+ }
+ 
+-void set_overhead(int n)
++void set_overhead(long n)
+ {
+-	overhead.tv_sec = n / 1000000;
+-	overhead.tv_usec = n % 1000000;
++	overhead.tv_sec = n / 1000000000;
++	overhead.tv_nsec = n % 1000000000;
+ }
+ 
+ static void
+@@ -159,7 +150,7 @@
+ {
+ 	int     i, j;
+ 	int     call_cum, error_cum;
+-	struct timeval tv_cum, dtv;
++	struct timespec ts_cum, dts;
+ 	double  percent;
+ 	const char *dashes = "-------------------------";
+ 	char    error_str[16];
+@@ -171,29 +162,29 @@
+ 		return;
+ 	}
+ 
+-	call_cum = error_cum = tv_cum.tv_sec = tv_cum.tv_usec = 0;
++	call_cum = error_cum = ts_cum.tv_sec = ts_cum.tv_nsec = 0;
+ 	if (overhead.tv_sec == -1)
+ 	{
+-		tv_mul(&overhead, &shortest, 8);
+-		tv_div(&overhead, &overhead, 10);
++		ts_mul(&overhead, &shortest, 8);
++		ts_div(&overhead, &overhead, 10);
+ 	}
+ 	for (i = 0; i < nsyscalls; i++)
+ 	{
+ 		sorted_count[i] = i;
+ 		if (counts == NULL || counts[i].calls == 0)
+ 			continue;
+-		tv_mul(&dtv, &overhead, counts[i].calls);
+-		tv_sub(&counts[i].time, &counts[i].time, &dtv);
++		ts_mul(&dts, &overhead, counts[i].calls);
++		ts_sub(&counts[i].time, &counts[i].time, &dts);
+ 		call_cum += counts[i].calls;
+ 		error_cum += counts[i].errors;
+-		tv_add(&tv_cum, &tv_cum, &counts[i].time);
++		ts_add(&ts_cum, &ts_cum, &counts[i].time);
+ 	}
+ 	if (counts && sortfun)
+ 		qsort((void *) sorted_count, nsyscalls, sizeof(int), sortfun);
+-	fprintf(outf, "%6.6s %11.11s %11.11s %9.9s %9.9s %s\n",
+-		"% time", "seconds", "usecs/call",
++	fprintf(outf, "%6.6s %14.14s %14.14s %9.9s %9.9s %s\n",
++		"% time", "seconds", "ns/call",
+ 		"calls", "errors", "syscall");
+-	fprintf(outf, "%6.6s %11.11s %11.11s %9.9s %9.9s %-16.16s\n",
++	fprintf(outf, "%6.6s %14.14s %14.14s %9.9s %9.9s %-16.16s\n",
+ 		dashes, dashes, dashes, dashes, dashes, dashes);
+ 	if (counts)
+ 	{
+@@ -202,30 +193,30 @@
+ 			j = sorted_count[i];
+ 			if (counts[j].calls == 0)
+ 				continue;
+-			tv_div(&dtv, &counts[j].time, counts[j].calls);
++			ts_div(&dts, &counts[j].time, counts[j].calls);
+ 			if (counts[j].errors)
+ 				sprintf(error_str, "%d", counts[j].errors);
+ 			else
+ 				error_str[0] = '\0';
+-			percent = (100.0 * tv_float(&counts[j].time)
+-				   / tv_float(&tv_cum));
+-			fprintf(outf, "%6.2f %11.6f %11ld %9d %9.9s %s\n",
+-				percent, tv_float(&counts[j].time),
+-				(long) 1000000 * dtv.tv_sec + dtv.tv_usec,
++			percent = (100.0 * ts_float(&counts[j].time)
++				   / ts_float(&ts_cum));
++			fprintf(outf, "%6.2f %14.9f %14ld %9d %9.9s %s\n",
++				percent, ts_float(&counts[j].time),
++				(long) 1000000000 * dts.tv_sec + dts.tv_nsec,
+ 				counts[j].calls,
+ 				error_str, sysent[j].sys_name);
+ 		}
+ 	}
+ 	free(sorted_count);
+ 
+-	fprintf(outf, "%6.6s %11.11s %11.11s %9.9s %9.9s %-16.16s\n",
++	fprintf(outf, "%6.6s %14.14s %14.14s %9.9s %9.9s %-16.16s\n",
+ 		dashes, dashes, dashes, dashes, dashes, dashes);
+ 	if (error_cum)
+ 		sprintf(error_str, "%d", error_cum);
+ 	else
+ 		error_str[0] = '\0';
+-	fprintf(outf, "%6.6s %11.6f %11.11s %9d %9.9s %s\n",
+-		"100.00", tv_float(&tv_cum), "",
++	fprintf(outf, "%6.6s %14.9f %14.14s %9d %9.9s %s\n",
++		"100.00", ts_float(&ts_cum), "",
+ 		call_cum, error_str, "total");
+ }
+ 
+diff -ur strace-4.6.orig/defs.h strace-4.6/defs.h
+--- strace-4.6.orig/defs.h	2011-03-15 13:19:09.000000000 -0400
++++ strace-4.6/defs.h	2011-12-19 15:28:35.107511513 -0500
+@@ -357,9 +357,9 @@
+ 	FILE *outf;		/* Output file for this process */
+ 	int curcol;		/* Output column for this process */
+ 	const char *auxstr;	/* Auxiliary info from syscall (see RVAL_STR) */
+-	struct timeval stime;	/* System time usage as of last process wait */
+-	struct timeval dtime;	/* Delta for system time usage */
+-	struct timeval etime;	/* Syscall entry time */
++	struct timespec stime;	/* System time usage as of last process wait */
++	struct timespec dtime;	/* Delta for system time usage */
++	struct timespec etime;	/* Syscall entry time */
+ 				/* Support for tracing forked processes */
+ 	struct tcb *parent;	/* Parent of this process */
+ 	int nchildren;		/* # of traced children */
+@@ -522,7 +522,7 @@
+ #define alloctcb(pid)	alloc_tcb((pid), 1)
+ 
+ extern void set_sortby(const char *);
+-extern void set_overhead(int);
++extern void set_overhead(long);
+ extern void qualify(const char *);
+ extern int get_scno(struct tcb *);
+ extern long known_scno(struct tcb *);
+@@ -530,7 +530,7 @@
+ extern int ptrace_restart(int request, struct tcb *tcp, int sig);
+ extern int force_result(struct tcb *, int, long);
+ extern int trace_syscall(struct tcb *);
+-extern int count_syscall(struct tcb *, struct timeval *);
++extern int count_syscall(struct tcb *, struct timespec *);
+ extern void printxval(const struct xlat *, int, const char *);
+ extern int printargs(struct tcb *);
+ extern int addflags(const struct xlat *, int);
+@@ -596,13 +596,13 @@
+ extern int block_ioctl(struct tcb *, long, long);
+ #endif
+ 
+-extern int tv_nz(struct timeval *);
+-extern int tv_cmp(struct timeval *, struct timeval *);
+-extern double tv_float(struct timeval *);
+-extern void tv_add(struct timeval *, struct timeval *, struct timeval *);
+-extern void tv_sub(struct timeval *, struct timeval *, struct timeval *);
+-extern void tv_mul(struct timeval *, struct timeval *, int);
+-extern void tv_div(struct timeval *, struct timeval *, int);
++extern int ts_nz(struct timespec *);
++extern int ts_cmp(struct timespec *, struct timespec *);
++extern double ts_float(struct timespec *);
++extern void ts_add(struct timespec *, struct timespec *, struct timespec *);
++extern void ts_sub(struct timespec *, struct timespec *, struct timespec *);
++extern void ts_mul(struct timespec *, struct timespec *, int);
++extern void ts_div(struct timespec *, struct timespec *, int);
+ 
+ #ifdef SUNOS4
+ extern int fixvfork(struct tcb *);
+diff -ur strace-4.6.orig/strace-graph strace-4.6/strace-graph
+--- strace-4.6.orig/strace-graph	2009-07-08 10:57:27.000000000 -0400
++++ strace-4.6/strace-graph	2011-12-19 15:28:35.107511513 -0500
+@@ -47,14 +47,14 @@
+     s/^(\d+)\s+//;
+     $pid = $1;
+ 
+-    if (s/^(\d\d):(\d\d):(\d\d)(?:\.(\d\d\d\d\d\d))? //) {
++    if (s/^(\d\d):(\d\d):(\d\d)(?:\.(\d\d\d\d\d\d\d\d\d))? //) {
+ 	$time = $1 * 3600 + $2 * 60 + $3;
+ 	if (defined $4) {
+-	    $time = $time + $4 / 1000000;
++	    $time = $time + $4 / 1000000000;
+ 	    $floatform = 1;
+ 	}
+-    } elsif (s/^(\d+)\.(\d\d\d\d\d\d) //) {
+-	$time = $1 + ($2 / 1000000);
++    } elsif (s/^(\d+)\.(\d\d\d\d\d\d\d\d\d) //) {
++	$time = $1 + ($2 / 1000000000);
+ 	$floatform = 1;
+     }
+ 
+diff -ur strace-4.6.orig/strace.1 strace-4.6/strace.1
+--- strace-4.6.orig/strace.1	2011-01-14 12:17:20.000000000 -0500
++++ strace-4.6/strace.1	2011-12-19 15:28:35.107511513 -0500
+@@ -331,10 +331,10 @@
+ Prefix each line of the trace with the time of day.
+ .TP
+ .B \-tt
+-If given twice, the time printed will include the microseconds.
++If given twice, the time printed will include the nanoseconds.
+ .TP
+ .B \-ttt
+-If given thrice, the time printed will include the microseconds
++If given thrice, the time printed will include the nanoseconds
+ and the leading portion will be printed as the number
+ of seconds since the epoch.
+ .TP
+@@ -518,7 +518,7 @@
+ .BI "\-O " overhead
+ Set the overhead for tracing system calls to
+ .I overhead
+-microseconds.
++nanoseconds.
+ This is useful for overriding the default heuristic for guessing
+ how much time is spent in mere measuring when timing system calls using
+ the
+diff -ur strace-4.6.orig/strace.c strace-4.6/strace.c
+--- strace-4.6.orig/strace.c	2011-03-10 17:25:03.000000000 -0500
++++ strace-4.6/strace.c	2011-12-19 15:28:35.110844880 -0500
+@@ -180,7 +180,7 @@
+ -F -- attempt to follow vforks, -h -- print help message\n\
+ -i -- print instruction pointer at time of syscall\n\
+ -q -- suppress messages about attaching, detaching, etc.\n\
+--r -- print relative timestamp, -t -- absolute timestamp, -tt -- with usecs\n\
++-r -- print relative timestamp, -t -- absolute timestamp, -tt -- with ns\n\
+ -T -- print time spent in each syscall, -V -- print version\n\
+ -v -- verbose mode: print unabbreviated argv, stat, termio[s], etc. args\n\
+ -x -- print non-ascii strings in hex, -xx -- print all strings in hex\n\
+@@ -188,7 +188,7 @@
+ -e expr -- a qualifying expression: option=[!]all or option=[!]val1[,val2]...\n\
+    options: trace, abbrev, verbose, raw, signal, read, or write\n\
+ -o file -- send trace output to FILE instead of stderr\n\
+--O overhead -- set overhead for tracing syscalls to OVERHEAD usecs\n\
++-O overhead -- set overhead for tracing syscalls to OVERHEAD ns\n\
+ -p pid -- trace process with process id PID, may be repeated\n\
+ -D -- run tracer process as a detached grandchild, not as parent\n\
+ -s strsize -- limit length of print strings to STRSIZE chars (default %d)\n\
+@@ -870,7 +870,7 @@
+ 			outfname = strdup(optarg);
+ 			break;
+ 		case 'O':
+-			set_overhead(atoi(optarg));
++			set_overhead(atol(optarg));
+ 			break;
+ 		case 'p':
+ 			if ((pid = atoi(optarg)) <= 0) {
+@@ -1121,7 +1121,7 @@
+ 			tcp->outf = outf; /* Initialise to current out file */
+ 			tcp->curcol = 0;
+ 			tcp->stime.tv_sec = 0;
+-			tcp->stime.tv_usec = 0;
++			tcp->stime.tv_nsec = 0;
+ 			tcp->pfd = -1;
+ 			nprocs++;
+ 			if (command_options_parsed)
+@@ -2216,7 +2216,7 @@
+ 		curcol = tcp->curcol;
+ 
+ 		if (cflag) {
+-			struct timeval stime;
++			struct timespec stime;
+ #ifdef FREEBSD
+ 			char buf[1024];
+ 			int len;
+@@ -2225,14 +2225,14 @@
+ 				buf[len] = '\0';
+ 				sscanf(buf,
+ 				       "%*s %*d %*d %*d %*d %*d,%*d %*s %*d,%*d %*d,%*d %ld,%ld",
+-				       &stime.tv_sec, &stime.tv_usec);
++				       &stime.tv_sec, &stime.tv_nsec);
+ 			} else
+-				stime.tv_sec = stime.tv_usec = 0;
++				stime.tv_sec = stime.tv_nsec = 0;
+ #else /* !FREEBSD */
+ 			stime.tv_sec = tcp->status.pr_stime.tv_sec;
+-			stime.tv_usec = tcp->status.pr_stime.tv_nsec/1000;
++			stime.tv_nsec = tcp->status.pr_stime.tv_nsec;
+ #endif /* !FREEBSD */
+-			tv_sub(&tcp->dtime, &stime, &tcp->stime);
++			ts_sub(&tcp->dtime, &stime, &tcp->stime);
+ 			tcp->stime = stime;
+ 		}
+ 		what = tcp->status.PR_WHAT;
+@@ -2505,8 +2505,12 @@
+ 		curcol = tcp->curcol;
+ 		if (cflag) {
+ #ifdef LINUX
+-			tv_sub(&tcp->dtime, &ru.ru_stime, &tcp->stime);
+-			tcp->stime = ru.ru_stime;
++			/* HACK since rusage has no nanosecond equivalent */
++			struct timespec ru_ts;
++			ru_ts.tv_sec = ru.ru_stime.tv_sec;
++			ru_ts.tv_nsec = ru.ru_stime.tv_usec * 1000;
++			ts_sub(&tcp->dtime, &ru_ts, &tcp->stime);
++			tcp->stime = ru_ts;
+ #endif /* !LINUX */
+ 		}
+ 
+@@ -2791,29 +2795,31 @@
+ 		tprintf("[pid %5u] ", tcp->pid);
+ 	if (tflag) {
+ 		char str[sizeof("HH:MM:SS")];
+-		struct timeval tv, dtv;
+-		static struct timeval otv;
++		struct timespec ts, dts;
++		static struct timespec ots;
+ 
+-		gettimeofday(&tv, NULL);
+ 		if (rflag) {
+-			if (otv.tv_sec == 0)
+-				otv = tv;
+-			tv_sub(&dtv, &tv, &otv);
+-			tprintf("%6ld.%06ld ",
+-				(long) dtv.tv_sec, (long) dtv.tv_usec);
+-			otv = tv;
+-		}
+-		else if (tflag > 2) {
+-			tprintf("%ld.%06ld ",
+-				(long) tv.tv_sec, (long) tv.tv_usec);
+-		}
+-		else {
+-			time_t local = tv.tv_sec;
+-			strftime(str, sizeof(str), "%T", localtime(&local));
+-			if (tflag > 1)
+-				tprintf("%s.%06ld ", str, (long) tv.tv_usec);
+-			else
+-				tprintf("%s ", str);
++			clock_gettime(CLOCK_MONOTONIC, &ts);
++			if (ots.tv_sec == 0)
++				ots = ts;
++			ts_sub(&dts, &ts, &ots);
++			tprintf("%6ld.%09ld ",
++				(long) dts.tv_sec, (long) dts.tv_nsec);
++			ots = ts;
++		} else {
++			clock_gettime(CLOCK_REALTIME, &ts);
++			if (tflag > 2) {
++				tprintf("%ld.%09ld ",
++					(long) ts.tv_sec, (long) ts.tv_nsec);
++			}
++			else {
++				time_t local = ts.tv_sec;
++				strftime(str, sizeof(str), "%T", localtime(&local));
++				if (tflag > 1)
++					tprintf("%s.%09ld ", str, (long) ts.tv_nsec);
++				else
++					tprintf("%s ", str);
++			}
+ 		}
+ 	}
+ 	if (iflag)
+diff -ur strace-4.6.orig/syscall.c strace-4.6/syscall.c
+--- strace-4.6.orig/syscall.c	2011-02-18 19:02:27.000000000 -0500
++++ strace-4.6/syscall.c	2011-12-19 15:28:35.110844880 -0500
+@@ -2397,13 +2397,13 @@
+ trace_syscall_exiting(struct tcb *tcp)
+ {
+ 	int sys_res;
+-	struct timeval tv;
++	struct timespec ts;
+ 	int res, scno_good;
+ 	long u_error;
+ 
+ 	/* Measure the exit time as early as possible to avoid errors. */
+ 	if (dtime || cflag)
+-		gettimeofday(&tv, NULL);
++		clock_gettime(CLOCK_MONOTONIC, &ts);
+ 
+ 	/* BTW, why we don't just memorize syscall no. on entry
+ 	 * in tcp->something?
+@@ -2441,7 +2441,7 @@
+ 	}
+ 
+ 	if (cflag) {
+-		struct timeval t = tv;
++		struct timespec t = ts;
+ 		int rc = count_syscall(tcp, &t);
+ 		if (cflag == CFLAG_ONLY_STATS)
+ 		{
+@@ -2550,9 +2550,9 @@
+ 			tprintf(" (%s)", tcp->auxstr);
+ 	}
+ 	if (dtime) {
+-		tv_sub(&tv, &tv, &tcp->etime);
+-		tprintf(" <%ld.%06ld>",
+-			(long) tv.tv_sec, (long) tv.tv_usec);
++		ts_sub(&ts, &ts, &tcp->etime);
++		tprintf(" <%ld.%09ld>",
++			(long) ts.tv_sec, (long) ts.tv_nsec);
+ 	}
+ 	printtrailer();
+ 
+@@ -2695,7 +2695,7 @@
+ 
+ 	if (cflag == CFLAG_ONLY_STATS) {
+ 		tcp->flags |= TCB_INSYSCALL;
+-		gettimeofday(&tcp->etime, NULL);
++		clock_gettime(CLOCK_MONOTONIC, &tcp->etime);
+ 		return 0;
+ 	}
+ 
+@@ -2717,7 +2717,7 @@
+ 	tcp->flags |= TCB_INSYSCALL;
+ 	/* Measure the entrance time as late as possible to avoid errors. */
+ 	if (dtime || cflag)
+-		gettimeofday(&tcp->etime, NULL);
++		clock_gettime(CLOCK_MONOTONIC, &tcp->etime);
+ 	return sys_res;
+ }
+ 
+diff -ur strace-4.6.orig/util.c strace-4.6/util.c
+--- strace-4.6.orig/util.c	2011-03-03 21:08:02.000000000 -0500
++++ strace-4.6/util.c	2011-12-19 15:28:35.110844880 -0500
+@@ -94,74 +94,74 @@
+ #endif
+ 
+ int
+-tv_nz(a)
+-struct timeval *a;
++ts_nz(a)
++struct timespec *a;
+ {
+-	return a->tv_sec || a->tv_usec;
++	return a->tv_sec || a->tv_nsec;
+ }
+ 
+ int
+-tv_cmp(a, b)
+-struct timeval *a, *b;
++ts_cmp(a, b)
++struct timespec *a, *b;
+ {
+ 	if (a->tv_sec < b->tv_sec
+-	    || (a->tv_sec == b->tv_sec && a->tv_usec < b->tv_usec))
++	    || (a->tv_sec == b->tv_sec && a->tv_nsec < b->tv_nsec))
+ 		return -1;
+ 	if (a->tv_sec > b->tv_sec
+-	    || (a->tv_sec == b->tv_sec && a->tv_usec > b->tv_usec))
++	    || (a->tv_sec == b->tv_sec && a->tv_nsec > b->tv_nsec))
+ 		return 1;
+ 	return 0;
+ }
+ 
+ double
+-tv_float(tv)
+-struct timeval *tv;
++ts_float(ts)
++struct timespec *ts;
+ {
+-	return tv->tv_sec + tv->tv_usec/1000000.0;
++	return ts->tv_sec + ts->tv_nsec/1000000000.0;
+ }
+ 
+ void
+-tv_add(tv, a, b)
+-struct timeval *tv, *a, *b;
++ts_add(ts, a, b)
++struct timespec *ts, *a, *b;
+ {
+-	tv->tv_sec = a->tv_sec + b->tv_sec;
+-	tv->tv_usec = a->tv_usec + b->tv_usec;
+-	if (tv->tv_usec >= 1000000) {
+-		tv->tv_sec++;
+-		tv->tv_usec -= 1000000;
++	ts->tv_sec = a->tv_sec + b->tv_sec;
++	ts->tv_nsec = a->tv_nsec + b->tv_nsec;
++	if (ts->tv_nsec >= 1000000000) {
++		ts->tv_sec++;
++		ts->tv_nsec -= 1000000000;
+ 	}
+ }
+ 
+ void
+-tv_sub(tv, a, b)
+-struct timeval *tv, *a, *b;
++ts_sub(ts, a, b)
++struct timespec *ts, *a, *b;
+ {
+-	tv->tv_sec = a->tv_sec - b->tv_sec;
+-	tv->tv_usec = a->tv_usec - b->tv_usec;
+-	if (((long) tv->tv_usec) < 0) {
+-		tv->tv_sec--;
+-		tv->tv_usec += 1000000;
++	ts->tv_sec = a->tv_sec - b->tv_sec;
++	ts->tv_nsec = a->tv_nsec - b->tv_nsec;
++	if (((long) ts->tv_nsec) < 0) {
++		ts->tv_sec--;
++		ts->tv_nsec += 1000000000;
+ 	}
+ }
+ 
+ void
+-tv_div(tv, a, n)
+-struct timeval *tv, *a;
++ts_div(ts, a, n)
++struct timespec *ts, *a;
+ int n;
+ {
+-	tv->tv_usec = (a->tv_sec % n * 1000000 + a->tv_usec + n / 2) / n;
+-	tv->tv_sec = a->tv_sec / n + tv->tv_usec / 1000000;
+-	tv->tv_usec %= 1000000;
++	ts->tv_nsec = (a->tv_sec % n * 1000000000 + a->tv_nsec + n / 2) / n;
++	ts->tv_sec = a->tv_sec / n + ts->tv_nsec / 1000000000;
++	ts->tv_nsec %= 1000000000;
+ }
+ 
+ void
+-tv_mul(tv, a, n)
+-struct timeval *tv, *a;
++ts_mul(ts, a, n)
++struct timespec *ts, *a;
+ int n;
+ {
+-	tv->tv_usec = a->tv_usec * n;
+-	tv->tv_sec = a->tv_sec * n + tv->tv_usec / 1000000;
+-	tv->tv_usec %= 1000000;
++	ts->tv_nsec = a->tv_nsec * n;
++	ts->tv_sec = a->tv_sec * n + ts->tv_nsec / 1000000000;
++	ts->tv_nsec %= 1000000000;
+ }
+ 
+ const char *
