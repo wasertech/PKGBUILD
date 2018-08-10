@@ -24,7 +24,7 @@ if [[ -r signing.key ]]; then
 	mkdir -p "$HOME/.gnupg"
 	gpg --import signing.key
 	for f in db files; do
-		gpg --detach-sign --use-agent --no-armor "$pkgrepo.$f.tar.xz"
+		gpg --detach-sign --use-agent --no-armor "repo/$pkgrepo.$f"
 	done
 fi
 
