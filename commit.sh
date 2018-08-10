@@ -13,12 +13,14 @@ mkdir -p master/files
 pushd master/files >/dev/null
 
 until
+    # TODO: remove old versions
     tar -xf ../pkgbuild.files.tar -C .
     git add .
     git commit -m "update package $TRAVIS_BRANCH"
-    git push origin master
+    git push "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG" master
 do
-  git reset --hard origin/master
+  git reset --hard
+  git clean -fdx .
   git pull --ff-only origin master
 done
 
