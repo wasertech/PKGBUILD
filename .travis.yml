@@ -30,3 +30,5 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
+after_deploy:
+  - bash master/commit.sh
