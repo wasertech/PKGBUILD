@@ -28,8 +28,8 @@ sudo pacman -Sy
 mkdir "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 #echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
-if [[ -r signing.key ]]; then
-  gpg --import signing.key
+if [[ -r master/signing.key ]]; then
+  gpg --import master/signing.key
   MAKEPKG_OPT+=(--sign)
   REPO_ADD_OPT+=(--sign)
 fi
