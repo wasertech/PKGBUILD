@@ -14,6 +14,7 @@ depends=('ca-certificates')
 makedepends=('gnupg')
 md5sums=('478845645d748fbbc5795d291556dd4a'
          '2355767d9b8d0b9df02afb8ee137e59f')
+validpgpkeys=('B2D4A6EAA484AC0182702F535942FD99C61C0B8C')
 
 build() {
 	cd ${srcdir}
