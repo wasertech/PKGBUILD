@@ -25,7 +25,7 @@ EOF
 sudo pacman -Sy
 
 # Set up gpg options
-mkdir "$HOME/.gnupg"
+mkdir -p "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 #echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
 if [[ -r master/signing.key ]]; then
