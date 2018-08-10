@@ -1,0 +1,368 @@
+diff -ur indent-2.2.11.orig/doc/indent.info indent-2.2.11/doc/indent.info
+--- indent-2.2.11.orig/doc/indent.info	2010-01-31 10:27:28.000000000 -0600
++++ indent-2.2.11/doc/indent.info	2017-02-18 15:14:24.585577783 -0600
+@@ -604,7 +604,9 @@
+ the `-ss' option will cause a space to be placed before the semicolon.
+ This emphasizes the semicolon, making it clear that the body of the
+ `for' or `while' statement is an empty statement.  `-nss' disables this
+-feature.
++feature.  For more emphasis, the `-bss' option will place the semicolon
++on a line by itself.  This overrides `-ss' and can be disabled with
++`-nbss'.
+ 
+    The `-pcs' option causes a space to be placed between the name of
+ the procedure being called and the `(' (for example, `puts ("Hi");'.
+@@ -1151,6 +1153,12 @@
+      Put a space between `sizeof' and its argument.
+      *Note Statements::.
+ 
++'-bss'
++'--break-special-semicolon'
++     On one-line 'for' and 'while' statements, force a newline before
++     the semicolon.
++     *Note Statements::.
++
+ `-cN'
+ `--comment-indentationN'
+      Put comments to the right of code in column N.
+@@ -1321,6 +1329,12 @@
+      line.
+      *Note Declarations::.
+ 
++'-nbss'
++'--dont-break-special-semicolon'
++     Do not force a newline before the semicolon after certain
++     statements.  Disables '-bss'.
++     *Note Statements::.
++
+ `-ncdb'
+ `--no-comment-delimiters-on-blank-lines'
+      Do not put comment delimiters on blank lines.
+@@ -1555,6 +1569,7 @@
+      --break-before-boolean-operator                 -bbo
+      --break-function-decl-args                      -bfda
+      --break-function-decl-args-end                  -bfde
++     --break-special-semicolon                       -bss
+      --case-indentation                              -cliN
+      --case-brace-indentation                        -cbiN
+      --comment-delimiters-on-blank-lines             -cdb
+@@ -1568,6 +1583,7 @@
+      --dont-break-function-decl-args                 -nbfda
+      --dont-break-function-decl-args-end             -nbfde
+      --dont-break-procedure-type                     -npsl
++     --dont-break-special-semicolon                  -nbss
+      --dont-cuddle-do-while                          -ncdw
+      --dont-cuddle-else                              -nce
+      --dont-format-comments                          -nfca
+@@ -1652,6 +1668,7 @@
+ * --break-before-boolean-operator:       Breaking long lines. (line  14)
+ * --break-function-decl-args:            Declarations.        (line  37)
+ * --break-function-decl-args-end:        Declarations.        (line  37)
++* --break-special-semicolon:             Statements.          (line 113)
+ * --case-brace-indentationN:             Statements.          (line  97)
+ * --case-indentationN:                   Statements.          (line  66)
+ * --comment-delimiters-on-blank-lines:   Comments.            (line  94)
+@@ -1665,6 +1682,7 @@
+ * --dont-break-function-decl-args:       Declarations.        (line  37)
+ * --dont-break-function-decl-args-end:   Declarations.        (line  37)
+ * --dont-break-procedure-type:           Declarations.        (line  67)
++* --dont-break-special-semicolon:        Statements.          (line 113)
+ * --dont-cuddle-do-while:                Statements.          (line  51)
+ * --dont-cuddle-else:                    Statements.          (line  31)
+ * --dont-format-comments:                Comments.            (line  53)
+@@ -1737,6 +1755,7 @@
+ * -br:                                   Statements.          (line   6)
+ * -brs:                                  Declarations.        (line  82)
+ * -bs:                                   Statements.          (line 130)
++* -bss:                                  Statements.          (line 113)
+ * -cbiN:                                 Statements.          (line  97)
+ * -cdb:                                  Comments.            (line  94)
+ * -cdN:                                  Comments.            (line  78)
+@@ -1770,6 +1789,7 @@
+ * -nbc:                                  Declarations.        (line  26)
+ * -nbfda:                                Declarations.        (line  37)
+ * -nbfde:                                Declarations.        (line  37)
++* -nbss:                                 Statements.          (line 113)
+ * -ncdb:                                 Comments.            (line  94)
+ * -ncdw:                                 Statements.          (line  51)
+ * -ncs:                                  Statements.          (line 123)
+diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
+--- indent-2.2.11.orig/doc/indent.texinfo	2008-07-23 14:33:47.000000000 -0500
++++ indent-2.2.11/doc/indent.texinfo	2017-02-18 15:13:43.025811586 -0600
+@@ -905,11 +905,17 @@
+ @kindex --space-special-semicolon
+ @kindex -nss
+ @kindex --dont-space-special-semicolon
++@kindex -bss
++@kindex --break-special-semicolon
++@kindex -nbss
++@kindex --dont-break-special-semicolon
+ If a semicolon is on the same line as a @code{for} or @code{while}
+ statement, the @option{-ss} option will cause a space to be placed before
+ the semicolon.  This emphasizes the semicolon, making it clear that the
+ body of the @code{for} or @code{while} statement is an empty statement.
+-@option{-nss} disables this feature.
++@option{-nss} disables this feature.  For more emphasis, the @option{-bss}
++option will place the semicolon on a line by itself.  This overrides
++@option{-ss} and can be disabled with @option{-nbss}.
+ 
+ @kindex -pcs
+ @kindex --space-after-procedure-calls
+@@ -1664,6 +1670,12 @@
+ Put a space between @code{sizeof} and its argument.@*
+ @xref{Statements}.
+ 
++@item -bss
++@itemx --break-special-semicolon
++On one-line @code{for} and @code{while} statements,
++force a newline before the semicolon.@*
++@xref{Statements}.
++
+ @item -c@var{n}
+ @itemx --comment-indentation@var{n}
+ Put comments to the right of code in column @var{n}.@*
+@@ -1841,6 +1853,12 @@
+ Don't put each argument in a function declaration on a separate line.@*
+ @xref{Declarations}.
+ 
++@item -nbss
++@itemx --dont-break-special-semicolon
++Do not force a newline before the semicolon after certain statements.
++Disables @option{-bss}.@*
++@xref{Statements}.
++
+ @item -ncdb
+ @itemx --no-comment-delimiters-on-blank-lines
+ Do not put comment delimiters on blank lines.@*
+@@ -2081,6 +2099,7 @@
+ \line{ --break-before-boolean-operator \leaderfill    -bbo\ \ }
+ \line{ --break-function-decl-args \leaderfill         -bfda} 
+ \line{ --break-function-decl-args-end \leaderfill         -bfde} 
++\line{ --break-special-semicolon \leaderfill       -bss\ \ }
+ \line{ --braces-on-if-line \leaderfill               -br\ \ }      
+ \line{ --braces-on-func-def-line \leaderfill       -brf\ \ }
+ \line{ --braces-on-struct-decl-line \leaderfill       -brs\ \ }
+@@ -2097,6 +2116,7 @@
+ \line{ --dont-break-function-decl-args \leaderfill       -nbfda} 
+ \line{ --dont-break-function-decl-args-end \leaderfill       -nbfde} 
+ \line{ --dont-break-procedure-type \leaderfill           -npsl} 
++\line{ --dont-break-special-semicolon \leaderfill        -nbss\ }
+ \line{ --dont-cuddle-do-while \leaderfill                -ncdw\ \ }
+ \line{ --dont-cuddle-else \leaderfill                    -nce\ }  
+ \line{ --dont-format-comments \leaderfill                -nfca} 
+@@ -2175,6 +2195,7 @@
+ --break-before-boolean-operator                 -bbo
+ --break-function-decl-args                      -bfda
+ --break-function-decl-args-end                  -bfde
++--break-special-semicolon                       -bss
+ --case-indentation                              -cli@var{n}     
+ --case-brace-indentation                        -cbi@var{n}
+ --comment-delimiters-on-blank-lines             -cdb            
+@@ -2188,6 +2209,7 @@
+ --dont-break-function-decl-args                 -nbfda
+ --dont-break-function-decl-args-end             -nbfde
+ --dont-break-procedure-type                     -npsl           
++--dont-break-special-semicolon                  -nbss
+ --dont-cuddle-do-while                          -ncdw
+ --dont-cuddle-else                              -nce            
+ --dont-format-comments                          -nfca           
+diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
+--- indent-2.2.11.orig/man/indent.1	2010-01-31 10:19:46.000000000 -0600
++++ indent-2.2.11/man/indent.1	2017-02-18 15:13:43.025811586 -0600
+@@ -92,6 +92,12 @@
+ .br
+ See \fB\ STATEMENTS\fR.
+ .TP
++.B -bss\fR, \fB--break-special-semicolon\fR
++On one-line \fBfor\fR and \fBwhile\fR statements,
++force a newline before the semicolon.
++.br
++See \fB\ STATEMENTS\fR.
++.TP
+ .B -c\fIn\fB\fR, \fB--comment-indentation\fIn\fB\fR
+ Put comments to the right of code in column \fIn\fR.
+ .br
+@@ -261,6 +267,12 @@
+ .br
+ See \fB\ DECLARATIONS\fR.
+ .TP
++.B -nbss\fR, \fB--dont-break-special-semicolon\fR
++Do not force a newline before the semicolon after certain statements.
++Disables \(oq-bss\(cq.
++.br
++See \fB\ STATEMENTS\fR.
++.TP
+ .B -ncdb\fR, \fB--no-comment-delimiters-on-blank-lines\fR
+ Do not put comment delimiters on blank lines.
+ .br
+@@ -1142,7 +1154,9 @@
+ statement, the \(oq-ss\(cq option will cause a space to be placed before
+ the semicolon.  This emphasizes the semicolon, making it clear that the
+ body of the \fBfor\fR or \fBwhile\fR statement is an empty statement.
+-\(oq-nss\(cq disables this feature.
++\(oq-nss\(cq disables this feature.  For more emphasis, the \(oq-bss\(cq
++option will place the semicolon on a line by itself.  This overrides
++\(oq-ss\(cq and can be disabled with \(oq-nbss\(cq.
+ 
+ The \(oq-pcs\(cq option causes a space to be placed between the name of
+ the procedure being called and the \(oq(\(cq (for example, \fBputs\ ("Hi");\fR.  The \(oq-npcs\(cq option would give \fBputs("Hi");\fR).
+@@ -1788,6 +1802,7 @@
+ --break-before-boolean-operator                 -bbo
+ --break-function-decl-args                      -bfda
+ --break-function-decl-args-end                  -bfde
++--break-special-semicolon                       -bss
+ --case-indentation                              -cli\fIn\fR     
+ --case-brace-indentation                        -cbi\fIn\fR
+ --comment-delimiters-on-blank-lines             -cdb            
+@@ -1801,6 +1816,7 @@
+ --dont-break-function-decl-args                 -nbfda
+ --dont-break-function-decl-args-end             -nbfde
+ --dont-break-procedure-type                     -npsl           
++--dont-break-special-semicolon                  -nbss
+ --dont-cuddle-do-while                          -ncdw
+ --dont-cuddle-else                              -nce            
+ --dont-format-comments                          -nfca           
+diff -ur indent-2.2.11.orig/regression/input/args.c indent-2.2.11/regression/input/args.c
+--- indent-2.2.11.orig/regression/input/args.c	2008-04-05 04:54:12.000000000 -0500
++++ indent-2.2.11/regression/input/args.c	2017-02-18 15:13:43.025811586 -0600
+@@ -409,6 +409,7 @@
+   {"braces-on-if-line", "br"},
+   {"Bill-Shannon", "bs"},
+   {"blank-before-sizeof", "bs"},
++  {"break-special-semicolon", "bss"},
+   {"comment-delimiters-on-blank-lines", "cdb"},
+   {"declaration-comment-column", "cd"},
+   {"cuddle-else", "ce"},
+@@ -449,6 +450,7 @@
+   {"no-blank-lines-after-commas", "nbc"},
+   {"no-Bill-Shannon", "nbs"},
+   {"no-blank-before-sizeof", "nbs"},
++  {"dont-break-special-semicolon", "nbss"},
+   {"no-comment-delimiters-on-blank-lines", "ncdb"},
+   {"dont-cuddle-else", "nce"},
+   {"no-space-after-casts", "ncs"},
+diff -ur indent-2.2.11.orig/regression/standard/args.c indent-2.2.11/regression/standard/args.c
+--- indent-2.2.11.orig/regression/standard/args.c	2009-02-15 05:15:05.000000000 -0600
++++ indent-2.2.11/regression/standard/args.c	2017-02-18 15:13:43.029144901 -0600
+@@ -406,6 +406,7 @@
+   {"braces-on-if-line", "br"},
+   {"Bill-Shannon", "bs"},
+   {"blank-before-sizeof", "bs"},
++  {"break-special-semicolon", "bss"},
+   {"comment-delimiters-on-blank-lines", "cdb"},
+   {"declaration-comment-column", "cd"},
+   {"cuddle-else", "ce"},
+@@ -446,6 +447,7 @@
+   {"no-blank-lines-after-commas", "nbc"},
+   {"no-Bill-Shannon", "nbs"},
+   {"no-blank-before-sizeof", "nbs"},
++  {"dont-break-special-semicolon", "nbss"},
+   {"no-comment-delimiters-on-blank-lines", "ncdb"},
+   {"dont-cuddle-else", "nce"},
+   {"no-space-after-casts", "ncs"},
+diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
+--- indent-2.2.11.orig/src/args.c	2008-07-23 14:27:17.000000000 -0500
++++ indent-2.2.11/src/args.c	2017-02-18 15:13:43.029144901 -0600
+@@ -93,7 +93,7 @@
+ #define LINUX_SETTINGS_STRING (int *) \
+      "-nbad\0-bap\0-nbc\0-bbo\0-hnl\0-br\0-brs\0-c33\0-cd33\0" \
+      "-ncdb\0-ce\0-ci4\0-cli0\0-d0\0-di1\0-nfc1\0-i8\0-ip0\0-l80\0-lp\0" \
+-     "-npcs\0-nprs\0-npsl\0-sai\0-saf\0-saw\0-ncs\0-nsc\0-sob\0-nfca\0-cp33\0-ss\0" \
++     "-npcs\0-nprs\0-npsl\0-sai\0-saf\0-saw\0-ncs\0-nsc\0-sob\0-nfca\0-cp33\0-bss\0" \
+      "-ts8\0-il1\0"
+ 
+ /**
+@@ -139,6 +139,7 @@
+ static int exp_bli  = 0;
+ static int exp_bls  = 0;
+ static int exp_bs   = 0;
++static int exp_bss  = 0;
+ static int exp_c    = 0;/*!< Starting column for comments trailing statements */
+ static int exp_cbi  = 0;
+ static int exp_cdb  = 0;
+@@ -251,6 +252,7 @@
+     {"ts",      PRO_INT,                                8, ONOFF_NA, &settings.tabsize,                          &exp_ts},
+     {"st",      PRO_BOOL,                           false,       ON, &settings.use_stdout,                       &exp_st},
+     {"ss",      PRO_BOOL,                           false,       ON, &settings.space_sp_semicolon,               &exp_ss},
++    {"bss",     PRO_BOOL,                           false,       ON, &settings.break_sp_semicolon,               &exp_bss},
+     {"sob",     PRO_BOOL,                           false,       ON, &settings.swallow_optional_blanklines,      &exp_sob},
+     {"sc",      PRO_BOOL,                            true,       ON, &settings.star_comment_cont,                &exp_sc},
+     {"sbi",     PRO_INT,                                0, ONOFF_NA, &settings.struct_brace_indent,              &exp_sbi},
+@@ -268,6 +270,7 @@
+     {"nv",      PRO_BOOL,                           false,      OFF, &settings.verbose,                          &exp_v},
+     {"nut",     PRO_BOOL,                            true,      OFF, &settings.use_tabs,                         &exp_ut},
+     {"nss",     PRO_BOOL,                           false,      OFF, &settings.space_sp_semicolon,               &exp_ss},
++    {"nbss",    PRO_BOOL,                           false,      OFF, &settings.break_sp_semicolon,               &exp_bss},
+     {"nsob",    PRO_BOOL,                           false,      OFF, &settings.swallow_optional_blanklines,      &exp_sob},
+     {"nsc",     PRO_BOOL,                            true,      OFF, &settings.star_comment_cont,                &exp_sc},
+     {"nsaw",    PRO_BOOL,                            true,      OFF, &settings.space_after_while,                &exp_saw},
+@@ -368,6 +371,7 @@
+     {"ts",      PRO_INT,                                8, ONOFF_NA, &settings.tabsize,                          &exp_ts},
+     {"st",      PRO_BOOL,                           false,       ON, &settings.use_stdout,                       &exp_st},
+     {"ss",      PRO_BOOL,                           false,       ON, &settings.space_sp_semicolon,               &exp_ss},
++    {"bss",     PRO_BOOL,                           false,       ON, &settings.break_sp_semicolon,               &exp_bss},
+     {"sob",     PRO_BOOL,                           false,       ON, &settings.swallow_optional_blanklines,      &exp_sob},
+     {"sc",      PRO_BOOL,                           false,       ON, &settings.star_comment_cont,                &exp_sc},
+     {"sbi",     PRO_INT,                                0, ONOFF_NA, &settings.struct_brace_indent,              &exp_sbi},
+@@ -386,6 +390,7 @@
+     {"nv",      PRO_BOOL,                           false,      OFF, &settings.verbose,                          &exp_v},
+     {"nut",     PRO_BOOL,                            true,      OFF, &settings.use_tabs,                         &exp_ut},
+     {"nss",     PRO_BOOL,                           false,      OFF, &settings.space_sp_semicolon,               &exp_ss},
++    {"nbss",    PRO_BOOL,                           false,      OFF, &settings.break_sp_semicolon,               &exp_bss},
+     {"nsob",    PRO_BOOL,                           false,      OFF, &settings.swallow_optional_blanklines,      &exp_sob},
+     {"nsc",     PRO_BOOL,                           false,      OFF, &settings.star_comment_cont,                &exp_sc},
+     {"nsaw",    PRO_BOOL,                            true,      OFF, &settings.space_after_while,                &exp_saw},
+@@ -493,6 +498,7 @@
+     {"start-left-side-of-comments",                 "sc"},
+     {"standard-output",                             "st"},
+     {"space-special-semicolon",                     "ss"},
++    {"break-special-semicolon",                     "bss"},
+     {"space-after-while",                           "saw"},
+     {"space-after-procedure-calls",                 "pcs"},
+     {"space-after-parentheses",                     "prs"},
+@@ -554,6 +560,7 @@
+     {"else-endif-column",                           "cp"},
+     {"dont-star-comments",                          "nsc"},
+     {"dont-space-special-semicolon",                "nss"},
++    {"dont-break-special-semicolon",                "nbss"},
+     {"dont-line-up-parentheses",                    "nlp"},
+     {"dont-left-justify-declarations",              "ndj"},
+     {"dont-indent-parameters",                      "nip"},
+diff -ur indent-2.2.11.orig/src/handletoken.c indent-2.2.11/src/handletoken.c
+--- indent-2.2.11.orig/src/handletoken.c	2009-02-15 05:20:42.000000000 -0600
++++ indent-2.2.11/src/handletoken.c	2017-02-18 15:13:43.032478215 -0600
+@@ -933,12 +933,19 @@
+     parser_state_tos->in_decl = (parser_state_tos->dec_nest > 0) ? true : false;
+ 
+     /* If we have a semicolon following an if, while, or for, and the
+-     * user wants us to, we should insert a space (to show that there
+-     * is a null statement there).  */
++     * user wants us to, we should insert a line break or space (to
++     * show that there is a null statement there).  */
+ 
+-    if (*last_token_ends_sp && settings.space_sp_semicolon)
++    if (*last_token_ends_sp)
+     {
+-        *(e_code++) = ' ';
++        if (settings.break_sp_semicolon)
++        {
++            *(e_code++) = EOL;
++        }
++        else if (settings.space_sp_semicolon)
++        {
++            *(e_code++) = ' ';
++        }
+     }
+ 
+     *(e_code++) = ';';
+diff -ur indent-2.2.11.orig/src/indent.h indent-2.2.11/src/indent.h
+--- indent-2.2.11.orig/src/indent.h	2009-10-11 14:15:34.000000000 -0500
++++ indent-2.2.11/src/indent.h	2017-02-18 15:13:43.032478215 -0600
+@@ -251,6 +251,7 @@
+     int use_stdout;  /*!<  Where does output go. */
+     int space_sp_semicolon; /*!<  If true, a space is inserted between if, while, or for, and a semicolon
+                              * for example while (*p++ == ' ') ; */
++    int break_sp_semicolon; /*!<  If true, a semicolon following if, while, or for is placed on its own line */
+     int swallow_optional_blanklines;
+     int star_comment_cont;   /*!<  true if comment continuation lines should have stars at the beginning of each line. */
+     int struct_brace_indent; /*!<  Indentation level to be used for a '{' directly following a struct, union or enum */
