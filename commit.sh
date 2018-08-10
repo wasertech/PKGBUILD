@@ -16,8 +16,10 @@ until
     # TODO: remove old versions
     tar -xf ../pkgbuild.files.tar -C .
     git add .
-    git commit -m "update package $TRAVIS_BRANCH"
-    git push "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG" master
+    if ! git diff-index --quiet HEAD --; then
+      git commit -m "update package $TRAVIS_BRANCH"
+      git push "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG" master
+    fi
 do
   git reset --hard
   git clean -fdx .
