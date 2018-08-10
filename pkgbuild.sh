@@ -31,13 +31,12 @@ echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 if [[ -r master/signing.key ]]; then
   gpg --import master/signing.key
   MAKEPKG_OPT+=(--sign)
-  REPO_ADD_OPT+=(--sign)
 fi
 
 # Build and sign packages
 PKGDEST=repo LC_MESSAGES=C makepkg -Lcs --noconfirm "${MAKEPKG_OPT[@]}"
 
 # Build repo update
-LANG=C repo-add -s "${REPO_ADD_OPT[@]}" master/pkgbuild.db.tar repo/*.pkg.*
+LANG=C repo-add -s master/pkgbuild.db.tar repo/*.pkg.*
 
 { set +ex; } 2>/dev/null

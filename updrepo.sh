@@ -20,4 +20,12 @@ popd >/dev/null
 ln -s "$pkgrepo".db.tar.xz repo/"$pkgrepo".db
 ln -s "$pkgrepo".files.tar.xz repo/"$pkgrepo".files
 
+if [[ -r signing.key ]]; then
+	mkdir -p "$HOME/.gnupg"
+	gpg --import signing.key
+	for f in db files; do
+		gpg --detach-sign --use-agent --no-armor "$pkgrepo.$f.tar.xz"
+	done
+fi
+
 { set +ex; } 2>/dev/null
