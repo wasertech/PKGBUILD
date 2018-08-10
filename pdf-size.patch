@@ -1,0 +1,17 @@
+diff --git a/2ff b/2ff
+index 6ce91b9..68a5568 100755
+--- a/2ff
++++ b/2ff
+@@ -24,6 +24,12 @@ else
+ 	image/jpeg)
+ 		jpg2ff < "$TMP"
+ 		;;
++	application/pdf)
++		rw=$(identify -format "%[fx:int((1280*resolution.x)/w)]" "$TMP")
++		rh=$(identify -format "%[fx:int((800*resolution.y)/h)]" "$TMP")
++		[ "$rh" -lt "$rw" ] && rw=$rh
++		convert -trim -density $rw "$TMP" -quality 100 -flatten png:- | png2ff
++		;;
+ 	*)
+ 		convert "$TMP" png:- | png2ff
+ 		;;
