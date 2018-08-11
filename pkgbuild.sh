@@ -4,6 +4,7 @@ set -ex
 
 # Environment variables.
 export PACKAGER="https://travis-ci.org/${1}/builds/${3}"
+export PKGEXT=".pkg.tar.xz"
 
 # Variables declaration.
 declare -r pkgslug="$1"
@@ -40,6 +41,6 @@ sudo pacman -Sy
 PKGDEST=repo LC_MESSAGES=C makepkg -Lcs --noconfirm $SIGN_PKG
 
 # Build repo update
-LANG=C repo-add -s master/pkgbuild.db.tar repo/*.pkg.*
+LANG=C repo-add -s master/pkgbuild.db.tar repo/*"$PKGEXT"
 
 { set +ex; } 2>/dev/null
