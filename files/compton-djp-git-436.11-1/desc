@@ -14,16 +14,19 @@ compton-djp-git
 X Compositor (a fork of xcompmgr-dana) (git-version)
 
 %CSIZE%
-99060
+99100
 
 %ISIZE%
 314368
 
 %MD5SUM%
-a315ed207461717d609f30ccacd6402a
+4d11e6788980829b4c52f28a2e04ada8
 
 %SHA256SUM%
-df29026725de0e91f4ada57a9cf9b6f7b089321a53be6fd0c27d4572d7ea0e14
+1b238ab1d749e1d6590e5020cf19d8550b5739390c2abbf52f4a08c1b5854f94
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltvJukACgkQFW138LsgdFCPmwgAwF8YFVZmNqhAMx4qoQGrziNChRB7XELgWyXEyKllISUoi139u7RWsL4/56vMNeNor7E1qyHbLbyLdpfO0WvrV9Wr1ew/Gw7xkEY0W/cBRF0sZKxhYqCNPj04gKvA7H1jKqEnduMF+5+FoE+JTSDFq94QGvHX9twoojG8PPwo/KtWg2cTd6TAKMhBcYfM4iGQDKRDUuGbbYyUFofsyyrzt3AB2DzNe1SpMeqAShyO9iIDiDFTbsA0AIxlPiQ+iFuhtBrdtGthoiLI8vbX00cbosxuYFe86RegM1p+zlD30CLitzEgCAP1TxmcBU9l9A/khctn1LJ/89f/1cY6coz3cQ==
 
 %URL%
 https://github.com/chjj/compton
@@ -35,10 +38,10 @@ MIT
 x86_64
 
 %BUILDDATE%
-1533869040
+1534011090
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/414343095
+https://travis-ci.org/djpohly/PKGBUILD/builds/414926484
 
 %CONFLICTS%
 compton
