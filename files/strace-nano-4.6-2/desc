@@ -14,16 +14,19 @@ strace-nano
 A useful diagnostic, instructional, and debugging tool
 
 %CSIZE%
-126336
+126332
 
 %ISIZE%
 713728
 
 %MD5SUM%
-aec563a85cc4c62bf7471673f64e09ab
+33841056793fc704b6a1e751c7bd8f76
 
 %SHA256SUM%
-942bb0d9a1de43c6a25b8ccc9b3d647b17d10d955f61522c0ffe72c31c807ad0
+d0bcf15c91f795421e18bb02b11c75cb0ba3c71ebef4a30eb9d5a29e40180c85
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltvK5IACgkQFW138LsgdFAlcggAlv64cNY8FdCcGJTx32TuN5AARzWFUcmcswtKGj8R3af6o/qOSElunKn4smAWeK3OBvGN6CZE2OGowc3T5UFlboRuf9h++BLNOP8jlfY9k8OAfcq/mtQPbd1FX5LQzgq4+1gQ9aDI67zain1R9yR752lxHeAXExi4rJizPM83yG3Pa5mLmWdHkboI+dayCCQfxY2UoRGMVSdd2+fvDwB314YQJPO3YImqlrpTYbPdmee6IA//NyaGWcm5KbSq0ruHRv57EVvq4oiIseAdKU4abULJjHdaQ8bArgDo7UYoFj+7bpicQzPx1Q2Y0yljuyalMufecoL4bhnCyzBftsTw+Q==
 
 %URL%
 http://sourceforge.net/projects/strace/
@@ -35,10 +38,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1533871230
+1534012290
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/414349996
+https://travis-ci.org/djpohly/PKGBUILD/builds/414929646
 
 %CONFLICTS%
 strace
