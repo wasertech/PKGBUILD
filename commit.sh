@@ -21,7 +21,7 @@ until
       git push "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG" master
     fi
 do
-  git reset --hard
+  git reset --hard origin/master
   git clean -fdx .
   git pull --ff-only origin master
 done
