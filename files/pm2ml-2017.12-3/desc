@@ -1,0 +1,56 @@
+%FILENAME%
+pm2ml-2017.12-3-any.pkg.tar.xz
+
+%NAME%
+pm2ml
+
+%BASE%
+pm2ml
+
+%VERSION%
+2017.12-3
+
+%DESC%
+Generate metalinks for downloading Pacman packages and databases.
+
+%CSIZE%
+21280
+
+%ISIZE%
+112640
+
+%MD5SUM%
+ddb0d89efece20338349d67c8890ea3f
+
+%SHA256SUM%
+3e11c6040cc7a8fbb90e3657c329a739124f569a067fdd88c3cae29bae1a50c7
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltvdb0ACgkQFW138LsgdFBLfAgAsFdlT15YDzg8UYvo1/3oY/HJrXcbhu/POPUJiIOeA1ts3/6lh+fCNNsT+bTKpcAHMk/3Dx+C+Ukklwj7lhFXWjwid79DC/EVXY4f8YTlv92Z87gzYZsi3Sc3kLTxT21BRpKhkE94Sh78T+HSkM8bG50oG1W5bqu2nzAIM6mL9rPINy15r5/3zjBam+UmHPbNhsrGOPhAe+YzS7doynomavqs+vn3kzYAXE8adGszzPfyLfiVpmhQMGEO5II+1UvwYAgEvf2naIuo42K/bPLRx+KNSI6jKsgIAy25YVtPqKU0I/FXWgMOly+1eNSbt1G9fOvu4G5FORWmBFL/9ycdNw==
+
+%URL%
+https://xyne.archlinux.ca/projects/pm2ml
+
+%LICENSE%
+GPL
+
+%ARCH%
+any
+
+%BUILDDATE%
+1534031283
+
+%PACKAGER%
+https://travis-ci.org/djpohly/PKGBUILD/builds/414987277
+
+%DEPENDS%
+pyalpm
+python3
+python3-xcgf
+python3-xcpf
+
+%OPTDEPENDS%
+aria2: ppl script support.
+python3-aur: AUR support
+reflector: Reflector support
+
