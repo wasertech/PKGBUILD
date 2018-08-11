@@ -14,16 +14,19 @@ dina-font-latin1
 A monospace bitmap font, primarily aimed at programmers.
 
 %CSIZE%
-20328
+20260
 
 %ISIZE%
 304128
 
 %MD5SUM%
-afd3bb7fb82a850a74a4063498f74a4d
+e8eef0f10065f3c68b91e1c8f03d4feb
 
 %SHA256SUM%
-8e80de7f5291e3b124abfa4ce0c6c1059a40753ce408276d7f4a23810424548a
+171f82ffe0e17b795cdd2c23f8a10cbff1303e0055a3325525d6c175122a1525
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltvKF8ACgkQFW138LsgdFDYwAgArc9zZruRziysI92jJ9xyVNk+UAUpHAJ6wJgwgJpF7ix6HQ/OfBtYBUbHzH9DuSEA4ixemk7r+RIgnRmde3Oj5A3XMylQ23qbV/bBJSD1qeTKF9+/1H9xse/9+7E4v/6MTFXZBLRB3QiIQH00PC6fnXyLJV5yU2vZ19CIPt6dK2DauE6z6k+Q4suWZIRbv9CqOnq8+DBBgNAS4rLPwZNwV+7zTPeGiRR/zzQHeOEGvRyCtUzHl/IzK22Bp/DOd0xgPFkFSRpRjnW/4URpU54s3vFCHCpW5rhw0/jtL8exjRYX/1TGMEoSWsHb9fOl1HEbX8WZCSfSd9h3M4mDFZc6CA==
 
 %URL%
 http://www.donationcoder.com/Software/Jibz/Dina/index.html
@@ -35,10 +38,10 @@ custom
 any
 
 %BUILDDATE%
-1533871633
+1534011481
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/414344503
+https://travis-ci.org/djpohly/PKGBUILD/builds/414927401
 
 %CONFLICTS%
 dina-font
