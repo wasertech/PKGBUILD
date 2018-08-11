@@ -17,8 +17,8 @@ echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 #echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
 if [[ -r master/signing.key ]]; then
   gpg --import master/signing.key
-  gpg --export --armor | sudo tee /usr/share/pacman/pkgbuild.gpg >/dev/null
-  gpg -k --with-colons | grep -m1 '^fpr' | cut -d: -f10 | sed 's/$/:4:/' | sudo tee /usr/share/pacman/pkgbuild-trusted >/dev/null
+  gpg --export --armor | sudo tee /usr/share/pacman/keyrings/pkgbuild.gpg >/dev/null
+  gpg -k --with-colons | grep -m1 '^fpr' | cut -d: -f10 | sed 's/$/:4:/' | sudo tee /usr/share/pacman/keyrings/pkgbuild-trusted >/dev/null
   sudo pacman-key --populate pkgbuild
   SIGN_PKG=--sign
 fi
