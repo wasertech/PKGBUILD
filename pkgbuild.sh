@@ -14,6 +14,7 @@ declare SIGN_PKG=
 
 # Set up gpg options
 mkdir -p "$HOME/.gnupg"
+chmod 700 "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 #echo 'keyserver:0:"hkps%3a//pgp.mit.edu"' | gpgconf --change-options dirmngr
 if [[ -r master/signing.key ]]; then
