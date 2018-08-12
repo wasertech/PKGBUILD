@@ -3,7 +3,7 @@
 _pkgname=sent
 pkgname=${_pkgname}-git
 pkgver=r84.11f2c64
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple plain-text presentation tool"
 arch=('i686' 'x86_64')
 url="http://tools.suckless.org/${_pkgname}"
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('fontconfig' 'libxft')
 optdepends=('farbfeld: PNG and JPEG support')
 makedepends=('git')
+provides=('sent')
 conflicts=('sent')
 source=("${pkgname}::git://github.com/djpohly/${_pkgname}")
 #        "config.h")
