@@ -1,0 +1,48 @@
+diff --git a/config.mk b/config.mk
+index 311f785..b750765 100644
+--- a/config.mk
++++ b/config.mk
+@@ -76,3 +76,6 @@ LDFLAGS = ${LIBS}
+ # compiler and linker
+ CC = gcc
+ LD = ${CC}
++CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/uuid 
++LIBS= -L/usr/lib -lc -lXft -lXpm -lXinerama -lX11
++LDFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  -L/usr/lib -lc -lXft -lXpm -lXinerama -lX11
+diff --git a/dzen.h b/dzen.h
+index e4d8707..de54bee 100644
+--- a/dzen.h
++++ b/dzen.h
+@@ -141,6 +141,7 @@ struct DZEN {
+ 	const char *bg;
+ 	const char *fg;
+ 	int line_height;
++	int text_margin;
+ 
+ 	Display *dpy;
+ 	int screen;
+diff --git a/main.c b/main.c
+index 9d71639..df555fd 100644
+--- a/main.c
++++ b/main.c
+@@ -255,7 +255,7 @@ x_check_geometry(XRectangle scr) {
+ 	}
+ 
+ 	if(!dzen.line_height)
+-		dzen.line_height = dzen.font.height + 2;
++		dzen.line_height = dzen.font.height + dzen.text_margin * 2;
+ 
+ 	if(t->y + dzen.line_height > scr.y + scr.height)
+ 		t->y = scr.y + scr.height - dzen.line_height;
+@@ -1025,7 +1025,10 @@ main(int argc, char *argv[]) {
+ 			if(++i < argc) dzen.slave_win.width = atoi(argv[i]);
+ 		}
+ 		else if(!strncmp(argv[i], "-h", 3)) {
+-			if(++i < argc) dzen.line_height= atoi(argv[i]);
++			if(++i < argc) dzen.line_height = atoi(argv[i]);
++		}
++		else if(!strncmp(argv[i], "-tm", 4)) {
++			if(++i < argc) dzen.text_margin = atoi(argv[i]);
+ 		}
+ 		else if(!strncmp(argv[i], "-tw", 4)) {
+ 			if(++i < argc) dzen.title_win.width = atoi(argv[i]);

@@ -25,6 +25,8 @@ prepare() {
   cd ${pkgname}
   sed -i 's|DZEN_XMP|DZEN_XPM|g' main.c
 
+  patch -Np1 -i ../text-margin.diff
+
   CFLAGS="${CFLAGS} -Wall -Os \${INCS} -DVERSION=\\\"\${VERSION}\\\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`"
   LIBS=" -L/usr/lib -lc -lXft -lXpm -lXinerama -lX11"
 
@@ -46,5 +48,8 @@ package() {
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README* -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+source+=('text-margin.diff')
+sha512sums+=('44c8292f721dbe44d65ee1504592609ef8747e5c5a56bddae9aa9f825ebe49f0cdfdbe9c17ae589441beafb7036c9b207c4be5495cad6ffb913d0070cf549dc4')
 
 # vim: ts=2 sw=2 et:
