@@ -18,7 +18,7 @@ pkgname=(
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -27,6 +27,7 @@ license=('GPL')
 package_djp-meta-base() { depends=(
 	bc
 	curl
+	djp-keyring
 	dtach
 	efibootmgr
 	git
