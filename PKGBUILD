@@ -3,7 +3,6 @@ pkgbase=djp-meta
 pkgname=(
 	djp-meta-base
 	djp-meta-laptop
-	djp-meta-xorg
 	djp-meta-xorg-apps
 	djp-meta-anopa
 	djp-meta-surface4
@@ -18,7 +17,7 @@ pkgname=(
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -26,7 +25,9 @@ license=('GPL')
 
 package_djp-meta-base() { depends=(
 	bc
+	cryptsetup
 	curl
+	diffutils
 	djp-keyring
 	dtach
 	efibootmgr
@@ -34,8 +35,16 @@ package_djp-meta-base() { depends=(
 	grub
 	htop
 	intel-ucode
+	iproute2
+	iputils
 	kbd-dvorak-djp
+	licenses
+	linux
+	logrotate
 	lsof
+	lvm2
+	man-db
+	man-pages
 	myrepos
 	openssh
 	os-prober
@@ -45,26 +54,20 @@ package_djp-meta-base() { depends=(
 	powerpill
 	rlwrap
 	rsync
+	sed
 	socat
 	sudo
+	sysfsutils
+	texinfo
 	unzip
+	usbutils
 	vcsh
+	vi
 	vim
 	w3m
 	wget
+	which
 	zip
-); }
-
-package_djp-meta-laptop() { depends=(
-	acpi
-	acpid
-	aircrack-ng
-	powertop
-	terminus-font
-	wpa_supplicant
-); }
-
-package_djp-meta-xorg() { depends=(
 	conky-cli
 	dmenu
 	dwm
@@ -90,8 +93,17 @@ package_djp-meta-xorg() { depends=(
 	xsel
 ); }
 
+package_djp-meta-laptop() { depends=(
+	acpi
+	acpid
+	aircrack-ng
+	powertop
+	terminus-font
+	wpa_supplicant
+	xorg-xbacklight
+); }
+
 package_djp-meta-xorg-apps() { depends=(
-	djp-meta-xorg
 	feh
 	#firefox
 	scrot
@@ -133,7 +145,6 @@ package_djp-meta-players() { depends=(
 ); }
 
 package_djp-meta-present() { depends=(
-	djp-meta-xorg
 	farbfeld
 	#impressive
 	pdfpc
@@ -165,7 +176,6 @@ package_djp-meta-latex() { depends=(
 ); }
 
 package_djp-meta-graphics() { depends=(
-	djp-meta-xorg
 	fontforge
 	gimp
 	inkscape
