@@ -1,0 +1,7 @@
+%FILES%
+usr/
+usr/share/
+usr/share/pacman/
+usr/share/pacman/keyrings/
+usr/share/pacman/keyrings/djp-trusted
+usr/share/pacman/keyrings/djp.gpg
