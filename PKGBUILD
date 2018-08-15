@@ -17,7 +17,7 @@ pkgname=(
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -128,8 +128,19 @@ package_djp-meta-surface4() { depends=(
 ); }
 
 package_djp-meta-devel() { depends=(
+	autoconf
+	automake
+	binutils
+	bison
+	fakeroot
+	flex
+	gcc
 	gdb
 	indent
+	m4
+	make
+	patch
+	pkgconf
 	python
 	ruby
 	sqlite
