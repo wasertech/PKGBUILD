@@ -14,7 +14,7 @@ pushd master/files >/dev/null
 
 remove_pkg() {
   pkgname=$1
-  for pkgentry in "files/$pkgname"*; do
+  for pkgentry in "$pkgname"*; do
     name=${pkgentry##*/}
     if [[ ${name%-*-*} = $pkgname ]]; then
       git rm -r "$pkgentry"
