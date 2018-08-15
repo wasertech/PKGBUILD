@@ -16,7 +16,7 @@ pkgname=(
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -42,7 +42,6 @@ package_djp-meta-base() { depends=(
 	intel-ucode
 	iproute2
 	iputils
-	john
 	kbd-dvorak-djp
 	licenses
 	linux
