@@ -12,8 +12,18 @@ export GIT_AUTHOR_NAME=$(git show -s --pretty='%an') \
 mkdir -p master/files
 pushd master/files >/dev/null
 
+remove_pkg() {
+  pkg=$1
+  echo "Removing package $pkg" >&2
+}
+
 until
-    # TODO: remove old versions
+    tar -tf ../pkgbuild.files.tar |
+      sed 's,-[^-]*-[^-]*/.*,,' |
+      sort -u |
+      while read pkg; do
+        remove_pkg "$pkg"
+      done
     tar -xf ../pkgbuild.files.tar -C .
     git add .
     if ! git diff-index --quiet HEAD --; then
