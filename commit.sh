@@ -29,7 +29,7 @@ until
       while read pkg; do
         remove_pkg "$pkg"
       done
-    tar -xf ../pkgbuild.files.tar -C .
+    tar --warning=no-unknown-keyword -xf ../pkgbuild.files.tar -C .
     git add .
     if ! git diff-index --quiet HEAD --; then
       git commit -m "update package $TRAVIS_BRANCH"
