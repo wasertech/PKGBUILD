@@ -1,5 +1,5 @@
 %FILENAME%
-djp-meta-base-0.1-7-any.pkg.tar.xz
+djp-meta-base-0.1-8-any.pkg.tar.xz
 
 %NAME%
 djp-meta-base
@@ -8,25 +8,25 @@ djp-meta-base
 djp-meta
 
 %VERSION%
-0.1-7
+0.1-8
 
 %DESC%
 Metapackages to manage Arch installations
 
 %CSIZE%
-2700
+2688
 
 %ISIZE%
 4096
 
 %MD5SUM%
-77b3aee7521653a0d06638a6059fa8d8
+7c359f7006b2dc2c68c7ca361af55e7e
 
 %SHA256SUM%
-74ee84f7b87d42ea9e13a1f41293ab165c4b78fe31308e085b0df70911e199c0
+a9ac8cb8490674dec4a3111a631284babe73e17b91dfa678e00f13e622c3cd5b
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltzzkcACgkQFW138LsgdFDqGAf/RncL5E9B3yClYNp3++O3s9v47VY3tP5J+Z/2q2VsXmcxjoSCl62IV850EBbY/KwT4U9Hlbu9X5rOx38Vv2AR6vbW/Kh6oM4lBCQC4AxzYj1zxHw+F8KoNrv5IZal0AcKC6n0TKqoWv/TMIgmYddVEPAwudao8KgSfDr7z8EkLYlAGHCATIaJ4VEvUq0S73GtBPnCA341dwBfNh5kHQHfVHQJqnJWk/iTAuJ0vObhZKKKyKEj8qhS7x1eeY/8IemDaBkNKZpYmL3iC/gUrSuO03pGTqoUGQVP/Yi7UP+pvpCdmUzlhVFJ8pt7ijSHWm59ECg9g3kzPhvMVFhGikfajg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltz0c0ACgkQFW138LsgdFDFGwgArO9Qe0lHO4rAaYx8WINLiyVoOZ+4vBdbvJMmX3UGZhU0S6hTzrIXk4e/gIH8BiG5aO6tTUeikLl0xN68UrDTa/+uJinLj7Xyo0MKxuYy6WTpvT48fAE/a4qYRa2VOgjApkTKMHIP9CfSSKGquTKYh8GzzaIy2+U5qc8O73ynCHOZLDHFbbdjnFxb4CYASVMBOHBemfRZV79K3SZwu45vQRkI5cl32RtsMmA8uKD+ch3Wk4j91ZFpbhQmWn7eiCk1I/rHWj0c7pjK5N3eRFMxMN1dKns1u2HT6KwaPpRmQVUj5GT5QgAcvtygVW9idSCT/njUeKTbHdzSg56nMa3XAQ==
 
 %URL%
 https://github.com/djpohly
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1534316096
+1534317000
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/416236806
+https://travis-ci.org/djpohly/PKGBUILD/builds/416243141
 
 %DEPENDS%
 bc
@@ -63,7 +63,6 @@ htop
 intel-ucode
 iproute2
 iputils
-john
 kbd-dvorak-djp
 licenses
 linux
