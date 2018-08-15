@@ -18,7 +18,7 @@ remove_pkg() {
 }
 
 until
-    tar -tf ../pkgbuild.files.tar |
+    tar --warning=no-unknown-keyword -tf ../pkgbuild.files.tar |
       sed 's,-[^-]*-[^-]*/.*,,' |
       sort -u |
       while read pkg; do
