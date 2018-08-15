@@ -13,8 +13,13 @@ mkdir -p master/files
 pushd master/files >/dev/null
 
 remove_pkg() {
-  pkg=$1
-  echo "Removing package $pkg" >&2
+  pkgname=$1
+  for pkgentry in "files/$pkgname"*; do
+    name=${pkgentry##*/}
+    if [[ ${name%-*-*} = $pkgname ]]; then
+      git rm -r "$pkgentry"
+    fi
+  done
 }
 
 until
