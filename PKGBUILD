@@ -13,11 +13,10 @@ pkgname=(
 	djp-meta-calendar
 	djp-meta-latex
 	djp-meta-graphics
-	djp-meta-security
 	djp-meta-print
 )
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly"
@@ -25,40 +24,56 @@ license=('GPL')
 
 package_djp-meta-base() { depends=(
 	bc
+	conky-cli
 	cryptsetup
 	curl
 	diffutils
 	djp-keyring
+	dmenu
 	dtach
+	dwm
+	dzen2
 	efibootmgr
 	git
 	grub
+	gvim
+	hsetroot
 	htop
 	intel-ucode
 	iproute2
 	iputils
+	john
 	kbd-dvorak-djp
 	licenses
 	linux
 	logrotate
 	lsof
 	lvm2
+	macchanger
 	man-db
 	man-pages
 	myrepos
+	nmap
+	openbsd-netcat
 	openssh
 	os-prober
 	p7zip
 	parallel
 	pass
 	powerpill
+	redshift
 	rlwrap
 	rsync
+	rxvt-unicode
 	sed
 	socat
+	srandrd
 	sudo
 	sysfsutils
+	tcpdump
 	texinfo
+	traceroute
+	ttf-fantasque-sans
 	unzip
 	usbutils
 	vcsh
@@ -67,18 +82,7 @@ package_djp-meta-base() { depends=(
 	w3m
 	wget
 	which
-	zip
-	conky-cli
-	dmenu
-	dwm
-	dzen2
-	gvim
-	hsetroot
-	hsetroot
-	redshift
-	rxvt-unicode
-	srandrd
-	ttf-fantasque-sans
+	whois
 	wmname
 	xcursor-vanilla-dmz
 	xorg-server
@@ -91,6 +95,7 @@ package_djp-meta-base() { depends=(
 	xorg-xwininfo
 	xscreensaver
 	xsel
+	zip
 ); }
 
 package_djp-meta-laptop() { depends=(
@@ -190,17 +195,6 @@ package_djp-meta-graphics() { depends=(
 	fontforge
 	gimp
 	inkscape
-); }
-
-package_djp-meta-security() { depends=(
-	aircrack-ng
-	john
-	macchanger
-	nmap
-	openbsd-netcat
-	tcpdump
-	traceroute
-	whois
 ); }
 
 package_djp-meta-print() { depends=(
