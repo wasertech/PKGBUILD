@@ -21,7 +21,7 @@ arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
 license=('GPL')
 
-package_djp-meta-base() { depends=(
+package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	bc
 	conky-cli
 	cryptsetup
@@ -96,7 +96,7 @@ package_djp-meta-base() { depends=(
 	zip
 ); }
 
-package_djp-meta-laptop() { depends=(
+package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
 	acpi
 	acpid
 	aircrack-ng
@@ -106,7 +106,7 @@ package_djp-meta-laptop() { depends=(
 	xorg-xbacklight
 ); }
 
-package_djp-meta-xorg-apps() { depends=(
+package_djp-meta-xorg-apps() { pkgdesc="Metapackage for X applications"; depends=(
 	feh
 	#firefox
 	scrot
@@ -117,20 +117,20 @@ package_djp-meta-xorg-apps() { depends=(
 	zathura-ps
 ); }
 
-package_djp-meta-anopa() { depends=(
+package_djp-meta-anopa() { pkgdesc="Metapackage for anopa/s6 init"; depends=(
 	anopa
 	execline
 	s6
 	skalibs
 ); }
 
-package_djp-meta-surface4() { depends=(
+package_djp-meta-surface4() { pkgdesc="Metapackage for Surface Pro 4 devices"; depends=(
 	linux-firmware-surface4
 	linux-surface4
 	linux-surface4-headers
 ); }
 
-package_djp-meta-devel() { depends=(
+package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depends=(
 	autoconf
 	automake
 	binutils
@@ -151,28 +151,28 @@ package_djp-meta-devel() { depends=(
 	valgrind
 ); }
 
-package_djp-meta-players() { depends=(
+package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
 	mpc
 	mpd
 	mpv
 	youtube-dl
 ); }
 
-package_djp-meta-present() { depends=(
+package_djp-meta-present() { pkgdesc="Metapackage for presentations"; depends=(
 	farbfeld
 	#impressive
 	pdfpc
 	sent
 ); }
 
-package_djp-meta-office() { depends=(
+package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
 	davmail
 	khal
 	mutt
 	vdirsyncer
 ); }
 
-package_djp-meta-latex() { depends=(
+package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 	fig2dev
 	gnuplot
 	latex-template-acm
@@ -186,13 +186,13 @@ package_djp-meta-latex() { depends=(
 	xfig
 ); }
 
-package_djp-meta-graphics() { depends=(
+package_djp-meta-graphics() { pkgdesc="Metapackage for graphics editing"; depends=(
 	fontforge
 	gimp
 	inkscape
 ); }
 
-package_djp-meta-print() { depends=(
+package_djp-meta-print() { pkgdesc="Metapackage for printing"; depends=(
 	samba
 	foomatic-db
 	foomatic-db-nonfree
