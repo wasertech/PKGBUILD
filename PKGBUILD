@@ -19,7 +19,7 @@ pkgver=0.1
 pkgrel=8
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
-url="https://github.com/djpohly"
+url="https://github.com/djpohly/PKGBUILD"
 license=('GPL')
 
 package_djp-meta-base() { depends=(
