@@ -9,8 +9,7 @@ pkgname=(
 	djp-meta-devel
 	djp-meta-players
 	djp-meta-present
-	djp-meta-email
-	djp-meta-calendar
+	djp-meta-office
 	djp-meta-latex
 	djp-meta-graphics
 	djp-meta-print
@@ -166,13 +165,10 @@ package_djp-meta-present() { depends=(
 	sent
 ); }
 
-package_djp-meta-email() { depends=(
-	mutt
-); }
-
-package_djp-meta-calendar() { depends=(
+package_djp-meta-office() { depends=(
 	davmail
 	khal
+	mutt
 	vdirsyncer
 ); }
 
