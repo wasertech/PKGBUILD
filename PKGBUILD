@@ -14,8 +14,8 @@ pkgname=(
 	djp-meta-graphics
 	djp-meta-print
 )
-pkgver=0.1
-pkgrel=8
+pkgver=0.2
+pkgrel=1
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
