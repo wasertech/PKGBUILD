@@ -22,7 +22,7 @@ remove_pkg() {
   done
 }
 
-git remote add -ftmaster origin "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG"
+git fetch origin
 until
     tar --warning=no-unknown-keyword -tf ../pkgbuild.files.tar |
       sed 's,-[^-]*-[^-]*/.*,,' |
