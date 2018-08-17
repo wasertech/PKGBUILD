@@ -22,8 +22,6 @@ remove_pkg() {
   done
 }
 
-git remote set-url origin "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG"
-git fetch origin
 until
     tar --warning=no-unknown-keyword -tf ../pkgbuild.files.tar |
       sed 's,-[^-]*-[^-]*/.*,,' |
@@ -35,7 +33,7 @@ until
     git add .
     if ! git diff-index --quiet HEAD --; then
       git commit -m "update package $TRAVIS_BRANCH"
-      git push origin master
+      git push "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG" master
     fi
 do
   git reset --hard origin/master
