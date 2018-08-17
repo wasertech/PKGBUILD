@@ -4,9 +4,6 @@ ARG userid
 # Update packages.
 RUN pacman -Syu --noconfirm --ignore linux --ignore linux-firmware
 
-# Clear cache.
-RUN pacman -Scc --noconfirm
-
 # Create an unprivileged user.
 RUN useradd -m -u ${userid} -G wheel -s /bin/bash pkguser
 
