@@ -14,16 +14,19 @@ farbfeld-git
 conversion tools for the suckless image format
 
 %CSIZE%
-19752
+19776
 
 %ISIZE%
 132096
 
 %MD5SUM%
-41676c60a3e6b03de9064aed47c306ab
+5bd218cc2ace9580687f6f1eef93a5b0
 
 %SHA256SUM%
-23700177e2fa196d0dd4e69b9f7b353f2776c21ec0fb59edc0d9e9aa172d75a0
+1e2f4886327a62eade72d6db2fdbd6a2b5a88f99f060f5fe0a8072e4c47cd595
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt3An8ACgkQFW138LsgdFDgoggAmyTD8SoNuXftjyoWxWtrleZvsofWnnvGAcAUWMh0D9rMmPBNexj2bieR3k9sYbZwGNRLR2KnRF8zwA9Vsxg/aTMXbe3FORLosSCSC3FKpJ8iZRfbqAr/jloTk0G4y+mTpuWXCPkmMJHbLfZhnJkVvBqFS0iZVmsH9yiopUHfZA23ghIvP/nBVplJJmsbYp5MKTth12QbaIGbO+QMLz8CGdnQ/dh5Gl3haSrrRMGkECDVgCM2hLU11+jQjwveTcbc42CEeQuwCHvi1QhXj0+Uxc9CIX4FMhWID60et6heWa5XiitTuG5C37dGVTM0IzLjlxRvu5Zatia3Fed1+KjTzg==
 
 %URL%
 http://tools.suckless.org/farbfeld/
@@ -35,10 +38,10 @@ ISC
 x86_64
 
 %BUILDDATE%
-1533870833
+1534526074
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/414346697
+https://travis-ci.org/djpohly/PKGBUILD/builds/414929648
 
 %CONFLICTS%
 farbfeld
