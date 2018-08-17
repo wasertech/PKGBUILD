@@ -22,7 +22,6 @@ remove_pkg() {
   done
 }
 
-git config --local -l
 git remote set-url origin "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG"
 git fetch origin
 until
