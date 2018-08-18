@@ -5,8 +5,8 @@
 
 pkgbase=linux               # Build stock -ARTIX kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_artix=4.18.2-artix1
-_srcver=4.18.2-arch1
+_artix=4.18.3-artix1
+_srcver=4.18.3-arch1
 pkgver=${_artix//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -52,8 +52,6 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  sed -i -r "s|EXTRAVERSION = -arch1|EXTRAVERSION = -artix1|" "Makefile"
 
   msg2 "Setting config..."
   cp ../config .config
