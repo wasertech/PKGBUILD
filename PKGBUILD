@@ -2,13 +2,13 @@
 # Contributor: David Arroyo <droyo@aqwari.us>
 _pkgname=s6
 pkgname=$_pkgname-musl-git
-pkgver=v2.5.0.0
+pkgver=v2.7.2.0.1.gbad3.dirty
 pkgrel=1
 pkgdesc="skarnet's small supervision suite [static-musl; GIT]"
 arch=('i686' 'x86_64')
 url="http://www.skarnet.org/software/s6"
 license=('custom:ISC')
-makedepends=('skalibs-musl' 'execline-musl' 'musl')
+makedepends=('skalibs-musl' 'execline-musl' 'musl' 'git')
 options=('staticlibs')
 source=("git://git.skarnet.org/s6"
          0001-s6-log-Add-p-directive-for-prefix.patch)
