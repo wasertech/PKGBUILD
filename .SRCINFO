@@ -7,6 +7,7 @@ pkgbase = vcsh-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = ruby-ronn
 	depends = git
 	optdepends = myrepos: helps manage a large number of repositories
 	provides = vcsh
