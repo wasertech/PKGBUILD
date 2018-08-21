@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  #make manpages
+  make manpages
 }
 
 check() {
