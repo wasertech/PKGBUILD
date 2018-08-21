@@ -2,7 +2,6 @@ pkgbase = vcsh-git
 	pkgdesc = manage config files in HOME via fake bare git repositories
 	pkgver = 1.20141026.r396.gc4019a5
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/RichiH/vcsh
 	arch = any
 	license = GPL
