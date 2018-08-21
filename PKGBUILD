@@ -2,13 +2,13 @@
 # Contributor: David Arroyo <droyo@aqwari.us>
 _pkgname=skalibs
 pkgname=$_pkgname-musl-git
-pkgver=v2.3.8.0.1.gbf1b
+pkgver=v2.7.0.0
 pkgrel=1
 pkgdesc="A set of general-purpose C programming libraries [static-musl; GIT]"
 arch=('i686' 'x86_64')
 url="http://www.skarnet.org/software/skalibs"
 license=('custom:ISC')
-makedepends=(musl)
+makedepends=('musl' 'git')
 options=('staticlibs')
 source=(git+git://git.skarnet.org/skalibs)
 sha256sums=('SKIP')
