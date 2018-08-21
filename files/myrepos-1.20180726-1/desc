@@ -1,0 +1,75 @@
+%FILENAME%
+myrepos-1.20180726-1-any.pkg.tar.xz
+
+%NAME%
+myrepos
+
+%BASE%
+myrepos
+
+%VERSION%
+1.20180726-1
+
+%DESC%
+Multiple Repository management tool
+
+%CSIZE%
+46516
+
+%ISIZE%
+165888
+
+%MD5SUM%
+967df6219b281e79b1252b34cc0d7f83
+
+%SHA256SUM%
+eac696cbe0a3d1f9b6368e2b9d0962c4a34880d3ae984da82cb5cef624da23a1
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt7rkYACgkQFW138LsgdFCwlAgAxS62NB9NsWtWlB3KNPh73H3MD0I6KSAPrC4+Va10J9HzeP7HUNFaRwSuIx9n80VT8zOjSshDfu81/11lqYZ6zdUc2sHr7YX8Pd4B/zQAJrqUYccYf5gHtVF7rJdn5oxr2NdF8aPfAIWvyBJnI3pXj44dEI5Ckw71rZ3NziK5uBIoHlbGvSar2lfSccOL6LU4cB26r1viS/9xUwQS3laoSxKQsxne4gbzk5TwEjqnDpzg2juhiNT7B2Febyxbn7LbAnLq4gAfUE9RzDrfXec4r2TxTm/Sgin+jUaFNifG/ugzF9gv6ZJI3eJn98QBYw2xcsCRlkj49fvd6ibolqDURQ==
+
+%URL%
+http://myrepos.branchable.com
+
+%LICENSE%
+GPL2
+
+%ARCH%
+any
+
+%BUILDDATE%
+1534832195
+
+%PACKAGER%
+https://travis-ci.org/djpohly/PKGBUILD/builds/418549780
+
+%CONFLICTS%
+mr
+webcheckout
+
+%PROVIDES%
+mr
+myrepos
+webcheckout
+
+%DEPENDS%
+perl
+
+%OPTDEPENDS%
+bzr: support for bzr repositories
+cvs: support for cvs repositories
+darcs: support for darcs repositories
+git-annex: support for git-annex clones
+git: support for git repositories
+mercurial: support for mercurial repositories
+perl-html-parser: support for webcheckout
+perl-libwww: support for webcheckout
+perl-uri: support for webcheckout heuristically guessing partial URLs
+repo: support for repo repositories
+svn: support for subversion repositories
+unison: support for unison as a vcs
+vcsh: support for vcsh
+
+%MAKEDEPENDS%
+git
+
