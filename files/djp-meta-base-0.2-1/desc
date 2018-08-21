@@ -1,5 +1,5 @@
 %FILENAME%
-djp-meta-base-0.1-8-any.pkg.tar.xz
+djp-meta-base-0.2-1-any.pkg.tar.xz
 
 %NAME%
 djp-meta-base
@@ -8,28 +8,28 @@ djp-meta-base
 djp-meta
 
 %VERSION%
-0.1-8
+0.2-1
 
 %DESC%
-Metapackages to manage Arch installations
+Metapackage for all systems
 
 %CSIZE%
-2688
+2684
 
 %ISIZE%
 4096
 
 %MD5SUM%
-7c359f7006b2dc2c68c7ca361af55e7e
+505fa68403ab45840dd9acf6c5197203
 
 %SHA256SUM%
-a9ac8cb8490674dec4a3111a631284babe73e17b91dfa678e00f13e622c3cd5b
+5dd1c38e7f5b4a61861b188a9e3da7c45f2ef491d0f8bd1c2824c97c399e3f77
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAltz0c0ACgkQFW138LsgdFDFGwgArO9Qe0lHO4rAaYx8WINLiyVoOZ+4vBdbvJMmX3UGZhU0S6hTzrIXk4e/gIH8BiG5aO6tTUeikLl0xN68UrDTa/+uJinLj7Xyo0MKxuYy6WTpvT48fAE/a4qYRa2VOgjApkTKMHIP9CfSSKGquTKYh8GzzaIy2+U5qc8O73ynCHOZLDHFbbdjnFxb4CYASVMBOHBemfRZV79K3SZwu45vQRkI5cl32RtsMmA8uKD+ch3Wk4j91ZFpbhQmWn7eiCk1I/rHWj0c7pjK5N3eRFMxMN1dKns1u2HT6KwaPpRmQVUj5GT5QgAcvtygVW9idSCT/njUeKTbHdzSg56nMa3XAQ==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt8PacACgkQFW138LsgdFAAEwf/ecumIFXvUxNwCEJPY7Jky9oTLBcpz+BGeQ9o6mn5afANbAU7x+4KvW1f81lWEpeyZE3WaTJXkBUmCnUXoPaC/K7RXbYhk1+3sJcNTRjgJbAkxt8IrWxJgQ9WU/YB97IWGRZivzmUOnWUZI8Qv90+AdgGKVuauM3Ltwv5KnFnMXmCCfu8J3omiDEkMFxF7m/tpirfjIoS5lDgbOM1crSexr5WQHngC0cqkOF4hOJt/TARePMa41s4Zd/pxXbjtNTYsDkI13nL279oSdXybu1ublzDnT4o+kNeuOshfjuW8lB76jAXYa6NwYR4mXMwphJTAIS7xWGsBDeWpsLS4mkQ3w==
 
 %URL%
-https://github.com/djpohly
+https://github.com/djpohly/PKGBUILD
 
 %LICENSE%
 GPL
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1534317000
+1534868898
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/416243141
+https://travis-ci.org/djpohly/PKGBUILD/builds/418783045
 
 %DEPENDS%
 bc
