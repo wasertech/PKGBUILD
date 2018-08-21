@@ -2,13 +2,13 @@
 # Contributor: David Arroyo <droyo@aqwari.us>
 _pkgname=execline
 pkgname=$_pkgname-musl-git
-pkgver=v2.1.4.2
+pkgver=v2.5.0.1.3.g3262
 pkgrel=1
 pkgdesc="A (non-interactive) scripting language, like sh. [static-musl; GIT]"
 arch=('i686' 'x86_64')
 url="http://www.skarnet.org/software/execline"
 license=('custom:ISC')
-makedepends=('skalibs-musl' 'musl')
+makedepends=('skalibs-musl' 'musl' 'git')
 options=('staticlibs')
 source=("git://git.skarnet.org/execline")
 sha256sums=('SKIP')
