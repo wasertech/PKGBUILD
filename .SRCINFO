@@ -7,6 +7,7 @@ pkgbase = srandrd
 	arch = x86_64
 	license = custom:MIT/X
 	depends = libxrandr
+	depends = libxinerama
 	provides = srandrd
 	source = https://github.com/jceb/srandrd/archive/v0.6.0.tar.gz
 	md5sums = 91041c39b46e7c8e8f7401a74cdaab10
