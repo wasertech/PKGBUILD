@@ -1,0 +1,10 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/dtach
+usr/bin/dtattach
+usr/bin/dtmaster
+usr/share/
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/dtach.1.gz
