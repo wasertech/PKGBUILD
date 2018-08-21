@@ -5,7 +5,7 @@
 
 _pkgname=vcsh
 pkgname=vcsh-git
-pkgver=1.20151229.1.r0.g87bccfd
+pkgver=1.20141026.r396.gc4019a5
 pkgrel=1
 epoch=1
 pkgdesc='manage config files in HOME via fake bare git repositories'
@@ -17,7 +17,7 @@ makedepends=('git') # perl-shell-command perl-test-most 'ruby-ronn'
 optdepends=('myrepos: helps manage a large number of repositories')
 provides=("vcsh")
 conflicts=("vcsh")
-source=("git://github.com/RichiH/vcsh.git#branch=debian")
+source=("git://github.com/djpohly/vcsh.git#branch=refactor")
 md5sums=('SKIP')
 
 pkgver() {
