@@ -1,5 +1,5 @@
 %FILENAME%
-djp-meta-base-0.2-1-any.pkg.tar.xz
+djp-meta-base-0.2-2-any.pkg.tar.xz
 
 %NAME%
 djp-meta-base
@@ -8,25 +8,25 @@ djp-meta-base
 djp-meta
 
 %VERSION%
-0.2-1
+0.2-2
 
 %DESC%
 Metapackage for all systems
 
 %CSIZE%
-2684
+2720
 
 %ISIZE%
 4096
 
 %MD5SUM%
-505fa68403ab45840dd9acf6c5197203
+545e8b3067068c34b98e301e964e2703
 
 %SHA256SUM%
-5dd1c38e7f5b4a61861b188a9e3da7c45f2ef491d0f8bd1c2824c97c399e3f77
+384db9bf2fbdac89e76eb4fa54df7ad33b5e054e2c8dded88f2ff5cea9490ddb
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt8PacACgkQFW138LsgdFAAEwf/ecumIFXvUxNwCEJPY7Jky9oTLBcpz+BGeQ9o6mn5afANbAU7x+4KvW1f81lWEpeyZE3WaTJXkBUmCnUXoPaC/K7RXbYhk1+3sJcNTRjgJbAkxt8IrWxJgQ9WU/YB97IWGRZivzmUOnWUZI8Qv90+AdgGKVuauM3Ltwv5KnFnMXmCCfu8J3omiDEkMFxF7m/tpirfjIoS5lDgbOM1crSexr5WQHngC0cqkOF4hOJt/TARePMa41s4Zd/pxXbjtNTYsDkI13nL279oSdXybu1ublzDnT4o+kNeuOshfjuW8lB76jAXYa6NwYR4mXMwphJTAIS7xWGsBDeWpsLS4mkQ3w==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt89/kACgkQFW138LsgdFBY7ggAsDBoeviFFOZY9Kt+TUGkKOwz+fxYkqhoJLbDfoVg9sM3LWtOyiRDOJqnig7DAwFEHMmji9ie7co3CzUple8TamatXuab+bKg9v93jFCYsf5mpGTiZuVFCdmaw+Q/Lq3nrgtcvDh5/MAX58whLTfKxnyrew+pXLVbZzzB3vnApWh72PA80CrEf7wX2d041MwC6VmQjOGleHdbpiai+VJLX6xhtfGGALDE9qPuqxmP28CsXSDNhT9BH6W2RTEy+F3bLw2G6QF09EKohThlN5uzNKP+Qkd1tgWqR65H8Hsn+HuZFp3d1YE6tQX6UEEgE3dh5H2PfL75ZKD21RJKDmhMow==
 
 %URL%
 https://github.com/djpohly/PKGBUILD
@@ -38,18 +38,21 @@ GPL
 any
 
 %BUILDDATE%
-1534868898
+1534916596
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/418783045
+https://travis-ci.org/djpohly/PKGBUILD/builds/419017468
 
 %DEPENDS%
+asciinema
 bc
 conky-cli
 cryptsetup
 curl
+dhcpcd
 diffutils
 djp-keyring
+dos2unix
 dmenu
 dtach
 dwm
@@ -58,11 +61,13 @@ efibootmgr
 git
 grub
 gvim
+hexedit
 hsetroot
 htop
 intel-ucode
 iproute2
 iputils
+irssi
 kbd-dvorak-djp
 licenses
 linux
@@ -75,12 +80,14 @@ man-pages
 myrepos
 nmap
 openbsd-netcat
+openntpd
 openssh
 os-prober
 p7zip
 parallel
 pass
 powerpill
+puzzles
 redshift
 rlwrap
 rsync
@@ -92,6 +99,7 @@ sudo
 sysfsutils
 tcpdump
 texinfo
+time
 traceroute
 ttf-fantasque-sans
 unzip
