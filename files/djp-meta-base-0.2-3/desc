@@ -1,5 +1,5 @@
 %FILENAME%
-djp-meta-base-0.2-2-any.pkg.tar.xz
+djp-meta-base-0.2-3-any.pkg.tar.xz
 
 %NAME%
 djp-meta-base
@@ -8,25 +8,25 @@ djp-meta-base
 djp-meta
 
 %VERSION%
-0.2-2
+0.2-3
 
 %DESC%
 Metapackage for all systems
 
 %CSIZE%
-2720
+2724
 
 %ISIZE%
 4096
 
 %MD5SUM%
-545e8b3067068c34b98e301e964e2703
+0769f3b16a228f870a88ebb0110356db
 
 %SHA256SUM%
-384db9bf2fbdac89e76eb4fa54df7ad33b5e054e2c8dded88f2ff5cea9490ddb
+6e066d52b403c1b195b058b930c130c045fd18270e1533d43e97bbe9a3bed646
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt89/kACgkQFW138LsgdFBY7ggAsDBoeviFFOZY9Kt+TUGkKOwz+fxYkqhoJLbDfoVg9sM3LWtOyiRDOJqnig7DAwFEHMmji9ie7co3CzUple8TamatXuab+bKg9v93jFCYsf5mpGTiZuVFCdmaw+Q/Lq3nrgtcvDh5/MAX58whLTfKxnyrew+pXLVbZzzB3vnApWh72PA80CrEf7wX2d041MwC6VmQjOGleHdbpiai+VJLX6xhtfGGALDE9qPuqxmP28CsXSDNhT9BH6W2RTEy+F3bLw2G6QF09EKohThlN5uzNKP+Qkd1tgWqR65H8Hsn+HuZFp3d1YE6tQX6UEEgE3dh5H2PfL75ZKD21RJKDmhMow==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt9mBUACgkQFW138LsgdFCx4Af+OgCMAfuigRQvPdAo0Zx2+DKjJYk0YIbwIpGLKG22MbcWwOtyYNckD15tBdykZKbaDqkoit1Nm7l0DIyMUJkRK+vlTc0un7XrdlXDEvi/k5EX4LXIrm8pCsFNMhZKRJKRGRfVB8DNf3NZqLhb6+a/ASc7eRy5z8es9UKCPTv568ZTDf9Fo9k5jnEBREe6k9n9/MlL+GdR3GK1s4gqejtMrJARCK3jUWwa79elWlBQdtb3hm1IOVpQcpH1HIkjoQBvOpeCLAdV8X4EEqlwGr1UVmfKWsD/9xFQ6tWkRB8gklEm3iQgn1eHuTAQ9TwS+Iqc++Wq95PBGbtOto1qc8K0AA==
 
 %URL%
 https://github.com/djpohly/PKGBUILD
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1534916596
+1534957583
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/419017468
+https://travis-ci.org/djpohly/PKGBUILD/builds/419277784
 
 %DEPENDS%
 asciinema
