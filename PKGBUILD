@@ -17,7 +17,7 @@ pkgname=(
 	djp-meta-samsung
 )
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -196,7 +196,7 @@ package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
 	davmail
 	khal
 	mutt
-	openconnect-palo
+	openconnect
 	vdirsyncer
 ); }
 
