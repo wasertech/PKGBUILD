@@ -1,0 +1,14 @@
+%FILES%
+usr/
+usr/share/
+usr/share/fonts/
+usr/share/fonts/Type1/
+usr/share/fonts/Type1/et-book/
+usr/share/fonts/Type1/et-book/et-book-bold-line-figures.pfb
+usr/share/fonts/Type1/et-book/et-book-display-italic-old-style-figures.pfb
+usr/share/fonts/Type1/et-book/et-book-roman-line-figures.pfb
+usr/share/fonts/Type1/et-book/et-book-roman-old-style-figures.pfb
+usr/share/fonts/Type1/et-book/et-book-semi-bold-old-style-figures.pfb
+usr/share/licenses/
+usr/share/licenses/type1-et-book/
+usr/share/licenses/type1-et-book/LICENSE

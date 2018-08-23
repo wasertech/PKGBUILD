@@ -1,0 +1,12 @@
+%FILES%
+usr/
+usr/share/
+usr/share/fonts/
+usr/share/fonts/OTF/
+usr/share/fonts/OTF/et-book/
+usr/share/fonts/OTF/et-book/ETBookOT-Bold.otf
+usr/share/fonts/OTF/et-book/ETBookOT-Italic.otf
+usr/share/fonts/OTF/et-book/ETBookOT-Roman.otf
+usr/share/licenses/
+usr/share/licenses/otf-et-book/
+usr/share/licenses/otf-et-book/LICENSE
