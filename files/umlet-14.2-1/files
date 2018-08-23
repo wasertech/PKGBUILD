@@ -1,0 +1,61 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/umlet
+usr/share/
+usr/share/applications/
+usr/share/applications/umlet.desktop
+usr/share/umlet/
+usr/share/umlet/LICENCE.txt
+usr/share/umlet/custom_elements/
+usr/share/umlet/custom_elements/AutoResize1.java
+usr/share/umlet/custom_elements/AutoResize2.java
+usr/share/umlet/custom_elements/Default.java
+usr/share/umlet/custom_elements/RectangleRound.java
+usr/share/umlet/custom_elements/WordWrap.java
+usr/share/umlet/img/
+usr/share/umlet/img/umlet_logo.png
+usr/share/umlet/lib/
+usr/share/umlet/lib/autocomplete-2.5.8.jar
+usr/share/umlet/lib/batik-awt-util-1.8.jar
+usr/share/umlet/lib/batik-dom-1.8.jar
+usr/share/umlet/lib/batik-ext-1.8.jar
+usr/share/umlet/lib/batik-svggen-1.8.jar
+usr/share/umlet/lib/batik-util-1.8.jar
+usr/share/umlet/lib/batik-xml-1.8.jar
+usr/share/umlet/lib/bcel-5.2.jar
+usr/share/umlet/lib/commons-io-2.4.jar
+usr/share/umlet/lib/ecj-4.4.2.jar
+usr/share/umlet/lib/itextpdf-5.4.1.jar
+usr/share/umlet/lib/javaparser-core-2.3.0.jar
+usr/share/umlet/lib/jlibeps-0.1.jar
+usr/share/umlet/lib/log4j-1.2.17.jar
+usr/share/umlet/lib/mailapi-1.4.3.jar
+usr/share/umlet/lib/rsyntaxtextarea-2.5.8.jar
+usr/share/umlet/lib/slf4j-api-1.7.7.jar
+usr/share/umlet/lib/slf4j-log4j12-1.7.13.jar
+usr/share/umlet/lib/smtp-1.5.4.jar
+usr/share/umlet/lib/umlet-elements-14.2.jar
+usr/share/umlet/lib/umlet-swing-14.2.jar
+usr/share/umlet/palettes/
+usr/share/umlet/palettes/Custom Drawings.uxf
+usr/share/umlet/palettes/Deprecated UML Sequence - All in one.uxf
+usr/share/umlet/palettes/Generic Colors.uxf
+usr/share/umlet/palettes/Generic Layers.uxf
+usr/share/umlet/palettes/Generic Text and Alignment.uxf
+usr/share/umlet/palettes/Plots.uxf
+usr/share/umlet/palettes/UML Activity - All in one.uxf
+usr/share/umlet/palettes/UML Activity.uxf
+usr/share/umlet/palettes/UML Class.uxf
+usr/share/umlet/palettes/UML Common Elements.uxf
+usr/share/umlet/palettes/UML Composite Structure.uxf
+usr/share/umlet/palettes/UML Package.uxf
+usr/share/umlet/palettes/UML Sequence - All in one.uxf
+usr/share/umlet/palettes/UML Sequence.uxf
+usr/share/umlet/palettes/UML State Machine.uxf
+usr/share/umlet/palettes/UML Structure and Deployment.uxf
+usr/share/umlet/palettes/UML Timing Diagram.uxf
+usr/share/umlet/palettes/UML Use Case.uxf
+usr/share/umlet/umlet.desktop
+usr/share/umlet/umlet.jar
+usr/share/umlet/umlet.sh
