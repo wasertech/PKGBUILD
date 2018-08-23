@@ -1,10 +1,11 @@
-# $Id$
+# Maintainer: Shadoukun <shadoukun@gmail.com>
+# Contributor: SuperBo <supernbo@gmail.com>
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARTIX kernel
-#pkgbase=linux-custom       # Build kernel with a different name
+#pkgbase=linux               # Build stock -ARTIX kernel
+pkgbase=linux-surface4       # Build kernel with a different name
 _artix=4.18.4-artix1
 _srcver=4.18.4-arch1
 pkgver=${_artix//-/.}
@@ -21,6 +22,14 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
+  acpi.patch
+  buttons.patch
+  ipts.patch
+  keyboards_and_covers.patch
+  sdcard_reader.patch
+  surfacedock.patch
+  wifi.patch
+  99-ipts.rules
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,7 +40,15 @@ sha256sums=('SKIP'
             '919d23df56993bac7ca793921e988d1fc53b069aa3d30ff2049571741be3219c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            '5a9c7cf3cbc93a778cbf923aa7b442f5f8cc95273435fb1ef4eb9ff9de8190fb'
+            '3025bb0b3f216ca62eea021f20b060662f4cde5fd90d3e4971e2d8d37dc89928'
+            'b9e2471c1be48a46bd7408a89da7b117e3d78555c8ada1dee818a0aa7bd59432'
+            '5f51ddfd49f581aed02141ff11ffaa556d4737d34b9958d342a84c0149c5bba6'
+            '7b58bf7bf2d61fea106af24b37ee4e2c5faf7e4ffa55be5769a1b1d0c5fb04af'
+            'cbad22346c934a52a42716c8af604154b52c21dccc938e22a40eb51f9179ae0e'
+            '0526f56347aa4c7f8b604c614300baff1da3dddb2930b4c2b8890622c6e99e82'
+            '82d0fa48947aff93cbbc9a0f0f3020bf95e860d604549b20f7ef8e1634798bd8')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARTIX}
@@ -71,7 +88,7 @@ build() {
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
-  depends=(coreutils linux-firmware kmod mkinitcpio)
+  depends=(coreutils linux-firmware linux-firmware-surface4 kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
