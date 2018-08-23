@@ -14,6 +14,7 @@ pkgdesc="A typeface used in Edward Tufte's books"
 arch=(any)
 url="https://edwardtufte.github.io/et-book"
 license=(MIT)
+makedepends=('git')
 source=("et-book::git+https://github.com/edwardtufte/et-book.git#commit=5cadf4d"
         "et-book-ligatures::git+https://github.com/adactio/et-book.git#commit=65f7802"
 	    "LICENSE::https://raw.githubusercontent.com/edwardtufte/et-book/gh-pages/LICENSE")
