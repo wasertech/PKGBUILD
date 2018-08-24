@@ -17,7 +17,7 @@ pkgname=(
 	djp-meta-samsung
 )
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -169,10 +169,10 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 ); }
 
 package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
-	livestreamer
 	mpc
 	mpd
 	mpv
+	streamlink
 	youtube-dl
 ); }
 
