@@ -3,7 +3,7 @@ pkgbase=djp-meta
 pkgname=(
 	djp-meta-base
 	djp-meta-laptop
-	djp-meta-xorg-apps
+	djp-meta-xorg
 	djp-meta-anopa
 	djp-meta-surface4
 	djp-meta-devel
@@ -17,7 +17,7 @@ pkgname=(
 	djp-meta-samsung
 )
 pkgver=0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -26,23 +26,18 @@ license=('GPL')
 package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	asciinema
 	bc
-	conky-cli
 	cryptsetup
 	curl
 	dhcpcd
 	diffutils
 	djp-keyring
 	dos2unix
-	dmenu
 	dtach
-	dwm
-	dzen2
 	efibootmgr
 	git
 	grub
 	gvim
 	hexedit
-	hsetroot
 	htop
 	intel-ucode
 	iproute2
@@ -67,21 +62,19 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	parallel
 	pass
 	powerpill
-	puzzles
+	pv
 	redshift
 	rlwrap
 	rsync
-	rxvt-unicode
+	rxvt-unicode-terminfo
 	sed
 	socat
-	srandrd
 	sudo
 	sysfsutils
 	tcpdump
 	texinfo
 	time
 	traceroute
-	ttf-fantasque-sans
 	unzip
 	usbutils
 	vcsh
@@ -91,6 +84,28 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	wget
 	which
 	whois
+	zip
+); }
+
+package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; depends=(
+	conky-cli
+	dmenu
+	dwm
+	dzen2
+	feh
+	#firefox
+	gvim
+	hsetroot
+	puzzles
+	rxvt-unicode
+	scrot
+	srandrd
+	stint
+	tabbed
+	tigervnc
+	ttf-et-book
+	ttf-fantasque-sans
+	vimb
 	wmname
 	xcursor-vanilla-dmz
 	xorg-server
@@ -103,7 +118,9 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	xorg-xwininfo
 	xscreensaver
 	xsel
-	zip
+	zathura
+	zathura-pdf-poppler
+	zathura-ps
 ); }
 
 package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
@@ -114,19 +131,6 @@ package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
 	terminus-font
 	wpa_supplicant
 	xorg-xbacklight
-); }
-
-package_djp-meta-xorg-apps() { pkgdesc="Metapackage for X applications"; depends=(
-	feh
-	#firefox
-	scrot
-	stint
-	tabbed
-	ttf-et-book
-	vimb
-	zathura
-	zathura-pdf-poppler
-	zathura-ps
 ); }
 
 package_djp-meta-anopa() { pkgdesc="Metapackage for anopa/s6 init"; depends=(
@@ -222,11 +226,11 @@ package_djp-meta-graphics() { pkgdesc="Metapackage for graphics editing"; depend
 ); }
 
 package_djp-meta-print() { pkgdesc="Metapackage for printing"; depends=(
-	samba
 	foomatic-db
 	foomatic-db-nonfree
 	foomatic-db-nonfree-ppds
 	foomatic-db-ppds
+	samba
 ); }
 
 package_djp-meta-samsung() { pkgdesc="Metapackage for Samsung laptops"; depends=(
