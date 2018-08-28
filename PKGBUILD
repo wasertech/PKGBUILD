@@ -15,15 +15,19 @@ pkgname=(
 	djp-meta-graphics
 	djp-meta-print
 	djp-meta-samsung
+	djp-meta-wheaton
+	djp-meta-android
+	djp-meta-java
 )
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
 license=('GPL')
 
 package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
+	adb
 	asciinema
 	bc
 	cryptsetup
@@ -31,7 +35,9 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	dhcpcd
 	diffutils
 	djp-keyring
+	dnsmasq
 	dos2unix
+	dosfstools
 	dtach
 	efibootmgr
 	git
@@ -39,6 +45,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	gvim
 	hexedit
 	htop
+	inotify-tools
 	intel-ucode
 	iproute2
 	iputils
@@ -63,6 +70,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	pass
 	powerpill
 	pv
+	pwgen
 	redshift
 	rlwrap
 	rsync
@@ -72,8 +80,10 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	sudo
 	sysfsutils
 	tcpdump
+	terminus-font
 	texinfo
 	time
+	tmux
 	traceroute
 	unzip
 	usbutils
@@ -88,7 +98,9 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 ); }
 
 package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; depends=(
+	compton
 	conky-cli
+	dina-font-latin1
 	dmenu
 	dwm
 	dzen2
@@ -99,17 +111,20 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; depends=(
 	puzzles
 	rxvt-unicode
 	scrot
+	smartmontools
 	srandrd
 	stint
 	tabbed
 	tigervnc
 	ttf-et-book
 	ttf-fantasque-sans
+	unrar
 	vimb
 	wmname
 	xcursor-vanilla-dmz
 	xorg-server
 	xorg-xdpyinfo
+	xorg-xev
 	xorg-xinit
 	xorg-xinput
 	xorg-xrandr
@@ -128,7 +143,6 @@ package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
 	acpid
 	aircrack-ng
 	powertop
-	terminus-font
 	wpa_supplicant
 	xorg-xbacklight
 ); }
@@ -153,7 +167,10 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	binutils
 	bison
 	ccache
+	cgdb
 	cloc
+	dfu-util
+	diffstat
 	fakeroot
 	flex
 	gcc
@@ -161,21 +178,27 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	indent
 	m4
 	make
+	namcap
 	patch
 	pkgconf
 	postgresql
 	python
 	ruby
+	shellcheck
 	sqlite
 	strace
+	teensy-loader-cli
 	valgrind
 	yarn
 ); }
 
 package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
+	calf
+	jalv
 	mpc
 	mpd
 	mpv
+	sox
 	streamlink
 	youtube-dl
 ); }
@@ -208,6 +231,9 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 	fig2dev
 	gnuplot
 	latex-template-acm
+	make
+	minted
+	tectonic
 	texlive-core
 	texlive-fontsextra
 	texlive-humanities
@@ -226,6 +252,7 @@ package_djp-meta-graphics() { pkgdesc="Metapackage for graphics editing"; depend
 ); }
 
 package_djp-meta-print() { pkgdesc="Metapackage for printing"; depends=(
+	cups
 	foomatic-db
 	foomatic-db-nonfree
 	foomatic-db-nonfree-ppds
@@ -235,4 +262,25 @@ package_djp-meta-print() { pkgdesc="Metapackage for printing"; depends=(
 
 package_djp-meta-samsung() { pkgdesc="Metapackage for Samsung laptops"; depends=(
 	acpi_call-dkms
+); }
+
+package_djp-meta-wheaton() { pkgdesc="Metapackage for campus systems"; depends=(
+	nfs-utils
+	sssd
+); }
+
+package_djp-meta-android() { pkgdesc="Metapackage for Android development"; depends=(
+	android-studio
+	apache-ant
+	maven
+	ninja
+	repo
+); }
+
+package_djp-meta-java() { pkgdesc="Metapackage for Java development"; depends=(
+	apache-ant
+	eclipse-java
+	fernflower-git
+	gradle
+	jad
 ); }
