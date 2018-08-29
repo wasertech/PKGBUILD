@@ -18,9 +18,10 @@ pkgname=(
 	djp-meta-wheaton
 	djp-meta-android
 	djp-meta-java
+	djp-meta-re
 )
 pkgver=0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -28,6 +29,7 @@ license=('GPL')
 
 package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	adb
+	android-udev
 	asciinema
 	bc
 	cryptsetup
@@ -35,12 +37,14 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	dhcpcd
 	diffutils
 	djp-keyring
+	dmidecode
 	dnsmasq
 	dos2unix
 	dosfstools
 	dtach
 	efibootmgr
 	git
+	gptfdisk
 	grub
 	gvim
 	hexedit
@@ -68,6 +72,9 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	p7zip
 	parallel
 	pass
+	perl-authen-sasl
+	perl-mime-tools
+	perl-net-smtp-ssl
 	powerpill
 	pv
 	pwgen
@@ -75,6 +82,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	rlwrap
 	rsync
 	rxvt-unicode-terminfo
+	s-nail
 	sed
 	socat
 	sudo
@@ -108,6 +116,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; depends=(
 	#firefox
 	gvim
 	hsetroot
+	otf-alegreya-sans
 	puzzles
 	rxvt-unicode
 	scrot
@@ -127,12 +136,14 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; depends=(
 	xorg-xev
 	xorg-xinit
 	xorg-xinput
+	xorg-xprop
 	xorg-xrandr
 	xorg-xset
 	xorg-xsetroot
 	xorg-xwininfo
 	xscreensaver
 	xsel
+	xterm
 	zathura
 	zathura-pdf-poppler
 	zathura-ps
@@ -179,12 +190,15 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	m4
 	make
 	namcap
+	pacman-contrib
 	patch
+	patchutils
 	pkgconf
 	postgresql
 	python
 	ruby
 	shellcheck
+	sparse
 	sqlite
 	strace
 	teensy-loader-cli
@@ -193,6 +207,7 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 ); }
 
 package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
+	alsa-utils
 	calf
 	jalv
 	mpc
@@ -222,6 +237,7 @@ package_djp-meta-present() { pkgdesc="Metapackage for presentations"; depends=(
 package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
 	davmail
 	khal
+	libreoffice
 	mutt
 	openconnect
 	vdirsyncer
@@ -239,6 +255,7 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 	texlive-humanities
 	texlive-latexextra
 	texlive-luximono
+	texlive-pictures
 	texlive-publishers
 	texlive-science
 	xfig
@@ -247,6 +264,7 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 package_djp-meta-graphics() { pkgdesc="Metapackage for graphics editing"; depends=(
 	fontforge
 	gimp
+	graphviz
 	inkscape
 	umlet
 ); }
@@ -270,11 +288,15 @@ package_djp-meta-wheaton() { pkgdesc="Metapackage for campus systems"; depends=(
 ); }
 
 package_djp-meta-android() { pkgdesc="Metapackage for Android development"; depends=(
+	android-platform
+	android-sdk-build-tools
 	android-studio
+	android-tools
 	apache-ant
 	maven
 	ninja
 	repo
+	schedtool
 ); }
 
 package_djp-meta-java() { pkgdesc="Metapackage for Java development"; depends=(
@@ -283,4 +305,15 @@ package_djp-meta-java() { pkgdesc="Metapackage for Java development"; depends=(
 	fernflower-git
 	gradle
 	jad
+	junit
+); }
+
+package_djp-meta-re() { pkgdesc="Metapackage for reverse engineering"; depends=(
+	acpica
+	binwalk
+	cabextract
+	efitools
+	radare2
+	uefitool
+	wine
 ); }
