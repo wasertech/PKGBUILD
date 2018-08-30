@@ -21,14 +21,14 @@ pkgname=(
 	djp-meta-re
 )
 pkgver=0.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
 license=('GPL')
 
 package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
-	adb
+	android-tools
 	android-udev
 	asciinema
 	bc
