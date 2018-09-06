@@ -30,8 +30,7 @@ deploy:
     branch: asset-overwrite-fix
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: ${TRAVIS_TAG}/*.{db,files,gz,xz,sig}
-  overwrite: true
+  file: ${TRAVIS_TAG}/*.pkg.*
   skip_cleanup: true
   on:
     all_branches: true
