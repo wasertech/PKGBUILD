@@ -21,7 +21,7 @@ pkgname=(
 	djp-meta-re
 )
 pkgver=0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -292,7 +292,7 @@ package_djp-meta-android() { pkgdesc="Metapackage for Android development"; depe
 	android-sdk-build-tools
 	android-studio
 	android-tools
-	apache-ant
+	ant
 	maven
 	ninja
 	repo
@@ -300,7 +300,7 @@ package_djp-meta-android() { pkgdesc="Metapackage for Android development"; depe
 ); }
 
 package_djp-meta-java() { pkgdesc="Metapackage for Java development"; depends=(
-	apache-ant
+	ant
 	eclipse-java
 	fernflower-git
 	gradle
