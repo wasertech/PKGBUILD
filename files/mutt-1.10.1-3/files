@@ -7,9 +7,9 @@ usr/
 usr/bin/
 usr/bin/flea
 usr/bin/mutt
+usr/bin/mutt_pgpring
 usr/bin/muttbug
 usr/bin/pgpewrap
-usr/bin/pgpring
 usr/bin/smime_keys
 usr/share/
 usr/share/doc/
@@ -171,8 +171,8 @@ usr/share/locale/zh_TW/LC_MESSAGES/mutt.mo
 usr/share/man/
 usr/share/man/man1/
 usr/share/man/man1/mutt.1.gz
+usr/share/man/man1/mutt_pgpring.1.gz
 usr/share/man/man1/pgpewrap.1.gz
-usr/share/man/man1/pgpring.1.gz
 usr/share/man/man1/smime_keys.1.gz
 usr/share/man/man5/
 usr/share/man/man5/mbox.5.gz
