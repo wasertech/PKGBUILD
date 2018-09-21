@@ -21,7 +21,7 @@ pkgname=(
 	djp-meta-re
 )
 pkgver=0.2
-pkgrel=9
+pkgrel=10
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -247,8 +247,11 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 	fig2dev
 	gnuplot
 	latex-template-acm
+	libreoffice-fresh
 	make
 	minted
+	pandoc
+	python
 	tectonic
 	texlive-core
 	texlive-fontsextra
