@@ -155,6 +155,7 @@ package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
 	aircrack-ng
 	powertop
 	wpa_supplicant
+	x11-touchscreen-calibrator
 	xorg-xbacklight
 ); }
 
