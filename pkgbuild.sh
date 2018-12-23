@@ -29,11 +29,12 @@ fi
 sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 
 # Add configuration for repository.
-sudo tee -a "/etc/pacman.conf" << EOF
+cat - /etc/pacman.conf > /tmp/pacman.conf.new << EOF
 [${pkgrepo}]
 SigLevel = Optional TrustAll
 Server = https://github.com/${pkgslug}/releases/download/${pkgtag}
 EOF
+sudo cp /tmp/pacman.conf.new /etc/pacman.conf
 
 # Sync repositories
 sudo pacman -Sy
