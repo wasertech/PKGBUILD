@@ -8,6 +8,7 @@ arch=("any")
 url="https://github.com/BatchDrake/suscan"
 license=("GPL")
 depends=("soapysdr" "sigutils-git")
+makedepends=("git")
 provides=("suscan")
 conflicts=("suscan")
 source=(suscan::git+https://github.com/BatchDrake/suscan.git)

@@ -5,6 +5,7 @@ pkgbase = suscan-git
 	url = https://github.com/BatchDrake/suscan
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = soapysdr
 	depends = sigutils-git
 	provides = suscan
