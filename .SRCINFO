@@ -7,6 +7,7 @@ pkgbase = suscan-git
 	license = GPL
 	makedepends = git
 	depends = soapysdr
+	depends = gtk3
 	depends = sigutils-git
 	provides = suscan
 	conflicts = suscan
