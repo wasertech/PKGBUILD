@@ -5,6 +5,7 @@ pkgbase = sigutils-git
 	url = https://github.com/BatchDrake/sigutils
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = libsndfile
 	provides = sigutils
 	conflicts = sigutils

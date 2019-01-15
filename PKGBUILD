@@ -8,6 +8,7 @@ arch=("any")
 url="https://github.com/BatchDrake/sigutils"
 license=("GPL")
 depends=("libsndfile")
+makedepends=("git")
 provides=("sigutils")
 conflicts=("sigutils")
 source=(sigutils::git+https://github.com/BatchDrake/sigutils.git)
