@@ -1,0 +1,9 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/qsstv
+usr/share/
+usr/share/applications/
+usr/share/applications/qsstv.desktop
+usr/share/pixmaps/
+usr/share/pixmaps/qsstv.png
