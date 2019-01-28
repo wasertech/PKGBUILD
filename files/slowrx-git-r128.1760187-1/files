@@ -1,0 +1,8 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/slowrx
+usr/share/
+usr/share/slowrx/
+usr/share/slowrx/aboutdialog.ui
+usr/share/slowrx/slowrx.ui
