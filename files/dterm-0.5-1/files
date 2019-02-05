@@ -1,0 +1,8 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/dterm
+usr/share/
+usr/share/doc/
+usr/share/doc/dterm/
+usr/share/doc/dterm/README.txt
