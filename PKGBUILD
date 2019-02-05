@@ -19,6 +19,7 @@ pkgname=(
 	djp-meta-android
 	djp-meta-java
 	djp-meta-re
+	djp-meta-radio
 )
 pkgver=0.2
 pkgrel=10
@@ -320,4 +321,19 @@ package_djp-meta-re() { pkgdesc="Metapackage for reverse engineering"; depends=(
 	radare2
 	uefitool
 	wine
+); }
+
+package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis"; depends=(
+	audacity
+	baudline
+	dsdcc
+	gnuradio
+	gnuradio-companion
+	gnuradio-osmosdr
+	hackrf
+	gqrx
+	inspectrum
+	multimon-ng
+	qsstv
+	sox
 ); }
