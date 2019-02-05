@@ -336,4 +336,5 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	multimon-ng
 	qsstv
 	sox
+	urh
 ); }
