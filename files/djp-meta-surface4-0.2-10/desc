@@ -14,19 +14,19 @@ djp-meta
 Metapackage for Surface Pro 4 devices
 
 %CSIZE%
-2360
+2424
 
 %ISIZE%
 4096
 
 %MD5SUM%
-445e3d489fcaf4157a64a2bd1f63e9aa
+c57c2b5c2e52403e323e6c127d6f57f6
 
 %SHA256SUM%
-c7f0af583942f5b8ae8d14e591c3f914acdfd9e143ef3272b5e638c789abf92a
+0a47a68e40e4741acef291ceb3487276e6cd4c18ac68a1922ec2fad89c805e44
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlukfsEACgkQFW138LsgdFAb9Af/Zv3iNo1G9a9rbH+Bg4epSsbyEZOaSgNIgulEquybQIXjKAj18beFRhk4m0h9nRxvQeaccQUl/kf/0lkfKVQjKgFGyE3KfMiuHmoZ8ETZsdwQtJFUztBPyzIyeJsKSUku/GU/WwmyF9R52uIGOG9N+xyNHNf6F28oeUpoYfSCM+1yeW4SwgrcgvnzCag0yUqpzuAiVI++KxguLkyAwF+LjXzVzxUglCl2rDCNlqFDVmYulB/wWSIkqVfawiofyeL86Z21Il1aa1TWSBFJHeJlrYRenthMdOzrMG5MmCKNl/jWWhwWX7x5N6DUmlOrbK4TkqQzYXrqqAats5dTZeoXGg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlxZy4wACgkQFW138LsgdFAx5Af9EOGESkmEP51x8Eve+ndpaT5QjpyPRzHsY4gY49suSORois29OsI7Gg0qetlQ7J6/pVCXWB8zPEreSAkr/qDZKQ8ecqkuKFTqTMGEvmlZLpkNSu+VRutYzQS6mT2cGu6Z5k3k/85+q9qjL0AQobLXFdeMWshdd0CSin+jTqlrphHjOgqR7EbAJekXH+kkz3QnCterKookpDTU6kdREBu1BOLtKVk373XV7N3a6cveambUz1rQcy4nMFudYTK5GRKVnXTkwfoX/XfMSccHcpu98oqB3RQOm6xuMdxENxjJPTRpiFi0PvdUUESy40CWAW5zeXDB7p1Vx9RNZl0vSj5WSA==
 
 %URL%
 https://github.com/djpohly/PKGBUILD
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1537507002
+1549388676
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/431339417
+https://travis-ci.org/djpohly/PKGBUILD/builds/489156320
 
 %DEPENDS%
 linux-firmware-surface4

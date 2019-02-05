@@ -14,19 +14,19 @@ djp-meta
 Metapackage for laptops
 
 %CSIZE%
-2380
+2456
 
 %ISIZE%
 4096
 
 %MD5SUM%
-3c45979aae037eef810c30bc10d82579
+3ddf2fad56f5f7d06643c8fad1b27f12
 
 %SHA256SUM%
-bb86db958a4e37c02d949842bb359d11fd870ea733f49af199eee76ae40fea7e
+7d704c7382260d2be9eddcf42f2b040ec346510e48fd220305edb9bc39d1794b
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlukfsEACgkQFW138LsgdFB4Wwf+ML/xk+2shQ05p28zlccBLYGBraYSJDrQAP61bkpqC/DUWC1mObToSIhz4DOR9QYC1mwuCnWg+3D7a6ZR7hYEcbY9cJw//8nEO5/lQ+v4630PxS4nrfOTdSlThfkW5cGpRjQWfaRSesTq4ID/VRlduBFXYUZN0V+3S5XCD6mEX34qf+040nPF0iqTdOuZArKJvQUoNl39gO0fGOtGTs1YsAMLceL/DkMlsUJorCbR6lP63wkKsOlGsufQBCEx41+B/XfXZjQYUzl10w7nO5NjOlu7PProOKlt8ZPj41ErmajTR7JES25hnk9glD40ncubVmk06qIpFn1KnHtF/zkDXA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlxZy4wACgkQFW138LsgdFCgHwgArz4j/l+kHk5OCgk2fCGCHuoLGkbRflA4fDVjzUZSiuKPxlaFOtvj4UW5WuxZPjnfQjf9mnlki+lhcEWco+02SYf/uyux4gaPS55buC2PUbh024Sp6L/R4Grwc7nd6S3MPiRdDNOcQ/VrtoTIXoOSdt74mar6p+nSruFY+24HTuW4r01SGTI8rzH8pT8/GykcJguq5+0wfn9F6KYXXfwj5hoowZySZhm3OSgjE3VE1nRgFEb3WfouzNPRwHG9WQA9Oi0WeWN3Pa9lnRIcZ7PWVwVEiouVLG6xxMlfGS7PwTx6veBI5Nkiq+9/bV3N5sgo1kRpylpY+qryvucfRGkIWg==
 
 %URL%
 https://github.com/djpohly/PKGBUILD
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1537507002
+1549388676
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/431339417
+https://travis-ci.org/djpohly/PKGBUILD/builds/489156320
 
 %DEPENDS%
 acpi
@@ -49,5 +49,6 @@ acpid
 aircrack-ng
 powertop
 wpa_supplicant
+x11-touchscreen-calibrator
 xorg-xbacklight
 
