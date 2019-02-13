@@ -1,4 +1,4 @@
-FROM archimg/base-devel
+FROM archlinux/base
 ARG userid
 
 # Update packages.
