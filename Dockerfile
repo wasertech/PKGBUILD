@@ -1,8 +1,8 @@
-FROM archlinux/base
+FROM antergos/archlinux-base-devel
 ARG userid
 
 # Update packages.
-RUN pacman -Syu --noconfirm --ignore linux --ignore linux-firmware base-devel
+RUN pacman -Syu --noconfirm --ignore linux --ignore linux-firmware
 
 # Create an unprivileged user.
 RUN useradd -m -u ${userid} -G wheel -s /bin/bash pkguser
