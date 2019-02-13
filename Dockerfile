@@ -2,7 +2,7 @@ FROM archlinux/base
 ARG userid
 
 # Update packages.
-RUN pacman -Syu --noconfirm --ignore linux --ignore linux-firmware
+RUN pacman -Syu --noconfirm --ignore linux --ignore linux-firmware base-devel
 
 # Create an unprivileged user.
 RUN useradd -m -u ${userid} -G wheel -s /bin/bash pkguser
