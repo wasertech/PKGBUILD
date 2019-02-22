@@ -3,8 +3,8 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.17.0a2.r15.g69f4e4f
-pkgrel=1
+pkgver=0.17.0a3.r26.gac45cf1
+pkgrel=2
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('x86_64')
 url="https://vdirsyncer.readthedocs.org/"
@@ -20,8 +20,12 @@ makedepends=("git" "python-setuptools-scm"
              'python-milksnake')
 checkdepends=("python-hypothesis>=3.1"
               "python-pytest" "python-pytest-localserver" "python-pytest-subtesthack")
-source=("git+https://github.com/pimutils/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/pimutils/${_pkgname}.git"
+        update-deps.patch
+	fix-google.patch)
+sha256sums=('SKIP'
+            '847e40ab15f09508bdab8896ff6bf397b9faba8b3287b9cf98e3e5bc10db863c'
+            'f0e64bbb27c4d52ec0bd0d7a2ac118b583ddb563873e45009e0ef184fffa187c')
 conflicts=('vdirsyncer')
 provides=("vdirsyncer=${pkgver}")
 
@@ -32,9 +36,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  # Fixes for OpenSSL dependencies and Google Calendar
-  git pull --no-edit origin pull/787/head
-  git pull --no-edit origin pull/788/head
+  # Fixes for OpenSSL dependencies and Google Calendar (PRs #787 and #788)
+  patch -Np1 -i ../update-deps.patch
+  patch -Np1 -i ../fix-google.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = vdirsyncer-git
 	pkgdesc = Synchronize CalDAV and CardDAV.
-	pkgver = 0.17.0a2.r15.g69f4e4f
-	pkgrel = 1
+	pkgver = 0.17.0a3.r26.gac45cf1
+	pkgrel = 2
 	url = https://vdirsyncer.readthedocs.org/
 	arch = x86_64
 	license = BSD
@@ -23,10 +23,14 @@ pkgbase = vdirsyncer-git
 	depends = python-requests-oauthlib
 	depends = python-shippai
 	depends = rust
-	provides = vdirsyncer=0.17.0a2.r15.g69f4e4f
+	provides = vdirsyncer=0.17.0a3.r26.gac45cf1
 	conflicts = vdirsyncer
 	source = git+https://github.com/pimutils/vdirsyncer.git
+	source = update-deps.patch
+	source = fix-google.patch
 	sha256sums = SKIP
+	sha256sums = 847e40ab15f09508bdab8896ff6bf397b9faba8b3287b9cf98e3e5bc10db863c
+	sha256sums = f0e64bbb27c4d52ec0bd0d7a2ac118b583ddb563873e45009e0ef184fffa187c
 
 pkgname = vdirsyncer-git
 
