@@ -1,11 +1,11 @@
 pkgbase = python-shippai
 	pkgdesc = Rust failures in other languages
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/untitaker/shippai
 	arch = any
 	license = MIT
-	depends = python
+	depends = python-setuptools
 	source = https://github.com/untitaker/shippai/archive/0.3.2.tar.gz
 	sha512sums = c57aaa28c6fa11e7607a37c4e243ed1d0cdb8648a80671676a4c029fc1e9ece39c7dbff43c37f658794ccd03afdbeefcaa542511438765ac67ab9a0f8fe5ac71
 

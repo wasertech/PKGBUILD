@@ -3,12 +3,12 @@
 _name=shippai
 pkgname=python-${_name}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust failures in other languages"
 arch=('any')
 url="https://github.com/untitaker/shippai"
 license=('MIT')
-depends=('python')
+depends=('python-setuptools')
 source=("https://github.com/untitaker/$_name/archive/$pkgver.tar.gz")
 sha512sums=('c57aaa28c6fa11e7607a37c4e243ed1d0cdb8648a80671676a4c029fc1e9ece39c7dbff43c37f658794ccd03afdbeefcaa542511438765ac67ab9a0f8fe5ac71')
 
