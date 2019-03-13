@@ -1,0 +1,12 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/uefipatch
+usr/bin/uefireplace
+usr/bin/uefitool
+usr/share/
+usr/share/licenses/
+usr/share/licenses/uefitool-git/
+usr/share/licenses/uefitool-git/LICENSE
+usr/share/uefitool/
+usr/share/uefitool/patches.txt
