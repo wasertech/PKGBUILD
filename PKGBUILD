@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=11
+pkgrel=12
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -164,6 +164,7 @@ package_djp-meta-anopa() { pkgdesc="Metapackage for anopa/s6 init"; depends=(
 	anopa
 	execline
 	s6
+	s6-portable-utils
 	skalibs
 ); }
 
