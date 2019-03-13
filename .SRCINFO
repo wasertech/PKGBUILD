@@ -1,14 +1,16 @@
-pkgbase = s6
+pkgbase = s6-musl
 	pkgdesc = A small suite of programs for UNIX, designed to allow process supervision
 	pkgver = 2.8.0.0
 	pkgrel = 1
 	url = http://skarnet.org/software/s6/
 	arch = x86_64
 	license = ISC
-	depends = skalibs
-	depends = execline
+	makedepends = skalibs-musl>=2.8.0.0
+	depends = execline>=2.5.1.0
+	provides = s6=2.8.0.0
+	options = staticlibs
 	source = http://skarnet.org/software/s6/s6-2.8.0.0.tar.gz
 	sha256sums = 284792d8bebecc2c0c1f8318149dac9e6d52fe7756d5de55b4bb47a84ba7b106
 
-pkgname = s6
+pkgname = s6-musl
 
