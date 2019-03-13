@@ -16,6 +16,7 @@ before_install:
       --build-arg userid=$TRAVIS_UID
       .
   - docker run -d -t
+      --privileged
       --name pkgbuild
       --mount type=bind,source="$(pwd)",target=/home/pkguser/src
       -e MAN_DISABLE_SECCOMP=1
