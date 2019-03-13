@@ -9,7 +9,7 @@ pkgdesc='A small suite of programs for UNIX, designed to allow process supervisi
 arch=('x86_64')
 url="http://skarnet.org/software/${_pkgname}/"
 license=('ISC')
-makedepends=('skalibs-musl>=2.8.0.0')
+makedepends=('skalibs-musl>=2.8.0.0' 'musl')
 depends=('execline>=2.5.1.0')
 provides=("$_pkgname=$pkgver")
 options=('staticlibs')

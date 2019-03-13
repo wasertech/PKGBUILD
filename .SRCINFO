@@ -6,6 +6,7 @@ pkgbase = s6-musl
 	arch = x86_64
 	license = ISC
 	makedepends = skalibs-musl>=2.8.0.0
+	makedepends = musl
 	depends = execline>=2.5.1.0
 	provides = s6=2.8.0.0
 	options = staticlibs
