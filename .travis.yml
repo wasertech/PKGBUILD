@@ -1,4 +1,5 @@
 language: generic
+dist: xenial
 branches:
   except:
     - pkgbase
@@ -27,8 +28,7 @@ deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: ${TRAVIS_TAG}/*.{db,files,gz,xz,sig}
-  overwrite: true
+  file: ${TRAVIS_TAG}/*.pkg.*
   skip_cleanup: true
   on:
     all_branches: true
