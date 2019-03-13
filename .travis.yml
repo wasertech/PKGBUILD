@@ -1,4 +1,5 @@
 language: generic
+dist: xenial
 branches:
   except:
     - pkgbase
