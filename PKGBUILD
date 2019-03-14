@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=12
+pkgrel=13
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -106,7 +106,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	zip
 ); }
 
-package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; depends=(
+package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=(djp-meta-xorg-apps); depends=(
 	compton
 	conky-cli
 	dina-font-latin1
@@ -328,6 +328,7 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	audacity
 	baudline
 	dsdcc
+	fldigi
 	gnuradio
 	gnuradio-companion
 	gnuradio-osmosdr
@@ -335,7 +336,10 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	gqrx
 	inspectrum
 	multimon-ng
+	pulseaudio
 	qsstv
+	sdrangel
 	sox
 	urh
+	wsjtx
 ); }
