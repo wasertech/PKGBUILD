@@ -7,6 +7,8 @@ etc/gnuradio/conf.d/gr_log_default.conf
 usr/
 usr/bin/
 usr/bin/gnuradio-config-info
+usr/bin/gr-ctrlport-monitor
+usr/bin/gr-perf-monitorx
 usr/include/
 usr/include/gnuradio/
 usr/include/gnuradio/api.h
@@ -177,6 +179,13 @@ usr/lib/python3.7/
 usr/lib/python3.7/site-packages/
 usr/lib/python3.7/site-packages/gnuradio/
 usr/lib/python3.7/site-packages/gnuradio/__init__.py
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/GNURadioControlPortClient.py
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/GrDataPlotter.py
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/RPCConnection.py
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/__init__.py
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/icon.png
+usr/lib/python3.7/site-packages/gnuradio/ctrlport/monitor.py
 usr/lib/python3.7/site-packages/gnuradio/eng_arg.py
 usr/lib/python3.7/site-packages/gnuradio/eng_notation.py
 usr/lib/python3.7/site-packages/gnuradio/eng_option.py
