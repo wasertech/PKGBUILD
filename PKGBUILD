@@ -8,7 +8,7 @@ pkgdesc="VPN client for Palo Alto GlobalProtect VPN"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.infradead.org/openconnect.html"
-depends=('libxml2' 'gnutls' 'libproxy' 'vpnc' 'krb5' 'lz4' 'pcsclite' 'trousers' 'stoken'
+depends=('libxml2' 'gnutls' 'libproxy' 'vpnc' 'krb5' 'lz4' 'trousers' 'stoken'
 		'oath-toolkit')
 makedepends=('intltool' 'python2' 'git')
 options=('!emptydirs')
@@ -27,6 +27,7 @@ build() {
   ./autogen.sh
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
       --sbindir=/usr/bin \
+      --without-libpcsclite \
       --disable-static
   make V=0
 }

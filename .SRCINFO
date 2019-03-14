@@ -15,7 +15,6 @@ pkgbase = openconnect-palo-git
 	depends = vpnc
 	depends = krb5
 	depends = lz4
-	depends = pcsclite
 	depends = trousers
 	depends = stoken
 	depends = oath-toolkit
