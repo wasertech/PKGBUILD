@@ -6,7 +6,7 @@ pkgdesc="Open source wireless development platform suitable for Bluetooth experi
 url="https://github.com/greatscottgadgets/ubertooth/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusbx' 'libpcap' 'python2-pyside2' 'python2-numpy' 'python2-pyusb')
+depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusbx' 'libpcap' 'python2-numpy' 'python2-pyusb')
 optdepends=('qt5-declarative')
 makedepends=('cmake')
 source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz")
@@ -18,18 +18,12 @@ build() {
   cd build
   cmake -DENABLE_PYTHON=FALSE -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DUDEV_RULES_PATH=${pkgdir}/etc/udev/rules.d -DINSTALL_UDEV_RULES=TRUE -DUDEV_RULES_GROUP=uucp ..
   make
-  cd ../python/specan_ui
-  python2 setup.py build
 }
 
 package() {
   # Runtime
   cd "${srcdir}/${pkgname}-${_pkgver}/host/build/"
   make install
-
-  # GUI
-  cd ../python/specan_ui
-  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Firmware
   install -dm755 "${pkgdir}/usr/share/ubertooth"
