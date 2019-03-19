@@ -1,0 +1,14 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/spectool_curses
+usr/bin/spectool_gtk
+usr/bin/spectool_net
+usr/bin/spectool_raw
+usr/lib/
+usr/lib/udev/
+usr/lib/udev/rules.d/
+usr/lib/udev/rules.d/99-wispy.rules
+usr/share/
+usr/share/applications/
+usr/share/applications/spectool_gtk.desktop
