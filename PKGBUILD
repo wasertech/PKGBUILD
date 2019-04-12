@@ -1,27 +1,23 @@
-# $Id$
 # Contributor: tobias [tobias [at] archlinux.org]
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=mutt
-pkgver=1.10.1
-pkgrel=3
+pkgver=1.11.4
+pkgrel=1
 pkgdesc='Small but very powerful text-based mail client'
 url='http://www.mutt.org/'
 license=('GPL')
 backup=('etc/Muttrc')
 arch=('x86_64')
 optdepends=('smtp-forwarder: to send mail')
-depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')
+depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn2' 'mime-types' 'krb5')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
-source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc}
-        'a2b289361d90360c37eb19cca2cf1216ab60fb7b.patch')
-sha256sums=('734a3883158ec3d180cf6538d8bd7f685ce641d2cdef657aa0038f76e79a54a0'
-            'SKIP'
-            '21ae6f739801f07728d770ac7365f696b6d0ec81cda8b6cd1a5b3c81a3bb0f2f')
+source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('b651357ea6c8762178080493991c77ecb111d916d171d422500257ab48be2801'
+            'SKIP')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p1 -i ../a2b289361d90360c37eb19cca2cf1216ab60fb7b.patch
 	patch -Np1 -i "$srcdir/reply-filter.patch"
 	patch -Np1 -i "$srcdir/smtp-samepass.patch"
 }
@@ -38,11 +34,10 @@ build() {
 		--enable-hcache \
 		--enable-sidebar \
 		--with-curses=/usr \
-		--with-regex \
 		--with-gss=/usr \
 		--with-ssl=/usr \
 		--with-sasl \
-		--with-idn \
+		--with-idn2 \
 
 	make
 }
