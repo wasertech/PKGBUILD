@@ -5,13 +5,13 @@ usr/bin/shodan
 usr/lib/
 usr/lib/python3.7/
 usr/lib/python3.7/site-packages/
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/PKG-INFO
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/SOURCES.txt
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/dependency_links.txt
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/entry_points.txt
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/requires.txt
-usr/lib/python3.7/site-packages/shodan-1.10.4-py3.7.egg-info/top_level.txt
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/PKG-INFO
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/SOURCES.txt
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/dependency_links.txt
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/entry_points.txt
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/requires.txt
+usr/lib/python3.7/site-packages/shodan-1.12.0-py3.7.egg-info/top_level.txt
 usr/lib/python3.7/site-packages/shodan/
 usr/lib/python3.7/site-packages/shodan/__init__.py
 usr/lib/python3.7/site-packages/shodan/__main__.py
@@ -20,8 +20,6 @@ usr/lib/python3.7/site-packages/shodan/__pycache__/__init__.cpython-37.opt-1.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/__init__.cpython-37.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/__main__.cpython-37.opt-1.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/__main__.cpython-37.pyc
-usr/lib/python3.7/site-packages/shodan/__pycache__/alert.cpython-37.opt-1.pyc
-usr/lib/python3.7/site-packages/shodan/__pycache__/alert.cpython-37.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/client.cpython-37.opt-1.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/client.cpython-37.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/exception.cpython-37.opt-1.pyc
@@ -32,7 +30,6 @@ usr/lib/python3.7/site-packages/shodan/__pycache__/stream.cpython-37.opt-1.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/stream.cpython-37.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/threatnet.cpython-37.opt-1.pyc
 usr/lib/python3.7/site-packages/shodan/__pycache__/threatnet.cpython-37.pyc
-usr/lib/python3.7/site-packages/shodan/alert.py
 usr/lib/python3.7/site-packages/shodan/cli/
 usr/lib/python3.7/site-packages/shodan/cli/__init__.py
 usr/lib/python3.7/site-packages/shodan/cli/__pycache__/
