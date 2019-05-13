@@ -64,3 +64,6 @@ dbus/fi.w1.wpa_supplicant1.service \
   install -m644 doc/docbook/*.8 "$pkgdir/usr/share/man/man8/"
   rm -f "$pkgdir/usr/share/man/man8/wpa_"{priv,gui}.8
 }
+
+source+=(config-dir.patch)
+sha256sums+=(405af2562412f1a18fa19f879813c0251fc8197af82384c45b099ef746c5f6d6)
