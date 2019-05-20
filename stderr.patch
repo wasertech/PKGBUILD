@@ -1,0 +1,100 @@
+Binary files torrentcheck-1.00/torrentcheck and torrentcheck-1.00.new/torrentcheck differ
+diff -ur torrentcheck-1.00/torrentcheck.c torrentcheck-1.00.new/torrentcheck.c
+--- torrentcheck-1.00/torrentcheck.c	2017-12-26 14:49:08.435728674 -0500
++++ torrentcheck-1.00.new/torrentcheck.c	2017-12-26 14:49:38.825487510 -0500
+@@ -132,47 +132,6 @@
+ }
+ 
+ 
+-//// Return offset of an element in a list, or -1 if not found
+-//int beFindInList(BYTE* benstr,int benstrLen,int benstrOffset,int listIndex) {
+-//	int i;
+-//	if ((benstrOffset < 0)||(benstrOffset >= benstrLen)) return (-1);
+-//	if (benstr[benstrOffset] != 'l') return (-1);
+-//	benstrOffset++;
+-//	if (benstr[benstrOffset] == 'e') return (-1);
+-//	for(i=0;i<listIndex;i++) {
+-//		benstrOffset = beStepOver(benstr,benstrLen,benstrOffset);
+-//		if ((benstrOffset < 0)||(benstrOffset >= benstrLen)) return (-1);
+-//	}
+-//	if (benstr[benstrOffset] == 'e') return (-1);
+-//	return (benstrOffset);
+-//}
+-
+-
+-// Return offset of an element in a dict, or -1 if not found
+-// dictKey is a null-terminated string
+-int beFindInDict(BYTE* benstr,int benstrLen,int benstrOffset,BYTE* dictKey) {
+-	BYTE* stringPtr;
+-	int stringLen;
+-	int dictKeyLen;
+-
+-	if ((benstrOffset < 0)||(benstrOffset >= benstrLen)) return (-1);
+-	if (benstr[benstrOffset] != 'd') return (-1);
+-	dictKeyLen = strlen(dictKey);
+-	benstrOffset++;
+-	while ((benstrOffset >= 0)&&(benstrOffset < benstrLen)) {
+-		if (benstr[benstrOffset] == 'e') return (-1);
+-		benstrOffset = beParseString(benstr,benstrLen,benstrOffset,&stringPtr,&stringLen);
+-		if (benstrOffset < 0) return (-1);
+-		if ((stringLen == dictKeyLen) && (memcmp(stringPtr,dictKey,stringLen) == 0)) {
+-			return (benstrOffset);
+-		} else {
+-			benstrOffset = beStepOver(benstr,benstrLen,benstrOffset);
+-		}
+-	}
+-	return (-1);
+-}
+-
+-
+ // Step over an object (including all its embedded objects)
+ // Returns new offset, or -1 if unable to parse the input
+ int beStepOver(BYTE* benstr,int benstrLen,int benstrOffset) {
+@@ -223,6 +182,47 @@
+ }
+ 
+ 
++//// Return offset of an element in a list, or -1 if not found
++//int beFindInList(BYTE* benstr,int benstrLen,int benstrOffset,int listIndex) {
++//	int i;
++//	if ((benstrOffset < 0)||(benstrOffset >= benstrLen)) return (-1);
++//	if (benstr[benstrOffset] != 'l') return (-1);
++//	benstrOffset++;
++//	if (benstr[benstrOffset] == 'e') return (-1);
++//	for(i=0;i<listIndex;i++) {
++//		benstrOffset = beStepOver(benstr,benstrLen,benstrOffset);
++//		if ((benstrOffset < 0)||(benstrOffset >= benstrLen)) return (-1);
++//	}
++//	if (benstr[benstrOffset] == 'e') return (-1);
++//	return (benstrOffset);
++//}
++
++
++// Return offset of an element in a dict, or -1 if not found
++// dictKey is a null-terminated string
++int beFindInDict(BYTE* benstr,int benstrLen,int benstrOffset,BYTE* dictKey) {
++	BYTE* stringPtr;
++	int stringLen;
++	int dictKeyLen;
++
++	if ((benstrOffset < 0)||(benstrOffset >= benstrLen)) return (-1);
++	if (benstr[benstrOffset] != 'd') return (-1);
++	dictKeyLen = strlen(dictKey);
++	benstrOffset++;
++	while ((benstrOffset >= 0)&&(benstrOffset < benstrLen)) {
++		if (benstr[benstrOffset] == 'e') return (-1);
++		benstrOffset = beParseString(benstr,benstrLen,benstrOffset,&stringPtr,&stringLen);
++		if (benstrOffset < 0) return (-1);
++		if ((stringLen == dictKeyLen) && (memcmp(stringPtr,dictKey,stringLen) == 0)) {
++			return (benstrOffset);
++		} else {
++			benstrOffset = beStepOver(benstr,benstrLen,benstrOffset);
++		}
++	}
++	return (-1);
++}
++
++
+ char* print64(INT64 val,char* buf,char useCommaDot) {
+ 	INT64 divisor = 1000000000000000000l;
+ 	char* bp = buf;

@@ -1,14 +1,16 @@
 pkgbase = torrentcheck
 	pkgdesc = Command line torrent viewer and hash checker
 	pkgver = 1.00
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/torrentcheck/
 	arch = i686
 	arch = x86_64
 	license = Public Domain
 	makedepends = unzip
 	source = http://downloads.sourceforge.net/torrentcheck/torrentcheck-1.00.zip
+	source = stderr.patch
 	md5sums = ba12ae767888837fe3e70fb025d554c2
+	md5sums = 1b5e5d8c82339dc4dd8e5e7ecee167da
 
 pkgname = torrentcheck
 
