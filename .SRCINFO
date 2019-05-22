@@ -1,0 +1,21 @@
+pkgbase = jpexs-decompiler-git
+	pkgdesc = Opensource flash SWF decompiler and editor
+	pkgver = 10.0.0.r44.g79495fd0f
+	pkgrel = 1
+	epoch = 1
+	url = https://www.free-decompiler.com/flash/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = apache-ant
+	makedepends = java-environment=8
+	makedepends = python
+	depends = java-runtime=8
+	depends = bash
+	source = git+https://github.com/jindrapetrik/jpexs-decompiler#branch=dev
+	source = put_version_into_build_xml.py
+	md5sums = SKIP
+	md5sums = 7f20d8a7ae9e6fc17e9ac45d31802499
+
+pkgname = jpexs-decompiler-git
+
