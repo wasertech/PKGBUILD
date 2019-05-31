@@ -14,19 +14,19 @@ openconnect-palo-git
 VPN client for Palo Alto GlobalProtect VPN
 
 %CSIZE%
-534164
+532972
 
 %ISIZE%
 2942976
 
 %MD5SUM%
-81c52c4b63326238f9257bb3dc688c66
+9ac90df56d477f8da23550f58f897d17
 
 %SHA256SUM%
-f1ac46a37ee32fe38c5102565ca8ba16b4e5116ae88ff6b66f1a3e9485ff2133
+5ac93aa0e109e44271768636cc2f388fb4a8d1ebd92fcbad4e609f49dd2e0dc6
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlzngSoACgkQFW138LsgdFA5Bgf/fFiUFLzPc/dnKGyFu3KA0vIx0yFTTToTvamXqaVNaB9/pwgOYKT155vobnIMY3H7NIi72klyAdG0B05WjWGJJV6Qk5pKVxEYCOq1ArhVgRrqp/SYKBpvgN+skT2GDJAycwZQckjszUu7gyjl2Cdg5vgNFocOodN81QUv9rImOfdM/Dz4F8b+9WH63vfPp24rezep0WqhsSUSRxGtx5ZBtS1scQcI1kuzGkbwWqc6jtfC0TM1lwmyFqCpvlmZZjOvgYu+FtR85zKNmL7p4nbaXLmXl/6CRHypfVPdJucRYPEiqQIvtQEGaIeQ4gO7RpPsJ/mA8ecdtKJZpyeKuDyo9Q==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlzwu7IACgkQFW138LsgdFCtwAf/a2wr8uyBIQhCrGKkyWfaEFzagfAgiD1TJIw0yA8E2AowNGE9rDvcdjWRpED9ORbW8g12rbbqwLiPwnTK/wFpTXAdCOhDea32c6ZvTqnwamjYQcmiP7mRUfO2tMvUrUlVnMe9d0lmENtSQZpcIDD98NpS5cZ5o3liYs8lC5g9QXS9r6zj1m5YNSjwsqLvkDFNj34gSLrghZoDvgfhH6R/Zb5PCr+M/OVpKRpBtLdENziIRZhkotZZzEGQa7CibaixsgN2sLbROfcoMZ0+cUOLxmO/SaUYy6Bgk3bF7X4ObFi+awMLViH0ub0ARA7CpnsLhyWKf/vaomteeDnXy9p4Og==
 
 %URL%
 http://www.infradead.org/openconnect.html
@@ -38,10 +38,10 @@ GPL
 x86_64
 
 %BUILDDATE%
-1558675717
+1559280525
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/536618240
+https://travis-ci.org/djpohly/PKGBUILD/builds/539539708
 
 %CONFLICTS%
 openconnect
