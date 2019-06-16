@@ -73,6 +73,7 @@ usr/share/doc/mutt/samples/sample.mailcap
 usr/share/doc/mutt/samples/sample.muttrc
 usr/share/doc/mutt/samples/sample.muttrc-compress
 usr/share/doc/mutt/samples/sample.muttrc-sidebar
+usr/share/doc/mutt/samples/sample.muttrc-starter
 usr/share/doc/mutt/samples/sample.muttrc-tlr
 usr/share/doc/mutt/samples/sample.vimrc-sidebar
 usr/share/doc/mutt/samples/smime.rc
