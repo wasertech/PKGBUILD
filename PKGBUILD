@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=13
+pkgrel=14
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -107,6 +107,8 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 ); }
 
 package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=(djp-meta-xorg-apps); depends=(
+	browserpass
+	browserpass-firefox
 	compton
 	conky-cli
 	dina-font-latin1
@@ -114,7 +116,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	dwm
 	dzen2
 	feh
-	#firefox
+	firefox-developer-edition
 	gvim
 	hsetroot
 	otf-alegreya-sans
@@ -294,7 +296,6 @@ package_djp-meta-wheaton() { pkgdesc="Metapackage for campus systems"; depends=(
 ); }
 
 package_djp-meta-android() { pkgdesc="Metapackage for Android development"; depends=(
-	android-platform
 	android-sdk-build-tools
 	android-studio
 	android-tools
