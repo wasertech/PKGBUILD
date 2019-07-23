@@ -2,8 +2,8 @@
 
 pkgname=openconnect-palo-git
 _pkgname=openconnect
-pkgver=7.08.r84.g91025a3
-pkgrel=1
+pkgver=7.08.r169.gc62a909a
+pkgrel=2
 pkgdesc="VPN client for Palo Alto GlobalProtect VPN"
 arch=('i686' 'x86_64')
 license=('GPL')
