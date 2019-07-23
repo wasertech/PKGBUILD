@@ -1,7 +1,0 @@
-%FILES%
-opt/
-opt/plantuml/
-opt/plantuml/plantuml.jar
-usr/
-usr/bin/
-usr/bin/plantuml
