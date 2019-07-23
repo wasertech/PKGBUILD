@@ -14,19 +14,19 @@ python-click-plugins
 An extension module for click to enable registering CLI commands via setuptools entry-points.
 
 %CSIZE%
-9508
+9520
 
 %ISIZE%
 70656
 
 %MD5SUM%
-0460545401a0863fed3e1a9532f73907
+fccee99ad3722c0b7447c1f8120dc219
 
 %SHA256SUM%
-f07366f9a2c3077e2e5e921c0173de6fceb77c10fd23f7e6be7f08835ee6a0ea
+a8eb8da9130018470eee4d083166c06a3b2fce45c811ec90c580bc83e1a7335e
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl03OBIACgkQFW138LsgdFA40AgAhLusUIeZ7sBF/CVf8PNyaAU3jJV2VEk0algF+vXW+2C5XvOsg/OkmUOdgmB0VWaSpyoa9dNeumW146NjX8cjD6fl5kg1lYjYGkmhFWOmLXPswQcviaMnPzE/QKeOfQRT1ec8wVCnvZU/qRpp406MWzDzVNSdVvpoRkC985bXs4mif2OuNC7qfBqJ8N7v7TMLE6hyGb1p6K0sePSTPfBzAg4NaRRj0BrGX1cWHAI8hlNfyYamfUmLxtJMMXLGPy1SdcZ8JXSJH9YWaz9QxsHV9oU64+VH4jaUsoGwaDhzlzb7vciXTJn8FU7fC3pSYy66usR6XkDQulDg8sFLNziq8A==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl03ROQACgkQFW138LsgdFDcqgf/fYmhbJsWqzntHLOf+20ziPH+M4R3Lp5NQDO0inHrE/kvoAT4k3v7eYwixEP3WJCjTYDW5w6i1fzhIY9HpdPu6rFn6SPyc7EUcdrsLOR6wQDSzcZhn8a1zrwVb+D25hqcSd9WqVjkkLPnLCxPX0qjODak0GAQ4m0B6E+vC4CkWxQQ2H0wzImZC3WEU9jQi9jFKkkwcNcaMjgpRexb0hzNznSQjLRQh0glySl04gVIXzS57FsJlPXtKyKyRU+Z9kUpQwIyTb5Iw/1y/PwbnY4uZaSKOnZBzglvdFMbkNHqqw/oWvAAACpSQrxOU/guHQ2EdLYBb1p+K7AhK9HGdOE/Qg==
 
 %URL%
 https://github.com/click-contrib/click-plugins
@@ -38,10 +38,10 @@ BSD
 any
 
 %BUILDDATE%
-1563899908
+1563903189
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/562678277
+https://travis-ci.org/djpohly/PKGBUILD/builds/562698241
 
 %DEPENDS%
 python-click>=3.0
