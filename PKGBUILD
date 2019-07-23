@@ -2,18 +2,18 @@
 # Contributor : Jingbei Li <i@jingbei.li>
 
 pkgname=plantuml
-pkgver=1.2018.13
+pkgver=1.2019.7
 pkgrel=1
 pkgdesc="Component that allows to quickly write uml diagrams"
 arch=(any)
 url="http://plantuml.com/"
 license=('GPL')
 depends=("graphviz")
-makedepends=("apache-ant" "java-environment=8")
+makedepends=("apache-ant" "java-environment>=8")
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.run")
-sha256sums=('ab6dc745d5edd4617451de92b4f89020ec0e81eae1e8650c924b93abb870412d'
-            'dff39e4d8dd8eedb58c1b0a0cf64ab2c404b713e3a42fa5fdf0b6792ca382ed5')
+sha256sums=('bdfed26aba53077992705437ecce96747f643b636159d9a5b211f2dc7daa052c'
+            'a3fb528f4c719cfd0ff6154c60fd54ce341011d132caf950cc30af4989f6aac8')
 optdepends=('plantuml-ascii-math')
 
 prepare(){
@@ -32,5 +32,5 @@ package() {
   install -m 755 -D "$pkgname.run" "$pkgdir/usr/bin/$pkgname"
 
   cd "$srcdir/$pkgname-$pkgver"
-  install -m 644 -D "$pkgname.jar" "$pkgdir/opt/$pkgname/$pkgname.jar"
+  install -m 644 -D "$pkgname.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 }
