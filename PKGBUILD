@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=14
+pkgrel=15
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -129,7 +129,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	tabbed
 	tigervnc
 	ttf-et-book
-	ttf-fantasque-sans
+	ttf-fantasque-sans-mono
 	unrar
 	vimb
 	wmname
