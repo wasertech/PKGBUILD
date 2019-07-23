@@ -65,6 +65,7 @@ usr/lib/xscreensaver/cynosure
 usr/lib/xscreensaver/dangerball
 usr/lib/xscreensaver/decayscreen
 usr/lib/xscreensaver/deco
+usr/lib/xscreensaver/deepstars
 usr/lib/xscreensaver/deluxe
 usr/lib/xscreensaver/demon
 usr/lib/xscreensaver/discoball
@@ -81,6 +82,7 @@ usr/lib/xscreensaver/esper
 usr/lib/xscreensaver/euler2d
 usr/lib/xscreensaver/fadeplot
 usr/lib/xscreensaver/fiberlamp
+usr/lib/xscreensaver/filmleader
 usr/lib/xscreensaver/fireworkx
 usr/lib/xscreensaver/flame
 usr/lib/xscreensaver/flipflop
@@ -101,6 +103,7 @@ usr/lib/xscreensaver/glblur
 usr/lib/xscreensaver/glcells
 usr/lib/xscreensaver/gleidescope
 usr/lib/xscreensaver/glhanoi
+usr/lib/xscreensaver/glitchpeg
 usr/lib/xscreensaver/glknots
 usr/lib/xscreensaver/glmatrix
 usr/lib/xscreensaver/glplanet
@@ -110,9 +113,11 @@ usr/lib/xscreensaver/glsnake
 usr/lib/xscreensaver/gltext
 usr/lib/xscreensaver/goop
 usr/lib/xscreensaver/grav
+usr/lib/xscreensaver/gravitywell
 usr/lib/xscreensaver/greynetic
 usr/lib/xscreensaver/halftone
 usr/lib/xscreensaver/halo
+usr/lib/xscreensaver/handsy
 usr/lib/xscreensaver/helix
 usr/lib/xscreensaver/hexadrop
 usr/lib/xscreensaver/hexstrut
@@ -227,6 +232,7 @@ usr/lib/xscreensaver/twang
 usr/lib/xscreensaver/unicrud
 usr/lib/xscreensaver/unknownpleasures
 usr/lib/xscreensaver/vermiculate
+usr/lib/xscreensaver/vfeedback
 usr/lib/xscreensaver/vidwhacker
 usr/lib/xscreensaver/vigilance
 usr/lib/xscreensaver/voronoi
@@ -327,6 +333,7 @@ usr/share/man/man1/xscreensaver-demo.1.gz
 usr/share/man/man1/xscreensaver-getimage-file.1.gz
 usr/share/man/man1/xscreensaver-getimage-video.1.gz
 usr/share/man/man1/xscreensaver-getimage.1.gz
+usr/share/man/man1/xscreensaver-systemd.1.gz
 usr/share/man/man1/xscreensaver-text.1.gz
 usr/share/man/man1/xscreensaver.1.gz
 usr/share/man/man6/
@@ -380,6 +387,7 @@ usr/share/man/man6/cynosure.6.gz
 usr/share/man/man6/dangerball.6.gz
 usr/share/man/man6/decayscreen.6.gz
 usr/share/man/man6/deco.6.gz
+usr/share/man/man6/deepstars.6.gz
 usr/share/man/man6/deluxe.6.gz
 usr/share/man/man6/demon.6.gz
 usr/share/man/man6/discoball.6.gz
@@ -397,6 +405,7 @@ usr/share/man/man6/euler2d.6.gz
 usr/share/man/man6/extrusion.6.gz
 usr/share/man/man6/fadeplot.6.gz
 usr/share/man/man6/fiberlamp.6.gz
+usr/share/man/man6/filmleader.6.gz
 usr/share/man/man6/fireworkx.6.gz
 usr/share/man/man6/flame.6.gz
 usr/share/man/man6/flipflop.6.gz
@@ -417,6 +426,7 @@ usr/share/man/man6/glblur.6.gz
 usr/share/man/man6/glcells.6.gz
 usr/share/man/man6/gleidescope.6.gz
 usr/share/man/man6/glhanoi.6.gz
+usr/share/man/man6/glitchpeg.6.gz
 usr/share/man/man6/glknots.6.gz
 usr/share/man/man6/glmatrix.6.gz
 usr/share/man/man6/glplanet.6.gz
@@ -426,9 +436,11 @@ usr/share/man/man6/glsnake.6.gz
 usr/share/man/man6/gltext.6.gz
 usr/share/man/man6/goop.6.gz
 usr/share/man/man6/grav.6.gz
+usr/share/man/man6/gravitywell.6.gz
 usr/share/man/man6/greynetic.6.gz
 usr/share/man/man6/halftone.6.gz
 usr/share/man/man6/halo.6.gz
+usr/share/man/man6/handsy.6.gz
 usr/share/man/man6/helix.6.gz
 usr/share/man/man6/hexadrop.6.gz
 usr/share/man/man6/hexstrut.6.gz
@@ -541,6 +553,7 @@ usr/share/man/man6/twang.6.gz
 usr/share/man/man6/unicrud.6.gz
 usr/share/man/man6/unknownpleasures.6.gz
 usr/share/man/man6/vermiculate.6.gz
+usr/share/man/man6/vfeedback.6.gz
 usr/share/man/man6/vidwhacker.6.gz
 usr/share/man/man6/vigilance.6.gz
 usr/share/man/man6/voronoi.6.gz
@@ -614,6 +627,7 @@ usr/share/xscreensaver/config/cynosure.xml
 usr/share/xscreensaver/config/dangerball.xml
 usr/share/xscreensaver/config/decayscreen.xml
 usr/share/xscreensaver/config/deco.xml
+usr/share/xscreensaver/config/deepstars.xml
 usr/share/xscreensaver/config/deluxe.xml
 usr/share/xscreensaver/config/demon.xml
 usr/share/xscreensaver/config/discoball.xml
@@ -630,6 +644,7 @@ usr/share/xscreensaver/config/esper.xml
 usr/share/xscreensaver/config/euler2d.xml
 usr/share/xscreensaver/config/fadeplot.xml
 usr/share/xscreensaver/config/fiberlamp.xml
+usr/share/xscreensaver/config/filmleader.xml
 usr/share/xscreensaver/config/fireworkx.xml
 usr/share/xscreensaver/config/flame.xml
 usr/share/xscreensaver/config/flipflop.xml
@@ -650,6 +665,7 @@ usr/share/xscreensaver/config/glblur.xml
 usr/share/xscreensaver/config/glcells.xml
 usr/share/xscreensaver/config/gleidescope.xml
 usr/share/xscreensaver/config/glhanoi.xml
+usr/share/xscreensaver/config/glitchpeg.xml
 usr/share/xscreensaver/config/glknots.xml
 usr/share/xscreensaver/config/glmatrix.xml
 usr/share/xscreensaver/config/glplanet.xml
@@ -659,9 +675,11 @@ usr/share/xscreensaver/config/glsnake.xml
 usr/share/xscreensaver/config/gltext.xml
 usr/share/xscreensaver/config/goop.xml
 usr/share/xscreensaver/config/grav.xml
+usr/share/xscreensaver/config/gravitywell.xml
 usr/share/xscreensaver/config/greynetic.xml
 usr/share/xscreensaver/config/halftone.xml
 usr/share/xscreensaver/config/halo.xml
+usr/share/xscreensaver/config/handsy.xml
 usr/share/xscreensaver/config/helix.xml
 usr/share/xscreensaver/config/hexadrop.xml
 usr/share/xscreensaver/config/hexstrut.xml
@@ -775,6 +793,7 @@ usr/share/xscreensaver/config/twang.xml
 usr/share/xscreensaver/config/unicrud.xml
 usr/share/xscreensaver/config/unknownpleasures.xml
 usr/share/xscreensaver/config/vermiculate.xml
+usr/share/xscreensaver/config/vfeedback.xml
 usr/share/xscreensaver/config/vidwhacker.xml
 usr/share/xscreensaver/config/vigilance.xml
 usr/share/xscreensaver/config/voronoi.xml
