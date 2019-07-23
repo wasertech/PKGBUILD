@@ -13,9 +13,9 @@ source=("https://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.gnu.org/$pkgname/$pkgn
 sha1sums=('eecb3d7e78516d846af70e7bc86aabac9b92399c')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   # Add -bss and -nbss
-  patch -Np1 -i ../indent-2.2.11-bss.patch
+  patch -Np1 -i ../indent-2.2.12-bss.patch
 }
 
 build() {
@@ -29,5 +29,5 @@ package() {
   make DESTDIR="${pkgdir}" docdir=/usr/share/doc/indent install
 }
 
-source+=(indent-2.2.11-bss.patch)
-sha1sums+=('37f3425fb5bfd644f75546ef25ad26bd2c3b0dd9')
+source+=(indent-2.2.12-bss.patch)
+sha1sums+=('9ca3f534cde9139240b234625123ccd21bd8973b')

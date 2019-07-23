@@ -1,19 +1,19 @@
-diff -ur indent-2.2.11.orig/doc/indent.info indent-2.2.11/doc/indent.info
---- indent-2.2.11.orig/doc/indent.info	2010-01-31 10:27:28.000000000 -0600
-+++ indent-2.2.11/doc/indent.info	2017-02-18 15:14:24.585577783 -0600
-@@ -604,7 +604,9 @@
- the `-ss' option will cause a space to be placed before the semicolon.
+diff -ur indent-2.2.12.orig/doc/indent.info indent-2.2.12/doc/indent.info
+--- indent-2.2.12.orig/doc/indent.info	2018-09-05 15:58:40.000000000 -0500
++++ indent-2.2.12/doc/indent.info	2019-07-23 11:48:53.082857078 -0500
+@@ -631,7 +631,9 @@
+ the '-ss' option will cause a space to be placed before the semicolon.
  This emphasizes the semicolon, making it clear that the body of the
- `for' or `while' statement is an empty statement.  `-nss' disables this
+ 'for' or 'while' statement is an empty statement.  '-nss' disables this
 -feature.
-+feature.  For more emphasis, the `-bss' option will place the semicolon
-+on a line by itself.  This overrides `-ss' and can be disabled with
-+`-nbss'.
++feature.  For more emphasis, the '-bss' option will place the semicolon
++on a line by itself.  This overrides '-ss' and can be disabled with
++'-nbss'.
  
-    The `-pcs' option causes a space to be placed between the name of
- the procedure being called and the `(' (for example, `puts ("Hi");'.
-@@ -1151,6 +1153,12 @@
-      Put a space between `sizeof' and its argument.
+    The '-pcs' option causes a space to be placed between the name of the
+ procedure being called and the '(' (for example, 'puts ("Hi");'.  The
+@@ -1303,6 +1305,12 @@
+      Put a space between 'sizeof' and its argument.
       *Note Statements::.
  
 +'-bss'
@@ -22,10 +22,10 @@ diff -ur indent-2.2.11.orig/doc/indent.info indent-2.2.11/doc/indent.info
 +     the semicolon.
 +     *Note Statements::.
 +
- `-cN'
- `--comment-indentationN'
+ '-cN'
+ '--comment-indentationN'
       Put comments to the right of code in column N.
-@@ -1321,6 +1329,12 @@
+@@ -1484,6 +1492,12 @@
       line.
       *Note Declarations::.
  
@@ -35,10 +35,10 @@ diff -ur indent-2.2.11.orig/doc/indent.info indent-2.2.11/doc/indent.info
 +     statements.  Disables '-bss'.
 +     *Note Statements::.
 +
- `-ncdb'
- `--no-comment-delimiters-on-blank-lines'
+ '-ncdb'
+ '--no-comment-delimiters-on-blank-lines'
       Do not put comment delimiters on blank lines.
-@@ -1555,6 +1569,7 @@
+@@ -1751,6 +1765,7 @@
       --break-before-boolean-operator                 -bbo
       --break-function-decl-args                      -bfda
       --break-function-decl-args-end                  -bfde
@@ -46,7 +46,7 @@ diff -ur indent-2.2.11.orig/doc/indent.info indent-2.2.11/doc/indent.info
       --case-indentation                              -cliN
       --case-brace-indentation                        -cbiN
       --comment-delimiters-on-blank-lines             -cdb
-@@ -1568,6 +1583,7 @@
+@@ -1764,6 +1779,7 @@
       --dont-break-function-decl-args                 -nbfda
       --dont-break-function-decl-args-end             -nbfde
       --dont-break-procedure-type                     -npsl
@@ -54,42 +54,167 @@ diff -ur indent-2.2.11.orig/doc/indent.info indent-2.2.11/doc/indent.info
       --dont-cuddle-do-while                          -ncdw
       --dont-cuddle-else                              -nce
       --dont-format-comments                          -nfca
-@@ -1652,6 +1668,7 @@
+@@ -1836,7 +1852,7 @@
+ * Menu:
+ 
+ * --align-with-spaces:                   Indentation.         (line  73)
+-* --blank-after-sizeof:                  Statements.          (line 149)
++* --blank-after-sizeof:                  Statements.          (line 151)
+ * --blank-lines-after-commas:            Declarations.        (line  26)
+ * --blank-lines-after-declarations:      -bad.                (line  15)
+ * --blank-lines-after-procedures:        -bap.                (line   6)
+@@ -1852,6 +1868,7 @@
  * --break-before-boolean-operator:       Breaking long lines. (line  14)
  * --break-function-decl-args:            Declarations.        (line  37)
  * --break-function-decl-args-end:        Declarations.        (line  37)
-+* --break-special-semicolon:             Statements.          (line 113)
- * --case-brace-indentationN:             Statements.          (line  97)
- * --case-indentationN:                   Statements.          (line  66)
- * --comment-delimiters-on-blank-lines:   Comments.            (line  94)
-@@ -1665,6 +1682,7 @@
++* --break-special-semicolon:             Statements.          (line 132)
+ * --case-brace-indentationN:             Statements.          (line 116)
+ * --case-indentationN:                   Statements.          (line  85)
+ * --comment-delimiters-on-blank-lines:   Comments.            (line  99)
+@@ -1865,6 +1882,7 @@
  * --dont-break-function-decl-args:       Declarations.        (line  37)
  * --dont-break-function-decl-args-end:   Declarations.        (line  37)
  * --dont-break-procedure-type:           Declarations.        (line  67)
-+* --dont-break-special-semicolon:        Statements.          (line 113)
- * --dont-cuddle-do-while:                Statements.          (line  51)
++* --dont-break-special-semicolon:        Statements.          (line 132)
+ * --dont-cuddle-do-while:                Statements.          (line  57)
  * --dont-cuddle-else:                    Statements.          (line  31)
  * --dont-format-comments:                Comments.            (line  53)
-@@ -1737,6 +1755,7 @@
+@@ -1899,11 +1917,11 @@
+ * --no-blank-lines-before-block-comments: Blank lines.        (line  17)
+ * --no-comment-delimiters-on-blank-lines: Comments.           (line  99)
+ * --no-parameter-indentation:            Indentation.         (line 121)
+-* --no-space-after-cast:                 Statements.          (line 142)
+-* --no-space-after-for:                  Statements.          (line 153)
+-* --no-space-after-function-call-names:  Statements.          (line 138)
+-* --no-space-after-if:                   Statements.          (line 156)
+-* --no-space-after-while:                Statements.          (line 159)
++* --no-space-after-cast:                 Statements.          (line 144)
++* --no-space-after-for:                  Statements.          (line 155)
++* --no-space-after-function-call-names:  Statements.          (line 140)
++* --no-space-after-if:                   Statements.          (line 158)
++* --no-space-after-while:                Statements.          (line 161)
+ * --no-tabs:                             Declarations.        (line 136)
+ * --no-tabs <1>:                         Indentation.         (line  23)
+ * --no-verbosity:                        Miscellaneous options.
+@@ -1917,12 +1935,12 @@
+ * --procnames-start-lines:               Declarations.        (line  67)
+ * --remove-preprocessor-space:           Indentation.         (line 138)
+ * --single-line-conditionals:            Statements.          (line  72)
+-* --space-after-cast:                    Statements.          (line 142)
+-* --space-after-for:                     Statements.          (line 153)
+-* --space-after-if:                      Statements.          (line 156)
+-* --space-after-parentheses:             Statements.          (line 162)
+-* --space-after-procedure-calls:         Statements.          (line 138)
+-* --space-after-while:                   Statements.          (line 159)
++* --space-after-cast:                    Statements.          (line 144)
++* --space-after-for:                     Statements.          (line 155)
++* --space-after-if:                      Statements.          (line 158)
++* --space-after-parentheses:             Statements.          (line 164)
++* --space-after-procedure-calls:         Statements.          (line 140)
++* --space-after-while:                   Statements.          (line 161)
+ * --space-special-semicolon:             Statements.          (line 132)
+ * --spaces-around-initializers:          Declarations.        (line 111)
+ * --standard-output:                     Invoking indent.     (line  26)
+@@ -1947,7 +1965,8 @@
  * -br:                                   Statements.          (line   6)
  * -brs:                                  Declarations.        (line  82)
- * -bs:                                   Statements.          (line 130)
-+* -bss:                                  Statements.          (line 113)
- * -cbiN:                                 Statements.          (line  97)
- * -cdb:                                  Comments.            (line  94)
- * -cdN:                                  Comments.            (line  78)
-@@ -1770,6 +1789,7 @@
+ * -brs <1>:                              Declarations.        (line  96)
+-* -bs:                                   Statements.          (line 149)
++* -bs:                                   Statements.          (line 151)
++* -bss:                                  Statements.          (line 132)
+ * -cbiN:                                 Statements.          (line 116)
+ * -cdb:                                  Comments.            (line  99)
+ * -cdN:                                  Comments.            (line  82)
+@@ -1957,7 +1976,7 @@
+ * -cliN:                                 Statements.          (line  85)
+ * -cN:                                   Comments.            (line  82)
+ * -cpN:                                  Comments.            (line  82)
+-* -cs:                                   Statements.          (line 142)
++* -cs:                                   Statements.          (line 144)
+ * -dce:                                  Statements.          (line  31)
+ * -diN:                                  Declarations.        (line   6)
+ * -dj:                                   Comments.            (line  82)
+@@ -1983,9 +2002,10 @@
  * -nbc:                                  Declarations.        (line  26)
  * -nbfda:                                Declarations.        (line  37)
  * -nbfde:                                Declarations.        (line  37)
-+* -nbss:                                 Statements.          (line 113)
- * -ncdb:                                 Comments.            (line  94)
- * -ncdw:                                 Statements.          (line  51)
- * -ncs:                                  Statements.          (line 123)
-diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
---- indent-2.2.11.orig/doc/indent.texinfo	2008-07-23 14:33:47.000000000 -0500
-+++ indent-2.2.11/doc/indent.texinfo	2017-02-18 15:13:43.025811586 -0600
-@@ -905,11 +905,17 @@
++* -nbss:                                 Statements.          (line 132)
+ * -ncdb:                                 Comments.            (line  99)
+ * -ncdw:                                 Statements.          (line  57)
+-* -ncs:                                  Statements.          (line 142)
++* -ncs:                                  Statements.          (line 144)
+ * -ndj:                                  Comments.            (line  82)
+ * -nfc1:                                 Comments.            (line  53)
+ * -nfca:                                 Comments.            (line  53)
+@@ -1994,14 +2014,14 @@
+ * -nip:                                  Indentation.         (line 121)
+ * -nlp:                                  Indentation.         (line  30)
+ * -nlps:                                 Indentation.         (line 138)
+-* -npcs:                                 Statements.          (line 138)
++* -npcs:                                 Statements.          (line 140)
+ * -npmt:                                 Miscellaneous options.
+                                                               (line  14)
+ * -npro:                                 Invoking indent.     (line  70)
+ * -npsl:                                 Declarations.        (line  67)
+-* -nsaf:                                 Statements.          (line 153)
+-* -nsai:                                 Statements.          (line 156)
+-* -nsaw:                                 Statements.          (line 159)
++* -nsaf:                                 Statements.          (line 155)
++* -nsai:                                 Statements.          (line 158)
++* -nsaw:                                 Statements.          (line 161)
+ * -nsc:                                  Comments.            (line 107)
+ * -nsob:                                 Blank lines.         (line  20)
+ * -nss:                                  Statements.          (line 132)
+@@ -2012,16 +2032,16 @@
+                                                               (line  10)
+ * -o:                                    Invoking indent.     (line  22)
+ * -orig:                                 Common styles.       (line  42)
+-* -pcs:                                  Statements.          (line 138)
++* -pcs:                                  Statements.          (line 140)
+ * -pmt:                                  Miscellaneous options.
+                                                               (line  14)
+ * -ppiN:                                 Indentation.         (line 144)
+-* -prs:                                  Statements.          (line 162)
++* -prs:                                  Statements.          (line 164)
+ * -psl:                                  Declarations.        (line  67)
+-* -saf:                                  Statements.          (line 153)
+-* -sai:                                  Statements.          (line 156)
++* -saf:                                  Statements.          (line 155)
++* -sai:                                  Statements.          (line 158)
+ * -sar:                                  Declarations.        (line 111)
+-* -saw:                                  Statements.          (line 159)
++* -saw:                                  Statements.          (line 161)
+ * -sc:                                   Comments.            (line 107)
+ * -slc:                                  Statements.          (line  72)
+ * -sob:                                  Blank lines.         (line  20)
+@@ -2069,14 +2089,14 @@
+ Node: -bap12483
+ Node: Comments13348
+ Node: Statements18606
+-Node: Declarations23067
+-Node: Indentation26581
+-Node: Breaking long lines33386
+-Node: Disabling Formatting36497
+-Node: Miscellaneous options38249
+-Node: Bugs39149
+-Node: Copyright40620
+-Node: Option Summary42247
+-Node: Index58852
++Node: Declarations23207
++Node: Indentation26721
++Node: Breaking long lines33526
++Node: Disabling Formatting36637
++Node: Miscellaneous options38389
++Node: Bugs39289
++Node: Copyright40760
++Node: Option Summary42387
++Node: Index59425
+ 
+ End Tag Table
+diff -ur indent-2.2.12.orig/doc/indent.texi indent-2.2.12/doc/indent.texi
+--- indent-2.2.12.orig/doc/indent.texi	2018-09-02 02:47:27.000000000 -0500
++++ indent-2.2.12/doc/indent.texi	2019-07-23 11:39:58.019145468 -0500
+@@ -951,11 +951,17 @@
  @kindex --space-special-semicolon
  @kindex -nss
  @kindex --dont-space-special-semicolon
@@ -108,7 +233,7 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  
  @kindex -pcs
  @kindex --space-after-procedure-calls
-@@ -1664,6 +1670,12 @@
+@@ -1892,6 +1898,12 @@
  Put a space between @code{sizeof} and its argument.@*
  @xref{Statements}.
  
@@ -121,7 +246,7 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  @item -c@var{n}
  @itemx --comment-indentation@var{n}
  Put comments to the right of code in column @var{n}.@*
-@@ -1841,6 +1853,12 @@
+@@ -2079,6 +2091,12 @@
  Don't put each argument in a function declaration on a separate line.@*
  @xref{Declarations}.
  
@@ -134,7 +259,7 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  @item -ncdb
  @itemx --no-comment-delimiters-on-blank-lines
  Do not put comment delimiters on blank lines.@*
-@@ -2081,6 +2099,7 @@
+@@ -2351,6 +2369,7 @@
  \line{ --break-before-boolean-operator \leaderfill    -bbo\ \ }
  \line{ --break-function-decl-args \leaderfill         -bfda} 
  \line{ --break-function-decl-args-end \leaderfill         -bfde} 
@@ -142,7 +267,7 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  \line{ --braces-on-if-line \leaderfill               -br\ \ }      
  \line{ --braces-on-func-def-line \leaderfill       -brf\ \ }
  \line{ --braces-on-struct-decl-line \leaderfill       -brs\ \ }
-@@ -2097,6 +2116,7 @@
+@@ -2367,6 +2386,7 @@
  \line{ --dont-break-function-decl-args \leaderfill       -nbfda} 
  \line{ --dont-break-function-decl-args-end \leaderfill       -nbfde} 
  \line{ --dont-break-procedure-type \leaderfill           -npsl} 
@@ -150,7 +275,7 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  \line{ --dont-cuddle-do-while \leaderfill                -ncdw\ \ }
  \line{ --dont-cuddle-else \leaderfill                    -nce\ }  
  \line{ --dont-format-comments \leaderfill                -nfca} 
-@@ -2175,6 +2195,7 @@
+@@ -2449,6 +2469,7 @@
  --break-before-boolean-operator                 -bbo
  --break-function-decl-args                      -bfda
  --break-function-decl-args-end                  -bfde
@@ -158,7 +283,7 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  --case-indentation                              -cli@var{n}     
  --case-brace-indentation                        -cbi@var{n}
  --comment-delimiters-on-blank-lines             -cdb            
-@@ -2188,6 +2209,7 @@
+@@ -2462,6 +2483,7 @@
  --dont-break-function-decl-args                 -nbfda
  --dont-break-function-decl-args-end             -nbfde
  --dont-break-procedure-type                     -npsl           
@@ -166,10 +291,10 @@ diff -ur indent-2.2.11.orig/doc/indent.texinfo indent-2.2.11/doc/indent.texinfo
  --dont-cuddle-do-while                          -ncdw
  --dont-cuddle-else                              -nce            
  --dont-format-comments                          -nfca           
-diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
---- indent-2.2.11.orig/man/indent.1	2010-01-31 10:19:46.000000000 -0600
-+++ indent-2.2.11/man/indent.1	2017-02-18 15:13:43.025811586 -0600
-@@ -92,6 +92,12 @@
+diff -ur indent-2.2.12.orig/man/indent.1 indent-2.2.12/man/indent.1
+--- indent-2.2.12.orig/man/indent.1	2018-09-05 15:58:41.000000000 -0500
++++ indent-2.2.12/man/indent.1	2019-07-23 11:39:58.019145468 -0500
+@@ -97,6 +97,12 @@
  .br
  See \fB\ STATEMENTS\fR.
  .TP
@@ -182,7 +307,7 @@ diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
  .B -c\fIn\fB\fR, \fB--comment-indentation\fIn\fB\fR
  Put comments to the right of code in column \fIn\fR.
  .br
-@@ -261,6 +267,12 @@
+@@ -276,6 +282,12 @@
  .br
  See \fB\ DECLARATIONS\fR.
  .TP
@@ -195,7 +320,7 @@ diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
  .B -ncdb\fR, \fB--no-comment-delimiters-on-blank-lines\fR
  Do not put comment delimiters on blank lines.
  .br
-@@ -1142,7 +1154,9 @@
+@@ -1222,7 +1234,9 @@
  statement, the \(oq-ss\(cq option will cause a space to be placed before
  the semicolon.  This emphasizes the semicolon, making it clear that the
  body of the \fBfor\fR or \fBwhile\fR statement is an empty statement.
@@ -206,7 +331,7 @@ diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
  
  The \(oq-pcs\(cq option causes a space to be placed between the name of
  the procedure being called and the \(oq(\(cq (for example, \fBputs\ ("Hi");\fR.  The \(oq-npcs\(cq option would give \fBputs("Hi");\fR).
-@@ -1788,6 +1802,7 @@
+@@ -2045,6 +2059,7 @@
  --break-before-boolean-operator                 -bbo
  --break-function-decl-args                      -bfda
  --break-function-decl-args-end                  -bfde
@@ -214,7 +339,7 @@ diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
  --case-indentation                              -cli\fIn\fR     
  --case-brace-indentation                        -cbi\fIn\fR
  --comment-delimiters-on-blank-lines             -cdb            
-@@ -1801,6 +1816,7 @@
+@@ -2058,6 +2073,7 @@
  --dont-break-function-decl-args                 -nbfda
  --dont-break-function-decl-args-end             -nbfde
  --dont-break-procedure-type                     -npsl           
@@ -222,9 +347,9 @@ diff -ur indent-2.2.11.orig/man/indent.1 indent-2.2.11/man/indent.1
  --dont-cuddle-do-while                          -ncdw
  --dont-cuddle-else                              -nce            
  --dont-format-comments                          -nfca           
-diff -ur indent-2.2.11.orig/regression/input/args.c indent-2.2.11/regression/input/args.c
---- indent-2.2.11.orig/regression/input/args.c	2008-04-05 04:54:12.000000000 -0500
-+++ indent-2.2.11/regression/input/args.c	2017-02-18 15:13:43.025811586 -0600
+diff -ur indent-2.2.12.orig/regression/input/args.c indent-2.2.12/regression/input/args.c
+--- indent-2.2.12.orig/regression/input/args.c	2018-09-02 02:47:27.000000000 -0500
++++ indent-2.2.12/regression/input/args.c	2019-07-23 11:39:58.019145468 -0500
 @@ -409,6 +409,7 @@
    {"braces-on-if-line", "br"},
    {"Bill-Shannon", "bs"},
@@ -241,9 +366,9 @@ diff -ur indent-2.2.11.orig/regression/input/args.c indent-2.2.11/regression/inp
    {"no-comment-delimiters-on-blank-lines", "ncdb"},
    {"dont-cuddle-else", "nce"},
    {"no-space-after-casts", "ncs"},
-diff -ur indent-2.2.11.orig/regression/standard/args.c indent-2.2.11/regression/standard/args.c
---- indent-2.2.11.orig/regression/standard/args.c	2009-02-15 05:15:05.000000000 -0600
-+++ indent-2.2.11/regression/standard/args.c	2017-02-18 15:13:43.029144901 -0600
+diff -ur indent-2.2.12.orig/regression/standard/args.c indent-2.2.12/regression/standard/args.c
+--- indent-2.2.12.orig/regression/standard/args.c	2018-09-02 02:47:27.000000000 -0500
++++ indent-2.2.12/regression/standard/args.c	2019-07-23 11:39:58.022478783 -0500
 @@ -406,6 +406,7 @@
    {"braces-on-if-line", "br"},
    {"Bill-Shannon", "bs"},
@@ -260,27 +385,27 @@ diff -ur indent-2.2.11.orig/regression/standard/args.c indent-2.2.11/regression/
    {"no-comment-delimiters-on-blank-lines", "ncdb"},
    {"dont-cuddle-else", "nce"},
    {"no-space-after-casts", "ncs"},
-diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
---- indent-2.2.11.orig/src/args.c	2008-07-23 14:27:17.000000000 -0500
-+++ indent-2.2.11/src/args.c	2017-02-18 15:13:43.029144901 -0600
-@@ -93,7 +93,7 @@
- #define LINUX_SETTINGS_STRING (int *) \
+diff -ur indent-2.2.12.orig/src/args.c indent-2.2.12/src/args.c
+--- indent-2.2.12.orig/src/args.c	2018-09-02 15:30:45.000000000 -0500
++++ indent-2.2.12/src/args.c	2019-07-23 11:45:14.634063538 -0500
+@@ -102,7 +102,7 @@
+ #define LINUX_SETTINGS_STRING \
       "-nbad\0-bap\0-nbc\0-bbo\0-hnl\0-br\0-brs\0-c33\0-cd33\0" \
       "-ncdb\0-ce\0-ci4\0-cli0\0-d0\0-di1\0-nfc1\0-i8\0-ip0\0-l80\0-lp\0" \
 -     "-npcs\0-nprs\0-npsl\0-sai\0-saf\0-saw\0-ncs\0-nsc\0-sob\0-nfca\0-cp33\0-ss\0" \
 +     "-npcs\0-nprs\0-npsl\0-sai\0-saf\0-saw\0-ncs\0-nsc\0-sob\0-nfca\0-cp33\0-bss\0" \
-      "-ts8\0-il1\0"
+      "-ts8\0-il1\0-nbs\0"
  
- /**
-@@ -139,6 +139,7 @@
+ const char *settings_strings[6] = {
+@@ -162,6 +162,7 @@
  static int exp_bli  = 0;
  static int exp_bls  = 0;
  static int exp_bs   = 0;
 +static int exp_bss  = 0;
- static int exp_c    = 0;/*!< Starting column for comments trailing statements */
+ static int exp_c    = 0; /*!< Starting column for comments trailing statements */
  static int exp_cbi  = 0;
  static int exp_cdb  = 0;
-@@ -251,6 +252,7 @@
+@@ -283,6 +284,7 @@
      {"ts",      PRO_INT,                                8, ONOFF_NA, &settings.tabsize,                          &exp_ts},
      {"st",      PRO_BOOL,                           false,       ON, &settings.use_stdout,                       &exp_st},
      {"ss",      PRO_BOOL,                           false,       ON, &settings.space_sp_semicolon,               &exp_ss},
@@ -288,7 +413,7 @@ diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
      {"sob",     PRO_BOOL,                           false,       ON, &settings.swallow_optional_blanklines,      &exp_sob},
      {"sc",      PRO_BOOL,                            true,       ON, &settings.star_comment_cont,                &exp_sc},
      {"sbi",     PRO_INT,                                0, ONOFF_NA, &settings.struct_brace_indent,              &exp_sbi},
-@@ -268,6 +270,7 @@
+@@ -300,6 +302,7 @@
      {"nv",      PRO_BOOL,                           false,      OFF, &settings.verbose,                          &exp_v},
      {"nut",     PRO_BOOL,                            true,      OFF, &settings.use_tabs,                         &exp_ut},
      {"nss",     PRO_BOOL,                           false,      OFF, &settings.space_sp_semicolon,               &exp_ss},
@@ -296,7 +421,7 @@ diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
      {"nsob",    PRO_BOOL,                           false,      OFF, &settings.swallow_optional_blanklines,      &exp_sob},
      {"nsc",     PRO_BOOL,                            true,      OFF, &settings.star_comment_cont,                &exp_sc},
      {"nsaw",    PRO_BOOL,                            true,      OFF, &settings.space_after_while,                &exp_saw},
-@@ -368,6 +371,7 @@
+@@ -410,6 +413,7 @@
      {"ts",      PRO_INT,                                8, ONOFF_NA, &settings.tabsize,                          &exp_ts},
      {"st",      PRO_BOOL,                           false,       ON, &settings.use_stdout,                       &exp_st},
      {"ss",      PRO_BOOL,                           false,       ON, &settings.space_sp_semicolon,               &exp_ss},
@@ -304,7 +429,7 @@ diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
      {"sob",     PRO_BOOL,                           false,       ON, &settings.swallow_optional_blanklines,      &exp_sob},
      {"sc",      PRO_BOOL,                           false,       ON, &settings.star_comment_cont,                &exp_sc},
      {"sbi",     PRO_INT,                                0, ONOFF_NA, &settings.struct_brace_indent,              &exp_sbi},
-@@ -386,6 +390,7 @@
+@@ -428,6 +432,7 @@
      {"nv",      PRO_BOOL,                           false,      OFF, &settings.verbose,                          &exp_v},
      {"nut",     PRO_BOOL,                            true,      OFF, &settings.use_tabs,                         &exp_ut},
      {"nss",     PRO_BOOL,                           false,      OFF, &settings.space_sp_semicolon,               &exp_ss},
@@ -312,7 +437,7 @@ diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
      {"nsob",    PRO_BOOL,                           false,      OFF, &settings.swallow_optional_blanklines,      &exp_sob},
      {"nsc",     PRO_BOOL,                           false,      OFF, &settings.star_comment_cont,                &exp_sc},
      {"nsaw",    PRO_BOOL,                            true,      OFF, &settings.space_after_while,                &exp_saw},
-@@ -493,6 +498,7 @@
+@@ -545,6 +550,7 @@
      {"start-left-side-of-comments",                 "sc"},
      {"standard-output",                             "st"},
      {"space-special-semicolon",                     "ss"},
@@ -320,7 +445,7 @@ diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
      {"space-after-while",                           "saw"},
      {"space-after-procedure-calls",                 "pcs"},
      {"space-after-parentheses",                     "prs"},
-@@ -554,6 +560,7 @@
+@@ -609,6 +615,7 @@
      {"else-endif-column",                           "cp"},
      {"dont-star-comments",                          "nsc"},
      {"dont-space-special-semicolon",                "nss"},
@@ -328,10 +453,10 @@ diff -ur indent-2.2.11.orig/src/args.c indent-2.2.11/src/args.c
      {"dont-line-up-parentheses",                    "nlp"},
      {"dont-left-justify-declarations",              "ndj"},
      {"dont-indent-parameters",                      "nip"},
-diff -ur indent-2.2.11.orig/src/handletoken.c indent-2.2.11/src/handletoken.c
---- indent-2.2.11.orig/src/handletoken.c	2009-02-15 05:20:42.000000000 -0600
-+++ indent-2.2.11/src/handletoken.c	2017-02-18 15:13:43.032478215 -0600
-@@ -933,12 +933,19 @@
+diff -ur indent-2.2.12.orig/src/handletoken.c indent-2.2.12/src/handletoken.c
+--- indent-2.2.12.orig/src/handletoken.c	2018-09-02 15:30:43.000000000 -0500
++++ indent-2.2.12/src/handletoken.c	2019-07-23 11:39:58.022478783 -0500
+@@ -1008,12 +1008,19 @@
      parser_state_tos->in_decl = (parser_state_tos->dec_nest > 0) ? true : false;
  
      /* If we have a semicolon following an if, while, or for, and the
@@ -355,10 +480,10 @@ diff -ur indent-2.2.11.orig/src/handletoken.c indent-2.2.11/src/handletoken.c
      }
  
      *(e_code++) = ';';
-diff -ur indent-2.2.11.orig/src/indent.h indent-2.2.11/src/indent.h
---- indent-2.2.11.orig/src/indent.h	2009-10-11 14:15:34.000000000 -0500
-+++ indent-2.2.11/src/indent.h	2017-02-18 15:13:43.032478215 -0600
-@@ -251,6 +251,7 @@
+diff -ur indent-2.2.12.orig/src/indent.h indent-2.2.12/src/indent.h
+--- indent-2.2.12.orig/src/indent.h	2018-09-02 15:25:26.000000000 -0500
++++ indent-2.2.12/src/indent.h	2019-07-23 11:39:58.022478783 -0500
+@@ -249,6 +249,7 @@
      int use_stdout;  /*!<  Where does output go. */
      int space_sp_semicolon; /*!<  If true, a space is inserted between if, while, or for, and a semicolon
                               * for example while (*p++ == ' ') ; */
