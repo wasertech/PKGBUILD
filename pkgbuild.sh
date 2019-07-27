@@ -48,6 +48,7 @@ makepkg -Lcs --noconfirm $SIGN_PKG
 makepkg --packagelist | while read filename; do
 	newfname=${filename//:/.}
 	mv -n "$filename" "$newfname"
+	mv -n "$filename.sig" "$newfname.sig"
 	repo-add master/pkgbuild.db.tar "$newfname"
 done
 
