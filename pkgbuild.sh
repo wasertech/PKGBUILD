@@ -39,10 +39,16 @@ sudo cp /tmp/pacman.conf.new /etc/pacman.conf
 # Sync repositories
 sudo pacman -Sy
 
+export PKGDEST=repo LC_MESSAGES=C LANG=C
+
 # Build and sign packages
-PKGDEST=repo LC_MESSAGES=C makepkg -Lcs --noconfirm $SIGN_PKG
+makepkg -Lcs --noconfirm $SIGN_PKG
 
 # Build repo update
-LANG=C repo-add master/pkgbuild.db.tar repo/*"$PKGEXT"
+makepkg --packagelist | while read filename; do
+	newfname=${filename//:/.}
+	mv -n "$filename" "$newfname"
+	repo-add master/pkgbuild.db.tar "$newfname"
+done
 
 { set +ex; } 2>/dev/null
