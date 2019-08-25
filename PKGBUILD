@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=15
+pkgrel=17
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -134,6 +134,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	vimb
 	wmname
 	xcursor-vanilla-dmz
+	xf86-input-joystick
 	xorg-server
 	xorg-xdpyinfo
 	xorg-xev
@@ -256,7 +257,7 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 	make
 	minted
 	pandoc
-	python
+	python-pandocfilters
 	tectonic
 	texlive-core
 	texlive-fontsextra
