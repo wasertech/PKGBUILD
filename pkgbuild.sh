@@ -17,6 +17,7 @@ mkdir -p "$HOME/.gnupg"
 chmod 700 "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 echo 'keyserver:0:"hkp%3a//na.pool.sks-keyservers.net' | gpgconf --change-options dirmngr
+gpgconf --reload all
 if [[ -r master/signing.key ]]; then
   gpg --import master/signing.key
   gpg --export --armor | sudo tee /usr/share/pacman/keyrings/pkgbuild.gpg >/dev/null
