@@ -21,7 +21,9 @@ if [[ -r master/signing.key ]]; then
   gpg --import master/signing.key
   gpg --export --armor | sudo tee /usr/share/pacman/keyrings/pkgbuild.gpg >/dev/null
   gpg -k --with-colons | grep -m1 '^fpr' | cut -d: -f10 | sed 's/$/:4:/' | sudo tee /usr/share/pacman/keyrings/pkgbuild-trusted >/dev/null
-  sudo pacman-key --populate pkgbuild
+  sudo rm -rf /etc/pacman.d/gnupg
+  sudo pacman-key --init
+  sudo pacman-key --populate archlinux pkgbuild
   SIGN_PKG=--sign
 fi
 
