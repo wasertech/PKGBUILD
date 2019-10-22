@@ -48,7 +48,7 @@ export PKGDEST=repo LC_MESSAGES=C LANG=C
 makepkg -Lcs --noconfirm $SIGN_PKG
 
 # Build repo update
-makepkg --packagelist | while read filename; do
+makepkg --packagelist | while read -r filename; do
 	newfname=${filename//:/.}
 	mv -n "$filename" "$newfname"
 	mv -n "$filename.sig" "$newfname.sig"
