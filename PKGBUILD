@@ -7,7 +7,7 @@ url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
-depends=('libx11' 'libxinerama')
+depends=('libx11' 'libxinerama' 'libxft')
 makedepends=('git')
 install=
 provides=('dwm')
@@ -19,13 +19,13 @@ md5sums=(SKIP '939f403a71b6e85261d09fc3412269ee')
 pkgver() {
   cd "$srcdir/dwm"
 
-  git fetch "$_upstream" master
+  git fetch -q "$_upstream" master
 
   local upstream=$(git rev-list --count FETCH_HEAD)
   local behind=$(git rev-list --count ..FETCH_HEAD)
   local ahead=$(git rev-list --count FETCH_HEAD..)
 
-  [[ $behind -gt 0 ]] && warning "Patched version is %s commits behind upstream" "$behind"
+  [[ $behind -gt 0 ]] && error "Patched version is %s commits behind upstream" "$behind"
 
   printf "%s.%s\n" "$upstream" "$ahead"
 }
