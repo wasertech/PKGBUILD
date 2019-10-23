@@ -18,6 +18,8 @@ chmod 700 "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 echo 'keyserver:0:"hkp%3a//pgp.mit.edu' | gpgconf --change-options dirmngr
 gpgconf --reload all
+# HACK: auto-key-retrieve doesn't currently retrieve based on keyid alone
+gpg --recv-key $(source PKGBUILD && echo "${validpgpkeys[@]}")
 if [[ -r master/signing.key ]]; then
   gpg --import master/signing.key
   gpg --export --armor | sudo tee /usr/share/pacman/keyrings/pkgbuild.gpg >/dev/null
