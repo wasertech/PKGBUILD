@@ -16,7 +16,7 @@ declare SIGN_PKG=
 mkdir -p "$HOME/.gnupg"
 chmod 700 "$HOME/.gnupg"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
-echo 'keyserver:0:"hkp%3a//pgp.mit.edu' | gpgconf --change-options dirmngr
+echo 'keyserver:0:"hkp%3a//na.pool.sks-keyservers.net' | gpgconf --change-options dirmngr
 gpgconf --reload all
 # HACK: auto-key-retrieve doesn't currently retrieve based on keyid alone
 gpg --recv-key $(source PKGBUILD && echo "${validpgpkeys[@]}")
