@@ -1,0 +1,10 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/todo.sh
+usr/share/
+usr/share/bash-completion/
+usr/share/bash-completion/completions/
+usr/share/bash-completion/completions/todo.sh
+usr/share/todotxt/
+usr/share/todotxt/todo.cfg
