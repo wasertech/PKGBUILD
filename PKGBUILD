@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=17
+pkgrel=18
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -79,7 +79,6 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	powerpill
 	pv
 	pwgen
-	redshift
 	rlwrap
 	rsync
 	rxvt-unicode-terminfo
@@ -121,17 +120,16 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	hsetroot
 	otf-alegreya-sans
 	puzzles
+	redshift
 	rxvt-unicode
 	scrot
 	smartmontools
 	srandrd
 	stint
-	tabbed
 	tigervnc
 	ttf-et-book
 	ttf-fantasque-sans-mono
 	unrar
-	vimb
 	wmname
 	xcursor-vanilla-dmz
 	xf86-input-joystick
@@ -200,16 +198,13 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	patch
 	patchutils
 	pkgconf
-	postgresql
 	python
-	ruby
 	shellcheck
 	sparse
 	sqlite
 	strace
 	teensy-loader-cli
 	valgrind
-	yarn
 ); }
 
 package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
@@ -233,8 +228,8 @@ package_djp-meta-audio() { pkgdesc="Metapackage for audio editing"; depends=(
 ); }
 
 package_djp-meta-present() { pkgdesc="Metapackage for presentations"; depends=(
+	dspdfviewer
 	farbfeld
-	#impressive
 	pdfpc
 	sent
 	ttf-et-book
