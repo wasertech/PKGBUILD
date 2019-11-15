@@ -17,13 +17,12 @@ build() {
   cd "${pkgname}-${pkgver}"
   cmake \
     -DCMAKE_INSTALL_PREFIX="/usr/" \
-    -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
     -DSYSCONFDIR="/etc" \
     -DCMAKE_BUILD_TYPE=Release \
     -DBuildTests=OFF \
     -DCMAKE_CXX_FLAGS_INIT="-Wno-error=deprecated-declarations" \
     -DDSPDFVIEWER_VERSION="${pkgver}"
-  make
+  make -j1
 }
 
 package() {
