@@ -17,6 +17,7 @@ build() {
   cd "${pkgname}-${pkgver}"
   cmake \
     -DCMAKE_INSTALL_PREFIX="/usr/" \
+    -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
     -DSYSCONFDIR="/etc" \
     -DCMAKE_BUILD_TYPE=Release \
     -DBuildTests=OFF \
