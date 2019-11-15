@@ -23,7 +23,7 @@ build() {
     -DBuildTests=OFF \
     -DCMAKE_CXX_FLAGS_INIT="-Wno-error=deprecated-declarations" \
     -DDSPDFVIEWER_VERSION="${pkgver}"
-  make -j1
+  make
 }
 
 package() {
