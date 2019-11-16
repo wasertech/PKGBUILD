@@ -3,7 +3,7 @@
 _name=milksnake
 pkgname=python-milksnake
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library that extends setuptools for binary extensions'
 arch=('any')
 url=https://github.com/getsentry/milksnake
