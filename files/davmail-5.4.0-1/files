@@ -49,6 +49,7 @@ usr/share/java/davmail/lib/jettison-1.4.0.jar
 usr/share/java/davmail/lib/log4j-1.2.16.jar
 usr/share/java/davmail/lib/slf4j-api-1.7.25.jar
 usr/share/java/davmail/lib/slf4j-log4j12-1.7.25.jar
+usr/share/java/davmail/lib/sonarqube-ant-task-2.7.0.1612.jar
 usr/share/java/davmail/lib/stax-api-1.0.1.jar
 usr/share/java/davmail/lib/stax2-api-3.1.1.jar
 usr/share/java/davmail/lib/woodstox-core-5.1.0.jar
