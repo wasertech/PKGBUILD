@@ -2,7 +2,7 @@
 
 pkgname=pandoc-plantuml-filter
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Pandoc filter for PlantUML code blocks, python version'
 arch=('any')
 url='https://pypi.org/project/pandoc-plantuml-filter'
