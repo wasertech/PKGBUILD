@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=18
+pkgrel=19
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -108,7 +108,6 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=(djp-meta-xorg-apps); depends=(
 	browserpass
 	browserpass-firefox
-	compton
 	conky-cli
 	dina-font-latin1
 	dmenu
@@ -119,6 +118,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	gvim
 	hsetroot
 	otf-alegreya-sans
+	picom
 	puzzles
 	redshift
 	rxvt-unicode
