@@ -1,5 +1,8 @@
 language: generic
 dist: xenial
+cache:
+  directories:
+    - $HOME/.gem/ruby
 before_install:
   - openssl aes-256-cbc -K $encrypted_7dd107a11548_key -iv $encrypted_7dd107a11548_iv -in signing.key.enc -out signing.key -d
 script:
