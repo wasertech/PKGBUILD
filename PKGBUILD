@@ -1,6 +1,7 @@
 # Maintainer: Devin J. Pohly <djpohly@gmail.com>
-pkgname=dwm-djp-git
-pkgver=1677.67
+pkgname=(dwm-git dwm-laptop-git)
+pkgbase=dwm-git
+pkgver=1677.92
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -12,12 +13,28 @@ makedepends=('git')
 install=
 provides=('dwm')
 conflicts=('dwm')
-source=("git+https://github.com/djpohly/dwm.git#branch=myprefs" dwm.desktop)
-_upstream="http://git.suckless.org/dwm"
+source=("git+https://github.com/djpohly/dwm.git#branch=laptopprefs" dwm.desktop)
+_upstream="git://git.suckless.org/dwm"
 md5sums=(SKIP '939f403a71b6e85261d09fc3412269ee')
 
+prepare() {
+  rm -rf "$srcdir/dwm-laptop"
+  cp -a "$srcdir/dwm"{,-laptop}
+  git -C "$srcdir/dwm" checkout myprefs
+
+  for d in "$srcdir/dwm"{,-laptop}; do
+    (cd "$d"
+      sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+      sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
+      sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
+      sed -i 's/^LDFLAGS =/LDFLAGS +=/g' config.mk
+      rm -f config.h
+    )
+  done
+}
+
 pkgver() {
-  cd "$srcdir/dwm"
+  cd "$srcdir/dwm-laptop"
 
   git fetch -q "$_upstream" master
 
@@ -30,25 +47,23 @@ pkgver() {
   printf "%s.%s\n" "$upstream" "$ahead"
 }
 
-prepare() {
-  cd "$srcdir/dwm"
-
-  sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
-  sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
-  sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
-  sed -i 's/^LDFLAGS =/LDFLAGS +=/g' config.mk
-
-  rm -f config.h
-}
-
 build() {
-  cd "$srcdir/dwm"
-
-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  for d in "$srcdir/dwm"{,-laptop}; do
+    make -C "$d" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  done
 }
 
-package() {
+package_dwm-git() {
   cd "$srcdir/dwm"
+
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -m644 -D "$srcdir/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+}
+
+package_dwm-laptop-git() {
+  cd "$srcdir/dwm-laptop"
 
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
