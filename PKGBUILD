@@ -10,7 +10,7 @@ depends=('jack' 'qt5-base')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/jessecrossen/jackstrobe')
+source=('git+https://github.com/djpohly/jackstrobe')
 md5sums=('SKIP')
 
 pkgver() {
