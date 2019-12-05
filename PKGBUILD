@@ -7,7 +7,7 @@ pkgdesc="Crack and decrypt BLE encryption"
 arch=('i686' 'x86_64')
 url="http://lacklustre.net/projects/crackle/"
 license=('BSD')
-makedepends=('libpcap')
+makedepends=('git' 'libpcap')
 source=("${pkgname}::git+https://github.com/mikeryan/crackle")
 sha256sums=('SKIP')
 
