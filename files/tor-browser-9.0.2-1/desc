@@ -1,0 +1,69 @@
+%FILENAME%
+tor-browser-9.0.2-1-x86_64.pkg.tar.xz
+
+%NAME%
+tor-browser
+
+%BASE%
+tor-browser
+
+%VERSION%
+9.0.2-1
+
+%DESC%
+Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD)
+
+%CSIZE%
+79056324
+
+%ISIZE%
+79041171
+
+%MD5SUM%
+cf4891beeb19d2f4deed0fe32ffb1dd1
+
+%SHA256SUM%
+6f53af8a7205ca2a8c7aa20841d2b598ef7be12334d5f93226698fd779171195
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl3o8NEACgkQFW138LsgdFBOCgf/VSj5n1YOOPGs+fBIWr7Ozt8jgIRjhBB8lJo0dXaYAezJ1TS1pAKAtEuDiLxU1TouWmQ59WqyJRW9Ml7Aw4HI/ZTWUda7cg+urPiQAuYp163iGb7vSgoo5rWEDHFMdbUB3XANqMhh+Qk7G9q4/wCSrpupjUpakO2He5xTmQ+7BU+HuNRlwZG4LtDMlyedG9UPjhylHWvLCinnTYU+G3WESKrGwvFASUj0KeVVAX9vcHL/8H7VRHGxZMJaiws8Fvc2Cak4GO9OM0Tm4xuqu1Dd+WdlexigprsJtrLhG9imgr5vWSdGweJFNU5XOMl+VWtOYhszUDKE7XJFVn2186NK7g==
+
+%URL%
+https://www.torproject.org/projects/torbrowser.html
+
+%LICENSE%
+GPL
+
+%ARCH%
+x86_64
+
+%BUILDDATE%
+1575547047
+
+%PACKAGER%
+Devin J. Pohly <djpohly+arch@gmail.com>
+
+%DEPENDS%
+mozilla-common
+libxt
+startup-notification
+mime-types
+dbus-glib
+alsa-lib
+desktop-file-utils
+hicolor-icon-theme
+libvpx
+icu
+libevent
+nss
+hunspell
+sqlite
+
+%OPTDEPENDS%
+zenity: simple dialog boxes
+kdialog: KDE dialog boxes
+gst-plugins-good: H.264 video
+gst-libav: H.264 video
+libpulse: PulseAudio audio driver
+libnotify: Gnome dialog boxes
+
