@@ -14,19 +14,19 @@ x11-touchscreen-calibrator-git
 X Window System Touchscreen Calibrator
 
 %CSIZE%
-9168
+9160
 
 %ISIZE%
 18831
 
 %MD5SUM%
-8650ee6964f9a3bb33fc228bac208e44
+1d07efb0a810830d7f3e7120883fadf3
 
 %SHA256SUM%
-05264c3331a8d3611b378486911efd541a6f6a19126780d3e77607958f1f8d3e
+c38ccacf255207840b4c900ce284dbcc28029e7b28f64ee9d6303c0fa11b2878
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl3rl6kACgkQFW138LsgdFAouwgAu4cWHHzyurYgYTWqn9dluG/eJIz9bi8hiIThuVBcOybCEgOsgSi8IkU995K8jFqZd3faIbzoc/gi4iMNNeatn+gG4heawt7u5ozmj6Ism8Q96Xk0N3SyDF0p29ktFwctRQ411ubN/8rFTRTjS3rVUzGlZWxIWgusFsZ+r+fpUkVjLQLZxKPyKs3HGaYzto1aq1A3zzLuJQkahaTUWVGrO67pHCFkh+lPnLF0gvxrH+m7ukWy4Lui3Zn2q0Y5TY5r8SWDa3WvM0Eh1ETZuR6cTxBGq6otrAqbC82Cq9uHW5ySEDqXJu/U7LBy7DO+A4QbJc5JTcz5u/6oc7lIudxNfw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl3s6RYACgkQFW138LsgdFDJogf9EF9hkn7XIp3Ee9Q1AfkojlQO1oC9pcjOFvMOlRp5pRIEPtVajU0Mu+crhFQzCMLk7AxVsT2kqwn6e/0UKoqRfTKMGrb6G/z0GEIL18Jkd02uxV0YYZOukupKDaTYlFVKHolqM9Fhf+v6+3P+NyacX0bdMyDiQTyA9M1MiRHlf251M873Dxx8RIpCcBgsj147jwggKxdmbypbyn0R5F7Zx8CdqjYFxl46dgU9si/eifwusar9vKobYuD1ZsbzwkW2K+bH5fj/RhW+z0V051NQyzv1JC7+gukP0sw5KtFmOp3FN/8Sv9IRhJqd4qKRvSNIVMCvGHrV3A1x4yA+DUlcjw==
 
 %URL%
 https://github.com/djpohly/x11-touchscreen-calibrator
@@ -38,10 +38,10 @@ GPL
 x86_64
 
 %BUILDDATE%
-1575720856
+1575807240
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/621971941
+https://travis-ci.org/djpohly/PKGBUILD/builds/622253249
 
 %PROVIDES%
 x11-touchscreen-calibrator
