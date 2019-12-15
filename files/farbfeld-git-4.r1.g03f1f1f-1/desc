@@ -14,19 +14,19 @@ farbfeld-git
 conversion tools for the suckless image format
 
 %CSIZE%
-19776
+19096
 
 %ISIZE%
-132096
+94817
 
 %MD5SUM%
-5bd218cc2ace9580687f6f1eef93a5b0
+b7d28c53ee5f5e0742eee1e7bb9d11c0
 
 %SHA256SUM%
-1e2f4886327a62eade72d6db2fdbd6a2b5a88f99f060f5fe0a8072e4c47cd595
+dadfbd2942ee98a60d56f57e1de5c626989bdc33d5fa668cca13b1cfb21ef07f
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlt3An8ACgkQFW138LsgdFDgoggAmyTD8SoNuXftjyoWxWtrleZvsofWnnvGAcAUWMh0D9rMmPBNexj2bieR3k9sYbZwGNRLR2KnRF8zwA9Vsxg/aTMXbe3FORLosSCSC3FKpJ8iZRfbqAr/jloTk0G4y+mTpuWXCPkmMJHbLfZhnJkVvBqFS0iZVmsH9yiopUHfZA23ghIvP/nBVplJJmsbYp5MKTth12QbaIGbO+QMLz8CGdnQ/dh5Gl3haSrrRMGkECDVgCM2hLU11+jQjwveTcbc42CEeQuwCHvi1QhXj0+Uxc9CIX4FMhWID60et6heWa5XiitTuG5C37dGVTM0IzLjlxRvu5Zatia3Fed1+KjTzg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl32JikACgkQFW138LsgdFDrWggAl0nVewJEz/CSTjJVO0PeGguFeI5I6vSvcvmESG/g6yOKJI1KWaHu8lbHJa+mi0iua7dOYxbRp/wK667c3Dji6NyHhqTOxFqqCOFnVqW3ZDPRUDwtPgogAe2oU1rNGuOAq987G6lCWQpqSAFQ3qj73V8kbBhrven2GsHNmIk36EmT2ctA/19xaa8lB9+YN10qgbnp20phzX9IX4u8S3Uu7tqbUNtyVIDtV9fYzXP9LAbpT+ktKHfvcmGmYXKPSuli7/pYHuSmJAxxBN8o4/7/U6HB8ZWA3ywgpKXmIIFh3g2a07zb6MmTWDaarlveaVtXNqKgfpqXX8QFFqh+r6M3gA==
 
 %URL%
 http://tools.suckless.org/farbfeld/
@@ -38,10 +38,10 @@ ISC
 x86_64
 
 %BUILDDATE%
-1534526074
+1576412707
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/414929648
+https://travis-ci.org/djpohly/PKGBUILD/builds/625275260
 
 %CONFLICTS%
 farbfeld
