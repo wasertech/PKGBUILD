@@ -14,19 +14,19 @@ vimb-git
 A Vim-like web browser that is inspired by Pentadactyl and Vimprobable.
 
 %CSIZE%
-89116
+89052
 
 %ISIZE%
 238842
 
 %MD5SUM%
-181abd6264ef79a362e845a9221e95e8
+5fa92fae5dbfb30f895ab8a0c80b81bc
 
 %SHA256SUM%
-db75d6f033ca8dec611b6441e08c565f829f11db27a59c6101bfdfff6ed30cdc
+d522cff88a775a1d9f6cac0d10a4376106ce56f80f7eb614f9fb2b5e3254174a
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl33dmcACgkQFW138LsgdFA1Cwf/U+m6E015guI7J90M+Dyz5bz3/4Jcpju7P62cSB09c7NhOugoy6Ex99k1uXNiq6ufONkX93rndwRJjBmA+rDpWfqljRWlq/ZE8PvZ7dhdy+vQftP5rdO6DIG00sZN5k6qH/N8ZPaoO6GC0hIk2W0ZvhCF4mj6PmGmtIzmA8JBpXWRA2b/vTlp0Rbh7UhLkknY0/0c8c9qJ6frqxJhTlnpOcbpSJmHlDIQZxzADKIhPjlB0Cr9cycSksMwHDnIsxlXoLOJF6fR1EdfcOHSBQhiqTOoo4dqTxoYsFB64HTF0R8CTfAjKAbDm5HfrH9hvUfQXhFaI1Aco626CUVB0Yyvqg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl34yBUACgkQFW138LsgdFAMhgf+LjhLdq8wXoFlgNgn32Ki3DP5kTjxd/vhMdVsJZx3iwnFTGCTzfucNAXHvQ3rWKqom2mjXgxa4sMFJIxKLkUubDxkDvvo8oglLFvD43ARR7HMgup6u8rKEA+S0mGOYpjo4stRz5VvG9Bn0UiUlqsqOsJff/8Z7NtG4TZz6WYJ3kjvcnb2fC02O0gvyna1ip8kiulfl1jpMNSHhGsPHkK10E93khciEo7ThCnj+n/hq4repQcXBn9SW/YwOlibAzucxI+EW0VucIzmc0h2nNTdcQ/0C1Cb8dmsjjXu/DbvcAGjxhnKLRPu9ywP2kqGXJ7KnFW+nAZB6FsF7a5kxHhmIA==
 
 %URL%
 http://fanglingsu.github.io/vimb
@@ -38,10 +38,10 @@ GPLv3
 x86_64
 
 %BUILDDATE%
-1576498743
+1576585184
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/625652060
+https://travis-ci.org/djpohly/PKGBUILD/builds/626159898
 
 %CONFLICTS%
 vimb
