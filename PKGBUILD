@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=19
+pkgrel=20
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -118,6 +118,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	gvim
 	hsetroot
 	otf-alegreya-sans
+	otf-fantasque-sans-mono
 	picom
 	puzzles
 	redshift
@@ -128,7 +129,6 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	stint
 	tigervnc
 	ttf-et-book
-	ttf-fantasque-sans-mono
 	unrar
 	wmname
 	xcursor-vanilla-dmz
@@ -336,6 +336,7 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	pulseaudio
 	qsstv
 	sdrangel
+	soapyhackrf
 	sox
 	urh
 	wsjtx
