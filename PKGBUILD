@@ -35,8 +35,9 @@ build() {
 }
 
 package() {
-	make -C "${srcdir}/${pkgname}" \
-		PREFIX="/usr" \
-		DESTDIR="${pkgdir}" \
-		install
+	cd "${srcdir}/${pkgname}"
+	make PREFIX="/usr" \
+		 DESTDIR="${pkgdir}" \
+		 install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
