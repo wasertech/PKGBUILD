@@ -2,7 +2,7 @@
 # Contributor: fanglingsu
 # Maintainer: <aksr at t-com dot me>
 pkgname=vimb-git
-pkgver=3.0.0.r1461.46d6f0d
+pkgver=3.5.0.r1684.1d81da7
 pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/fanglingsu/vimb"
 url="http://fanglingsu.github.io/vimb"
 license=('GPLv3')
 depends=('webkit2gtk>=2.8')
-makedepends=('git')
+makedepends=('git' 'xorgproto')
 optdepends=()
 checkdepends=()
 provides=('vimb')
