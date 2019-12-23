@@ -1,13 +1,12 @@
 pkgbase = sent-git
 	pkgdesc = Simple plain-text presentation tool
 	pkgver = r131.c8a937f
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tools.suckless.org/sent
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = xorgproto
 	depends = fontconfig
 	depends = libxft
 	optdepends = farbfeld: PNG and JPEG support
