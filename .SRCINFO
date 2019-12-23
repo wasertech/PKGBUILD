@@ -1,13 +1,12 @@
 pkgbase = vimb-git
 	pkgdesc = A Vim-like web browser that is inspired by Pentadactyl and Vimprobable.
 	pkgver = 3.5.0.r1684.1d81da7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fanglingsu.github.io/vimb
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
-	makedepends = xorgproto
 	depends = webkit2gtk>=2.8
 	provides = vimb
 	conflicts = vimb

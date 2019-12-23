@@ -3,7 +3,7 @@
 # Maintainer: <aksr at t-com dot me>
 pkgname=vimb-git
 pkgver=3.5.0.r1684.1d81da7
-pkgrel=1
+pkgrel=2
 epoch=
 arch=('i686' 'x86_64')
 pkgdesc="A Vim-like web browser that is inspired by Pentadactyl and Vimprobable."
@@ -11,7 +11,7 @@ url="https://github.com/fanglingsu/vimb"
 url="http://fanglingsu.github.io/vimb"
 license=('GPLv3')
 depends=('webkit2gtk>=2.8')
-makedepends=('git' 'xorgproto')
+makedepends=('git')
 optdepends=()
 checkdepends=()
 provides=('vimb')
