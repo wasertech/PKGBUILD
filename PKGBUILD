@@ -22,7 +22,7 @@ pkgname=(
 	djp-meta-radio
 )
 pkgver=0.2
-pkgrel=20
+pkgrel=21
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -88,10 +88,12 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	sudo
 	sysfsutils
 	tcpdump
+	termdown
 	terminus-font
 	texinfo
 	time
 	tmux
+	todotxt
 	traceroute
 	unzip
 	usbutils
@@ -106,6 +108,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 ); }
 
 package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=(djp-meta-xorg-apps); depends=(
+	awesome-terminal-fonts
 	browserpass
 	browserpass-firefox
 	conky-cli
@@ -117,6 +120,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	firefox-developer-edition
 	gvim
 	hsetroot
+	kitty
 	otf-alegreya-sans
 	otf-fantasque-sans-mono
 	picom
@@ -156,6 +160,7 @@ package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
 	acpid
 	aircrack-ng
 	powertop
+	tlp
 	wpa_supplicant
 	x11-touchscreen-calibrator
 	xorg-xbacklight
@@ -182,6 +187,7 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	binutils
 	bison
 	ccache
+	ccls
 	cgdb
 	cloc
 	dfu-util
@@ -191,6 +197,7 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	gcc
 	gdb
 	indent
+	javascript-typescript-langserver
 	m4
 	make
 	namcap
@@ -199,6 +206,7 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	patchutils
 	pkgconf
 	python
+	python-language-server
 	shellcheck
 	sparse
 	sqlite
