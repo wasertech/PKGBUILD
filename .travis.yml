@@ -29,6 +29,7 @@ deploy:
   api_key: $GITHUB_TOKEN
   file_glob: true
   file: ${TRAVIS_TAG}/*.pkg.*
+  overwrite: true
   skip_cleanup: true
   on:
     all_branches: true
