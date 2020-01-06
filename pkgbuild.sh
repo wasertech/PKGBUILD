@@ -4,7 +4,6 @@ set -ex
 
 # Environment variables.
 export PACKAGER="https://travis-ci.org/${1}/builds/${3}"
-export PKGEXT=".pkg.tar.xz"
 
 # Variables declaration.
 declare -r pkgslug="$1"
