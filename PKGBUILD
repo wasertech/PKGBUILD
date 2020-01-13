@@ -7,7 +7,7 @@
 pkgname=libgfshare-git
 _basename=libgfshare
 pkgver=r100.a0670e6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and utilities for multi-way secret-sharing"
 arch=( 'i686' 'x86_64' )
 url="http://www.digital-scurf.org/software/$_basename"
