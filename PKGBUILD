@@ -6,7 +6,7 @@
 _pkgname=vcsh
 pkgname=vcsh-git
 pkgver=1.20141026.r396.gc4019a5
-pkgrel=1
+pkgrel=2
 pkgdesc='manage config files in HOME via fake bare git repositories'
 arch=('any')
 url='https://github.com/RichiH/vcsh'
