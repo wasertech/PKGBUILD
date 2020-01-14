@@ -1,0 +1,55 @@
+#!/bin/bash
+
+usage() {
+	cat <<- _EOF_
+		Usage: $0 [OPTION...] INTERFACE
+		Displays a graph of incoming network traffic on INTERFACE.
+
+		Options:
+		    -t, --transmit       Display outgoing network traffic instead
+		    -i, --interval=SECS  Update the graph every SECS seconds
+		    -h, --help           This help message
+	_EOF_
+}
+
+# Defaults
+dir=rx
+interval=1
+
+# Parse options
+if ! opts=$(getopt -o ti:h -l transmit,interval:,help -- "$@"); then
+	echo "Try '$0 --help' for more information" 1>&2
+	exit 1
+fi
+eval set -- "$opts"
+
+while opt=$1 && shift; do
+	case $opt in
+		--) break;;
+		-t|--transmit)
+			dir=tx;;
+		-i|--interval)
+			interval=$1
+			shift;;
+		-h|--help)
+			usage
+			exit 0;;
+	esac
+done
+
+# Arguments
+if [[ $# -lt 1 ]]; then
+	echo 'Interface parameter is missing' 1>&2
+	echo "Try '$0 --help' for more information." 1>&2
+	exit 1
+fi
+iface=$1
+
+# Interface information
+rate=$(sudo tc class show dev "$iface" | grep -o '\brate [^ ]*' | sed 's/^/ /')
+delay=$(sudo tc qdisc show dev "$iface" | grep netem | grep -o '\bdelay [^ ]*' | sed 's/^/ /')
+loss=$(sudo tc qdisc show dev "$iface" | grep netem | grep -o '\bloss [^ ]*' | sed 's/^/ /')
+
+stdbuf -oL bmon -b -r "$interval" -p "$iface" -o format:fmt="\$(attr:$dir:bytes)\\n" |
+	stdbuf -oL awk '{if (NR > 1) print ($1-last)/'"$interval"'; last=$1}' |
+	LANG=en_US.UTF-8 stag -u -t "$iface [$HOSTNAME]$rate$delay$loss"
