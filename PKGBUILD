@@ -7,6 +7,7 @@ url='https://github.com/seenaburns/stag'
 pkgver=107.76c7b36
 pkgrel=1
 depends=('ncurses')
+makedepends=('git')
 provides=('stag-graph')
 conflicts=('stag-graph' 'stag-git')
 source=("${_name}::git+${url}")

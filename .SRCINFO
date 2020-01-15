@@ -5,6 +5,7 @@ pkgbase = stag-graph-git
 	url = https://github.com/seenaburns/stag
 	arch = i686
 	arch = x86_64
+	makedepends = git
 	depends = ncurses
 	provides = stag-graph
 	conflicts = stag-graph
