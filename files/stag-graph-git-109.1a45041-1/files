@@ -1,0 +1,8 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/stag
+usr/share/
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/stag.1.gz
