@@ -1,7 +1,7 @@
 %FILES%
 usr/
 usr/bin/
-usr/bin/suscan
+usr/bin/suscan.status
 usr/include/
 usr/include/suscan/
 usr/include/suscan/analyzer/
@@ -19,7 +19,6 @@ usr/include/suscan/analyzer/spectsrc.h
 usr/include/suscan/analyzer/symbuf.h
 usr/include/suscan/analyzer/throttle.h
 usr/include/suscan/analyzer/worker.h
-usr/include/suscan/analyzer/xsig.h
 usr/include/suscan/codec/
 usr/include/suscan/codec/codec.h
 usr/include/suscan/util/
@@ -29,8 +28,6 @@ usr/include/suscan/util/object.h
 usr/include/suscan/util/util.h
 usr/lib/
 usr/lib/libsuscan.so
-usr/lib/libsuscan.so.0
-usr/lib/libsuscan.so.0.0.0
 usr/lib/pkgconfig/
 usr/lib/pkgconfig/suscan.pc
 usr/share/
