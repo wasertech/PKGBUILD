@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/BatchDrake/sigutils"
 license=("GPL")
 depends=("libsndfile" "alsa-lib" "fftw")
-makedepends=("git" "cmake>=3.7.2")
+makedepends=("git" "cmake>=3.7.2" "libvolk")
 optdepends=("libvolk")
 provides=("sigutils")
 conflicts=("sigutils")

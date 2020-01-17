@@ -7,6 +7,7 @@ pkgbase = sigutils-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake>=3.7.2
+	makedepends = libvolk
 	depends = libsndfile
 	depends = alsa-lib
 	depends = fftw
