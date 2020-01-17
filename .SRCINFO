@@ -7,6 +7,7 @@ pkgbase = suscan-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = libvolk
 	depends = soapysdr
 	depends = sigutils
 	depends = fftw
