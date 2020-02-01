@@ -14,19 +14,19 @@ powerpill
 Pacman wrapper for faster downloads.
 
 %CSIZE%
-27344
+27348
 
 %ISIZE%
 97293
 
 %MD5SUM%
-b4ffbc49e20250ac303b9669bca52bfb
+15f76efe58d3a6a005365f1925310933
 
 %SHA256SUM%
-072749c950f97e4ff450be829269ead1af7b57b5de21a10af629be8cb0f33ae3
+85821002fdee68e89bf628cbdfddeed02c5382717a1a31c8293e38b894a7f85c
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl3QQ5cACgkQFW138LsgdFDgEQf7Bo0XaYxw2NgS2qqgIqMFuE57/utM35QcpvEAQICjFBgaGB3YahR+zSNO9DsnrsJYw+iirgMFJhk5+FPUAgAxN4gEbOoiySQi0jwzK/nW9EP1dD/xX9l1SKJWIJgFbygAZyD+YeoFBWPF0zqfbb37bkJg+aAtxxXOhtfSd70nPNmw9sfTAHxqR6jDHsNwYKqPEiVmdi/yBYNzYVgLQGgtarEEaf8jjXGdP4Q8lDI/IS7jwiLAKpO3wM8jGarqb3wCOXt2MIqINlctv7645HUlqh5AZjrERvebnsVWZYcFaRybnY/R9qZyLij2+3WZzvSP1wNf38vIF873QbkrPyzrRA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl414oYACgkQFW138LsgdFAjoggAiYnUWlTCY1Ge/V6pHNO6jefbljqMndhIZbqQivDGO4SiV3FwwNi0jv2/gOkab2hof2NYlwrIh+pvxnZ7E0fB58hMqyNEYLLVKcdHttihM+5GR1qq4/KjQYkIzaQXdfAHlioT+IveBatI6elmFgv5dWEGBiNX/eYSlwOuUd6u+heiClsOLISoTJx4jjcs7/tkEVW6bClaJJdulO0CuaOBr/AL9dBjZ/lBLGegw02RR36edLKDEwWdgP8gMqbAifhyjgaby75og9TuXz3Vx14VwhUADuuK4PKXNjYrsIXUyxaU92soliNKBq+Z1q4RvAF2D72bOzVQAWjtSMwf/K7aZg==
 
 %URL%
 https://xyne.archlinux.ca/projects/powerpill
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1573929867
+1580589696
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/612866792
+https://travis-ci.org/djpohly/PKGBUILD/builds/644862866
 
 %DEPENDS%
 aria2
