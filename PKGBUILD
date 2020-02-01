@@ -54,5 +54,5 @@ package() {
 
 source+=(reply-filter.patch
 	 smtp-samepass.patch)
-sha256sums+=('a0d77346530ee5d7ab0a6005c205eb9577d4832e2f7d22e91ad4ebc06469c53a'
-             'be33e45656a8fff366d855de996569ed25b7b7ab3a9b1cebe16243934a8cf277')
+sha256sums+=('38169eab2a8511968e6dc62ff74a5207bcf0e50711425c787e311469c9b917f1'
+             'bf283ac4bc9aab6fec454d07819791ff4c6bcec28aa7a36324c400a99ed9c401')

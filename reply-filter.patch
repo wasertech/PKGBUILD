@@ -1,35 +1,35 @@
-diff -ur mutt-1.5.24.orig/globals.h mutt-1.5.24/globals.h
---- mutt-1.5.24.orig/globals.h	2015-08-30 13:06:38.000000000 -0400
-+++ mutt-1.5.24/globals.h	2016-01-30 13:24:39.010725982 -0500
-@@ -114,6 +114,7 @@
+diff -ur mutt-1.13.3.orig/globals.h mutt-1.13.3/globals.h
+--- mutt-1.13.3.orig/globals.h	2019-11-30 15:59:38.000000000 -0600
++++ mutt-1.13.3/globals.h	2020-02-01 13:49:44.023625247 -0600
+@@ -129,6 +129,7 @@
  WHERE char *QueryCmd;
  WHERE char *QueryFormat;
  WHERE char *Realname;
 +WHERE char *ReplyFilter;
  WHERE short SearchContext;
  WHERE char *SendCharset;
- WHERE char *Sendmail;
-diff -ur mutt-1.5.24.orig/init.h mutt-1.5.24/init.h
---- mutt-1.5.24.orig/init.h	2015-08-30 13:06:38.000000000 -0400
-+++ mutt-1.5.24/init.h	2016-01-30 13:51:12.934538942 -0500
-@@ -2383,6 +2383,13 @@
+ WHERE char *SendMultipartAltFilter;
+diff -ur mutt-1.13.3.orig/init.h mutt-1.13.3/init.h
+--- mutt-1.13.3.orig/init.h	2020-01-12 14:17:28.000000000 -0600
++++ mutt-1.13.3/init.h	2020-02-01 13:52:38.630120333 -0600
+@@ -2914,6 +2914,13 @@
    ** .pp
    ** Also see $$wrap.
    */
-+  { "reply_filter",	DT_PATH, R_NONE, UL &ReplyFilter, UL "" },
++  { "reply_filter",	DT_PATH, R_NONE, {.p=&ReplyFilter}, {.p=0} },
 +  /*
 +  ** .pp
 +  ** When set, specifies a command used to filter quoted replies.  When a quoted
 +  ** message is about to be included in a reply it is passed as standard input to
 +  ** $$reply_filter, and the text to include is read from the standard output.
 +  */
-   { "reply_regexp",	DT_RX,	 R_INDEX|R_RESORT, UL &ReplyRegexp, UL "^(re([\\[0-9\\]+])*|aw):[ \t]*" },
+   { "reply_regexp",	DT_RX,	 R_INDEX|R_RESORT, {.p=&ReplyRegexp}, {.p="^(re([\\[0-9\\]+])*|aw):[ \t]*"} },
    /*
    ** .pp
-diff -ur mutt-1.5.24.orig/send.c mutt-1.5.24/send.c
---- mutt-1.5.24.orig/send.c	2015-08-30 13:06:38.000000000 -0400
-+++ mutt-1.5.24/send.c	2016-01-30 16:35:21.502204993 -0500
-@@ -757,6 +757,8 @@
+diff -ur mutt-1.13.3.orig/send.c mutt-1.13.3/send.c
+--- mutt-1.13.3.orig/send.c	2019-12-03 20:21:46.000000000 -0600
++++ mutt-1.13.3/send.c	2020-02-01 13:49:44.023625247 -0600
+@@ -885,6 +885,8 @@
    int i;
    HEADER *h;
    BODY *tmp;
@@ -38,8 +38,8 @@ diff -ur mutt-1.5.24.orig/send.c mutt-1.5.24/send.c
  
    if (flags & SENDREPLY)
    {
-@@ -766,6 +768,18 @@
-     if (i == M_YES)
+@@ -894,6 +896,18 @@
+     if (i == MUTT_YES)
      {
        mutt_message _("Including quoted message...");
 +      if (ReplyFilter && *ReplyFilter) 
@@ -57,7 +57,7 @@ diff -ur mutt-1.5.24.orig/send.c mutt-1.5.24/send.c
        if (!cur)
        {
  	for (i = 0; i < ctx->vcount; i++)
-@@ -785,6 +799,13 @@
+@@ -913,6 +927,13 @@
        else
  	include_reply (ctx, cur, tempfp);
  

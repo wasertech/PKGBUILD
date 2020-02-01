@@ -1,6 +1,6 @@
-diff -ur mutt-1.6.0-orig/account.c mutt-1.6.0/account.c
---- mutt-1.6.0-orig/account.c	2016-04-02 14:12:22.000000000 -0400
-+++ mutt-1.6.0/account.c	2016-04-08 11:41:55.150833546 -0400
+diff -ur mutt-1.13.3.orig/account.c mutt-1.13.3/account.c
+--- mutt-1.13.3.orig/account.c	2019-05-25 11:22:39.000000000 -0500
++++ mutt-1.13.3/account.c	2020-02-01 13:56:19.876569593 -0600
 @@ -228,6 +228,10 @@
      if (mutt_get_password (prompt, account->pass, sizeof (account->pass)))
        return -1;
@@ -10,31 +10,31 @@ diff -ur mutt-1.6.0-orig/account.c mutt-1.6.0/account.c
 +    mutt_str_replace (&SmtpPass, account->pass);
 +#endif
  
-   account->flags |= M_ACCT_PASS;
+   account->flags |= MUTT_ACCT_PASS;
  
-diff -ur mutt-1.6.0-orig/init.h mutt-1.6.0/init.h
---- mutt-1.6.0-orig/init.h	2016-04-02 14:12:22.000000000 -0400
-+++ mutt-1.6.0/init.h	2016-04-08 11:31:17.700411834 -0400
-@@ -2970,6 +2970,12 @@
+diff -ur mutt-1.13.3.orig/init.h mutt-1.13.3/init.h
+--- mutt-1.13.3.orig/init.h	2020-01-12 14:17:28.000000000 -0600
++++ mutt-1.13.3/init.h	2020-02-01 13:57:48.453149243 -0600
+@@ -3722,6 +3722,12 @@
    ** fairly secure machine, because the superuser can read your muttrc even
    ** if you are the only one who can read the file.
    */
-+  { "smtp_samepass", DT_BOOL, R_NONE, OPTSMTPSAMEPASS, 0 },
++  { "smtp_samepass",    DT_BOOL, R_NONE, {.l=OPTSMTPSAMEPASS}, {.l=0} },
 +  /*
 +  ** .pp
 +  ** When \fIset\fP, mutt will remember the password used for an IMAP or
 +  ** POP connection and attempt to use it for SMTP as well.
 +  */
-   { "smtp_url",		DT_STR, R_NONE, UL &SmtpUrl, UL 0 },
+   { "smtp_url",		DT_STR, R_NONE, {.p=&SmtpUrl}, {.p=0} },
    /*
    ** .pp
-diff -ur mutt-1.6.0-orig/mutt.h mutt-1.6.0/mutt.h
---- mutt-1.6.0-orig/mutt.h	2016-04-02 14:12:22.000000000 -0400
-+++ mutt-1.6.0/mutt.h	2016-04-08 11:31:00.103642026 -0400
-@@ -430,6 +430,9 @@
-   OPTSCORE,
-   OPTSIGDASHES,
-   OPTSIGONTOP,
+diff -ur mutt-1.13.3.orig/mutt.h mutt-1.13.3/mutt.h
+--- mutt-1.13.3.orig/mutt.h	2020-01-12 14:17:28.000000000 -0600
++++ mutt-1.13.3/mutt.h	2020-02-01 13:56:19.876569593 -0600
+@@ -525,6 +525,9 @@
+   OPTSIZESHOWMB,
+   OPTSIZESHOWFRACTIONS,
+   OPTSIZEUNITSONLEFT,
 +#ifdef USE_SMTP
 +  OPTSMTPSAMEPASS,
 +#endif
