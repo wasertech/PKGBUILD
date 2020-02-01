@@ -65,6 +65,7 @@ usr/share/doc/mutt/samples/iconv/iconv.solaris-2.5.1.rc
 usr/share/doc/mutt/samples/iconv/iconv.solaris-2.6-cjk.rc
 usr/share/doc/mutt/samples/iconv/iconv.solaris-2.6.rc
 usr/share/doc/mutt/samples/iconv/iconv.solaris-2.7.rc
+usr/share/doc/mutt/samples/markdown2html
 usr/share/doc/mutt/samples/mutt_xtitle
 usr/share/doc/mutt/samples/pgp2.rc
 usr/share/doc/mutt/samples/pgp5.rc
