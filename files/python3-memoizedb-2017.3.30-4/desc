@@ -14,19 +14,19 @@ python3-memoizedb
 Generic data retrieval memoizer that uses an sqlite database to cache data.
 
 %CSIZE%
-11936
+11952
 
 %ISIZE%
 48468
 
 %MD5SUM%
-ec01dc98f15778e17362c0dfab41492e
+95051bfb4167a10268262c1ed44be7c2
 
 %SHA256SUM%
-29fb694cd594e87ec7b5482ffd5cdfae587d4a726d850c6757bca2053f1b5adf
+7257e26b24da8cbee266a7e639ec6b7693c1f101b6186082c10f6b2e58b85f4a
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl3QPPQACgkQFW138LsgdFCkIQgAhr5W/XPFKLUDBBijzXqbXmNbZbCBRCu1AXMD6x13cgjyEoOkqbaiZg/gi2mZnuLAHZwoXswQ0AO7lbMvyCUOeQjSjmgEIYk5rALuRbqVy6OJfblyrC5Xt5OXo0ICjIBxJszzLqF9Qn2sL2MZjF2YU092Z2HUSyNASfButm3aaGnCMCXtxc9p1ko9lPYHcSvLyR2zalyBNGW3YtqYJq8Hy0ERhpF4PCmqk9HC/tNq88X5PIfsmB/gG3blzaXo8v6Tn/dspkUmJpecN/klIJKuq94tm9RM3V1YtsRF9BDvTFDeanEUTocdAOj85BdLvvgjsbRM0kyIDmyYKsh/QJ53ig==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl415SwACgkQFW138LsgdFDk6Qf8D2RFvwP1quoW6NmM0w3rLapDN6M7Xv3B+eMQKuzgbXWQ0G/SDYklVPRoeQP0XFV6qmd9OfYECjf9qaq02OW3sXV2EL3WHglymQG2nlPpcR6hJAQOGnjNvITYobvfYMyZ3Z660UiqKd4R14+NRU5wg0sgZ8QKe8JKCu+ai3Dqur2u/Kipy8bGI9qXE9TLFp4j5xtMPJeJDif2ro0oIs9yPq5zFotOazF4AyvorBaaY4zY1yohF7sL8Oe5k+/z2Aegq1rIjpQfYlO70gD3CCv/DYKoGJyyXh4uYATunW77Jg9unHB3YyxFLeE1gL0YuF/Cf/jGUO4BrifTNeomdeXLaw==
 
 %URL%
 https://xyne.archlinux.ca/projects/python3-memoizedb
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1573928171
+1580590375
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/612867566
+https://travis-ci.org/djpohly/PKGBUILD/builds/644871848
 
 %DEPENDS%
 python3
