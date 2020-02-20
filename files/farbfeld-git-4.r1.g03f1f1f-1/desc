@@ -14,19 +14,19 @@ farbfeld-git
 lossless image format which is easy to parse, pipe and compress
 
 %CSIZE%
-19172
+19144
 
 %ISIZE%
 95153
 
 %MD5SUM%
-6a7146e92b729d91a143cdac02b96407
+67129c391e5da42c8ea0f9d366f714ba
 
 %SHA256SUM%
-1609c187d9a8717191e555e5ad60cd17eef012696475d64b12be58860de6af3d
+29874ded05bef281e2b8e7f139f2b77ceb9fe1dd549494d201b9d5f95da55c73
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl5Fm14ACgkQFW138LsgdFDwZAgAiiacnJQ67Haxv8/nbNGg0JGhdGRPshVUc+ZWBDHbbYlq/VrFWqXMV1txV2tsVsG4N/uijwssOhk3qTftzXe4Im+xzykvUSKbFXhMPuwUZjHqT29f6Xzh0Cbb9Sihgo0nTkkPvkHgiEoIJJAi2Yauq8Pifl4/R2tCZ2IPMmQ+DIR6uWRMnOQFfe1oyaRorBP96A2WNpd99q8Avw1zFfzUls4M/y4zicJxSdN0f5zaTLBkXOaU0WbAsBsB9SQgc0Jonw7l3kJMEw9aOFygZ6YRCl/+MUM5YQIPkdrPIm/H/KmQJXehn0moJEsiv5+XD/r9nj61AwjYI/QCCnFuNJx+fw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl5O1h0ACgkQFW138LsgdFASkQgAqoGRtd09VZinAI+WDOLNaH1yQ7UGKlGgKevdlSVlvNoXslR5PEPU3zU3EOJqfkjJrBs4AJAoJhXgCQIml1L8lk5SmImLA8ol1gjikK9u4usSsRSyvMuUNnQx5EqiDbhL77Onv0xZ0k9zs4ruL6PTepZNrdl8vMWRkwJ/Rs9omSp1Ortjml6F5kFxjwfiTfOAlEZl+ZjS1hSrVDNf0r+zmTr1ElzjjtjAZZWUuxJ0f0gluBiZdydzohkZsAnbfZfLVkgB/026pXPpJfKTzM8kTgThzWgdUyQQVd9+EuF+yi/ocm6hRxnOg+h0p3N5+CFNIp0n1m/HD9XJ6ljcKKNAXA==
 
 %URL%
 https://tools.suckless.org/farbfeld/
@@ -38,10 +38,10 @@ ISC
 x86_64
 
 %BUILDDATE%
-1581620056
+1582224919
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/650100102
+https://travis-ci.org/djpohly/PKGBUILD/builds/653127851
 
 %CONFLICTS%
 farbfeld
