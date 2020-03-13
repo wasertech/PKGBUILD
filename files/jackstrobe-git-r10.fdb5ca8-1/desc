@@ -14,19 +14,19 @@ r10.fdb5ca8-1
 Simple strobe tuner using JACK and Qt 5
 
 %CSIZE%
-25640
+25656
 
 %ISIZE%
 75832
 
 %MD5SUM%
-b79dcf7552b4d4d80efcee3a7dc640f6
+f26ad8a1d31e1309f08166d1819bd7f0
 
 %SHA256SUM%
-0f92828b853ad4421f9c4cd3a9bd27510f25f18bfa833f97dc19991673e8b9aa
+5c8e69e28b0ff6a08c6f3ce2670c8a77124d2be33ec1acd2771dc6bdb2213af6
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl5i1mMACgkQFW138LsgdFBJdwf/bFUCOJJo0IphFyrab1b5+ErInoa0nlmcip3BSNuFomhhvqthhEM2tq7Qaj2sgNrvQoLM+sBp2aVihT7ULrEXRz2sovaDRXVHeG36m06pVCQBX0UcsjHAeY94fI4cymzT2gPhQ5odCW5M7iUpI90vVayn5lWwsNiyVRGJo6Tn7Znm3Ttoyi6qI+siSayvfSFBe8IW7iss2+SXHQMx1vOP4Jl4f5ij2Rx3FkUJqx7X0F2X9YOT5kMlAsapZwsiYUcSeh18BAIxT6MUmbpCCwJ+3Ahs6mG9/6GfgWnp8Mv1kZb8FO40mMv7ZxkJy8W/eipwZa+Qv4SWWMDM48bOWybPTw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl5sEQ8ACgkQFW138LsgdFBR3gf/W0S6oSTy7UNe+rYlkdTgjefhs9LWuLMnGM6P/RQlNiJtet3JTop+X/LZcOOKCAps5g/BefDoESDgKpAFeSVzLWnf/LOzkDIToTJmIas5ogC9vCs/JtotZt1HbJcBsIiDukxbkxkFSNCepNsADm/7mpbPIYazTTYflQAtbvB+5IqIA7aq0l4KjmCbPohCSia5JS7ykDQJ2SPc+sBMCNiweOGLihH+D12OwyaLp/FSXIwi/70v2Smf07Sphqwcv9mt47majCJWBbxXAHvxi+kbimqT/p9MMsUsE3AbOlRY05Q8hupsy6fstOWVnf9d0Fk9TjzM1ofIQekt1Fe0cAxenQ==
 
 %URL%
 https://github.com/jessecrossen/jackstrobe
@@ -38,10 +38,10 @@ Unlicense
 x86_64
 
 %BUILDDATE%
-1583535689
+1584140531
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/659369987
+https://travis-ci.org/djpohly/PKGBUILD/builds/662200307
 
 %CONFLICTS%
 jackstrobe
