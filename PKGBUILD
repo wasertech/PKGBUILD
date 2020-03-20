@@ -14,11 +14,6 @@ conflicts=("${_pkgbase}")
 source=("https://github.com/umlaeute/v4l2loopback/archive/v$pkgver.tar.gz")
 sha256sums=('3f6bb14b80865ec8df557c26fd2c5ba91d726580773a75a62aa2959864ef70ba')
 
-build() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  make
-}
-
 package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
