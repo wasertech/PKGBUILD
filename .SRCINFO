@@ -1,0 +1,17 @@
+pkgbase = v4l2loopback-dkms
+	pkgdesc = v4l2-loopback device
+	pkgver = 0.12.3
+	pkgrel = 2
+	url = https://github.com/umlaeute/v4l2loopback
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = help2man
+	makedepends = linux-headers
+	depends = dkms
+	conflicts = v4l2loopback
+	source = https://github.com/umlaeute/v4l2loopback/archive/v0.12.3.tar.gz
+	sha256sums = 3f6bb14b80865ec8df557c26fd2c5ba91d726580773a75a62aa2959864ef70ba
+
+pkgname = v4l2loopback-dkms
+
