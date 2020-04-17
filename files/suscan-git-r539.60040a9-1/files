@@ -23,7 +23,10 @@ usr/include/suscan/codec/
 usr/include/suscan/codec/codec.h
 usr/include/suscan/util/
 usr/include/suscan/util/cfg.h
+usr/include/suscan/util/compat.h
 usr/include/suscan/util/confdb.h
+usr/include/suscan/util/macos-barriers.h
+usr/include/suscan/util/macos-barriers.imp.h
 usr/include/suscan/util/object.h
 usr/include/suscan/util/util.h
 usr/lib/
@@ -34,4 +37,5 @@ usr/share/
 usr/share/suscan/
 usr/share/suscan/config/
 usr/share/suscan/config/autogains.xml
+usr/share/suscan/config/frequency_allocations.xml
 usr/share/suscan/config/palettes.xml
