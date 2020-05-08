@@ -20,13 +20,13 @@ An SSTV decoder that aims for intuitive simplicity and lack of features not need
 132501
 
 %MD5SUM%
-3552ebe4d4093654d1944897d39908d0
+59b18f7120c617e69fcbceaa763e4cb0
 
 %SHA256SUM%
-3bbb0d460e87ac0bc028dfe62b3d660be3fe4c80268d8f66641f094e954f742f
+5d4eb3f1ac340eaff9df0dfc1a7d83f2ec2f88226b4635e76cec26ec3067cd5f
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl6sMRcACgkQFW138LsgdFDNZgf/QDmeu0uAr8vaaDbZiEJaCsfRH2ecOkM8V7vKCsd3TYcVSrvQmF4Xw9J286TVxzcp+Bm9YOmcpU9uIOxRTFUzlIjVmRkAjfd1tl3HxxJ1l9x+BFrPciqdbsowccwveb/Qba/GA+WjckaB2bObc+4iaCokK8PHup3RDgw93W2wCviYByPqWanjHY53wIwA5csXBBtetDsOqVn5/qkc8L9awTOhdmRWGLJyZrKUG8uIWch0bQs3IB4IsIorbFEYJdveDb7PT0cfmiC6vpxSG7je23HsiYqqF2ajTVqd04TSgyqA4oSOBv3ySdfXT0pO7xVNdPAdwRPkgQEHUhI8IPFCbw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl61a7AACgkQFW138LsgdFBzNwf/a6HcjQPjB1QBcUM/yUsp+de5l36Kkxo9v+pGzZftl5lwa3ZJ+UTy+7Lve+YEy2UbeX21yh/o/KPqKHjfpfbc0ba4wI/OxU9NcoJx1u3igsvEH6oFI/7RAOLuTM8gROg15KDN8gP9N+StUuYeI9UOppZV6mI+VA1+g5Ht2LadImBAPopEOIq3F1K+7BYbfzccWUleYQiDZlrV0CdAIGeX7tFcUCxV0yEmdTCAFakX1+61UbH2zpcUgjXjpRHjjfcKCCjiU75VMxcPnwfEN8Ael5z1/iK94U28/H7gJC4IjwOtwv9kDi0QPOBn/UnyvTxslEsxSqBntUZlOCkhwnoxEA==
 
 %URL%
 https://windytan.github.io/slowrx/
@@ -38,10 +38,10 @@ MIT
 x86_64
 
 %BUILDDATE%
-1588343029
+1588947856
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/681972353
+https://travis-ci.org/djpohly/PKGBUILD/builds/684706563
 
 %CONFLICTS%
 slowrx
