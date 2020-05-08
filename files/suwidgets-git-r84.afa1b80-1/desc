@@ -1,5 +1,5 @@
 %FILENAME%
-suwidgets-git-r84.afa1b80-1-any.pkg.tar.xz
+suwidgets-git-r84.afa1b80-1-x86_64.pkg.tar.xz
 
 %NAME%
 suwidgets-git
@@ -14,19 +14,19 @@ r84.afa1b80-1
 Sigutils-related widgets
 
 %CSIZE%
-113020
+113516
 
 %ISIZE%
 403347
 
 %MD5SUM%
-236e6475c9bae141aeb8d8823d3eac70
+c7b0deea80b2fa9ff490ce53223d78a2
 
 %SHA256SUM%
-78c6521137c8447d4e56be0bda2ddd86836f6e85b35ae9dfcf50ee9192216ba6
+598c024cb95737f5043a4d87c664a7421808211f8170c990248d07057f4d8705
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl614d4ACgkQFW138LsgdFBx5ggAjY+DkFXs0894RLFSh4nzr2BMPMAt3f1PtcwzdIL6BWH7lfPmxn7LqvDLQBVQ8Rpt99ASawCrDj4+Qu/OL0LuAn7KNM8OVGguYTzHAKEK6wSQuNyEHj2JJ8yi1PIVIwgeU4mhqLnWt0twpp4QR6nXspHZgSjU758sJApKn5HJ6CLT/XebKP0ieRG7wftbDEfNvOv4KLX7zPoHsmzAfnobYx4n8Uujm0WA9iiHKSA1C0uAAIp12D/Id+/I2MFWODOagDyIj5YGY15s97b2SCpwKloqt2lQy4xLPE7vE6+/YGwfQZ/gUwewst9ZFaXJmZ2ADk9y29WdqOLxGTtZ0emg/Q==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl616d0ACgkQFW138LsgdFA91QgApOCaiX5YWqZunb4tWGIQqx/X5NU0ZN8KsFw0ZIXqTwj4qQaI5pe25xPqnqqsX+E0tEkB3Bg7CPgA7Ybw/AbjOD0XC0J6PzxXfbBPgMeJW5dJN2W2OW1MMtopdx0wANVSlTkF6Crxn8+GCsOgxP5SWc/DnrOQwstI/qidrlosLZajA+xGOh7mjbyPMIiYwikpEcsoXETI+FiDHOG9OYaz+vXyZENT+9JZyPCS9+zQPDH/qxBs78dOqCSdt/d0wcVa7RjPmOkMhfySLOwnFpAgBzttXWJMmk1JJx5w6YivtLxb1n5zZLRf088HlFpK3HWqs4aWmSkb8kMbF8Xu2EntqQ==
 
 %URL%
 https://github.com/BatchDrake/SuWidgets
@@ -35,13 +35,13 @@ https://github.com/BatchDrake/SuWidgets
 custom
 
 %ARCH%
-any
+x86_64
 
 %BUILDDATE%
-1588978084
+1588980118
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/684885022
+https://travis-ci.org/djpohly/PKGBUILD/builds/684893924
 
 %CONFLICTS%
 suwidgets
