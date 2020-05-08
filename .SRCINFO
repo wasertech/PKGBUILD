@@ -14,7 +14,9 @@ pkgbase = dspdfviewer
 	depends = poppler-qt5
 	conflicts = dspdfviewer-git
 	source = https://github.com/dannyedel/dspdfviewer/archive/v1.15.1.tar.gz
+	source = prefs.diff
 	sha256sums = c5b6f8c93d732e65a27810286d49a4b1c6f777d725e26a207b14f6b792307b03
+	sha256sums = 61948dc3955f66b9aaa9be5afd7c287f60f523b09bed20cc0dd3bafaed6ffb9a
 
 pkgname = dspdfviewer
 

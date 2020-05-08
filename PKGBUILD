@@ -13,6 +13,11 @@ conflicts=('dspdfviewer-git')
 source=("https://github.com/dannyedel/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('c5b6f8c93d732e65a27810286d49a4b1c6f777d725e26a207b14f6b792307b03')
 
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i ../prefs.diff
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
   cmake \
@@ -30,5 +35,8 @@ package() {
   cd "${pkgname}-${pkgver}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
+
+source+=('prefs.diff')
+sha256sums+=('61948dc3955f66b9aaa9be5afd7c287f60f523b09bed20cc0dd3bafaed6ffb9a')
 
 # vim:set ts=2 sw=2 et:

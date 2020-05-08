@@ -1,0 +1,52 @@
+diff -ur dspdfviewer-1.15.1/pdfviewerwindow.cpp dspdfviewer-1.15.1.mod/pdfviewerwindow.cpp
+--- dspdfviewer-1.15.1/pdfviewerwindow.cpp	2016-09-13 08:18:47.000000000 -0500
++++ dspdfviewer-1.15.1.mod/pdfviewerwindow.cpp	2020-04-17 12:14:07.409637642 -0500
+@@ -114,12 +114,12 @@
+     this->windowHandle()->setScreen(screens[m_monitor]);
+   else
+     this->windowHandle()->setScreen(0);
+-  this->showFullScreen();
++  this->show();
+ #else
+   QRect rect = QApplication::desktop()->screenGeometry( numeric_cast<int>(getMonitor()) );
+   move(rect.topLeft());
+   resize( rect.size() );
+-  this->showFullScreen();
++  this->show();
+ #endif
+   /* Note: The focus should be on the primary window, because at least
+    * Gnome draws the primary window's border onto the secondary.
+@@ -191,7 +191,7 @@
+       case Qt::Key_Q: //quit
+ 	emit quitRequested();
+ 	break;
+-      case Qt::Key_T:
++      case Qt::Key_C: //toggle comments
+ 	emit secondScreenFunctionToggleRequested();
+ 	break;
+       case Qt::Key_D:
+@@ -204,14 +204,14 @@
+       case Qt::Key_Down:
+       case Qt::Key_Right:
+       case Qt::Key_F: // Forward
+-      case Qt::Key_N: // Next
++      case Qt::Key_T: // Next
+ 	emit nextPageRequested();
+ 	break;
+       case Qt::Key_PageUp:
+       case Qt::Key_Up:
+       case Qt::Key_Left:
+       case Qt::Key_Backspace:
+-      case Qt::Key_P: //Previous
++      case Qt::Key_N: //Previous
+ 	emit previousPageRequested();
+ 	break;
+       case Qt::Key_B:
+@@ -219,7 +219,6 @@
+ 	emit blankToggleRequested();
+ 	break;
+       case Qt::Key_Home:
+-      case Qt::Key_H: //Home
+ 	emit restartRequested();
+ 	break;
+     }
