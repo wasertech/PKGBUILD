@@ -21,6 +21,7 @@ pkgver() {
 build() {
 	cd "$_basename"
 	autoreconf -if
+	pwd
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
