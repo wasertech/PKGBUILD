@@ -14,19 +14,19 @@ r128.1760187-1
 An SSTV decoder that aims for intuitive simplicity and lack of features not needed by a shortwave listener (SWL).
 
 %CSIZE%
-26320
+26324
 
 %ISIZE%
 132485
 
 %MD5SUM%
-6d02f972527eafb8aca21f74cbd1afbf
+f1048439b7ed5e20cad1cdec4bb91fe0
 
 %SHA256SUM%
-2551c5515473d345c7eb8e99cb3ce623768495b6f72776281115beaff27c4e2b
+725aaf742e0e0165d3b43fdcfd61aec3e24cc71b8fa78e1f2f17b2e5efabb9c3
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7H4N8ACgkQFW138LsgdFDmpAf9HcIm9y6vb+nlAL20KR9oRpbSRSynjp6QnSQZRrObJwHqyCsoqU4ha/N3HK8mfTJIaJRUzBHGGEk6PyvDrrM/W4ohlvKqNAOqqsjjvazXEoOPoUyQ3uhHXoamNEoyNe7CDLH62WuZRhcShX0QzAjK4nsSa+8F6ef12q6HbJpD4bIr9/C+VelV6MCeQ37ShSG2KRhywpfaYFL/kIMhkafN9mxxZyiKP80eEaZrCCLROsVW1JoKzx5lQ2f6CdcJEhI3X/Ytl3ltYT8mdIFUC4G7WC8kh5E7LoVRbYDYxFwpXhmhmu2V7xnr1bZ/ewogNEacvlUf7vOELHFRK71qKpo86w==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7RG6EACgkQFW138LsgdFCJOQgAnYJgmE02LZmgpqtthxweJxKw+smGdFwk4ZidleY7piLMNC50OOgCSnbcrnoVj2ANFvz518Zwk6ntRtZj3YRycGvvWHXt0nxqoMHvWifQ7NY+nKwUEBH7neZSs0IUj1L3rT7Cp4Bc4HwChGZpwuQPrrVwJ3fX1wHxFu80uz0ovTZHGvWlCy8Od5EBv9QxX2vgD7i5wcl8mZ7dfRbDt8LoiygwKuzXY6L0EXevUQxh1qFibvbmxdf0JseLzJXeuuGY9+xMevdpI4RpkzpwWIMwD2qrgtfbr4+o6l1j5gH0HvRNUqZzq0F/h/x3q1DK9aashfXYftseD+6VQExfZW4iUA==
 
 %URL%
 https://windytan.github.io/slowrx/
@@ -38,10 +38,10 @@ MIT
 x86_64
 
 %BUILDDATE%
-1590157506
+1590762371
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/690059785
+https://travis-ci.org/djpohly/PKGBUILD/builds/692587010
 
 %CONFLICTS%
 slowrx
