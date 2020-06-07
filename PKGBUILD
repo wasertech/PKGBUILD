@@ -2,18 +2,19 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=mutt
-pkgver=1.13.3
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='Small but very powerful text-based mail client'
 url='http://www.mutt.org/'
 license=('GPL')
 backup=('etc/Muttrc')
 arch=('x86_64')
-optdepends=('smtp-forwarder: to send mail')
+optdepends=('perl: for smime_keys'
+            'smtp-forwarder: to send mail')
 depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn2' 'mime-types' 'krb5')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
-source=("http://ftp.mutt.org/pub/mutt/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('78423016b5f2fcb31bfd156999ff6638177be4459230d2ee61a81e5641d07378'
+source=("https://bitbucket.org/mutt/mutt/downloads/${pkgname}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('e22f700e8c57fbc41a642bfeeeed1adca06e6187887c39614a5c38d381a6ac31'
             'SKIP')
 
 prepare() {
@@ -27,6 +28,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--enable-debug \
 		--enable-gpgme \
 		--enable-pop \
 		--enable-imap \
