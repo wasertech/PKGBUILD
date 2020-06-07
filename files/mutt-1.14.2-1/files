@@ -42,6 +42,8 @@ usr/share/doc/mutt/samples/
 usr/share/doc/mutt/samples/Mush.rc
 usr/share/doc/mutt/samples/Pine.rc
 usr/share/doc/mutt/samples/Tin.rc
+usr/share/doc/mutt/samples/bgedit-detectgui.sh
+usr/share/doc/mutt/samples/bgedit-screen-tmux.sh
 usr/share/doc/mutt/samples/ca-bundle.crt
 usr/share/doc/mutt/samples/colors.default
 usr/share/doc/mutt/samples/colors.linux
