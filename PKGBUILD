@@ -10,9 +10,7 @@ license=(GPL2)
 url="https://github.com/netblue30/firejail"
 backup=('etc/firejail/login.users'
 	'etc/firejail/firejail.config')
-depends=('apparmor')
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
-install=firejail.install
 #source=(${pkgname}-${pkgver}.tar.gz::https://github.com/netblue30/${pkgname}/archive/$pkgver.tar.gz)
 source=(https://sourceforge.net/projects/firejail/files/firejail/firejail-${pkgver}.tar.xz{,.asc})
 sha256sums=('0568081ce950c5240e1b2fca7014b798f589657249e17283a14e20e41f8d5ae0'
@@ -22,7 +20,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	# fix build
 #	export CFLAGS="${CFLAGS/-fsanitize=undefined/}"
-	./configure --prefix=/usr --enable-apparmor
+	./configure --prefix=/usr --disable-apparmor
 	make
 }
 
