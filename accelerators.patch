@@ -1,0 +1,63 @@
+diff -ur chromium-83.0.4103.116/chrome/app/generated_resources.grd chromium-83.0.4103.116.mod/chrome/app/generated_resources.grd
+--- chromium-83.0.4103.116/chrome/app/generated_resources.grd	2020-06-22 15:00:36.000000000 -0500
++++ chromium-83.0.4103.116.mod/chrome/app/generated_resources.grd	2020-06-27 12:03:25.302285463 -0500
+@@ -564,11 +564,11 @@
+             Save lin&amp;k as...
+           </message>
+           <message name="IDS_CONTENT_CONTEXT_COPYLINKLOCATION" desc="The name of the Copy Link Location command in the content area context menu">
+-            Copy link addr&amp;ess
++            Copy link &amp;address
+           </message>
+ 
+           <message name="IDS_CONTENT_CONTEXT_COPYEMAILADDRESS" desc="The name of the Copy Email Address command in the content area context menu">
+-            Copy &amp;email address
++            Copy email &amp;address
+           </message>
+ 
+           <message name="IDS_CONTENT_CONTEXT_COPYLINKTEXT" desc="The name of the Copy Link Text command in the content area context menu">
+--- chromium-83.0.4103.116/chrome/browser/ui/views/accelerator_table.cc	2020-06-22 15:00:39.000000000 -0500
++++ chromium-83.0.4103.116.mod/chrome/browser/ui/views/accelerator_table.cc	2020-06-27 12:02:37.681968886 -0500
+@@ -108,12 +108,15 @@
+     {ui::VKEY_NUMPAD0, ui::EF_PLATFORM_ACCELERATOR, IDC_ZOOM_NORMAL},
+     {ui::VKEY_OEM_PLUS, ui::EF_PLATFORM_ACCELERATOR, IDC_ZOOM_PLUS},
+     {ui::VKEY_ADD, ui::EF_PLATFORM_ACCELERATOR, IDC_ZOOM_PLUS},
++    {ui::VKEY_OEM_4, ui::EF_PLATFORM_ACCELERATOR, IDC_BACK},
++    {ui::VKEY_OEM_6, ui::EF_PLATFORM_ACCELERATOR, IDC_FORWARD},
+ 
+-    {ui::VKEY_F1, ui::EF_NONE, IDC_HELP_PAGE_VIA_KEYBOARD},
++    //{ui::VKEY_F1, ui::EF_NONE, IDC_HELP_PAGE_VIA_KEYBOARD},
+     {ui::VKEY_F3, ui::EF_NONE, IDC_FIND_NEXT},
+     {ui::VKEY_F3, ui::EF_SHIFT_DOWN, IDC_FIND_PREVIOUS},
+-    {ui::VKEY_F4, ui::EF_CONTROL_DOWN, IDC_CLOSE_TAB},
+-    {ui::VKEY_F4, ui::EF_ALT_DOWN, IDC_CLOSE_WINDOW},
++    //{ui::VKEY_F4, ui::EF_CONTROL_DOWN, IDC_CLOSE_TAB},
++    //{ui::VKEY_F4, ui::EF_ALT_DOWN, IDC_CLOSE_WINDOW},
++    {ui::VKEY_Q, ui::EF_PLATFORM_ACCELERATOR, IDC_EXIT},
+     {ui::VKEY_F5, ui::EF_NONE, IDC_RELOAD},
+     {ui::VKEY_F5, ui::EF_CONTROL_DOWN, IDC_RELOAD_BYPASSING_CACHE},
+     {ui::VKEY_F5, ui::EF_SHIFT_DOWN, IDC_RELOAD_BYPASSING_CACHE},
+@@ -158,12 +161,14 @@
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING) && !defined(OS_MACOSX)
+     {ui::VKEY_I, ui::EF_SHIFT_DOWN | ui::EF_ALT_DOWN, IDC_FEEDBACK},
+ #endif  // BUILDFLAG(GOOGLE_CHROME_BRANDING) && !OS_MACOSX
+-    {ui::VKEY_N, ui::EF_SHIFT_DOWN | ui::EF_PLATFORM_ACCELERATOR,
++    {ui::VKEY_P, ui::EF_SHIFT_DOWN | ui::EF_PLATFORM_ACCELERATOR,
+      IDC_NEW_INCOGNITO_WINDOW},
+     {ui::VKEY_T, ui::EF_PLATFORM_ACCELERATOR, IDC_NEW_TAB},
+     {ui::VKEY_N, ui::EF_PLATFORM_ACCELERATOR, IDC_NEW_WINDOW},
+     {ui::VKEY_T, ui::EF_SHIFT_DOWN | ui::EF_PLATFORM_ACCELERATOR,
+      IDC_RESTORE_TAB},
++    {ui::VKEY_N, ui::EF_SHIFT_DOWN | ui::EF_PLATFORM_ACCELERATOR,
++     IDC_RESTORE_WINDOW},
+ 
+     // Alt by itself (or with just shift) is never used on Mac since it's used
+     // to generate non-ASCII characters. Such commands are given Mac-specific
+@@ -172,7 +177,7 @@
+     {ui::VKEY_LEFT, ui::EF_ALT_DOWN, IDC_BACK},
+     {ui::VKEY_LEFT, ui::EF_ALTGR_DOWN, IDC_BACK},
+ #if BUILDFLAG(ENABLE_PRINTING)
+-    {ui::VKEY_P, ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN, IDC_BASIC_PRINT},
++    //{ui::VKEY_P, ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN, IDC_BASIC_PRINT},
+ #endif  // ENABLE_PRINTING
+ #if !defined(OS_CHROMEOS)
+     {ui::VKEY_DELETE, ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN,

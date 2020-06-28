@@ -3,11 +3,11 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=83.0.4103.106
+pkgver=83.0.4103.116
 pkgrel=1
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
-_ungoogled_ver=83.0.4103.106-1
+_ungoogled_ver=83.0.4103.116-1
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -44,8 +44,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         v8-remove-soon-to-be-removed-getAllFieldPositions.patch
         chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
-sha256sums=('cfd153a2e10b0bb0fb3b7e6be543aef0915181f5fbdbea893d08465afd097e2f'
-            '0f4a0466e098184f850c167b29d2a25b99136a414104d47e58133f88271edb17'
+sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
+            'a8cff01fae3bc0823841c242c85746346619f684aff7968ebeb4886345395f24'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
@@ -136,6 +136,9 @@ prepare() {
 
   # Fix VA-API on Intel on Wayland
   patch -Np1 -i ../fix-intel-vaapi-wayland.patch
+
+  # Set custom accelerators
+  patch -Np1 -i ../accelerators.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_ungoogled_ver"
@@ -296,5 +299,8 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
 }
+
+source+=(accelerators.patch)
+sha256sums+=('d9075be2c6d4bcb91c4b8d435e2033487d682abeac880280f3d158a6815aee27')
 
 # vim:set ts=2 sw=2 et ft=sh:
