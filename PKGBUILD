@@ -20,9 +20,10 @@ pkgname=(
 	djp-meta-java
 	djp-meta-re
 	djp-meta-radio
+	djp-meta-remote
 )
 pkgver=0.2
-pkgrel=21
+pkgrel=22
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -112,7 +113,6 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	browserpass
 	browserpass-firefox
 	conky-cli
-	dina-font-latin1
 	dmenu
 	dwm
 	dzen2
@@ -341,6 +341,7 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	gqrx
 	inspectrum
 	multimon-ng
+	pavucontrol
 	pulseaudio
 	qsstv
 	sdrangel
@@ -348,4 +349,14 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	sox
 	urh
 	wsjtx
+); }
+
+package_djp-meta-remote() { pkgdesc="Metapackage for remote/online teaching"; depends=(
+	discord
+	obs-studio
+	pavucontrol
+	pulseaudio
+	v4l2loopback-dkms
+	vlc
+	x11vnc
 ); }
