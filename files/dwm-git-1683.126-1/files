@@ -1,0 +1,17 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/dwm
+usr/bin/dwmkeys
+usr/share/
+usr/share/doc/
+usr/share/doc/dwm-git/
+usr/share/doc/dwm-git/README
+usr/share/licenses/
+usr/share/licenses/dwm-git/
+usr/share/licenses/dwm-git/LICENSE
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/dwm.1
+usr/share/xsessions/
+usr/share/xsessions/dwm.desktop
