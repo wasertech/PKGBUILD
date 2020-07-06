@@ -14,19 +14,19 @@ vcsh-git
 manage config files in HOME via fake bare git repositories
 
 %CSIZE%
-15196
+15192
 
 %ISIZE%
 40292
 
 %MD5SUM%
-7decb980ef4c21cfa9749ead0ecd936d
+412c828eef7c6ab562be451adb573203
 
 %SHA256SUM%
-ce75f8d1e84f2a185031ff5adb6ecc256a40674da60aa400695aa8c8ead6cfd7
+d73f3b6c9b8e16654b5c9195777b2b9d2255f1f3893e58331b8a63a5bfca9b9e
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl76YO8ACgkQFW138LsgdFCJZwf/f7UxNj3uwF7lNtRWVys0nlOOf2bsAuR56lorOEYoZaO6WLu/tCnMDLEknKPkBoWahLuhzsq4Qw0fcR3hAq00WQssTozLJ1QoPXLkyOacBb0EO0HuocDdHgs4s/HGTWqjmqc8FfNvlxrVrNjvXNjNRw6zXYUXlDNbaWPVpNkIsUrr05yjA2uBTUis21GsoqnAMlgCM+7m7W4tdNnTmhb3Fw/l3b0L4K59hw+hYyj179WIxsxORwxZQ0qC2ha7Ynp6b8PboIKrbdXH2sJryaX3AnPQtrbvV026OHm5Pd4SSebjokTTCQSo4rCWKaejgidTRpWxrSWHvu8jTEng+dzysw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8Dm38ACgkQFW138LsgdFB2eggAwNlW4MltgX1sYXZU2bslq3qpgPNsoeBwbbOM49GzvX2ToDIhY/DaOeOsdzS1AwGu64j4VxieDMc5NT8FW9Bi7ipaLnnl193XpcYKPcpXpu9aTi+oT53Wk6Da9EpkqWIwtQZYeAKRNchFdl4UTinHMocld9kJaB4pP5GU6AzT4GqAGL0zMNdGi69yDk3v1wI1+NxqCwNPKlJ54+UV5mnjDyboNe3+xZfaBrxYSbhEDIzc2NDWR+O2vSeKT/EfHyX1rz7H0wcTqwfhXj0czq51pdE0lfs0kvVDaWcPK4YoDggSlg6XotzV2cLwOZQvJPG12zQ+TNx6bE6Q1/gBfa0HoQ==
 
 %URL%
 https://github.com/RichiH/vcsh
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1593467114
+1594071930
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/703321548
+https://travis-ci.org/djpohly/PKGBUILD/builds/705571712
 
 %CONFLICTS%
 vcsh
