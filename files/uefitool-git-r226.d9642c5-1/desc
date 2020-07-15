@@ -1,5 +1,5 @@
 %FILENAME%
-uefitool-git-r226.d9642c5-1-any.pkg.tar.xz
+uefitool-git-r226.d9642c5-1-any.pkg.tar.zst
 
 %NAME%
 uefitool-git
@@ -14,19 +14,19 @@ r226.d9642c5-1
 UEFI firmware image viewer and editor and utilities
 
 %CSIZE%
-225592
+288310
 
 %ISIZE%
 1132692
 
 %MD5SUM%
-3674ece689f772ee38a63a9bd826ce5f
+4df369292fb60daa8a1de00c30bd141f
 
 %SHA256SUM%
-56e7a61bea65fb3e4fb4041cc01eb4999cea06e625eec0e831fd36cd2e76cd98
+ed186083938ce77dea48574011028bf5db9ceb60861ebb3d9d7146e9dadc80aa
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8F9WAACgkQFW138LsgdFBBwgf9GtTK2D6fBi2PKRn5fbnH9nIla+miukfAyeXDMBHBoD6bct4T7jOf4t4buJlHFEhkebCwP4ZI9270Ux8+n6krqTSGin29gbqi7HVf5JUBjVK9hlDgcO8NPcn2QFr4MC4U92aQC4bDeitqyQ9HMyZUX8dAFSweVgvP+zM5f3VZfVc9vcqayBdxW7P4OhfC+1+7F4waXv8PXeP3bU19uN03t6xXECixuXTYD6rrCeJUgSLnMKQvYShiiJOfxlBVDdxkh0ldcFPoAOLsX0nXz9E/gr62XEY7sUDxNBkkg7UsWFetkaQSD4bb9+BAm2vzWTh7SxGwECgvuxUUPA2KLWSGEg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8PL+4ACgkQFW138LsgdFAVYQf/e3SZSsd2ePNOiKahKPYX3U9NaMmVSFKM7bamnieecRGqzLJoUE/2FbFtQbpYWMiD7LtSsObyECNt4tRFuKu1wl/mKvCnTW9+6oKdVulrNjmrp9UGaV28k6slG+azJ2HpwMGZY0COQP25Y+I5VpZjdlpI/YMhMpzqS7sghpL7FlkuJLwreJeTjj1eDr+wuoL/D+qtaMXdpIwNP9eP1Lm7r716PxfUb3tVFE1tPbhIiIYqWEqaFqJCa6G+kOYtAKAtDWkMWNEq9whM5+wVZkLtp6dkaQAKNIZqeO/Fwm31ChDGQVYmFwrdcK3VjPWZN+cXz94V/8liW1KmD3xlmLu6wg==
 
 %URL%
 https://github.com/LongSoft/UEFITool
@@ -38,10 +38,10 @@ BSD
 any
 
 %BUILDDATE%
-1594225935
+1594830752
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/706231879
+https://travis-ci.org/djpohly/PKGBUILD/builds/708386400
 
 %CONFLICTS%
 uefitool
