@@ -1,5 +1,5 @@
 %FILENAME%
-jackstrobe-git-r13.6e6f57b-1-x86_64.pkg.tar.xz
+jackstrobe-git-r13.6e6f57b-1-x86_64.pkg.tar.zst
 
 %NAME%
 jackstrobe-git
@@ -14,19 +14,19 @@ r13.6e6f57b-1
 Simple strobe tuner using JACK and Qt 5
 
 %CSIZE%
-24564
+30936
 
 %ISIZE%
 71680
 
 %MD5SUM%
-7d968ac67f1b402164318dbe746541d0
+231fd9632b587cf3f97421004cbc3e97
 
 %SHA256SUM%
-db6bfebcc8012111e07f239be50a560dd8c266a8bc78c15d8880e45522e6d479
+d154e6630527013c2324c6b003e746e9f5459a1332bc039e764eb76fce93e562
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8I9bwACgkQFW138LsgdFCSFwf/Unbpiw4br3EVOdDS97vsA6Do4Z2TwPlvbb7e7o+WQvD/CyxvQyOgemy2/PJN9sNAFbTj6spNHtxbrIV+SH51pJtHUd1nnjTN78TQvhrbBLEzhCAvCqWxIHlZURRPlskifrkOGdcstbyFOs04GOsOacO4F40HwbPcGOodZuIpzMtHZ6uT3++kbYk8pZZO9Dsok8jjKjt79lVSawpQWle+tEAs773SrKo1FKsmtU3JJVTEnGjEvx1l4BQMkNuvRrKSQ0DaGqVsuyHmEjxcncymmdwvugKXRa6wxksv2ZGc4yKcCendUiONvbzJuXpzutnnLdsrIKTvMlMe3HzDdBKTNw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8SMIoACgkQFW138LsgdFDg1Qf/YNz8VbZvvmkCmgXQeOOXqahl7zIvvasC/FkRVgli0mz9K5xmzFM+jO0HTwvLkX4577A3tDHeU3B0VQdiIvIv82kVrQr09eE3/9NhciTJTQkVLkElkVdCEONk5ltraiJGRs0c6aJrzFbeDnS1YfHEJaEv5593640rt7x91s2HAhpwSbic3oHiTMoNl15OYhUuHoS5dsFeMO9JWbXwkaRFcV1Ecz+EfOxl5RQPxmi61v1knrZmJk/PS26pHnkDNv5KMiBh7Sj7XCOIYr46IrRUasLZcejlWdXd+PCu97o9PVdN/ZLn7rekJcQ1A8jDDH0wfoankttQ1VmX/clKCnNj9A==
 
 %URL%
 https://github.com/jessecrossen/jackstrobe
@@ -38,10 +38,10 @@ Unlicense
 x86_64
 
 %BUILDDATE%
-1594422691
+1595027553
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/707055714
+https://travis-ci.org/djpohly/PKGBUILD/builds/709355283
 
 %CONFLICTS%
 jackstrobe
