@@ -1,7 +1,7 @@
 # Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=djp-keyring
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal PGP keyring"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
