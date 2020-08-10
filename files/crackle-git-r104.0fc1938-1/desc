@@ -1,5 +1,5 @@
 %FILENAME%
-crackle-git-r104.0fc1938-1-x86_64.pkg.tar.xz
+crackle-git-r104.0fc1938-1-x86_64.pkg.tar.zst
 
 %NAME%
 crackle-git
@@ -14,19 +14,19 @@ r104.0fc1938-1
 Crack and decrypt BLE encryption
 
 %CSIZE%
-18836
+22675
 
 %ISIZE%
 38664
 
 %MD5SUM%
-caafdb4d7400ec3d77d5fd579d82e450
+5148c1a3a08f41d85c5df76211a05ba0
 
 %SHA256SUM%
-e0404f3f3acae6006e42d144e909f0d2364449a1e05fec5e38cbbd2d97d3ace6
+4161ea95a79fccf9280cb724b3de11c11d8d1cb01c39199a40c5db6df11f32ba
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7/wKIACgkQFW138LsgdFBXrAf8Dw52BZGSwyKIYgJzSK0uamrLKcKMa7Hpwlcs199VZP3oGUO55PAaD4pNfJeUjEiPtm7NKPk/Tr+fAUPneGu5qc/qdvQrFhnrx07b2utPJluutVv3YpDwnD3IzPpPutVK8UCcdXpSYDfdzfEOpuVPBEEy3df10yecMPlD+74pwahiJ1a+4IaO8kLu9FVfbyllT9n2KfPoLcVV6C85ba1H9jKwMdqAmcfKvk5zg7dHVbxisEQqRFn+WyYOkuDocEtjhh1jCF34vwYxCOIy7wYifh9/n0FtPTF33kBYh0q/Sb9IyfKA59V6EL5U7XoK8IlqDMQJLw8ruxHYoK2PQEZDsg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8t5d0ACgkQFW138LsgdFDYOAf+JrFWreOwWsaLgvOZu3doTPYzALZgbPiuFiVUtDGnXoFIfxgEhs7RL1akpNjv8Regx0yyWezecBV2vbeRTaop6EQOTUgcK7mqtv4HK6ivV4hRtXak25wPUdLcVfEu0iQWEw1xXevzfLcoLSNrPGFAJKG+7cnrh17hgaf0BoVk/eR3Kh/7nl4WLTbMmW8XAeCaGDh10qeNrW75OXsC3GaWqdv7a29/Y5p4CMNLNZIP3/JLOSrQmFIjxRBcdeGkUT4pgDgp6nQ+OpK7RO4oVrWUqrhKiI5fLZ1WoR8BGUnKxq3vm38zSu2y7fLuLmZKNKuj5dhcXavZSHgne3bwSlOrrQ==
 
 %URL%
 http://lacklustre.net/projects/crackle/
@@ -38,10 +38,10 @@ BSD
 x86_64
 
 %BUILDDATE%
-1593819293
+1596843481
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704815610
+https://travis-ci.org/djpohly/PKGBUILD/builds/716012512
 
 %MAKEDEPENDS%
 git

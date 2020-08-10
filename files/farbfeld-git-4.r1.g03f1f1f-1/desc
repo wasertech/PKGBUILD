@@ -1,5 +1,5 @@
 %FILENAME%
-farbfeld-git-4.r1.g03f1f1f-1-x86_64.pkg.tar.xz
+farbfeld-git-4.r1.g03f1f1f-1-x86_64.pkg.tar.zst
 
 %NAME%
 farbfeld-git
@@ -14,19 +14,19 @@ farbfeld-git
 lossless image format which is easy to parse, pipe and compress
 
 %CSIZE%
-16296
+19986
 
 %ISIZE%
 98855
 
 %MD5SUM%
-6e2281d1bf6396ea94cca4b8a19419a3
+6f7815b86997a34d4ee873adf39b57b5
 
 %SHA256SUM%
-c692c43235f65e0170ef88ca8e70632cf69a5f2dd830dece022aef233af036b5
+75d6a1f6a20a8883531b4a1c7afe14b892ae7de4865e601c95c95fb9e406514f
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7+L+gACgkQFW138LsgdFAYNQf9EMxsiu7G/OblXtWHilFUcNkCzLMBZchZlQTnfmS/SjFQ8/jzmyDAWgfpZDv8+T+sTNI0DxINDsgnpOLw1CRzg1BHklVU2prm9ykIOEejy3DNOvKGkWzMeXJFaTUM6TYwx16PR31zBac0/BZTuHw4G8FAjeJMZRtkOXibnoW24FwpAIM1GKyJIIh50IzdelHPc6ds6Qy7/SRfpgJpWv5RrDRiD8tvDVhBpWrckiahhSMUYF0wbhJ+SMGmLoVVwUpmdWI9ZhjcOumcY4a158qKnZR48IIZRBkiOc0VKUQmt9nsnlKjALCalRxJmGoUF2Lb4jPz6ZV6LAWBEmQd5uc/XA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8sVO0ACgkQFW138LsgdFBAbwf/eW3rSaj1opetwojLka0goHft4wqkYDI+p/sZEPccPL31WKEnwuKVdzcJwXOlmh6sTFVX1FX3pHffPT+SL5YeicdCbXO8NgCCyXaV52X3Ikjr694kyZqbfyei9arAQvaP9JRbucAFCUg1FsQzAXZl0CpO6jSYfhO+YSpex2p3XM/nnm8AKLk/uNj5mvO5cjVx5FJsfVV3tzFbgiSnwYHK88uz/p3ACu28XDcWKpkPv71DUTkS7t+2UpcDC7eogEEszvuYUvLQi9GeXCrC3LtsSC6L7ahMmGf4lYyfQ0kJfNLX2hgqr9EFxs8e0CHIXU0zDfDYiwax6hiYuu/QwzG+Ag==
 
 %URL%
 https://tools.suckless.org/farbfeld/
@@ -38,10 +38,10 @@ ISC
 x86_64
 
 %BUILDDATE%
-1593716706
+1596740839
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704431066
+https://travis-ci.org/djpohly/PKGBUILD/builds/715611015
 
 %CONFLICTS%
 farbfeld

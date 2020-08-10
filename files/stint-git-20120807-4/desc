@@ -1,5 +1,5 @@
 %FILENAME%
-stint-git-20120807-4-x86_64.pkg.tar.xz
+stint-git-20120807-4-x86_64.pkg.tar.zst
 
 %NAME%
 stint-git
@@ -14,19 +14,19 @@ stint-git
 Simple, suckless-style color grabber for X11
 
 %CSIZE%
-4604
+5357
 
 %ISIZE%
 14224
 
 %MD5SUM%
-ec1d1e7bd220e0f143ef54ca851b7c9f
+0fc175dcb7fa002d44482970c5da73ca
 
 %SHA256SUM%
-67151a369282913107109b1942d4c2b5be8e959b2bee9d64ee18fc302aaa7581
+c5a02b0ba2220d1ee5e9bb3f33aba151dfff0cef85dd1305fa267efb94e864ac
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7/lFUACgkQFW138LsgdFBoMgf/Sl4qy1i7ErOHomcYcUh5ylYn10rjoD2koIlfdyGgpA0Dv0fK6TbMf7y2+pY3kxe593Fu1LZXeq+nWXOHjjyQEipklzAtwVhkSaf7biMJh1YW2tk7Iuxmi5ZqriibvkshZId56yGlJG6YI2UfawAjFrLFh3z4sPyk85rCVeutbZXWF7V6ZO0NwxWC/HGP33azR/3xYmM9xTEfCKkIAThKGClHew70J9RPqg4MXpJFqvv7pMEeR5hGBNqQabNrwSQEeosiJFCXjYqYDIjNVRHtp3zLLtAo1xURveiBB92zqHNgmqfM/3yXQnsTrnwrKaBko89vS6dYikhopoDDmCUEMg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8tug0ACgkQFW138LsgdFANWAf9E/XmY+FcV9lLYqgxWzoaAICCLd74kG1AWSiPuER8i36SllAH4hl4WavpJAdkU4HmDxH77YlmsoXHPGQeQWUhJclk8YH4p8sN33P2b6BQ8XmcCRtGtQdZnogD0Xuypzg+18Ijz06OgQlgxGVnj17co+fAUmKj252dkFjoIUv4gh+QRJkZDbffKTVPvNuUq7GEfoyiukLjNjlmDAUQ4QMhPOs4i59qV5pyAjFDB4qhMD8IAMNDA8xfb0wcFP3zcp+jgg7NVns9IBvbn8zYoW55z/n2se0v/2h+EF0GqXQRx38Lczgjq8mm4R+onbXl0Ur5NRdQ3yT22POzjaAbK/W6qQ==
 
 %URL%
 https://github.com/djpohly/stint
@@ -38,10 +38,10 @@ GPL
 x86_64
 
 %BUILDDATE%
-1593807951
+1596832263
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704780580
+https://travis-ci.org/djpohly/PKGBUILD/builds/715968430
 
 %PROVIDES%
 stint

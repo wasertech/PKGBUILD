@@ -1,5 +1,5 @@
 %FILENAME%
-slowrx-git-r128.1760187-1-x86_64.pkg.tar.xz
+slowrx-git-r128.1760187-1-x86_64.pkg.tar.zst
 
 %NAME%
 slowrx-git
@@ -14,19 +14,19 @@ r128.1760187-1
 An SSTV decoder that aims for intuitive simplicity and lack of features not needed by a shortwave listener (SWL).
 
 %CSIZE%
-26324
+34326
 
 %ISIZE%
 132485
 
 %MD5SUM%
-dda65a1787d89ee2765d6c74eae46b5e
+580a387bcc2c5ab68a2c51ba9f15698d
 
 %SHA256SUM%
-5831e2382db6d0cd1803040f286714fd750dc41870d0d5f0b0fd28c7b04e8833
+78a19b88362955166bc4c8c2fc4e3ca9f2ada3515b240692fc3bf6391140cb9b
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7/QF8ACgkQFW138LsgdFBLMQgAvONf2HyzUw5OQa3eac40crqHBkrE3ZK1H+swTLc3H5ssYf4uSvLHG3QRqkrDdGbpRFmDbpwwU/uRy6jA4zmZ93c7u0NNRAzCHBb5coaQbRTnN47cq2/G3EvlaaJXMpPnTstFOHqC07phYOqlrrkQNWvN4ChzgFwfo1hBvOYyjLSvgrmuaNX8XTbYpmHs//dT5JXMVi/cwU2oX0cxQ3OPi1TskZSMLVB0swU7npNIN1pBG9Ttk0JoxY8G3USEJtKKs6dm4CvKVUYsi9f+Bbod0xAn9mW193wDBOUnwTPgY7CgS20qnKQfBW/s/bq1gJA17XydwtGGVYdzMjWR222enA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8tZYUACgkQFW138LsgdFCDggf/ZzNUruo2w3jxEj4a5mukhY9Mh5YNX8t8Infg7QTW5VCU+6YzNQajruW8PkKi6w8M1pH1R3//HEvJw6AZABvXLravbERhjjrWXSS/WYEbDN7L0DbexTZY96c28BWYhgXgoxUU0Z7ykjyV3OQRWb75HRNka0tCPNR7On5AIAdTpgugoSljaaijqL9ALJjBxSI1xQiY47OYjqJqrfU9LUMdgf/GpKAAZd1ulo3e7ioIFSbKzBJGhu+rTtRfkcEKqAaTl5Li++WPZyYDd/FuKIk3AqvzB8eL2aID8LeJzehh3pMPBzpsZpB0CFTNhY/IoVCNV0An73+8Mw6Nb5pPMwYOrA==
 
 %URL%
 https://windytan.github.io/slowrx/
@@ -38,10 +38,10 @@ MIT
 x86_64
 
 %BUILDDATE%
-1593786432
+1596810596
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704686728
+https://travis-ci.org/djpohly/PKGBUILD/builds/715859221
 
 %CONFLICTS%
 slowrx

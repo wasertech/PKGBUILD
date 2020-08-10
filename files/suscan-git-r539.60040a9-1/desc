@@ -1,5 +1,5 @@
 %FILENAME%
-suscan-git-r539.60040a9-1-any.pkg.tar.xz
+suscan-git-r539.60040a9-1-any.pkg.tar.zst
 
 %NAME%
 suscan-git
@@ -14,19 +14,19 @@ r539.60040a9-1
 SUScan is a graphical signal analysis tool
 
 %CSIZE%
-165192
+228550
 
 %ISIZE%
 6933088
 
 %MD5SUM%
-97c0a0505ac187881d579c0aac9e82c0
+b7590c5eec2ca0b033eb44a07930fa9a
 
 %SHA256SUM%
-6bd1dd6415a38fd844664bb0d4e353eb709de46109f82f36fd5ab449cbaddd6e
+a9816d75a4f4a933cf53c635f32745ed4969326b540493a4340369341d45729d
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7/lIgACgkQFW138LsgdFCTEAf7B5KLzScMsAkvNKjW1whz4KnxtuwnRoBZqPkAKoWLTb5HNK13Dn3/yewwmqYbjeau+7ORUJN/5PruQzF3Lvt9iZm+50fsTHkpPRQDL1lNcPVU+9LeCez+RQvHmmSNPTA3kGPU5v8dGI4qfBJO3haMq3d6KtknSF1LrNniZ9TRhEXRIeWG/mPhSLscbjZ9TrD5XrHxS8XLYSTn2hW0fCfjm7lgfAoMrk+ykalrm8ImFCWQqU3+Vk/DUybIjiwYcOfBLjzRRpfc0mIgZMXul0F6OkwBINYPH+awVSyqQszZjf3XCpo+vKM3wlzFuGRNj6XjcfikjS2DMSmuvBzannIV9w==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8tuc4ACgkQFW138LsgdFD5qAf/YBF4bpS1Zj2+1+e6va+/sMeRwinunDn42DAFb6RIa6BwnHBMsA55HvEXvGC1QHHq5pnao/jsDgpFGW/f0xKwKnmn+pCHFn4/yqVjgCsbUEHsDQ/NbTqDU99F5zltzszSbR2TZxxTVVa6nTxCH+vFYXK3o+HtKgRRsS2P+9N6PV8RpbPP3D6KO2GiqDj9ebbjh8M48z2i0rEul4I7Jlx6GPgmx/LwM5VHb+A1diObgUTInJjCKzrmlwByH+sqMFJzKZLR0fx7DaoyjV7blosrmQ/fZxWRLXuTCcgOktWFRdlihC/TGJVkNjflunGNkL0As57bFRB1ljaBQ5LTx1WdaA==
 
 %URL%
 https://github.com/BatchDrake/suscan
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1593807987
+1596832186
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704780614
+https://travis-ci.org/djpohly/PKGBUILD/builds/715967858
 
 %CONFLICTS%
 suscan

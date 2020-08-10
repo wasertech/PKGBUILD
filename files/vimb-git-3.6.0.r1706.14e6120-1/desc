@@ -1,5 +1,5 @@
 %FILENAME%
-vimb-git-3.6.0.r1706.14e6120-1-x86_64.pkg.tar.xz
+vimb-git-3.6.0.r1706.14e6120-1-x86_64.pkg.tar.zst
 
 %NAME%
 vimb-git
@@ -14,19 +14,19 @@ vimb-git
 A Vim-like web browser that is inspired by Pentadactyl and Vimprobable.
 
 %CSIZE%
-88044
+109450
 
 %ISIZE%
 278293
 
 %MD5SUM%
-1e3443973e12dccf4eea0bb0252e3a82
+0173f821b858b633ecbf6ce303b161f7
 
 %SHA256SUM%
-5b0287c2ba29780576f5b4183f2b5ca6ad634601f06a8497344439bb8b5f4621
+1f90eb1aa979687ed57cfcd5a75bb85a118a1b01f43e1fcb1848c559c0c398b3
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7/xTcACgkQFW138LsgdFDYFAgAwikAPp37zf24r350fU4IOsTBJO07kNwQdr4l7Vs/kJ+GmBNCugETPx7bOVmlTJkLDaDZ+ejzXRqQinGj6InT4Eab0kO9z3QNRHBbhv83ZNCami7YhUwzBm1stpeRAxlW0M1FzHHx9tnwIIEFeznpYx5Z3rseoaaqo4q6xDm/8dtAmVNt1ABnkEJYh/eRhuRL1MZBD1fq0UNpqBg+W5OeQYQyrKDBnfPm7MkrBl1ciKQgBjjirZo0SfHy8VvBIEPWKwc0x38WglHBtrfIIxXVx61JC2cJBz5jpUGo2N30xF28h6PJBU9usNzCulsYLVTaEuWE8hE+OQ8oyfkNSaYpXg==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8t6oMACgkQFW138LsgdFCKeQf/SSWq67DzBHYxzyGpSk29OpTeOlFdg6p86GsZ1H4/S35viJXpXpOjpUvi0tXf3vlQGtQe91EQgGMf0xt+qCcVySHJZFSp6UXTwKmTSVhK1G4pKOsaJIYbqLHqU8tvt0FsmETU/uYxcFq7/FCZmwGPupxm4xIxHIEiONqceQB1PUXaE364STZJQxmwmEe8ke/biRTfbcJtRWHFaIF3cfqlILv46ifIqGj5pLIOwwOoTraVPms2/nJZATkyEsosE6fg+Lpee+xv0m3f5W0Bj0IMQum+gb9+9d5RJgN07zxVj58bmVx3FHBmdSd15e2OiS1eSEhYBGJiaT2k1dAivVcTpg==
 
 %URL%
 http://fanglingsu.github.io/vimb
@@ -38,10 +38,10 @@ GPLv3
 x86_64
 
 %BUILDDATE%
-1593820430
+1596844630
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704818526
+https://travis-ci.org/djpohly/PKGBUILD/builds/716016818
 
 %CONFLICTS%
 vimb

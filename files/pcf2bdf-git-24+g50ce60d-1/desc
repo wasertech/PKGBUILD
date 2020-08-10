@@ -1,5 +1,5 @@
 %FILENAME%
-pcf2bdf-git-24+g50ce60d-1-x86_64.pkg.tar.xz
+pcf2bdf-git-24+g50ce60d-1-x86_64.pkg.tar.zst
 
 %NAME%
 pcf2bdf-git
@@ -14,19 +14,19 @@ pcf2bdf-git
 Convert X font from PCF to BDF
 
 %CSIZE%
-12284
+14802
 
 %ISIZE%
 27284
 
 %MD5SUM%
-9c96fadb0de70f7587bd9a0f1f5fb91d
+a8e3a19cb4fad4930d73d1848fe50eed
 
 %SHA256SUM%
-6c168b3c03ddfd64feef6f1a6a8e59b672824494d491b209c27fb9791c063954
+b23afcc2a985a9a377a3ca68c9fd65e3f4758d18c40f03225f1479ecb5b05ed5
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl7/qcMACgkQFW138LsgdFDLaAf/cWiTOn5jGjry28nDK+kxB6bhXirMYufphNO0tI7OtfXAPxp6M9bothdjbxIsai4s24pJTBT3PLHCZem77lRXmdj/pmScyOWUHs237pT8AyCIgpT/Nk56QxwFcG/NnAy9w3RaOMA+IrR54JI0OBazEzH7UVUhxaklGJJdzuDDW5RWnUZF7UwcTrGRz0U3qkT5BC/6olEYyZKxHdz/XY7yGXmrZz9cJTgLMOlrSzCBEBGQC6e7bF22KeH+To7gn19uGrgQ29nTDAzPXrvfHXUTvafCrojmSd94Ksi9llhFCTzN+WWqqvI0fQtv7R8wOJjfRZLBgYFnRqUQQIbJKXRgVA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl8tzwYACgkQFW138LsgdFDxIAgAo3iCOWF6r7tKjlSH3MgXlWmYVKPOtrZ38feoMHkwDNBy/t2/9c1XrdtsQhYT00NPB1kw8xoKn0BsA2GKgLjaIZuwqll7+LB4hg19kKKxs6tqzmW0HXEDCi/tKCie7Qq2YPIab0bLSwyaQXrbUVg74ulW4g9XQNup9gMlpAFk6gb7Ro0+0nKEowc0Yi9Bh4imYmkM8YgsWq4GGrkMzubCD0rG80BTnhorpkf4y3vRVYZ80OoS6rxyy4N/SzfwTKIUXYBwXxm0nUQrPU5xVJqXtohuRbYpVygsqZr1oeUjcxlH2H/FLsvVt5uSK7wxcYojGDJmj15qLF4g+Uj1F9RMFQ==
 
 %URL%
 https://github.com/ganaware/pcf2bdf
@@ -38,10 +38,10 @@ custom:X11
 x86_64
 
 %BUILDDATE%
-1593813439
+1596837633
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/704800026
+https://travis-ci.org/djpohly/PKGBUILD/builds/715989668
 
 %CONFLICTS%
 pcf2bdf
