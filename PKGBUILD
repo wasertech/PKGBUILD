@@ -8,7 +8,7 @@ url="https://github.com/djpohly/PKGBUILD"
 license=('GPL')
 install="$pkgname.install"
 source=('djp.gpg' 'djp-trusted')
-sha256sums=('027d1911c4225e50b8ae34898b2c132279dfdfa38c5d5a4aa18f4a8d7a1bd59e'
+sha256sums=('546b0c91ab1bb62e119aaafa16b3f50003c96813a089187f78b48e57c85b7898'
             '738903eb70dfe4bb281778cf29c541c53f6151b412b6a7559cdc3a1a65e55120')
 
 package() {
