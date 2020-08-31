@@ -14,19 +14,19 @@ r122.9498594-1
 Library and utilities for multi-way secret-sharing
 
 %CSIZE%
-19879
+19885
 
 %ISIZE%
 51745
 
 %MD5SUM%
-6df1cce1e32271218db97b4924ff30ae
+56e3d8dafabb46182836f8d7e026faa5
 
 %SHA256SUM%
-280997d46593d0060d8b4403998b53642153c33a91c22e0b3d3b044b23b54eb9
+3d0fa4ffeccc45285ce5160cf7ecd5ad240d085f09bf32032e315d9cc64fc8e0
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl9EM/IACgkQFW138LsgdFA4wAf/U+BqQNBGTiOS2cZn00qlv06tUC/i/vSzqpQ1zprLU8OzkpAl+Rpt6o1Zfn2aRhsb9utsWtwZWoiGVY0+o4n45yRsS+Oesvt0VRsq4hVvGDmId4KsqhPmKg+gBtYFFUtgE/jd+WYZvauTz7S2a59Tip1GVSZj9K2bydNoOCqBkAJYFoQWwyd+osZ4HrugLGxpNjAxCJkxOwg3jm2sEEwQRKJLINRNoK01ckfTMQfi8SJweRPpuhQaGqI5NbVdglJsl34qiv9knQP+/0znTfgh2h5T0rEA30H990/0lF4m6b6AdiXzKOIkhJ3rFzASovjw+vAcSFgybZRd+LJdj7uYqw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl9NboQACgkQFW138LsgdFAj2wf+JS3uXA3MM07leXpYSFKDxPq/anIYx3dOi9DtkXtpWnRZodu8kA8sRNSteUQgE7oTalXN3C2U5xqhMHAf2sDAJwHMtVqosi1VZOEe/hUk6ar62+jc34Vl5PeLHbTsOj72Zni/4xiL+Lth60MCSaxvdInUGMG1vZwRp7rdOO8CdJKUuHwTItPwVFSRjw9fPwpcrRcbmUbgF/athqvWWwM+07Qi7nT+N089MC2rQ4IgXMRh/Xv/eoWTgdF1qLsyxjTVQyRUegZbwLAVbf9Tr+pN2Vr3ZmAG/ThvZdtDRRC6n1podAly/EQdRPcxlU0Iqi5jRionasplSR/WXVeHS3F7cw==
 
 %URL%
 http://www.digital-scurf.org/software/libgfshare
@@ -38,10 +38,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1598305252
+1598910070
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/720800793
+https://travis-ci.org/djpohly/PKGBUILD/builds/722880837
 
 %CONFLICTS%
 libgfshare
