@@ -3,21 +3,21 @@
 
 # Based on aur/chromium-vaapi, with ungoogled-chromium patches
 
-# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=84.0.4147.89
+pkgver=84.0.4147.125
 pkgrel=1
 _pkgname=$pkgname
 _pkgver=$pkgver
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
-_ungoogled_ver=84.0.4147.89-1
+_ungoogled_ver=84.0.4147.125-1
 _uc_url="$_pkgname-$_ungoogled_ver.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz"
-_uc_sum="c10fe32af89e3611e836b5c73676444086be0680b765836755f3649ab8da4925"
+_uc_sum="41585d66f394a60f8eb236e598b8f13f01ee78d086865412b8612de5f089b371"
 _launcher_ver=6
 _gcc_patchset=3
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -52,7 +52,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('17970d998c125b40765141f2cd346d1674f05dbd4a28fdcf31f9e3540890c679'
+sha256sums=('98439626cf2d8d3d8f9486d08a99cbc1e4981b3f3427a072d5eaaf6ded4daff5'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
@@ -156,7 +156,7 @@ prepare() {
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
   # Make xcbgen available to ui/gfx/x/gen_xproto.py running under Python 2
-  ln -s /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
+  ln -sf /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
