@@ -9,7 +9,7 @@ usr/share/doc/vcsh/README.md
 usr/share/doc/vcsh/hooks
 usr/share/man/
 usr/share/man/man1/
-usr/share/man/man1/vcsh.1
+usr/share/man/man1/vcsh.1.gz
 usr/share/zsh/
 usr/share/zsh/site-functions/
 usr/share/zsh/site-functions/_vcsh
