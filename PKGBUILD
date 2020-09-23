@@ -6,14 +6,14 @@
 
 pkgname=vcsh-git
 _pkgname=${pkgname%-git}
-pkgver=1.20151229.r36.gcb33546
+pkgver=1.20151229.r331.gc4019a5
 pkgrel=1
 pkgdesc='manage config files in HOME via fake bare git repositories'
 arch=('any')
 url="https://github.com/RichiH/$_pkgname"
 license=('GPL')
 depends=('git')
-makedepends=('git' 'perl-shell-command' 'perl-test-most' 'ruby-ronn')
+makedepends=('git' 'ruby-ronn')
 optdepends=('myrepos: helps manage a large number of repositories')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -38,7 +38,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  make -k test
+  #make -k test
 }
 
 package() {
