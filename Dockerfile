@@ -4,6 +4,9 @@ ARG userid
 # Update packages.
 RUN pacman -Syu --noconfirm --ignore linux --ignore linux-firmware --needed base-devel
 
+# Ensure wheel group exists (seriously??)
+RUN groupadd -f -r wheel
+
 # Create an unprivileged user.
 RUN useradd -m -u ${userid} -G wheel -s /bin/bash pkguser
 
