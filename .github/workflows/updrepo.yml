@@ -22,10 +22,14 @@ jobs:
     name: Update repository index
     runs-on: ubuntu-latest
     steps:
-      - uses: ${{github.repository}}/.github/actions/updrepo@master
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - uses: ./.github/actions/updrepo
 
   sign:
     name: Sign repository index
+    runs-on: ubuntu-latest
     needs: updrepo
     steps:
       - run: mkdir -p $HOME/.gnupg
@@ -34,7 +38,9 @@ jobs:
       - run: gpg --detach-sign --use-agent --no-armor repo/$REPO_NAME.files
 
   deploy:
+    name: Deploy repository index
     needs: [updrepo, sign]
+    runs-on: ubuntu-latest
     if: needs.updrepo.result == 'success'
     steps:
       - uses: svenstaro/upload-release-action@2.2.0
