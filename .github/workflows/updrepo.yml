@@ -1,0 +1,46 @@
+name: Update repository index
+
+env:
+  REPO_NAME: PKGBUILD
+  RELEASE_NAME: repository
+  KEY_FILE: signing.key.enc
+
+on:
+  # Run when repository files are updated
+  push:
+    paths:
+      - 'files/**'
+  # Allow manual trigger as well
+  workflow_dispatch:
+
+jobs:
+  defaults:
+    run:
+      shell: bash
+
+  updrepo:
+    name: Update repository index
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ${{github.repository}}/.github/actions/updrepo@master
+
+  sign:
+    name: Sign repository index
+    needs: updrepo
+    steps:
+      - run: mkdir -p $HOME/.gnupg
+      - run: openssl aes-256-cbc -d -K ${{secrets.key}} -iv ${{secrets.iv}} -in $KEY_FILE | gpg --import
+      - run: gpg --detach-sign --use-agent --no-armor repo/$REPO_NAME.db
+      - run: gpg --detach-sign --use-agent --no-armor repo/$REPO_NAME.files
+
+  deploy:
+    needs: [updrepo, sign]
+    if: needs.updrepo.result == 'success'
+    steps:
+      - uses: svenstaro/upload-release-action@2.2.0
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          release_name: ${{env.RELEASE_NAME}}
+          file: 'repo/*'
+          file_glob: true
+          overwrite: true
