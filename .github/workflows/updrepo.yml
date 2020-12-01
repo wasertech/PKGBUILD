@@ -13,11 +13,11 @@ on:
   # Allow manual trigger as well
   workflow_dispatch:
 
-jobs:
-  defaults:
-    run:
-      shell: bash
+defaults:
+  run:
+    shell: bash
 
+jobs:
   updrepo:
     name: Update repository index
     runs-on: ubuntu-latest
