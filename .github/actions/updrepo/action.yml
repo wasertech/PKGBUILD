@@ -1,6 +1,7 @@
 name: Update and sign index
 description: Update and sign index
 runs:
+  using: composite
   steps:
     - run: $GITHUB_ACTIONS_PATH/action.sh
       shell: bash
