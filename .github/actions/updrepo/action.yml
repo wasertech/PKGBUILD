@@ -3,5 +3,5 @@ description: Update and sign index
 runs:
   using: composite
   steps:
-    - run: $GITHUB_ACTIONS_PATH/action.sh
+    - run: $GITHUB_ACTION_PATH/action.sh
       shell: bash
