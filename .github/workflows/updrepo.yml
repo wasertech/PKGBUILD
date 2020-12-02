@@ -40,7 +40,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const rel = await github.repos.getReleaseByTag({owner: 'djpohly', repo: 'PKGBUILD', tag: 'repository'})
-            return rel
+            console.log(rel)
 
       - uses: svenstaro/upload-release-action@2.2.0
         with:
