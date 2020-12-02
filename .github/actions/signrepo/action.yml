@@ -1,0 +1,9 @@
+name: Sign index
+description: Sign index
+runs:
+  using: composite
+  steps:
+    - run: openssl aes-256-cbc -d -K ${{secrets.key}} -iv ${{secrets.iv}} -in $KEY_FILE | gpg --import
+      shell: bash
+    - run: gpg --detach-sign --use-agent --no-armor repo/$REPO_NAME.db
+    - run: gpg --detach-sign --use-agent --no-armor repo/$REPO_NAME.files
