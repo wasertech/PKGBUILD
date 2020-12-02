@@ -35,6 +35,12 @@ jobs:
           signingkey: ${{env.KEY_FILE}}
         continue-on-error: true
 
+      - uses: actions/github-script@v3.1.0
+        with:
+          script: |
+            const rel = yield octokit.repos.getReleaseByTag(Object.assign(Object.assign({}, {'owner': 'djpohly', 'repo': 'PKGBUILD'}), {tag: 'repository'}));
+            return rel
+
       - uses: svenstaro/upload-release-action@2.2.0
         with:
           repo_token: ${{secrets.GITHUB_TOKEN}}
