@@ -39,7 +39,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const rel = yield github.repos.getReleaseByTag(Object.assign(Object.assign({}, {'owner': 'djpohly', 'repo': 'PKGBUILD'}), {tag: 'repository'}))
+            const rel = yield github.repos.getReleaseByTag({owner: 'djpohly', repo: 'PKGBUILD', tag: 'repository'})
             return rel
 
       - uses: svenstaro/upload-release-action@2.2.0
