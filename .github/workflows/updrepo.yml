@@ -29,6 +29,10 @@ jobs:
       - uses: ./.github/actions/updrepo
 
       - uses: ./.github/actions/signrepo
+        with:
+          key: ${{secrets.key}}
+          iv: ${{secrets.iv}}
+          signingkey: ${{env.KEY_FILE}}
         continue-on-error: true
 
       - uses: svenstaro/upload-release-action@2.2.0
