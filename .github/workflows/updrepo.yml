@@ -40,7 +40,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const rel = await github.repos.getReleaseByTag({owner: 'djpohly', repo: 'PKGBUILD', tag: 'repository'})
-            const assets = await github.repos.listReleaseAssets({owner: 'djpohly', repo: 'PKGBUILD', release_id: rel.data.id})
+            const assets = await github.paginate(github.repos.listReleaseAssets, {owner: 'djpohly', repo: 'PKGBUILD', release_id: rel.data.id})
             console.log(assets)
 
       - uses: svenstaro/upload-release-action@2.2.0
