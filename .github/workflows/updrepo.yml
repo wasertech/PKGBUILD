@@ -39,8 +39,9 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const rel = await github.repos.getReleaseByTag({owner: 'djpohly', repo: 'PKGBUILD', tag: 'repository'})
-            console.log(rel)
+            const rel = github.repos.getReleaseByTag({owner: 'djpohly', repo: 'PKGBUILD', tag: 'repository'})
+            const assets = github.repos.listReleaseAssets({owner: 'djpohly', repo: 'PKGBUILD', release_id: rel.data.id})
+            console.log(assets)
 
       - uses: svenstaro/upload-release-action@2.2.0
         with:
