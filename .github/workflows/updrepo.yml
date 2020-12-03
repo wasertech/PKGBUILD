@@ -30,8 +30,8 @@ jobs:
 
       - uses: ./.github/actions/signrepo
         with:
-          encryption_key: ${{secrets.encryption_key}}
-          encryption_iv: ${{secrets.encryption_iv}}
+          encryption_key: ${{secrets.ENCRYPTION_KEY}}
+          encryption_iv: ${{secrets.ENCRYPTION_IV}}
           keyfile: ${{env.KEY_FILE}}
         continue-on-error: true
 
