@@ -2,20 +2,20 @@ name: Sign index
 description: Sign index
 
 inputs:
-  key:
+  encryption_key:
     description: "Key for decrypting signing key"
     required: true
-  iv:
+  encryption_iv:
     description: "IV for decrypting signing key"
     required: true
-  signingkey:
+  keyfile:
     description: "Path to the encrypted signing key"
     required: true
 
 runs:
   using: composite
   steps:
-    - run: openssl aes-256-cbc -d -K ${{inputs.key}} -iv ${{inputs.iv}} -in ${{inputs.signingkey}} | gpg --import
+    - run: openssl aes-256-cbc -d -K ${{inputs.encryption_key}} -iv ${{inputs.encryption_iv}} -in ${{inputs.keyfile}} | gpg --import
       shell: bash
     - run: gpg --detach-sign --use-agent --no-armor repo/$REPO_NAME.db
       shell: bash
