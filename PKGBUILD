@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=powerpill
-pkgver=2018.11
+pkgver=2020.12.15
 pkgrel=2
 pkgdesc='Pacman wrapper for faster downloads.'
 arch=(any)
@@ -10,16 +10,16 @@ depends=(aria2 'pm2ml>2012.12.12' pyalpm python3 python3-xcgf python3-xcpf)
 optdepends=('python3-threaded_servers: internal Pacserve support' 'reflector: Reflector and Rsync support' 'rsync: Rsync download support')
 backup=(etc/powerpill/powerpill.json)
 source=(
-  https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2018.11.tar.xz
-  https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2018.11.tar.xz.sig
+  https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2020.12.15.tar.xz
+  https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2020.12.15.tar.xz.sig
 )
 sha512sums=(
-  af1df264f92efe3622ad543093e77482f7219d628a12c7902d17319e201837b5c736c09038499fa97432a45e020b3881c4a37eb1a9654c2ffbc5fa85989a7f58
-  2ff3e80fcca07f8bdaf34ff8824d31b31b9144718ccb52421212b1cfef9034f89c775a5e77001a58b4319f832a70c62c77acc5b18d05232be6152a0bd79d7dd0
+  f858b2b9c38fb9f4b0ed681c724a2632a602c3273e880afe2341161e8a6f42058b65dd4aa7f9fef55d3494382a9babcc799ffaf0abd0dff8076c31bd6c90f713
+  316911ef8ea81fc38d78c7f40812aa79bd9f9d0a2daabe11a5153f85c8576f9361e8360da5514d6f28a5f253ccfd3eefd4ca9a06897e749808a24ffe2566cd0f
 )
 md5sums=(
-  0ae8494ebfd21d6144681ef7b4247162
-  c35a6c2ed6bf0599fb88c27d4d1fe1b6
+  25ef523aeee95f04bf2a441d95f39831
+  4b24129d639df8697c54592fa4956e70
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
@@ -27,7 +27,6 @@ package ()
 {
   cd "$srcdir/$pkgname-$pkgver"
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -Dm755 'powerpill' "$pkgdir/usr/bin/powerpill"
   install -Dm644 'powerpill.json' "$pkgdir/etc/powerpill/powerpill.json"
   install -Dm644 'man/powerpill.json.1.gz' "$pkgdir/usr/share/man/man1/powerpill.json.1.gz"
   install -Dm644 'powerpill-bash-completion.sh' "$pkgdir/usr/share/bash-completion/completions/powerpill"
