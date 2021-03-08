@@ -12,7 +12,7 @@ RUN useradd -m -G wheel -s /bin/bash pkguser
 # Grant group wheel sudo rights without password.
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
 
-RUN chown -R pkguser: \$GITHUB_WORKSPACE
+RUN chown -R pkguser: $GITHUB_WORKSPACE
 
 # Set user.
 USER pkguser
