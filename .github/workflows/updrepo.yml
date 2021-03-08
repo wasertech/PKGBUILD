@@ -35,7 +35,7 @@ jobs:
           keyfile: ${{env.KEY_FILE}}
         continue-on-error: true
 
-      - uses: djpohly/upload-release-action@paginate-assets
+      - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{secrets.GITHUB_TOKEN}}
           tag: ${{env.RELEASE_NAME}}
