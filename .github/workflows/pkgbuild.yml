@@ -8,6 +8,7 @@ on:
     branches-ignore:
       - master
       - main
+      - pkgbase
   # Allow manual trigger as well
   workflow_dispatch:
 
