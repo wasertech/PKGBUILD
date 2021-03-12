@@ -14,7 +14,11 @@ RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
 
 COPY pkgbuild.sh /entrypoint.sh
 
+RUN ls -l /entrypoint.sh
+
 RUN chown pkguser: /entrypoint.sh
+
+RUN ls -l /entrypoint.sh
 
 # Set user.
 USER pkguser
