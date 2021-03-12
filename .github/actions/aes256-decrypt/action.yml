@@ -1,0 +1,22 @@
+name: Decrypt file using AES-256
+description: Decrypt file using AES-256
+
+inputs:
+  infile:
+    description: File to decrypt
+    required: true
+  outfile:
+    description: File to write decrypted content to
+    required: true
+  key:
+    description: Hex-encoded encryption key
+    required: true
+  iv:
+    description: Hex-encoded initialization vector
+    required: true
+  
+runs:
+  using: composite
+  steps:
+    - run: openssl aes-256-cbc -d -K ${{env.INPUT_key}} -iv ${{env.INPUT_iv}} -in ${{env.INPUT_infile}} -out ${{env.INPUT_outfile}}
+      shell: bash
