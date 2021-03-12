@@ -18,5 +18,5 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: openssl aes-256-cbc -d -K ${{env.INPUT_key}} -iv ${{env.INPUT_iv}} -in ${{env.INPUT_infile}} -out ${{env.INPUT_outfile}}
+    - run: openssl aes-256-cbc -d -K ${{inputs.key}} -iv ${{inputs.iv}} -in ${{inputs.infile}} -out ${{inputs.outfile}}
       shell: bash
