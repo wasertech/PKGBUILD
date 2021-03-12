@@ -12,9 +12,11 @@ RUN useradd -m -G wheel -s /bin/bash pkguser
 # Grant group wheel sudo rights without password.
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
 
-RUN chown -R pkguser $GITHUB_WORKSPACE
+COPY pkgbuild.sh /entrypoint.sh
+
+RUN chown pkguser: /entrypoint.sh
 
 # Set user.
 USER pkguser
 
-ENTRYPOINT ["ls", "master/.github/actions/docker-pkgbuild/"]
+ENTRYPOINT ["/entrypoint.sh"]

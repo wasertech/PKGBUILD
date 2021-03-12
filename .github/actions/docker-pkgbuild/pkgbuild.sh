@@ -2,6 +2,14 @@
 
 set -ex
 
+ls -l /entrypoint.sh
+pwd
+ls -la
+sudo chown -R pkguser: "$GITHUB_WORKSPACE"
+pwd
+ls -la
+exit 0
+
 # Environment variables.
 export PACKAGER="https://travis-ci.org/${1}/builds/${3}"
 
