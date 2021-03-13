@@ -38,6 +38,10 @@ jobs:
           iv: ${{secrets.ENCRYPTION_IV}}
 
       - uses: ./master/.github/actions/docker-pkgbuild
+        with:
+          reposlug: ${{github.repository}}
+          release: ${{env.RELEASE_NAME}}
+          runid: ${{github.run_id}}
 
       - uses: svenstaro/upload-release-action@v2
         with:
