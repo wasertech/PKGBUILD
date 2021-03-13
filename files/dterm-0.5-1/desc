@@ -1,5 +1,5 @@
 %FILENAME%
-dterm-0.5-1-x86_64.pkg.tar.xz
+dterm-0.5-1-x86_64.pkg.tar.zst
 
 %NAME%
 dterm
@@ -14,19 +14,19 @@ dterm
 Simple serial terminal emulator
 
 %CSIZE%
-14348
+16956
 
 %ISIZE%
-62464
+37606
 
 %MD5SUM%
-f487c538b958c2a2b171bf89e5bfbe61
+aa0cdcd07ba2ef5097bc91d44d32d911
 
 %SHA256SUM%
-888683361c6fff3bde43364d4961673a155c640038df4aa396bd05cb120b4c79
+ecaad77ff88f8da3bd8e320105affdbabd6fd28608a7db5c0fcd539e32435e6e
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlxZx2kACgkQFW138LsgdFCz6AgAiHRBUkjQccA+DzTeHtjo3Zj49xZ4JReQ39Ekd+EBhciWbdpRxzf/MZfaB3gdRLyV0U6Tp+K7M7trA8dfEWvKdEFE1vNVs1p1ZarK6Fyg9vik6Q8jbv/u7ryllOfYdcaxifDZStF6aCFMbJejQy7D2N/xiOapKRisEtXOIW/LFa2QYhIqa12UHbEs8279LbaJmd6s024xBtYbWpvXwYi1YIB8K8H4uLAxd2YncSbNln3g41ien+biLBpIlHDiDTo8Zxytu9sWTylMdUV4InivV8+QY7McMq7QmPoRErgAd2lxc88AlRCsxO3q2roXC/FGuvXZ3pkYkU3Qg6zq2kPC2w==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmBMBokACgkQFW138LsgdFBdQQf/U3VM3bW/MHLfWLM5Sq9iVJbDxA8c0eXMAdqiFDr4rbzMNA7fWFgz4ZDOzkALVCNWlljtiqiZ6e4RfCMJHcmdGLUW+uGSqyptL3Vtg+1CEYf8C43FD0KTTy+KyjGfiHcxi/BKk5qeBsYTkytHxuDoDtlkTveb6mcEsg7skSfMJheJi+tkPZxfF4SfU4Wx/tfyO66wT3k/+XnFjFNA3MNoF/JkKHAwFbekG5R00mNQKUmvbUveImKcCFyxhxKrrfay3ZHPcXxmq64LJpjzk7kOJWxFuP4RsjkyQLcSCW5/2KUJrxoJodqKgzzfLWnjlCRQ5PMnnzxywzj3GVWEcQE+BQ==
 
 %URL%
 http://www.knossos.net.nz/resources/free-software/dterm/
@@ -38,10 +38,10 @@ GPL2
 x86_64
 
 %BUILDDATE%
-1549387622
+1615595141
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/489151402
+https://travis-ci.org//builds/
 
 %DEPENDS%
 readline
