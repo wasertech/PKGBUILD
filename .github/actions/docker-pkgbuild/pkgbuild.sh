@@ -2,14 +2,15 @@
 
 set -ex
 
-# Environment variables.
-export PACKAGER="https://travis-ci.org/${1}/builds/${3}"
-
 # Variables declaration.
-declare -r pkgslug="$1"
-declare -r pkgtag="$2"
-declare -r pkgrepo="${1#*/}"
+declare -r reposlug="$1"
+declare -r repotag="$2"
+declare -r reponame="${1#*/}"
+declare -r runid="$3"
 declare SIGN_PKG=
+
+# Environment variables.
+export PACKAGER="https://github.com/$reposlug/actions/runs/$runid"
 
 # Set up gpg options
 mkdir -p "$HOME/.gnupg"
@@ -34,9 +35,9 @@ sudo sed -i -e "/\[multilib\]/,/Include/s/^#//" "/etc/pacman.conf"
 
 # Add configuration for repository.
 cat - /etc/pacman.conf > /tmp/pacman.conf.new << EOF
-[${pkgrepo}]
+[${reponame}]
 SigLevel = Optional TrustAll
-Server = https://github.com/${pkgslug}/releases/download/${pkgtag}
+Server = https://github.com/${reposlug}/releases/download/${repotag}
 EOF
 sudo cp /tmp/pacman.conf.new /etc/pacman.conf
 

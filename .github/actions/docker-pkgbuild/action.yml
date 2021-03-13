@@ -3,3 +3,7 @@ description: Build package in Docker
 runs:
   using: docker
   image: Dockerfile
+  args:
+    - ${{github.repository}}
+    - repository
+    - ${{github.run_id}}
