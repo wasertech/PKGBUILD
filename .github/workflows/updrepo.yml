@@ -15,8 +15,8 @@ on:
       - 'files/**'
   # Allow manual and programmatic trigger as well
   workflow_dispatch:
-  # repository_dispatch:
-  #   types: [rebuild]
+  repository_dispatch:
+    types: [rebuild]
 
 defaults:
   run:
