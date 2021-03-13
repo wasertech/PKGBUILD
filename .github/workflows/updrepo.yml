@@ -10,8 +10,10 @@ on:
   push:
     paths:
       - 'files/**'
-  # Allow manual trigger as well
+  # Allow manual and programmatic trigger as well
   workflow_dispatch:
+  repository_dispatch:
+    types: [rebuild]
 
 defaults:
   run:
