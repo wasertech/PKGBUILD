@@ -1,7 +1,7 @@
 name: Commit package metadata
 description: Commit package metadata
 env:
-  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  GITHUB_TOKEN: ${{github.token}}
 runs:
   using: composite
   steps:
