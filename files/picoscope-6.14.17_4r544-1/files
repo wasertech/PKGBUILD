@@ -11,6 +11,7 @@ opt/picoscope/lib/
 opt/picoscope/lib/Griffin.Networking.Protocol.Http.dll
 opt/picoscope/lib/Griffin.Networking.dll
 opt/picoscope/lib/ICSharpCode.SharpZipLib.dll
+opt/picoscope/lib/MathNet.Numerics.dll
 opt/picoscope/lib/Newtonsoft.Json.dll
 opt/picoscope/lib/Oem3.dll
 opt/picoscope/lib/PdfSharp-gdi.dll
