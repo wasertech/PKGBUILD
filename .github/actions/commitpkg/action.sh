@@ -2,6 +2,8 @@
 
 set -ex
 
+GITHUB_TOKEN=$1
+
 # Get author/committer info from triggering branch commit
 export GIT_AUTHOR_NAME=$(git show -s --pretty='%an') \
     GIT_AUTHOR_EMAIL=$(git show -s --pretty='%ae') \
