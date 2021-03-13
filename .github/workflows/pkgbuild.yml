@@ -52,3 +52,5 @@ jobs:
           overwrite: true
 
       - uses: ./master/.github/actions/commitpkg
+        with:
+          repo_token: ${{secrets.PUSH_TOKEN}}
