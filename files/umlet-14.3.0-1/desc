@@ -1,5 +1,5 @@
 %FILENAME%
-umlet-14.3.0-1-any.pkg.tar.xz
+umlet-14.3.0-1-any.pkg.tar.zst
 
 %NAME%
 umlet
@@ -14,19 +14,19 @@ umlet
 Free UML Tool for Fast UML Diagrams (stand-alone version)
 
 %CSIZE%
-8752440
+8821077
 
 %ISIZE%
-9620480
+9579297
 
 %MD5SUM%
-8a04bbac6f1d15937820acdace6198ef
+51a3cd35a0c6b81bcb59e4890b6fe5d1
 
 %SHA256SUM%
-99b3586f8aff7a7e5ebbae2311bfc2d681fcc5dba8388af53f60260199435099
+6b51842afda6f51a657e46c9161cf14259fc9c841c56d53cb4bc9f878da7d81f
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAlwY0vsACgkQFW138LsgdFB8lQgAowr2huI1u5gtlxWw0KpWLHMb8ti7gqNkk2a3yTq5CcsJconG+eOoZUN8HIt9hHtOzKmhmjVtQR7RqehJleh08rqCIstXe0Ajma3JGgwKP30xXksjB+G28oBfEIYNc/0AAVMwa56Vli1/P+gPS+6nKg3dKo7K4rJss6kbsLIZ0PDo8BNXJIe3YtoSIqmephKXMbBIVq40nEaGC+MxJaV9dggtjf/hvT5xksAJAvpoDGxp5yDTw5gKkvo2FARc0HmJ6EzYw4+fMkdYUIm8i0foz2ewF5HV3efB9aq+jF1MbHW7zsetiP7yhgUzb1GKvUWmNLWyJHflw5/FRMvAnEYt5A==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmBMK1gACgkQFW138LsgdFCp9wf/ZCgt2AxSMa9EOblxUN4QmSEWCpJ/AqhaJLdSFY+hAA3YPEtHgA3UDhDBbx+96u0GgIrL2uSBYJQ5QlSRIl3HtCKhA8sOdHmuhOUQRtyQhH05sxzN4n+tpqmxW1+YFx6+hyEX1OroqZv7bthE/A8At6SfyZAeMDxsQOfZHEmfRNg1P0HtM/ygDj/T4LV/urTtfaUk5SgXwBJSFu+VE4kzSciQdSp8Qr3g1DRjEhvO6E8aWLpld50jRFEwqYR/nqmjw+XCLbkimey/6gQhrCR72McBQj95OTFkg3wrJzxdc6kzLpYK6MIPmq9kizfIq5xtVMht0JqaWoL6+IWPqSjnug==
 
 %URL%
 https://www.umlet.com
@@ -38,10 +38,10 @@ GPL
 any
 
 %BUILDDATE%
-1545130734
+1615604557
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/469453206
+https://github.com/djpohly/PKGBUILD/actions/runs/648121743
 
 %DEPENDS%
 java-runtime
