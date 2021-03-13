@@ -8,6 +8,9 @@ env:
 on:
   # Run when repository files are updated
   push:
+    branches:
+      - master
+      - main
     paths:
       - 'files/**'
   # Allow manual and programmatic trigger as well
