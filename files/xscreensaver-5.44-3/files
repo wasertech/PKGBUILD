@@ -79,6 +79,7 @@ usr/lib/xscreensaver/engine
 usr/lib/xscreensaver/epicycle
 usr/lib/xscreensaver/eruption
 usr/lib/xscreensaver/esper
+usr/lib/xscreensaver/etruscanvenus
 usr/lib/xscreensaver/euler2d
 usr/lib/xscreensaver/fadeplot
 usr/lib/xscreensaver/fiberlamp
@@ -99,6 +100,7 @@ usr/lib/xscreensaver/gears
 usr/lib/xscreensaver/geodesic
 usr/lib/xscreensaver/geodesicgears
 usr/lib/xscreensaver/gflux
+usr/lib/xscreensaver/gibson
 usr/lib/xscreensaver/glblur
 usr/lib/xscreensaver/glcells
 usr/lib/xscreensaver/gleidescope
@@ -197,6 +199,7 @@ usr/lib/xscreensaver/rotzoomer
 usr/lib/xscreensaver/rubik
 usr/lib/xscreensaver/rubikblocks
 usr/lib/xscreensaver/sballs
+usr/lib/xscreensaver/scooter
 usr/lib/xscreensaver/shadebobs
 usr/lib/xscreensaver/sierpinski
 usr/lib/xscreensaver/sierpinski3d
@@ -401,6 +404,7 @@ usr/share/man/man6/engine.6.gz
 usr/share/man/man6/epicycle.6.gz
 usr/share/man/man6/eruption.6.gz
 usr/share/man/man6/esper.6.gz
+usr/share/man/man6/etruscanvenus.6.gz
 usr/share/man/man6/euler2d.6.gz
 usr/share/man/man6/extrusion.6.gz
 usr/share/man/man6/fadeplot.6.gz
@@ -422,6 +426,7 @@ usr/share/man/man6/gears.6.gz
 usr/share/man/man6/geodesic.6.gz
 usr/share/man/man6/geodesicgears.6.gz
 usr/share/man/man6/gflux.6.gz
+usr/share/man/man6/gibson.6.gz
 usr/share/man/man6/glblur.6.gz
 usr/share/man/man6/glcells.6.gz
 usr/share/man/man6/gleidescope.6.gz
@@ -518,6 +523,7 @@ usr/share/man/man6/rotzoomer.6.gz
 usr/share/man/man6/rubik.6.gz
 usr/share/man/man6/rubikblocks.6.gz
 usr/share/man/man6/sballs.6.gz
+usr/share/man/man6/scooter.6.gz
 usr/share/man/man6/shadebobs.6.gz
 usr/share/man/man6/sierpinski.6.gz
 usr/share/man/man6/sierpinski3d.6.gz
@@ -641,6 +647,7 @@ usr/share/xscreensaver/config/engine.xml
 usr/share/xscreensaver/config/epicycle.xml
 usr/share/xscreensaver/config/eruption.xml
 usr/share/xscreensaver/config/esper.xml
+usr/share/xscreensaver/config/etruscanvenus.xml
 usr/share/xscreensaver/config/euler2d.xml
 usr/share/xscreensaver/config/fadeplot.xml
 usr/share/xscreensaver/config/fiberlamp.xml
@@ -661,6 +668,7 @@ usr/share/xscreensaver/config/gears.xml
 usr/share/xscreensaver/config/geodesic.xml
 usr/share/xscreensaver/config/geodesicgears.xml
 usr/share/xscreensaver/config/gflux.xml
+usr/share/xscreensaver/config/gibson.xml
 usr/share/xscreensaver/config/glblur.xml
 usr/share/xscreensaver/config/glcells.xml
 usr/share/xscreensaver/config/gleidescope.xml
@@ -758,6 +766,7 @@ usr/share/xscreensaver/config/rotzoomer.xml
 usr/share/xscreensaver/config/rubik.xml
 usr/share/xscreensaver/config/rubikblocks.xml
 usr/share/xscreensaver/config/sballs.xml
+usr/share/xscreensaver/config/scooter.xml
 usr/share/xscreensaver/config/shadebobs.xml
 usr/share/xscreensaver/config/sierpinski.xml
 usr/share/xscreensaver/config/sierpinski3d.xml
