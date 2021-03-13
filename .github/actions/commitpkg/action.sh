@@ -2,7 +2,7 @@
 
 set -ex
 
-GITHUB_TOKEN=$1
+PUSH_TOKEN=$1
 
 # Get author/committer info from triggering branch commit
 export GIT_AUTHOR_NAME=$(git show -s --pretty='%an') \
@@ -35,7 +35,7 @@ until
     git add .
     if ! git diff-index --quiet HEAD --; then
       git commit -m "update package ${GITHUB_REF##*/}"
-      git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY" master
+      git push "https://$GITHUB_ACTOR:$PUSH_TOKEN@github.com/$GITHUB_REPOSITORY" master
     fi
 do
   git reset --hard origin/master
