@@ -1,5 +1,5 @@
 %FILENAME%
-baudline-bin-1.08-4-x86_64.pkg.tar.xz
+baudline-bin-1.08-4-x86_64.pkg.tar.zst
 
 %NAME%
 baudline-bin
@@ -14,19 +14,19 @@ baudline-bin
 Time-frequency browser designed for scientific visualization of the spectral domain.
 
 %CSIZE%
-1119968
+2383397
 
 %ISIZE%
 4876601
 
 %MD5SUM%
-b3b9da0c09d26d9b052793dfb62c2e88
+d025aef23994f5be9b67764cb8b106b2
 
 %SHA256SUM%
-e5e0e157f1d07774ef6001ed8a85897a087a1d5467cba944cb24bc05183c48b4
+5de7c982d49a241ed36b63b251e57680b0e4ec65521f7cdaa067e4f8b75583a9
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl4106gACgkQFW138LsgdFB/ugf+I9+S6g8zoP+7nCCTMrKocQSc3fTDVli3oQ8wUsp/gKow+4ek21FPT3W//InHR1F31EWbezPjpJKrPeGpNLJvsVtorIOmiDwOB3ochwza9aaD8EndpJL0Dm0hWDg5myX+R4mDYAclGD4nVI2MKp8rG/y2JOGGS01BuGw+PKPbHY0pHn6F/JvPeZXMKoAbenQKV62+hWJxhuwWnjnM6a7wAxnV46VvTG44IolLE2OFE0GQhEUhfUg1JbcttNxT7lHZnSlDW9PG+IGAdbox+ET6Bho6z5U4Cf2RBVRQhx5yJdUZdBmCyP4Hx8eKd4eQACDodNnjNxRmw718vXFFghulNw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmBMIE8ACgkQFW138LsgdFCyVQf+IJ5k7jCN3daFiqxsxxQ6R5gVWsBoygaoAcMH6xekkWjHHZKz7xIZr4keMb7/eJTmZizeK8277wTN1nzzM1+r6TCkK6bE7D3uIITWgIkyJWAqwiwN7S5Kq7SCVvYsld2xOuDE5hmS/y6mvJ6smS2+cKzMm6RmtIQMAPFwtr2IWH3dXHg1jPJ42jsruvT2dVb/CWffw+ZEwC0JSYkue6jwtPzU0KjagdnvHlFE+c5xz6v5oWXWi2XD7N35q2UEAVIrvhI5FZurON1o1JKBS+X+JMLE1Q+olmnWlJmgQrJYrD2TQLJRxgxXcek2k+TS4NxbOZyGo4DlzLIVMhJAHihSQA==
 
 %URL%
 http://www.baudline.com/
@@ -38,10 +38,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1580585879
+1615601728
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/644851939
+https://github.com/djpohly/PKGBUILD/actions/runs/648042298
 
 %PROVIDES%
 baudline
