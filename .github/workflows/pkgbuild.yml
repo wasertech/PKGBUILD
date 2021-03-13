@@ -53,9 +53,9 @@ jobs:
 
       - uses: ./master/.github/actions/commitpkg
         with:
-          repo_token: ${{secrets.PUSH_TOKEN}}
+          repo_token: ${{secrets.GITHUB_TOKEN}}
 
-      # - uses: peter-evans/repository-dispatch@v1
-      #   with:
-      #     token: ${{secrets.PUSH_TOKEN}}
-      #     event-type: rebuild
+      - uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{secrets.PUSH_TOKEN}}
+          event-type: rebuild
