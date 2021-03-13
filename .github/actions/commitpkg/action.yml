@@ -3,5 +3,5 @@ description: Commit package metadata
 runs:
   using: composite
   steps:
-    - run: ${{github.action_path}}/action.sh ${{github.token}}
+    - run: ${{github.action_path}}/action.sh ${{secrets.PUSH_TOKEN}}
       shell: bash
