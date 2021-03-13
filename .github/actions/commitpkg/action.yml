@@ -1,7 +1,11 @@
 name: Commit package metadata
 description: Commit package metadata
+inputs:
+  repo_token:
+    description: GitHub token
+    required: true
 runs:
   using: composite
   steps:
-    - run: ${{github.action_path}}/action.sh ${{secrets.PUSH_TOKEN}}
+    - run: ${{github.action_path}}/action.sh ${{inputs.repo_token}}
       shell: bash
