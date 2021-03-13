@@ -1,5 +1,5 @@
 %FILENAME%
-stag-graph-git-109.1a45041-1-x86_64.pkg.tar.xz
+stag-graph-git-109.1a45041-1-x86_64.pkg.tar.zst
 
 %NAME%
 stag-graph-git
@@ -14,19 +14,19 @@ stag-graph-git
 streaming bar graphs, for stats and stuff
 
 %CSIZE%
-8872
+10917
 
 %ISIZE%
-23615
+23695
 
 %MD5SUM%
-762b66d83131dd16ad9109c5df214d45
+df139f3d79507c29ac64218b6acb5351
 
 %SHA256SUM%
-15b17e3297c8efde94f30e13df30c1af19696f6a01c828004460a557167433a7
+6d14b2841b5ed016d515b2595ce8f304d2e9b3e6ff939796caf0fbb265b36c0a
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl4elA0ACgkQFW138LsgdFABGwf/ZGIVtf4Sjp0SU6Q/xaQlJBeYBD4JAgs3SyvESluL+ChfWornV+HAJ2AHWO6+Ew2I4BDbdAWB9RCtgfIl7SWkIzBhL3G7IycOt2NfvfQVoOnQEfAUuCXWFnYJaddzMpci7BTnN359Z7S1Pc8SPuv6aLv7QZ5D4U2xMmcJ3xINm/LKS8kE5jhSrOVu0jYhe+EauoOkq8cPyeKjuEeRGE1fW+AQdTIRVtlCJaP/jSQRRfLpXKwYiuGlkvYnKPNZRJIKPUbfdqU4+2c7U2BRTdYKiBKdpWaSJ90pW12c2nh3CcdbX+gmevaWyPrKL1hIwi4FjeLxDuDe6l7hh5IXz+k8XA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmBMIGAACgkQFW138LsgdFAw6gf+LZjF3KHSDa3KE2Hprf32HV0NkwQDma+NWV6+xCkLmMwLF86loX/QPkDU4IDvSV3bHEpHCzf0zRqfb2+p/OGdafvKomdQzomn3yL9eoaZ5WTMVlOrE4eSuNXf34UEDOJWOGJVbNbhrC9f9qTj5aEOe5RJ7esJlZqH98OHj+rSBatagLgBTaFUqaZk+4Bv1lh9ljz3Dkr1DlOjO+2GScNvPhkVkHsYl9PYGSPFR07jraMVDUpBvyhfGSlXfQl74heym4duMthjba3qU7/KFyCf+NZTaeOeXCQgLBPHOILd+d8sY1zbFv4x0MQN6mdSB6XLc8c46sihaYwjfaSF3pZlUw==
 
 %URL%
 https://github.com/seenaburns/stag
@@ -35,10 +35,10 @@ https://github.com/seenaburns/stag
 x86_64
 
 %BUILDDATE%
-1579062281
+1615601755
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/637243168
+https://github.com/djpohly/PKGBUILD/actions/runs/648043177
 
 %CONFLICTS%
 stag-graph
