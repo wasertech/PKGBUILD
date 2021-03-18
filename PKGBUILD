@@ -3,8 +3,9 @@
 #Contributor: Bob Finch <w9ya@qrparci.net>
 
 pkgname=qsstv
-pkgver=9.4.4
-pkgrel=4
+pkgver=9.5.3
+_pkgver=9.5.3
+pkgrel=1
 pkgdesc="Radio Slow-Scan TV for qt"
 url="http://users.telenet.be/on4qz/"
 depends=('qt5-base' 'libpulse' 'v4l-utils' 'hamlib' 'fftw' 'openjpeg2' 'alsa-lib')
@@ -12,11 +13,11 @@ source=(http://users.telenet.be/on4qz/qsstv/downloads/${pkgname}_${pkgver}.tar.g
         $pkgname.desktop)
 arch=('i686' 'x86_64')
 license=('GPL')
-sha512sums=('d206c6c108827b607dfe360e7afe31065518f03ab04609ccca9a9bda16207d12966eb49d486d13eebb814716252c50aa5963d090f1e505e508ccb1b6ccc4728c'
+sha512sums=('1753bb498163d17c80c3c322eda2725eae3de17c99e07fd99f4223508c3048521547148d69623f16f4192212a754f415e0f12f5fc98527b14bf00afcb3ae7c6d'
             '793be2e500824966d4288fff059fe5c869ec547ff5f4e32fbec02eeae1b12d6aa4e5ba34a9ce590bb166b73086291bfa3e0c2d76fb7c03187f656e8955acef4c')
 
 build() {
-  cd "$srcdir/${pkgname}_$pkgver"
+  cd "$srcdir/${pkgname}_$_pkgver"
 
   # trick qmake
   # qmake-qt5 PREFIX="$pkgdir/usr/"
@@ -25,11 +26,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}_$pkgver"
+  cd "$srcdir/${pkgname}_$_pkgver"
   mkdir -p "$pkgdir/usr/bin/"
   make INSTALL_ROOT="$pkgdir" install
 
   cd $srcdir
   install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -D -m644 "$srcdir/${pkgname}_$pkgver/qsstv/icons/${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -D -m644 "$srcdir/${pkgname}_$_pkgver/icons/${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 }
