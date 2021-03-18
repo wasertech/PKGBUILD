@@ -1,23 +1,30 @@
-# Maintainer: Alad Wenter <alad@archlinux.org>
-# Co-Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
-# Co-Maintainer: Maxim Baz <archlinux@maximbaz.com>
+# Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils
-pkgver=2.3.3
-pkgrel=1
+pkgver=3.1.2
+pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
 arch=('any')
 license=('custom:ISC')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/$pkgver.tar.gz.asc")
-install=$pkgname.install
-depends=('git' 'jq' 'expac' 'diffstat' 'pacutils' 'parallel' 'wget')
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
+        "$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.signify"
+        'aurutils.pub')
+changelog=aurutils.changelog
+install=aurutils.install
+sha256sums=('86a80ae8327aeeb4932c7709767b2be5fae19281a5bcc78b2b10197e97c32afb'
+            'SKIP'
+            'a2c32b0dba4da40b83ff31cce48a00faed5ed2f663c060a865d31caeb1e4ed39')
+depends=('git' 'jq' 'pacutils' 'curl')
+makedepends=('signify')
 optdepends=('bash-completion: bash completion'
+            'zsh: zsh completion'
             'devtools: aur-chroot'
-            'vifm: build file interaction')
-sha256sums=('f1c63c3a9134c12b538d599dd9df768c4a271be8711ea71ccf5a4eb41a622e9e'
-            'SKIP')
-validpgpkeys=('DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A') # Alad Wenter <alad@archlinux.org>
+            'vifm: default pager')
+
+prepare() {
+    signify -V -p aurutils.pub -m "$pkgname-$pkgver".tar.gz \
+            -x "$pkgname-$pkgver".tar.gz.signify
+}
 
 build() {
     cd "$pkgname-$pkgver"
