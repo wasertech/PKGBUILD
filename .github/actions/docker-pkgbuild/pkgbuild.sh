@@ -13,8 +13,8 @@ declare SIGN_PKG=
 export PACKAGER="https://github.com/$reposlug/actions/runs/$runid"
 
 # Set up gpg options
-mkdir -p "$HOME/.gnupg"
-chmod 700 "$HOME/.gnupg"
+export GNUPGHOME="$PWD/.gnupg"
+mkdir -p -m 700 "$GNUPGHOME"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 echo 'keyserver:0:"hkps%3a//keys.openpgp.org' | gpgconf --change-options dirmngr
 gpgconf --reload all
