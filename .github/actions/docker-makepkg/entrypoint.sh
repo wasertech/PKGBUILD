@@ -19,5 +19,5 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
 # Run build script as unprivileged user
 og=$(stat -c '%u:%g' .)
 chown -R pkguser: .
-sudo -u pkguser ./master/.github/actions/docker-makepkg/build.sh "$@"
+sudo -u pkguser ./.github/actions/docker-makepkg/build.sh "$@"
 chown -R "$og" .
