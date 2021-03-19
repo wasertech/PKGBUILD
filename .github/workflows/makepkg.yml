@@ -1,0 +1,55 @@
+name: Build package
+
+env:
+  REPO_NAME: PKGBUILD
+  RELEASE_NAME: repository
+  KEY_FILE: signing.key.enc
+
+on:
+  # Manual only, for testing
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package (branch) to build'
+        required: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  pkgbuild:
+    name: Build package ${{github.event.inputs.package}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{github.event.inputs.package}}
+          path: pkg
+
+      - uses: ./.github/actions/aes256-decrypt
+        with:
+          infile: signing.key.enc
+          outfile: signing.key
+          key: ${{secrets.ENCRYPTION_KEY}}
+          iv: ${{secrets.ENCRYPTION_IV}}
+
+      - uses: ./.github/actions/docker-makepkg
+        with:
+          reposlug: ${{github.repository}}
+          release: ${{env.RELEASE_NAME}}
+          runid: ${{github.run_id}}
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          tag: ${{env.RELEASE_NAME}}
+          file: 'repo/*'
+          file_glob: true
+          overwrite: true
+
+      - uses: ./.github/actions/update-db
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
