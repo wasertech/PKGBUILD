@@ -51,5 +51,3 @@ jobs:
           overwrite: true
 
       - uses: ./.github/actions/update-db
-        with:
-          repo_token: ${{secrets.GITHUB_TOKEN}}

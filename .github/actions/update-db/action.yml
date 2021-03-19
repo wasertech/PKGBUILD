@@ -1,9 +1,5 @@
 name: Update database files
 description: Update database files
-inputs:
-  repo_token:
-    description: GitHub token
-    required: true
 runs:
   using: composite
   steps:
