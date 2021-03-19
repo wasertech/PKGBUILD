@@ -1,5 +1,5 @@
 %FILENAME%
-tor-browser-9.0.2-1-x86_64.pkg.tar.xz
+tor-browser-10.0.13-1-x86_64.pkg.tar.zst
 
 %NAME%
 tor-browser
@@ -8,25 +8,25 @@ tor-browser
 tor-browser
 
 %VERSION%
-9.0.2-1
+10.0.13-1
 
 %DESC%
 Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD)
 
 %CSIZE%
-79056324
+85420134
 
 %ISIZE%
-79041171
+85417259
 
 %MD5SUM%
-cf4891beeb19d2f4deed0fe32ffb1dd1
+940549976b3128836674fc116e759314
 
 %SHA256SUM%
-6f53af8a7205ca2a8c7aa20841d2b598ef7be12334d5f93226698fd779171195
+60978cb171688f1efe01a91b36c5b477cd1836e33b6772bdaef640bcf650f713
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl3o8NEACgkQFW138LsgdFBOCgf/VSj5n1YOOPGs+fBIWr7Ozt8jgIRjhBB8lJo0dXaYAezJ1TS1pAKAtEuDiLxU1TouWmQ59WqyJRW9Ml7Aw4HI/ZTWUda7cg+urPiQAuYp163iGb7vSgoo5rWEDHFMdbUB3XANqMhh+Qk7G9q4/wCSrpupjUpakO2He5xTmQ+7BU+HuNRlwZG4LtDMlyedG9UPjhylHWvLCinnTYU+G3WESKrGwvFASUj0KeVVAX9vcHL/8H7VRHGxZMJaiws8Fvc2Cak4GO9OM0Tm4xuqu1Dd+WdlexigprsJtrLhG9imgr5vWSdGweJFNU5XOMl+VWtOYhszUDKE7XJFVn2186NK7g==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmBU4SQACgkQFW138LsgdFC/rAf9EdmrRlrvsOhyhnkUKpFCWHKiBx6ha/ttgcwdFFYeS2uCdF2PTQ5aw9QKazXx5kK5/FfG46rr8w0JUVmH3hgpgBMohjYFEa08GfeHti9rPwYCYLODStZjgTp9ylPvL8mg9RRpEx903ooXvpHv3G86CXGnHeSfupZ14Q0MswB9+soRbJBFmUGefE7sVhgmJazebsIEqt0shhHZV7j7NMRxICQc+7vRbvsk8PXfK6nPxFIkoJHfFmYXonDzTi9zbWSMbEPYWq5+Me/fD0yPqXukm/vaCpovWH//h7Qj56CKleAt0XbZ/CNpOmYv5tTwwW0kEwsz+K/az3KwwKWcACnPbw==
 
 %URL%
 https://www.torproject.org/projects/torbrowser.html
@@ -38,10 +38,10 @@ GPL
 x86_64
 
 %BUILDDATE%
-1575547047
+1616175374
 
 %PACKAGER%
-Devin J. Pohly <djpohly+arch@gmail.com>
+https://github.com/djpohly/PKGBUILD/actions/runs/668749594
 
 %DEPENDS%
 mozilla-common
