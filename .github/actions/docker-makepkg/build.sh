@@ -18,8 +18,6 @@ mkdir -p -m 700 "$GNUPGHOME"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
 echo 'keyserver:0:"hkps%3a//keys.openpgp.org' | gpgconf --change-options dirmngr
 gpgconf --reload all
-# HACK: auto-key-retrieve doesn't currently retrieve based on keyid alone
-gpg --recv-key $(source PKGBUILD && echo "${validpgpkeys[@]}")
 if [[ -r signing.key ]]; then
   gpg --import signing.key
   gpg --export --armor | sudo tee /usr/share/pacman/keyrings/pkgbuild.gpg >/dev/null
@@ -48,6 +46,7 @@ sudo pacman -Sy
 cd pkg
 
 export PKGDEST="../repo" LC_MESSAGES=C LANG=C
+gpg --recv-key $(source PKGBUILD && echo "${validpgpkeys[@]}")
 makepkg -Lcs --noconfirm $SIGN_PKG
 
 # Build repo update
