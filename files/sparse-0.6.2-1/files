@@ -1,0 +1,16 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/c2xml
+usr/bin/cgcc
+usr/bin/sindex
+usr/bin/sparse
+usr/share/
+usr/share/licenses/
+usr/share/licenses/sparse/
+usr/share/licenses/sparse/LICENSE
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/cgcc.1.gz
+usr/share/man/man1/sindex.1.gz
+usr/share/man/man1/sparse.1.gz
