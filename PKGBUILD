@@ -21,8 +21,6 @@ source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 sha256sums=('e7c01e4910744851e05f85f0a0aab3f5068215b1af850515189ac40e7deeb26d')
 
-options=('!strip' 'debug')
-
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	# patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
