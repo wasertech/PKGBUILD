@@ -10,6 +10,7 @@ pkgbase = wsjtx
 	makedepends = asciidoc
 	makedepends = asciidoctor
 	makedepends = boost
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-serialport
