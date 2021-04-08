@@ -990,6 +990,10 @@ opt/zoom/ZoomLauncher
 opt/zoom/audio/
 opt/zoom/audio/libqtaudio_alsa.so
 opt/zoom/audio/libqtmedia_pulse.so
+opt/zoom/bearer/
+opt/zoom/bearer/libqconnmanbearer.so
+opt/zoom/bearer/libqgenericbearer.so
+opt/zoom/bearer/libqnmbearer.so
 opt/zoom/dingdong.pcm
 opt/zoom/dingdong1.pcm
 opt/zoom/double_beep.pcm
