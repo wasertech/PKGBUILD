@@ -1,5 +1,5 @@
 %FILENAME%
-zoom-5.6.1-1-x86_64.pkg.tar.zst
+zoom-5.6.3-2-x86_64.pkg.tar.zst
 
 %NAME%
 zoom
@@ -8,25 +8,25 @@ zoom
 zoom
 
 %VERSION%
-5.6.1-1
+5.6.3-2
 
 %DESC%
 Video Conferencing and Web Conferencing Service
 
 %CSIZE%
-70400540
+70825811
 
 %ISIZE%
-198477356
+199978857
 
 %MD5SUM%
-faa3d9773315262d1c5ba51340dedfca
+4744074948dd82b2785ab3ec88ae2570
 
 %SHA256SUM%
-902d91fbeeeb6028bd543ab36db1012bcd503618f8baaf26864e82ec6dafd5cf
+0de97c8076ac5f776541dbcb202c5f88d85499561e29bf9410a3bc260ed3921b
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmBu9JUACgkQFW138LsgdFAxqwgAu5xy4OlKJz0FKgeATgFPqa/VWIxCCF5zZ2AeWdxMUotUfCanzqFZi+a9cpW7ELP9pGXuWqLRJIsWXFqv1U4IwZCbN6obFIph8nLN6gAMNzu4cUjzmZPy9F8+ezknHvjraFRx8DvVhcXsxc9VLfbqjMOK2H3Q/nJnu2t+cgPhANkVWq81502rrGbie/ZW0avhEq9yvKakpOp4patjg/30zs7aWQv8Aeo9gLJWDJmk9v98b7F/yhH8hUjzoGcLo/9CglKnHmZ+jXJuu+MEEXSFXHzvIDvirJm3qGu8zVq6Nb7dLoEFGDyY25XRaikTmsTVxOAbbppuLzE1kWRrZZTkYQ==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmCDAhgACgkQFW138LsgdFCqagf/Wjy4I0Z429Se0X3yMMtyXv0Lxnkw76JkOG7SVRl43aWQxfpqRA/6wdtXQIz1UQZzBFx4a3b2M5tI+Qi8gial0pKf6IL/Q4aal9tly8mdj/C5Pu+86W/iEPyn2uIx5DHxCrWybFBfRyqzlprGvJgexWBZuSkYYVxZCW/8C2e3XK+yaIpsYmdD0XIfFjaFey8hqXPhsfJw6DJM1gp33eWYaW6XFICQXTJvCh7Jz5k7KDAbNZ/vRnETtSvb02BtxBpLDS44MHe3RpM/a7LtACuALSW2WNh/unT4pt4GRBK09EZJTrGmIBH/TlEZRkyLi2smCN/tVED4WFf9+qSj2jWMdg==
 
 %URL%
 https://zoom.us/
@@ -38,10 +38,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1617884286
+1619198450
 
 %PACKAGER%
-https://github.com/djpohly/PKGBUILD/actions/runs/729477520
+https://github.com/djpohly/PKGBUILD/actions/runs/778479497
 
 %DEPENDS%
 fontconfig
@@ -50,6 +50,7 @@ libpulse
 libsm
 ttf-font
 libx11
+libxtst
 libxcb
 libxcomposite
 libxfixes
@@ -64,6 +65,8 @@ mesa
 nss
 xcb-util-image
 xcb-util-keysyms
+dbus
+ibus
 
 %OPTDEPENDS%
 pulseaudio-alsa: audio via PulseAudio
