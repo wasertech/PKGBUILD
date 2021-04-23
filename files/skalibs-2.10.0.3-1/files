@@ -89,7 +89,7 @@ usr/include/skalibs/unixonacid.h
 usr/lib/
 usr/lib/libskarnet.so
 usr/lib/libskarnet.so.2.10
-usr/lib/libskarnet.so.2.10.0.2
+usr/lib/libskarnet.so.2.10.0.3
 usr/lib/skalibs/
 usr/lib/skalibs/libskarnet.a
 usr/lib/skalibs/sysdeps/
