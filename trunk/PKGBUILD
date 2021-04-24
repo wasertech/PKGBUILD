@@ -8,8 +8,8 @@ pkgdesc='Screen saver and locker for the X Window System'
 url='https://www.jwz.org/xscreensaver/'
 arch=('x86_64')
 license=('BSD')
-depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww'
-         'libxcrypt' 'libcrypt.so' 'libxi' 'libxxf86vm' 'libxrandr' 'libxinerama'
+depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww' 'libxcrypt'
+         'libcrypt.so' 'libxi' 'libxxf86vm' 'libxrandr' 'libxinerama'
          'libxt' 'libx11' 'libxext' 'pam' 'glibc' 'gdk-pixbuf-xlib')
 makedepends=('bc' 'intltool' 'libxpm' 'gdm')
 optdepends=('gdm: for login manager support')
@@ -37,7 +37,6 @@ build() {
     --with-pixbuf \
     --with-jpeg \
     --without-systemd
-    --with-jpeg
   make
 }
 
