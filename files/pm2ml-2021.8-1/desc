@@ -1,0 +1,56 @@
+%FILENAME%
+pm2ml-2021.8-1-any.pkg.tar.zst
+
+%NAME%
+pm2ml
+
+%BASE%
+pm2ml
+
+%VERSION%
+2021.8-1
+
+%DESC%
+Generate metalinks for downloading Pacman packages and databases.
+
+%CSIZE%
+25800
+
+%ISIZE%
+80687
+
+%MD5SUM%
+c10e14b598f1018c3d10573c7aed2af2
+
+%SHA256SUM%
+03ffcd09f88a531575b1cb938f49b8e85895800dddcdf2bec145ee9bd0d483cb
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmEhrxoACgkQFW138LsgdFCrrgf/QLBWHBHr5w2UUlTdWWkO6T6CKHHioVpRGGFpuVrfC7U9pUbqN6lQOBISTOFilK/VvaTaU0VuEdZGJLgzv9NIiPKhh1RYwvnL3S5UkG68Cvi7Cts01Msqo1mPzPmT1WemSAjOFZVxVcM95JNqrq5ZpLsHpUB4WqjaH5Q8FuY+17mc5KWuULrQxoryPGdca/dkd223osNEQH4nQbyQuSz43WiX50+EzWZPbbAlQE+ydlUpwOAinw0FZhyl5lx7rwbgADvTC1u4fW20kezgU7EuVbD2E94tsYFo6RkyRF/SeiN16wcVLI2gsn9SIBRtaAmQzZnrWrk7Xc9qha/c/FGISg==
+
+%URL%
+https://xyne.archlinux.ca/projects/pm2ml
+
+%LICENSE%
+GPL
+
+%ARCH%
+any
+
+%BUILDDATE%
+1629597458
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/1154780614
+
+%DEPENDS%
+pyalpm
+python3
+python3-xcgf
+python3-xcpf
+
+%OPTDEPENDS%
+aria2: ppl script support.
+python3-aur: AUR support
+reflector: Reflector support
+
