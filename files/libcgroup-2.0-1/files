@@ -30,7 +30,13 @@ usr/include/libcgroup/tasks.h
 usr/lib/
 usr/lib/libcgroup.so
 usr/lib/libcgroup.so.1
-usr/lib/libcgroup.so.1.0.41
+usr/lib/libcgroup.so.1.0.42
+usr/lib/libcgroupfortesting.so
+usr/lib/libcgroupfortesting.so.1
+usr/lib/libcgroupfortesting.so.1.0.42
+usr/lib/libcgset.so
+usr/lib/libcgset.so.0
+usr/lib/libcgset.so.0.0.0
 usr/lib/pkgconfig/
 usr/lib/pkgconfig/libcgroup.pc
 usr/lib/security/
