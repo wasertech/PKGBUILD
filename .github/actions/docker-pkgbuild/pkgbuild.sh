@@ -16,7 +16,7 @@ export PACKAGER="https://github.com/$reposlug/actions/runs/$runid"
 export GNUPGHOME="$PWD/.gnupg"
 mkdir -p -m 700 "$GNUPGHOME"
 echo 'auto-key-retrieve:0:1' | gpgconf --change-options gpg
-echo 'keyserver:0:"hkps%3a//keys.openpgp.org' | gpgconf --change-options dirmngr
+echo 'keyserver:0:"hkps%3a//keyserver.ubuntu.com' | gpgconf --change-options dirmngr
 gpgconf --reload all
 # HACK: auto-key-retrieve doesn't currently retrieve based on keyid alone
 gpg --recv-key $(source PKGBUILD && echo "${validpgpkeys[@]}")
