@@ -1,18 +1,19 @@
 pkgbase = tectonic
 	pkgdesc = Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive
-	pkgver = 0.4.1
-	pkgrel = 0
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://tectonic-typesetting.github.io/
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = rust
-	makedepends = gcc
+	makedepends = cargo
 	makedepends = pkg-config
 	depends = fontconfig
 	depends = harfbuzz-icu
 	depends = openssl
-	source = tectonic-0.4.1.tar.gz::https://crates.io/api/v1/crates/tectonic/0.4.1/download
-	sha512sums = cd4e48781daa08f5518d97cc20fb13212d136954c41459fc5a5ac0eaf149ada3dd1b01e2117dd339c30f3423f970ebc734377e8e99612439e2b69c9e4922a53d
+	source = tectonic-0.7.1.tar.gz::https://crates.io/api/v1/crates/tectonic/0.7.1/download
+	sha512sums = ffd09ea7fc0f2e4914883134d018d5b6f6b4769a899b29f4942ba01c144e93d9b1f2a192fe05668322331050bcafc8593c4559d819284239f70b7d6f3b59fb0f
 
 pkgname = tectonic
-

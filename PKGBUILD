@@ -11,29 +11,29 @@
 # against Tectonic if the settings in this file need changing.
 
 pkgname=tectonic
-pkgver=0.4.1
-pkgrel=0
-arch=('x86_64')
+pkgver=0.7.1
+pkgrel=1
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
 url=https://tectonic-typesetting.github.io/
 license=('MIT')
 depends=('fontconfig' 'harfbuzz-icu' 'openssl')
-makedepends=('rust' 'gcc' 'pkg-config')
+makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('cd4e48781daa08f5518d97cc20fb13212d136954c41459fc5a5ac0eaf149ada3dd1b01e2117dd339c30f3423f970ebc734377e8e99612439e2b69c9e4922a53d')
+sha512sums=('ffd09ea7fc0f2e4914883134d018d5b6f6b4769a899b29f4942ba01c144e93d9b1f2a192fe05668322331050bcafc8593c4559d819284239f70b7d6f3b59fb0f')
 
 build() {
 	cd $pkgname-$pkgver
-	cargo build --release --target-dir "./target"
+	cargo build --release --locked --features external-harfbuzz
 }
 
 check() {
 	cd $pkgname-$pkgver
-	cargo test --release --target-dir "./target"
+	cargo test --release --locked --features external-harfbuzz
 }
 
 package() {
 	cd $pkgname-$pkgver
-	install -Dm755 target/release/tectonic "$pkgdir"/usr/bin/tectonic
+	install -Dm755 ${CARGO_TARGET_DIR:-target}/release/tectonic "$pkgdir"/usr/bin/tectonic
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
