@@ -1,5 +1,10 @@
 # Changelog
 
+* [2.4.5](#2-4-5)
+* [2.4.4](#2-4-4)
+* [2.4.3](#2-4-3)
+* [2.4.2](#2-4-2)
+* [2.4.1](#2-4-1)
 * [2.4.0](#2-4-0)
 * [2.3.3](#2-3-3)
 * [2.3.2](#2-3-2)
@@ -19,6 +24,66 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.4.5
+
+### Fixed
+
+* `fcft_text_run_rasterize()` not checking if codepoint is in the
+  font’s charset before attempting shaping
+  (https://codeberg.org/dnkl/fcft/issues/30).
+* Crash when destroying a font with a grapheme cache entry
+  representing a failed grapheme glyph.
+
+
+## 2.4.4
+
+### Fixed
+
+* Rendering of bitmap fonts with Freetype >= 2.11
+  (https://codeberg.org/dnkl/fcft/issues/29).
+
+
+## 2.4.3
+
+### Fixed
+
+* Bitmap/aliased font glyphs being mirrored on big-endian
+  architectures.
+* Color font glyphs having wrong colors on big-endian architectures.
+* Crash when destroying a font that failed to load (typically happens
+  when there are no fonts available at all).
+
+
+## 2.4.2
+
+### Fixed
+
+* Rare crash when one thread was doing a glyph cache lookup, while
+  another was resizing the cache.
+
+
+## 2.4.1
+
+### Changed
+
+* Log messages are now printed to stderr instead of stdout.
+* `fcft_grapheme_rasterize()` now sets a minimum grapheme column count
+  of 2 when the cluster ends with an Emoji variant selector (codepoint
+  0xFE0F).
+
+
+### Fixed
+
+* Compilation error when fallback definition for `FCFT_EXPORT` was used
+  in `meson.build`.
+
+
+### Contributors
+
+* [emersion](https://codeberg.org/emersion)
+* [craigbarnes](https://codeberg.org/craigbarnes)
 
 
 ## 2.4.0
