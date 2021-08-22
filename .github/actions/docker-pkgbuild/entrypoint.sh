@@ -5,6 +5,7 @@ set -ex
 # Bootstrap script to be run as root after image is built
 
 # Update packages
+pacman-key --init
 pacman -Syu --noconfirm --ignore linux --ignore linux-firmware --needed base-devel
 
 # Ensure wheel group exists (seriously??)
