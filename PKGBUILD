@@ -1,49 +1,52 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Evan Pitstick <nerdx00 at gmail dot com>
 # Contributor: Chet Gray <chetgray@gmail.com>
 # Contributor: joni <kljohann@gmail.com>
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-_pkgname=${pkgname%-git}
-pkgver=1.20151229.r331.gc4019a5
+pkgver=2.0.1.r0.gfb4d506
 pkgrel=1
-pkgdesc='manage config files in HOME via fake bare git repositories'
-arch=('any')
-url="https://github.com/RichiH/$_pkgname"
-license=('GPL')
-depends=('git')
-makedepends=('git' 'ruby-ronn')
-optdepends=('myrepos: helps manage a large number of repositories')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+epoch=1
+pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
+arch=(any)
+url="https://github.com/RichiH/${pkgname%-git}"
+license=(GPL)
+depends=(git)
+makedepends=(ruby-ronn)
+checkdepends=(perl
+              perl-shell-command
+              perl-test-most)
+optdepends=('myrepos: manage multiple vcsh repos through mr')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git://github.com/djpohly/vcsh.git#branch=refactor")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git tag v1.20151229-arch 5f70699 ||:
-  git describe --tags --long | sed 's/-arch//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 HEAD |
+		sed 's/^v//;s/-\(alpha\|beta\|rc\)\./\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname"
-  sed -i 's|\(install:\) all|\1|' Makefile
+	cd "$pkgname"
+	./bootstrap.sh
 }
 
+
 build() {
-  cd "$pkgname"
-  make manpages
+	cd "$pkgname"
+	./configure --prefix /usr
+	make
 }
 
 check() {
-  cd "$pkgname"
-  #make -k test
+	cd "$pkgname"
+	make test
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir/" ZSHDIR='$(PREFIX)/share/zsh/site-functions' install
+	cd "$pkgname"
+	make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
