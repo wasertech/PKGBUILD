@@ -20,7 +20,7 @@ checkdepends=(perl
 optdepends=('myrepos: manage multiple vcsh repos through mr')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git://github.com/djpohly/vcsh.git#branch=refactor")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {

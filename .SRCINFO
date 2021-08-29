@@ -14,7 +14,7 @@ pkgbase = vcsh-git
 	optdepends = myrepos: manage multiple vcsh repos through mr
 	provides = vcsh=2.0.1.r0.gfb4d506
 	conflicts = vcsh
-	source = vcsh-git::git://github.com/djpohly/vcsh.git#branch=refactor
+	source = vcsh-git::git+https://github.com/RichiH/vcsh.git
 	sha256sums = SKIP
 
 pkgname = vcsh-git
