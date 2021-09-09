@@ -987,6 +987,7 @@ opt/zoom/QtWayland/Compositor/libqwaylandcompositorplugin.so
 opt/zoom/QtWayland/Compositor/plugins.qmltypes
 opt/zoom/QtWayland/Compositor/qmldir
 opt/zoom/ZoomLauncher
+opt/zoom/aomhost
 opt/zoom/audio/
 opt/zoom/audio/libqtaudio_alsa.so
 opt/zoom/audio/libqtmedia_pulse.so
@@ -1008,7 +1009,6 @@ opt/zoom/generic/libqevdevtabletplugin.so
 opt/zoom/generic/libqevdevtouchplugin.so
 opt/zoom/generic/libqtuiotouchplugin.so
 opt/zoom/getbssid.sh
-opt/zoom/getmem.sh
 opt/zoom/iconengines/
 opt/zoom/iconengines/libqsvgicon.so
 opt/zoom/imageformats/
@@ -1036,6 +1036,7 @@ opt/zoom/json/countries_sp.json
 opt/zoom/json/countries_vi.json
 opt/zoom/json/emoji.json
 opt/zoom/leave.pcm
+opt/zoom/libOpenCL.so.1
 opt/zoom/libQt5Core.so
 opt/zoom/libQt5Core.so.5
 opt/zoom/libQt5Core.so.5.12
@@ -1108,6 +1109,8 @@ opt/zoom/libQt5XcbQpa.so
 opt/zoom/libQt5XcbQpa.so.5
 opt/zoom/libQt5XcbQpa.so.5.12
 opt/zoom/libQt5XcbQpa.so.5.12.10
+opt/zoom/libaomagent.so
+opt/zoom/libclDNN64.so
 opt/zoom/libfdkaac2.so
 opt/zoom/libicudata.so
 opt/zoom/libicudata.so.56
@@ -1118,6 +1121,7 @@ opt/zoom/libicui18n.so.56.1
 opt/zoom/libicuuc.so
 opt/zoom/libicuuc.so.56
 opt/zoom/libicuuc.so.56.1
+opt/zoom/libmkldnn.so
 opt/zoom/libmpg123.so
 opt/zoom/libquazip.so
 opt/zoom/libturbojpeg.so
