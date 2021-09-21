@@ -1,7 +1,7 @@
 # Maintainer: Devin J. Pohly <djpohly@gmail.com>
 pkgname=(dwm-git dwm-laptop-git)
 _pkgname=dwm
-pkgver=1677.100
+pkgver=1689.142
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -14,9 +14,11 @@ install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
 source=(dwm.desktop
-        "$_pkgname::git+https://github.com/djpohly/dwm.git#branch=laptopprefs")
+        "$_pkgname::git+https://github.com/djpohly/dwm.git#branch=myprefs"
+        "$_pkgname-laptop::git+https://github.com/djpohly/dwm.git#branch=laptopprefs")
 _upstream="git://git.suckless.org/dwm"
 md5sums=('939f403a71b6e85261d09fc3412269ee'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -31,12 +33,6 @@ pkgver() {
   [[ $behind -gt 0 ]] && error "Patched version is %s commits behind upstream" "$behind"
 
   printf "%s.%s\n" "$upstream" "$ahead"
-}
-
-prepare() {
-  rm -rf "$srcdir/dwm-laptop"
-  cp -a "$srcdir/dwm"{,-laptop}
-  git -C "$srcdir/dwm" checkout myprefs
 }
 
 build() {
