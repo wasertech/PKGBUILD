@@ -3,14 +3,14 @@ _name=stag-graph
 pkgname="${_name}-git"
 pkgdesc='streaming bar graphs, for stats and stuff'
 arch=('i686' 'x86_64')
-url='https://github.com/seenaburns/stag'
-pkgver=107.76c7b36
+url='https://github.com/djpohly/stag'
+pkgver=109.cab1821
 pkgrel=1
 depends=('ncurses')
 makedepends=('git')
 provides=('stag-graph')
 conflicts=('stag-graph' 'stag-git')
-source=("${_name}::git+${url}")
+source=("${_name}::git+${url}#branch=unicode")
 sha256sums=('SKIP')
 
 pkgver () {
