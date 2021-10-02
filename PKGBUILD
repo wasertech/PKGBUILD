@@ -23,7 +23,7 @@ pkgname=(
 	djp-meta-remote
 )
 pkgver=0.2
-pkgrel=23
+pkgrel=24
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -206,7 +206,7 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 	patchutils
 	pkgconf
 	python
-	python-language-server
+	python-lsp-server
 	shellcheck
 	sparse
 	sqlite
@@ -224,7 +224,8 @@ package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
 	mpv
 	sox
 	streamlink
-	youtube-dl
+	yt-dlp
+	yt-dlp-drop-in
 ); }
 
 package_djp-meta-audio() { pkgdesc="Metapackage for audio editing"; depends=(
@@ -245,10 +246,12 @@ package_djp-meta-present() { pkgdesc="Metapackage for presentations"; depends=(
 
 package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
 	davmail
+	firejail
 	khal
 	libreoffice
 	mutt
 	openconnect
+	teams
 	vdirsyncer
 ); }
 
