@@ -23,7 +23,7 @@ pkgname=(
 	djp-meta-remote
 )
 pkgver=0.2
-pkgrel=24
+pkgrel=25
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -46,6 +46,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	dtach
 	efibootmgr
 	git
+	github-cli
 	gptfdisk
 	grub
 	gvim
@@ -263,6 +264,7 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
 	make
 	minted
 	pandoc
+	pandoc-crossref
 	python-pandocfilters
 	tectonic
 	texlive-core
@@ -348,6 +350,7 @@ package_djp-meta-radio() { pkgdesc="Metapackage for radio communication/analysis
 	pulseaudio
 	qsstv
 	sdrangel
+	sigdigger
 	soapyhackrf
 	sox
 	urh
