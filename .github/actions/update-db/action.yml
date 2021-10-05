@@ -1,7 +1,0 @@
-name: Update database files
-description: Update database files
-runs:
-  using: composite
-  steps:
-    - run: ${{github.action_path}}/action.sh ${{github.token}}
-      shell: bash
