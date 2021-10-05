@@ -10,7 +10,7 @@ declare -r runid="$3"
 declare SIGN_PKG=
 
 # Environment variables.
-export PACKAGER="https://github.com/$reposlug/actions/runs/$runid"
+export PACKAGER="https://github.com/$reposlug/actions/runs/$runid <pkgbuild@djpohly.com>"
 
 # Set up gpg options
 export GNUPGHOME="$PWD/.gnupg"
