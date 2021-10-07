@@ -23,7 +23,7 @@ pkgname=(
 	djp-meta-remote
 )
 pkgver=0.2
-pkgrel=25
+pkgrel=26
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -69,6 +69,7 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	myrepos
 	nmap
 	openbsd-netcat
+	openconnect
 	openntpd
 	openssh
 	os-prober
@@ -78,12 +79,10 @@ package_djp-meta-base() { pkgdesc="Metapackage for all systems"; depends=(
 	perl-authen-sasl
 	perl-mime-tools
 	perl-net-smtp-ssl
-	powerpill
 	pv
 	pwgen
 	rlwrap
 	rsync
-	rxvt-unicode-terminfo
 	s-nail
 	sed
 	socat
@@ -127,7 +126,6 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
 	picom
 	puzzles
 	redshift
-	rxvt-unicode
 	scrot
 	smartmontools
 	srandrd
@@ -251,7 +249,6 @@ package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
 	khal
 	libreoffice
 	mutt
-	openconnect
 	teams
 	vdirsyncer
 ); }
