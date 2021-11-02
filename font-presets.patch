@@ -1,0 +1,153 @@
+diff --git a/alacritty.yml b/alacritty.yml
+index 09abce3c..bc312275 100644
+--- a/alacritty.yml
++++ b/alacritty.yml
+@@ -158,6 +158,12 @@
+   # Point size
+   #size: 11.0
+ 
++  # Predefined alternative sizes
++  #preset_size
++  #  - 14.0
++  #  - 18.0
++  #  - 24.0
++
+   # Offset is the extra space around each character. `offset.y` can be thought
+   # of as modifying the line spacing, and `offset.x` as modifying the letter
+   # spacing.
+@@ -579,6 +585,9 @@
+ #   - IncreaseFontSize
+ #   - DecreaseFontSize
+ #   - ResetFontSize
++#   - FontSize1
++#   - FontSize2
++#   - FontSize3
+ #   - ScrollPageUp
+ #   - ScrollPageDown
+ #   - ScrollHalfPageUp
+@@ -817,6 +826,9 @@
+   #- { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
+   #- { key: Insert,         mods: Shift,                           action: PasteSelection   }
+   #- { key: Key0,           mods: Control,                         action: ResetFontSize    }
++  #- { key: Key1,           mods: Control,                         action: FontSize1        }
++  #- { key: Key2,           mods: Control,                         action: FontSize2        }
++  #- { key: Key3,           mods: Control,                         action: FontSize3        }
+   #- { key: Equals,         mods: Control,                         action: IncreaseFontSize }
+   #- { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
+@@ -830,6 +842,9 @@
+   #- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
+   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
+   #- { key: Key0,           mods: Command,                    action: ResetFontSize         }
++  #- { key: Key1,           mods: Command,                    action: FontSize1             }
++  #- { key: Key2,           mods: Command,                    action: FontSize2             }
++  #- { key: Key3,           mods: Control,                    action: FontSize3             }
+   #- { key: Equals,         mods: Command,                    action: IncreaseFontSize      }
+   #- { key: Plus,           mods: Command,                    action: IncreaseFontSize      }
+   #- { key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize      }
+diff --git a/alacritty/src/config/bindings.rs b/alacritty/src/config/bindings.rs
+index 533573c8..f2269ed0 100644
+--- a/alacritty/src/config/bindings.rs
++++ b/alacritty/src/config/bindings.rs
+@@ -134,6 +134,15 @@ pub enum Action {
+     /// Reset font size to the config value.
+     ResetFontSize,
+ 
++    /// Set font size to first preset.
++    FontSize1,
++
++    /// Set font size to second preset.
++    FontSize2,
++
++    /// Set font size to third preset.
++    FontSize3,
++
+     /// Scroll exactly one page up.
+     ScrollPageUp,
+ 
+@@ -667,6 +676,9 @@ fn common_keybindings() -> Vec<KeyBinding> {
+             +BindingMode::VI, ~BindingMode::SEARCH; Action::ClearSelection;
+         Insert,   ModifiersState::SHIFT, ~BindingMode::VI; Action::PasteSelection;
+         Key0,     ModifiersState::CTRL;  Action::ResetFontSize;
++        Key1,     ModifiersState::CTRL;  Action::FontSize1;
++        Key2,     ModifiersState::CTRL;  Action::FontSize2;
++        Key3,     ModifiersState::CTRL;  Action::FontSize3;
+         Equals,   ModifiersState::CTRL;  Action::IncreaseFontSize;
+         Plus,     ModifiersState::CTRL;  Action::IncreaseFontSize;
+         NumpadAdd,      ModifiersState::CTRL;  Action::IncreaseFontSize;
+@@ -695,6 +707,9 @@ pub fn platform_key_bindings() -> Vec<KeyBinding> {
+     bindings!(
+         KeyBinding;
+         Key0,           ModifiersState::LOGO; Action::ResetFontSize;
++        Key1,           ModifiersState::LOGO; Action::FontSize1;
++        Key2,           ModifiersState::LOGO; Action::FontSize2;
++        Key3,           ModifiersState::LOGO; Action::FontSize3;
+         Equals,         ModifiersState::LOGO; Action::IncreaseFontSize;
+         Plus,           ModifiersState::LOGO; Action::IncreaseFontSize;
+         NumpadAdd,      ModifiersState::LOGO; Action::IncreaseFontSize;
+diff --git a/alacritty/src/config/font.rs b/alacritty/src/config/font.rs
+index 3dc11671..4dbc9a41 100644
+--- a/alacritty/src/config/font.rs
++++ b/alacritty/src/config/font.rs
+@@ -38,6 +38,9 @@ pub struct Font {
+ 
+     /// Font size in points.
+     size: Size,
++
++    /// Preset font sizes in points.
++    preset_size: [Size; 3],
+ }
+ 
+ impl Font {
+@@ -51,6 +54,11 @@ impl Font {
+         self.size.0
+     }
+ 
++    #[inline]
++    pub fn preset_size(&self, preset: usize) -> FontSize {
++        self.preset_size[preset].0
++    }
++
+     /// Get normal font description.
+     pub fn normal(&self) -> &FontDescription {
+         &self.normal
+diff --git a/alacritty/src/event.rs b/alacritty/src/event.rs
+index 09e74a9d..579f29b7 100644
+--- a/alacritty/src/event.rs
++++ b/alacritty/src/event.rs
+@@ -412,6 +412,13 @@ impl<'a, N: Notify + 'a, T: EventListener> input::ActionContext<T> for ActionCon
+         *self.dirty = true;
+     }
+ 
++    fn preset_font_size(&mut self, preset: usize) {
++        *self.font_size = self.config.ui_config.font.preset_size(preset);
++        let font = self.config.ui_config.font.clone().with_size(*self.font_size);
++        self.display.pending_update.set_font(font);
++        *self.dirty = true;
++    }
++
+     #[inline]
+     fn pop_message(&mut self) {
+         if !self.message_buffer.is_empty() {
+diff --git a/alacritty/src/input.rs b/alacritty/src/input.rs
+index ca5742ee..b54e7af9 100644
+--- a/alacritty/src/input.rs
++++ b/alacritty/src/input.rs
+@@ -83,6 +83,7 @@ pub trait ActionContext<T: EventListener> {
+     fn create_new_window(&mut self) {}
+     fn change_font_size(&mut self, _delta: f32) {}
+     fn reset_font_size(&mut self) {}
++    fn preset_font_size(&mut self, _preset: usize) {}
+     fn pop_message(&mut self) {}
+     fn message(&self) -> Option<&Message>;
+     fn config(&self) -> &Config;
+@@ -262,6 +263,9 @@ impl<T: EventListener> Execute<T> for Action {
+             Action::IncreaseFontSize => ctx.change_font_size(FONT_SIZE_STEP),
+             Action::DecreaseFontSize => ctx.change_font_size(FONT_SIZE_STEP * -1.),
+             Action::ResetFontSize => ctx.reset_font_size(),
++            Action::FontSize1 => ctx.preset_font_size(0),
++            Action::FontSize2 => ctx.preset_font_size(1),
++            Action::FontSize3 => ctx.preset_font_size(2),
+             Action::ScrollPageUp => {
+                 // Move vi mode cursor.
+                 let term = ctx.terminal_mut();

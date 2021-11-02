@@ -1,6 +1,6 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.10.0.1880.gc96047dc
+pkgver=0.10.0.1888.g1df7dc51
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
@@ -18,6 +18,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd $_pkgname/alacritty
 	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$_pkgname"
+  patch -Np1 -i ../font-presets.patch
 }
 
 build(){
@@ -45,3 +50,6 @@ package_alacritty-git() {
 	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
 	install -D -m644 "extra/logo/compat/alacritty-term.png" "$pkgdir/usr/share/pixmaps/Alacritty.png"
 }
+
+source+=('font-presets.patch')
+sha256sums+=('b8dbe0d7bf34dc24b7fda1293a202fb91cb17e426836ff9e61348066a1a8ac9e')
