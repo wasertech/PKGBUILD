@@ -18,6 +18,7 @@ sha256sums=('5b4217fab3df145b1a37c53d138d87713786f290805a90fc276434770692a4cf')
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+  ln -sf ../share/teams/teams "$pkgdir/usr/bin/teams"
 
   # Permissions fix
   find "${pkgdir}" -type d -exec chmod 755 {} \;
