@@ -19,6 +19,7 @@ usr/lib/aurutils/aur-search
 usr/lib/aurutils/aur-srcver
 usr/lib/aurutils/aur-sync
 usr/lib/aurutils/aur-vercmp
+usr/lib/aurutils/aur-view
 usr/share/
 usr/share/bash-completion/
 usr/share/bash-completion/completions/
@@ -41,6 +42,7 @@ usr/share/man/man1/aur-search.1.gz
 usr/share/man/man1/aur-srcver.1.gz
 usr/share/man/man1/aur-sync.1.gz
 usr/share/man/man1/aur-vercmp.1.gz
+usr/share/man/man1/aur-view.1.gz
 usr/share/man/man1/aur.1.gz
 usr/share/man/man7/
 usr/share/man/man7/aurhosting.7.gz
