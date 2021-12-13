@@ -1,0 +1,55 @@
+%FILENAME%
+davmail-6.0.1-1-x86_64.pkg.tar.zst
+
+%NAME%
+davmail
+
+%BASE%
+davmail
+
+%VERSION%
+6.0.1-1
+
+%DESC%
+a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
+
+%CSIZE%
+7489547
+
+%ISIZE%
+8365296
+
+%MD5SUM%
+9486e5b0e697814c697ace5b520af6ab
+
+%SHA256SUM%
+6b97877a5561b4493aef4244bca7f9ccd477affdba1a3c0b28a4ffc2869e7edc
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmG3j7wACgkQFW138LsgdFDOjgf+M9bxc8gLw602izun1SC8aGDa3exaVYP4neEGCYtTZcIp03oaQXLXShn5ozTHvCyX1wOIzQzzcHLneOD1V+7+ACSNalZNFw/kdfd2taszf0FyxZEDCX34NZUqZpDXFomiUCTo4KkhH6CpVTdxgKx4GPp/iLMujGcxq2O6kCeAPXkRvINk/J3NBwLEbjyRq3KWEG2vDQo3qLO0ENb4JELNFlfFKM8W3aEnvakWwzO9WpWfRrRhnP1mGKK/tjFUr4wsBKCMO/3hZTYcjHmST+Atl3PLpHhl0uPMZE7MlOszngclNbQbpEPJ/+h6sHu8MSYwztXP18nLTdE+W3c7XwZenw==
+
+%URL%
+http://davmail.sourceforge.net/
+
+%LICENSE%
+GPL
+
+%ARCH%
+x86_64
+
+%BUILDDATE%
+1639419819
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/1573481966 <pkgbuild@djpohly.com>
+
+%DEPENDS%
+java-runtime
+
+%OPTDEPENDS%
+java-openjfx: Office 365 browser based authentication
+swt: Fix issues with the tray icon
+
+%MAKEDEPENDS%
+unzip
+
