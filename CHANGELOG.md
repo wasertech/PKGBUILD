@@ -1,5 +1,8 @@
 # Changelog
 
+* [2.5.1](#2-5-1)
+* [2.5.0](#2-5-0)
+* [2.4.6](#2-4-6)
 * [2.4.5](#2-4-5)
 * [2.4.4](#2-4-4)
 * [2.4.3](#2-4-3)
@@ -24,6 +27,88 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.5.1
+
+### Added
+
+* Meson command line option `-Ddocs` to force disable or enable
+  building manual pages and installing changelog and readme files
+
+
+### Changed
+
+* `scdoc` is optional and detected automatically
+* `fcft_set_scaling_filter()` now applies to color bitmap fonts only
+  (i.e. emoji fonts). Applying e.g. cubic or lanczos3 on regular text
+  glyphs simply does not look good.
+
+
+### Fixed
+
+* `FCFT_SCALING_FILTER_CUBIC` incorrectly being mapped to “lanczos3”.
+* Pixman errors and program freezes when scaling bitmap fonts to very
+  small sizes (https://codeberg.org/dnkl/foot/issues/830).
+
+
+### Contributors
+
+*  Alibek Omarov
+
+
+## 2.5.0
+
+### Added
+
+* Text-run shaping now requires libutf8proc (in addition to
+  HarfBuzz). Grapheme shaping still requires HarfBuzz only.
+* `fcft_set_emoji_presentation()` - can be used to override emojis’
+  **default** presentation style.
+
+
+### Changed
+
+* Meson command line option `-Dtext-shaping` have been replaced with
+  `-Dgrapheme-shaping` and `-Drun-shaping`; grapheme shaping requires
+  HarfBuzz only, while run shaping requires HarfBuzz **and**
+  libutf8proc. Thus, enabling run shaping implicitly enables grapheme
+  shaping.
+* `fcft_*_rasterize()`: emojis’ default presentation is now accounted
+  for when searching for a font containing the emoji codepoint;
+  codepoints whose default presentation is “text” will no longer
+  consider emoji fonts, and codepoints whose default presentation is
+  “emoji” will no longer consider non-emoji fonts.
+
+
+### Fixed
+
+* `fcft_text_run_rasterize()`: much improved handling of RTL scripts
+  (in mixed LTR/RTL strings in particular)
+
+
+## 2.4.6
+
+### Added
+
+* UnicodeData updated to 14.0
+
+
+### Fixed
+
+* ‘wc’ field in `struct fcft_glyph` being assigned font index instead
+  of Unicode codepoint in `fcft_grapheme_rasterize()` and
+  `fcft_text_run_rasterize()`.
+* Assertion in `glyph_cache_resize()`, triggered by trying to
+  rasterize, and _failing_, a large amount of code points
+  (https://codeberg.org/dnkl/foot/issues/763).
+* Bad performance of grapheme cache when rasterizing many grapheme
+  clusters.
+
+
+### Contributors
+
+* [emersion](https://codeberg.org/emersion)
 
 
 ## 2.4.5
