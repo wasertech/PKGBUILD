@@ -2,7 +2,7 @@
 
 pkgname="dspdfviewer"
 pkgver=1.15.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Viewer for latex-beamer presentations that are built with the «show notes on second screen»-option"
 arch=('i686' 'x86_64')
 url="https://github.com/dannyedel/dspdfviewer"
