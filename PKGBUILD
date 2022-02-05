@@ -1,25 +1,27 @@
 # Maintainer: Fredrik Strandin <fredrik@strandin.name>
 
-pkgname="dspdfviewer"
-pkgver=1.15.1
-pkgrel=5
+pkgname=dspdfviewer-git
+_pkgname=${pkgname%-git}
+pkgver=1.15.1.r161.g6550ab9
+pkgrel=1
 pkgdesc="Viewer for latex-beamer presentations that are built with the «show notes on second screen»-option"
 arch=('i686' 'x86_64')
 url="https://github.com/dannyedel/dspdfviewer"
 license=('GPL')
 depends=('boost-libs' 'qt5-base' 'poppler-qt5')
-makedepends=('cmake' 'boost' 'qt5-tools')
-conflicts=('dspdfviewer-git')
-source=("https://github.com/dannyedel/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c5b6f8c93d732e65a27810286d49a4b1c6f777d725e26a207b14f6b792307b03')
+makedepends=('git' 'cmake' 'boost' 'qt5-tools')
+provides=('dspdfviewer')
+conflicts=('dspdfviewer')
+source=("git+https://github.com/djpohly/${_pkgname}#branch=custom")
+sha256sums=('SKIP')
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -Np1 -i ../prefs.diff
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
   cmake \
     -DCMAKE_INSTALL_PREFIX="/usr/" \
     -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
@@ -32,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 
