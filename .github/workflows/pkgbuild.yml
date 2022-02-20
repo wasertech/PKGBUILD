@@ -3,3 +3,5 @@ name: Build package
 on:
   # Allow manual trigger as well
   workflow_dispatch:
+
+jobs: {}
