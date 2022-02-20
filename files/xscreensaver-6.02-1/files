@@ -24,6 +24,7 @@ usr/lib/xscreensaver/attraction
 usr/lib/xscreensaver/atunnel
 usr/lib/xscreensaver/barcode
 usr/lib/xscreensaver/beats
+usr/lib/xscreensaver/binaryhorizon
 usr/lib/xscreensaver/binaryring
 usr/lib/xscreensaver/blaster
 usr/lib/xscreensaver/blinkbox
@@ -146,6 +147,7 @@ usr/lib/xscreensaver/lcdscrub
 usr/lib/xscreensaver/lockward
 usr/lib/xscreensaver/loop
 usr/lib/xscreensaver/m6502
+usr/lib/xscreensaver/marbling
 usr/lib/xscreensaver/maze
 usr/lib/xscreensaver/maze3d
 usr/lib/xscreensaver/memscroller
@@ -362,6 +364,7 @@ usr/share/man/man6/attraction.6.gz
 usr/share/man/man6/atunnel.6.gz
 usr/share/man/man6/barcode.6.gz
 usr/share/man/man6/beats.6.gz
+usr/share/man/man6/binaryhorizon.6.gz
 usr/share/man/man6/binaryring.6.gz
 usr/share/man/man6/blaster.6.gz
 usr/share/man/man6/blinkbox.6.gz
@@ -484,6 +487,7 @@ usr/share/man/man6/lavalite.6.gz
 usr/share/man/man6/lcdscrub.6.gz
 usr/share/man/man6/lockward.6.gz
 usr/share/man/man6/loop.6.gz
+usr/share/man/man6/marbling.6.gz
 usr/share/man/man6/maze.6.gz
 usr/share/man/man6/maze3d.6.gz
 usr/share/man/man6/memscroller.6.gz
@@ -587,7 +591,6 @@ usr/share/man/man6/xlyap.6.gz
 usr/share/man/man6/xmatrix.6.gz
 usr/share/man/man6/xrayswarm.6.gz
 usr/share/man/man6/xscreensaver-auth.6.gz
-usr/share/man/man6/xscreensaver-command.6.gz
 usr/share/man/man6/xscreensaver-getimage-file.6.gz
 usr/share/man/man6/xscreensaver-getimage-video.6.gz
 usr/share/man/man6/xscreensaver-getimage.6.gz
@@ -616,6 +619,7 @@ usr/share/xscreensaver/config/attraction.xml
 usr/share/xscreensaver/config/atunnel.xml
 usr/share/xscreensaver/config/barcode.xml
 usr/share/xscreensaver/config/beats.xml
+usr/share/xscreensaver/config/binaryhorizon.xml
 usr/share/xscreensaver/config/binaryring.xml
 usr/share/xscreensaver/config/blaster.xml
 usr/share/xscreensaver/config/blinkbox.xml
@@ -738,6 +742,7 @@ usr/share/xscreensaver/config/lcdscrub.xml
 usr/share/xscreensaver/config/lockward.xml
 usr/share/xscreensaver/config/loop.xml
 usr/share/xscreensaver/config/m6502.xml
+usr/share/xscreensaver/config/marbling.xml
 usr/share/xscreensaver/config/maze.xml
 usr/share/xscreensaver/config/maze3d.xml
 usr/share/xscreensaver/config/memscroller.xml
