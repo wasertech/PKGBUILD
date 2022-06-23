@@ -1,0 +1,62 @@
+%FILENAME%
+android-sdk-26.1.1-2-x86_64.pkg.tar.zst
+
+%NAME%
+android-sdk
+
+%BASE%
+android-sdk
+
+%VERSION%
+26.1.1-2
+
+%DESC%
+Google Android SDK
+
+%CSIZE%
+150865242
+
+%ISIZE%
+175398325
+
+%MD5SUM%
+7671ba3579ebc2527330545f97f353c3
+
+%SHA256SUM%
+31a24e2d2e62d6812e23ea580702f198271717bcb290dd552c7f1c88b46b516d
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmK0+ZUACgkQFW138LsgdFCmJQgAlyPvJiVMsPQsHa43sIi27bhHpYafxx/5zQU8JqkpZhw4Ig+p42dDic9al3qBB8YGwSmHmvsYprqS9gFFnh/1q2PUKxbtyQ05ww8xC9hLY3u+ONFj7vhueZdGxNJIEK5xajMsNHXc9alGksR2xdK3dUIuR3wbyMgw3gvID8frY2fEdPUBaF9RmMExZC1cKV0bZaDZ/VJ1cNjwOBTKFBL9qcnNGLZVE1YVDXXziLCcDeMeA16Tzrm+oa9x4IG5I2YBwWMiijXcZxjkeTYaC74MD6aOxOsVCHtpOegZuvYofe3It+Ze5x9pkkceXcsjTzPkWh/fO7b9zDhDRSQMwGl9rA==
+
+%URL%
+https://developer.android.com/studio/releases/sdk-tools.html
+
+%LICENSE%
+custom
+
+%ARCH%
+x86_64
+
+%BUILDDATE%
+1656027518
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/2552605846 <pkgbuild@djpohly.com>
+
+%DEPENDS%
+java-environment
+libxtst
+fontconfig
+freetype2
+lib32-gcc-libs
+lib32-glibc
+libx11
+libxext
+libxrender
+zlib
+
+%OPTDEPENDS%
+android-emulator: emulator has become standalone since 25.3.0
+android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx
+android-udev: udev rules for Android devices
+
