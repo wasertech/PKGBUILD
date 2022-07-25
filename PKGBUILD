@@ -5,32 +5,36 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=hamlib-git
-pkgver=b2acf0b6
-pkgrel=1
-pkgdesc="Ham radio equipment control libraries"
+pkgver=r9033.afabcfff
+#r8655.d04f4b6b
+pkgrel=2
+pkgdesc="Ham radio equipment control libraries - GIT VER 4.x - NO INDI SUPPORT"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://hamlib.org"
 license=('GPL' 'LGPL')
-depends=('tcl' 'python' 'libxml2' 'libusb')
-makedepends=('autoconf' 'automake' 'libtool' 'swig' 'git')
-source=('hamlib-git::git+git://git.code.sf.net/p/hamlib/code')
+depends=('perl' 'python' 'tcl' 'lua' 'libxml2' \
+	'libusb-compat' 'boost')
+makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'swig')
+provides=('hamlib' 'hamlib4')
+conflicts=('hamlib' 'hamlib4')
 options=('!emptydirs')
-conflicts=('hamlib')
-provides=('hamlib')
-md5sums=('SKIP')
-sha256sums=('SKIP')
+source=('hamlib-git::git+git://git.code.sf.net/p/hamlib/code')
 
 
 pkgver() {
 	cd $srcdir/$pkgname
-	git describe --always
-# | sed 's|-|.|g'	# <- this might be needed in the future.
+
+	( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
 	export PYTHON=/usr/bin/python3
 
 	cd $srcdir/$pkgname
+
 #	./autogen.sh \
 	autoreconf -i
 	./configure \
@@ -38,8 +42,10 @@ build() {
 		--sbindir=/usr/bin \
 		--with-perl-binding \
 		--with-python-binding \
+		--with-tcl-binding \
+		--with-lua-binding \
 		--with-xml-support \
-		--with-tcl-binding
+		--without-indi
 	make
 }
 
@@ -60,3 +66,5 @@ package() {
 	/usr/bin/find $pkgdir -name '.packlist' -delete
 	/usr/bin/find $pkgdir -name '*.pod' -delete
 }
+md5sums=('SKIP')
+sha256sums=('SKIP')
