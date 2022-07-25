@@ -14,7 +14,7 @@ url="http://hamlib.org"
 license=('GPL' 'LGPL')
 depends=('perl' 'python' 'tcl' 'lua' 'libxml2' \
 	'libusb-compat' 'boost')
-makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'swig')
+makedepends=('autoconf' 'automake' 'git' 'libtool' 'pkg-config' 'swig')
 provides=('hamlib' 'hamlib4')
 conflicts=('hamlib' 'hamlib4')
 options=('!emptydirs')
