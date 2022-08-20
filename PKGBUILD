@@ -13,7 +13,6 @@ optdepends=('xdg-dbus-proxy: for D-Bus filtering')
 backup=('etc/firejail/firecfg.config'
         'etc/firejail/firejail.config'
         'etc/firejail/login.users')
-install=firejail.install
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=('b77b67a4db7c01d69cb033a50aa7b1132dfaeb2cd97ce6412285235265b71b17'
             'SKIP')
