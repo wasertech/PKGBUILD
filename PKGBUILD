@@ -76,4 +76,7 @@ package() {
     ../pinentry-gnome3.1.en.gz
 }
 
+source+=(fallback-tty.diff)
+sha256sums+=(8d5b8acb8af5574789e82876ea2519818c5b21857ecfc89d97e3e08c3b5c2b65)
+
 # vim: ts=2 sw=2 et:
