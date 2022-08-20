@@ -1,0 +1,54 @@
+# Maintainer: Nathan Owens <ndowens@artixlinux.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
+
+pkgname=xscreensaver
+pkgver=6.04
+pkgrel=1
+pkgdesc='Screen saver and locker for the X Window System'
+url='https://www.jwz.org/xscreensaver/'
+arch=('x86_64')
+license=('BSD')
+depends=(
+  'gtk2' 'glu' 'xorg-appres' 'libglvnd' 'libjpeg-turbo' 'libjpeg.so'
+  'libx11' 'libxcrypt' 'libcrypt.so' 'libxext' 'libxft' 'libxi'
+  'libxinerama' 'libxmu' 'libxrandr' 'libxt' 'libxxf86vm' 'perl-libwww' 'pam'
+  'libpam.so' 'glibc' 'glib2' 'gdk-pixbuf2' 'gdk-pixbuf-xlib'
+)
+makedepends=('bc' 'intltool' 'libxpm' 'gdm')
+optdepends=('gdm: for login manager support')
+backup=('etc/pam.d/xscreensaver')
+source=(https://www.jwz.org/xscreensaver/${pkgname}-${pkgver}.tar.gz
+        LICENSE)
+sha512sums=('7e8f01853b3d9252ce0120894db7dd4fa3cd19114602a09aa770ec750e2f3742585ca4daf19b009e97386f8c0e3cc89330fe760148c6388f41de8cc1f48f8071'
+            '863c699479b2ec2775a0d1cba22e615929194a14af164b3513e46a0c04229da6547255a4da8f7f1bbb40906898c124ed3c9ec2436b76b62affcb62385af9783e')
+b2sums=('42411d5f63a99d4aaccbc3bc34f8c31a1f25f1806eaf513a1ba59c2f24722e27fa2a7b1970c82a591502627224c4b4269176bda3475aba58bb945d5cd9a9464b'
+        'cacb6ba39d6ecb8703ef5f5a7dc74de0ca805cce73b43a8b9b6b4c255c909aa9b5e692de76c2fbd4da26ce6efb5f2a46138c43b1b37f53cee6d20fd6ed41f4a9')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib \
+    --without-setuid-hacks \
+    --with-pam \
+    --with-login-manager \
+    --with-gtk \
+    --with-gl \
+    --without-gle \
+    --with-pixbuf \
+    --without-systemd \
+    --with-jpeg
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  install -d "${pkgdir}/etc/pam.d"
+  make install_prefix="${pkgdir}" install
+  install -Dm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  echo "NotShowIn=KDE;GNOME;" >> "${pkgdir}/usr/share/applications/xscreensaver-properties.desktop"
+}
+
+# vim: ts=2 sw=2 et:
