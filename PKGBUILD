@@ -30,6 +30,7 @@ prepare() {
   cd $pkgname-$pkgver
   patch -p1 -i ../wpa_supplicant_tls.patch                        # More permissive TLS fallback
   patch -p1 -i ../add_extra-ies_only_if_allowed_by_driver.patch # http://lists.infradead.org/pipermail/hostap/2022-January/040178.html
+  patch -p1 -i ../config-dir.patch
 
   cd $pkgname
   cp "$srcdir/wpa_supplicant_config" ./.config
@@ -62,3 +63,6 @@ package() {
   install -Dm644 doc/docbook/*.8 -t "$pkgdir/usr/share/man/man8"
   rm "$pkgdir"/usr/share/man/man8/wpa_{priv,gui}.8
 }
+
+source+=(config-dir.patch)
+sha256sums+=(405af2562412f1a18fa19f879813c0251fc8197af82384c45b099ef746c5f6d6)
