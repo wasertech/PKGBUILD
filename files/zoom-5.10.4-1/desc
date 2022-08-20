@@ -1,5 +1,5 @@
 %FILENAME%
-zoom-5.7.6a-1-x86_64.pkg.tar.zst
+zoom-5.10.4-1-x86_64.pkg.tar.zst
 
 %NAME%
 zoom
@@ -8,25 +8,25 @@ zoom
 zoom
 
 %VERSION%
-5.7.6a-1
+5.10.4-1
 
 %DESC%
 Video Conferencing and Web Conferencing Service
 
 %CSIZE%
-85140086
+174171737
 
 %ISIZE%
-249610374
+478466233
 
 %MD5SUM%
-5bb0a0381a643f23b9adede21e59f4a2
+c5d1b7b2b7c4f041b241a0feb29789b3
 
 %SHA256SUM%
-853a10a7241aafd743690655543b7e31498b52e0cb9bb1af897b3e699370d2e2
+989df7c3f088cebf199c1bea80f498840e75061bac4074d9c7e8271b6e661ba0
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmE6J8IACgkQFW138LsgdFB0ZAgAhJEEiHA+JbyZM1xUJ4F7YLe6494d/TVBZB8RUzA4r8GBSt9zzNo9fhUq/iIoMQoB5X+vO7n7Bwl7NTXCR1EOIs3OpoG/iWgv1u43hMaxVFfNgEyo7O4YCF7emccmkOkfvIcYew058LD26/LjtZgiUPkJnIQk5QCAvNjHnnwGdDO7enu6s5d/bW1OFnqXq19wCsrw5v+UmNQ1y5VB8UqOvgQaAOl/nUDl3PNd8YXsbMM3WFCHHLEv7YqbaU8YLejs1pzJwjwe9ouMeVfF429slABxj8T8gfGGwlXtkcp9GkC/o/gCS5n7AfxjraYYD00Jhr1cHKWZUqxYH0LqyNYNfw==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmJonOYACgkQFW138LsgdFADjggAikMGd2QoY1P2npKBbI5LdmKlb8DExV2AyUkBqd/XAaltN5hoqY8/DbJ/KmiicByuQzMrhyt1Ii/HdrJbrORMtMvvm7v0qaXhFAMB7xsGpWE/PdNKlXkWYaLSRNORGrFzwo5yUpstSMPVXw8hXlc8WAZVeVr/GsbALm9KmokUONnsfmfet4jxmLx45UvR50dO+ycNHfN6c3ePDCDx2juTQyP60jC0nXoUA0ryGR3+bofl+g6Bkui3dzXfVVeGNsplG1wmsFUq0O9zzmNd99uqD4JGcsza0aSb27avJ91XNC3QVs1bQjWrNDfS6CeEhpy+dMOQZQ6Q5h2WoCk93rW5kA==
 
 %URL%
 https://zoom.us/
@@ -38,10 +38,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1631201151
+1651023037
 
 %PACKAGER%
-https://github.com/djpohly/PKGBUILD/actions/runs/1217912700
+https://github.com/djpohly/PKGBUILD/actions/runs/2230332879 <pkgbuild@djpohly.com>
 
 %DEPENDS%
 fontconfig
