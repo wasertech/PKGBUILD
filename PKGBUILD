@@ -1,31 +1,33 @@
 # Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
-# Maintainer: ajs124 < aur AT ajs124 DOT de >
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: ajs124 < aur AT ajs124 DOT de >
 
 pkgname=firejail
-pkgver=0.9.62
-pkgrel=1
-pkgdesc="Linux namespaces sandbox program"
-arch=(x86_64)
-license=(GPL2)
-url="https://github.com/netblue30/firejail"
-backup=('etc/firejail/login.users'
-	'etc/firejail/firejail.config')
-validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
-#source=(${pkgname}-${pkgver}.tar.gz::https://github.com/netblue30/${pkgname}/archive/$pkgver.tar.gz)
-source=(https://sourceforge.net/projects/firejail/files/firejail/firejail-${pkgver}.tar.xz{,.asc})
-sha256sums=('0568081ce950c5240e1b2fca7014b798f589657249e17283a14e20e41f8d5ae0'
+pkgver=0.9.70
+pkgrel=2
+pkgdesc='Linux namespaces sandbox program'
+arch=('x86_64')
+url=https://github.com/netblue30/firejail
+license=('GPL2')
+optdepends=('xdg-dbus-proxy: for D-Bus filtering')
+backup=('etc/firejail/firecfg.config'
+        'etc/firejail/firejail.config'
+        'etc/firejail/login.users')
+install=firejail.install
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"{,.asc})
+sha256sums=('b77b67a4db7c01d69cb033a50aa7b1132dfaeb2cd97ce6412285235265b71b17'
             'SKIP')
+b2sums=('d5164ba5ee08e80415a84999e4152f1f9c897f50def669731098126cec117aed3cf4b21603aeb13ccbdb1bffa9d48de69dcb19fe7135691e891b9b83f48a5ca1'
+        'SKIP')
+validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	# fix build
-#	export CFLAGS="${CFLAGS/-fsanitize=undefined/}"
-	./configure --prefix=/usr --disable-apparmor
-	make
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --disable-apparmor
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
-
