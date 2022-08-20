@@ -1,0 +1,81 @@
+diff -rNU8 xscreensaver-6.00.orig/driver/Makefile.in xscreensaver-6.00/driver/Makefile.in
+--- xscreensaver-6.00.orig/driver/Makefile.in	2021-04-01 05:16:58.000000000 -0500
++++ xscreensaver-6.00/driver/Makefile.in	2021-08-03 09:45:03.363492414 -0500
+@@ -96,17 +96,17 @@
+ XDPMS_LIBS	= @XDPMS_LIBS@
+ XINERAMA_LIBS	= @XINERAMA_LIBS@ $(FIXME)
+ XINPUT_LIBS	= -lXi
+ XML_LIBS	= @XML_LIBS@
+ 
+ DAEMON_DEFS	= -DDEFAULT_PATH_PREFIX='"@HACKDIR@"' -DAD_DIR='"$(AD_DIR)"'
+ DAEMON_SRCS	= xscreensaver.c blurb.c atoms.c clientmsg.c xinput.c prefs.c
+ DAEMON_OBJS	= xscreensaver.o blurb.o atoms.o clientmsg.o xinput.o prefs.o \
+-		  $(UTILS_BIN)/xmu.o
++		  $(UTILS_BIN)/xmu.o $(UTILS_BIN)/usleep.o
+ DAEMON_LIBS	= $(LIBS_PRE) $(XINPUT_LIBS) -lX11 $(LIBS_POST)
+ 
+ GFX_DEFS	= -DLOCALEDIR=\"$(localedir)\"
+ GFX_SRCS	= xscreensaver-gfx.c screens.c windows.c subprocs.c \
+ 		  exec.c prefsw.c dpms.c fade.c exts.c atomswm.c
+ GFX_OBJS	= xscreensaver-gfx.o screens.o windows.o subprocs.o \
+ 		  exec.o prefsw.o dpms.o fade.o exts.o atomswm.o \
+ 		  prefs.o blurb.o atoms.o clientmsg.o xinput.o \
+diff -rNU8 xscreensaver-6.00.orig/driver/xscreensaver.c xscreensaver-6.00/driver/xscreensaver.c
+--- xscreensaver-6.00.orig/driver/xscreensaver.c	2021-03-28 11:09:58.000000000 -0500
++++ xscreensaver-6.00/driver/xscreensaver.c	2021-08-03 09:44:55.136927178 -0500
+@@ -138,16 +138,17 @@
+ #include <X11/Xutil.h>
+ #include <X11/Xatom.h>
+ #include <X11/cursorfont.h>
+ #include <X11/Xos.h>
+ #include <X11/extensions/XInput2.h>
+ 
+ #include "xmu.h"
+ #include "blurb.h"
++#include "usleep.h"
+ #include "atoms.h"
+ #include "clientmsg.h"
+ #include "xinput.h"
+ #include "prefs.h"
+ 
+ 
+ #undef countof
+ #define countof(x) (sizeof((x))/sizeof((*x)))
+@@ -1192,17 +1193,17 @@
+   for (i = 0; i < retries; i++)
+     {
+       XSync (dpy, False);
+       kstatus = grab_kbd (screen);
+       if (kstatus == GrabSuccess)
+         break;
+ 
+       /* else, wait a second and try to grab again. */
+-      sleep (1);
++      usleep (100000);
+     }
+ 
+   if (kstatus != GrabSuccess)
+     {
+       fprintf (stderr, "%s: couldn't grab keyboard: %s\n",
+                blurb(), grab_string (kstatus));
+ 
+       if (! focus_fuckus)
+@@ -1216,17 +1217,17 @@
+   for (i = 0; i < retries; i++)
+     {
+       XSync (dpy, False);
+       mstatus = grab_mouse (screen, blank_cursor);
+       if (mstatus == GrabSuccess)
+         break;
+ 
+       /* else, wait a second and try to grab again. */
+-      sleep (1);
++      usleep (100000);
+     }
+ 
+   if (mstatus != GrabSuccess)
+     fprintf (stderr, "%s: couldn't grab pointer: %s\n",
+              blurb(), grab_string (mstatus));
+ 
+ 
+   /* When should we allow blanking to proceed?  The current theory
