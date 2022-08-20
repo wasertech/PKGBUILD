@@ -14,3 +14,10 @@ usr/bin/pinentry-tty
 usr/share/
 usr/share/info/
 usr/share/info/pinentry.info.gz
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/pinentry-curses.1.en.gz
+usr/share/man/man1/pinentry-gnome3.1.en.gz
+usr/share/man/man1/pinentry-gtk-2.1.en.gz
+usr/share/man/man1/pinentry-qt.1.en.gz
+usr/share/man/man1/pinentry-tty.1.en.gz
