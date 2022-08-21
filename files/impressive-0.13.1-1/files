@@ -1,0 +1,13 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/impressive
+usr/share/
+usr/share/doc/
+usr/share/doc/impressive/
+usr/share/doc/impressive/changelog.txt
+usr/share/doc/impressive/demo.pdf
+usr/share/doc/impressive/impressive.html
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/impressive.1.gz

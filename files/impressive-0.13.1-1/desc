@@ -1,0 +1,58 @@
+%FILENAME%
+impressive-0.13.1-1-any.pkg.tar.zst
+
+%NAME%
+impressive
+
+%BASE%
+impressive
+
+%VERSION%
+0.13.1-1
+
+%DESC%
+A simple presentation program that displays slideshows of PDF, image or video files
+
+%CSIZE%
+218917
+
+%ISIZE%
+494894
+
+%MD5SUM%
+54a2094ba3a78ddcd5fcbcc1105d37ae
+
+%SHA256SUM%
+31fe198f0c56ba9d380cf7564b0bd212c810361464a1879b658dcbc9656ec168
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmMCrVcACgkQFW138LsgdFCzHQf/V8/zfA0iXmC5k58cQ+tiH0F0ceMEPLx8P9YeZPNmWXmCj7qMGlBUYfW6Wcu6zMy9wGRcNAFe4DF4npWJuWzyZtRsgZFvvTtduIsiOSWPGMvnHAz+r7ntsdDeFEj0Te+huJOwNpdGMOmf5ikEDsxAHsZs5MsKNJnqCOxtHB/r6WZjADnLMCasRqYwlxE/6gL9NUUJz+va0rs4sFelwsNEs/J4hsm+7qOhFqJ+ScJZAHw8KS+8j0vBoJ80f5a4iE3an0OYEe99mXf7C+ZYF2FhVSzp8xuwJpQY5kSEaSlbt1Uwoxe2cJSo1k54MIoGXWmLqD4pN8oC2cCCZdmYEYoQIA==
+
+%URL%
+http://impressive.sourceforge.net
+
+%LICENSE%
+GPL2
+
+%ARCH%
+any
+
+%BUILDDATE%
+1661119816
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/2900101008 <pkgbuild@djpohly.com>
+
+%DEPENDS%
+python-pygame
+python-opengl
+python-pillow
+mupdf-tools
+
+%OPTDEPENDS%
+pdftk: for retrieving PDF metadata, can replace mupdf-tools
+ghostscript: for alternate PDF rendering
+xdg-utils: for starting web or e-mail hyperlinks from PDF documents
+mplayer: for sound and video playback
+ffmpeg: for more efficient generation of video preview images
+
