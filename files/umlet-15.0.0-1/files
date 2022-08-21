@@ -16,7 +16,7 @@ usr/share/umlet/custom_elements/WordWrap.java
 usr/share/umlet/img/
 usr/share/umlet/img/umlet_logo.png
 usr/share/umlet/lib/
-usr/share/umlet/lib/autocomplete-2.5.8.jar
+usr/share/umlet/lib/autocomplete-2.6.1.jar
 usr/share/umlet/lib/batik-awt-util-1.8.jar
 usr/share/umlet/lib/batik-dom-1.8.jar
 usr/share/umlet/lib/batik-ext-1.8.jar
@@ -25,18 +25,20 @@ usr/share/umlet/lib/batik-util-1.8.jar
 usr/share/umlet/lib/batik-xml-1.8.jar
 usr/share/umlet/lib/bcel-5.2.jar
 usr/share/umlet/lib/commons-io-2.4.jar
-usr/share/umlet/lib/ecj-4.4.2.jar
-usr/share/umlet/lib/itextpdf-5.4.1.jar
+usr/share/umlet/lib/ecj-3.18.0.jar
+usr/share/umlet/lib/itextpdf-5.5.13.jar
 usr/share/umlet/lib/javaparser-core-2.3.0.jar
 usr/share/umlet/lib/javax.mail-1.5.6.jar
 usr/share/umlet/lib/jlibeps-0.1.jar
 usr/share/umlet/lib/log4j-1.2.17.jar
-usr/share/umlet/lib/rsyntaxtextarea-2.5.8.jar
+usr/share/umlet/lib/rhino-1.7.13.jar
+usr/share/umlet/lib/rsyntaxtextarea-2.6.1.jar
 usr/share/umlet/lib/slf4j-api-1.7.7.jar
 usr/share/umlet/lib/slf4j-log4j12-1.7.13.jar
-usr/share/umlet/lib/umlet-elements-14.3.0.jar
-usr/share/umlet/lib/umlet-swing-14.3.0.jar
+usr/share/umlet/lib/umlet-elements-15.0.0.jar
+usr/share/umlet/lib/umlet-swing-15.0.0.jar
 usr/share/umlet/palettes/
+usr/share/umlet/palettes/Advanced Drawings.uxf
 usr/share/umlet/palettes/Custom Drawings.uxf
 usr/share/umlet/palettes/Deprecated UML Sequence - All in one.uxf
 usr/share/umlet/palettes/Generic Colors.uxf
