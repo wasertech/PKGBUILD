@@ -41,7 +41,7 @@ usr/share/doc/wsjtx/example_log_configurations/wsjtx_log_config.ini.console
 usr/share/doc/wsjtx/example_log_configurations/wsjtx_log_config.ini.debugger
 usr/share/doc/wsjtx/example_log_configurations/wsjtx_log_config.ini.rig_control
 usr/share/doc/wsjtx/example_log_configurations/wsjtx_log_config.ini.simple_verbose
-usr/share/doc/wsjtx/wsjtx-main-2.5.2.html
+usr/share/doc/wsjtx/wsjtx-main-2.5.4.html
 usr/share/man/
 usr/share/man/man1/
 usr/share/man/man1/fcal.1.gz
