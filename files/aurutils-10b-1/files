@@ -7,6 +7,7 @@ usr/bin/aur
 usr/lib/
 usr/lib/aurutils/
 usr/lib/aurutils/aur-build
+usr/lib/aurutils/aur-build--pkglist
 usr/lib/aurutils/aur-chroot
 usr/lib/aurutils/aur-depends
 usr/lib/aurutils/aur-fetch
@@ -18,12 +19,21 @@ usr/lib/aurutils/aur-repo-filter
 usr/lib/aurutils/aur-search
 usr/lib/aurutils/aur-srcver
 usr/lib/aurutils/aur-sync
+usr/lib/aurutils/aur-sync--ninja
 usr/lib/aurutils/aur-vercmp
 usr/lib/aurutils/aur-view
 usr/share/
 usr/share/bash-completion/
 usr/share/bash-completion/completions/
 usr/share/bash-completion/completions/aur
+usr/share/doc/
+usr/share/doc/aurutils/
+usr/share/doc/aurutils/README.md
+usr/share/doc/aurutils/examples/
+usr/share/doc/aurutils/examples/README.md
+usr/share/doc/aurutils/examples/sync-devel
+usr/share/doc/aurutils/examples/sync-list
+usr/share/doc/aurutils/examples/vercmp-devel
 usr/share/licenses/
 usr/share/licenses/aurutils/
 usr/share/licenses/aurutils/LICENSE
@@ -46,7 +56,6 @@ usr/share/man/man1/aur-view.1.gz
 usr/share/man/man1/aur.1.gz
 usr/share/man/man7/
 usr/share/man/man7/aurhosting.7.gz
-usr/share/man/man7/aurvcs.7.gz
 usr/share/zsh/
 usr/share/zsh/functions/
 usr/share/zsh/functions/Misc/

@@ -1,0 +1,58 @@
+%FILENAME%
+aurutils-10b-1-any.pkg.tar.zst
+
+%NAME%
+aurutils
+
+%BASE%
+aurutils
+
+%VERSION%
+10b-1
+
+%DESC%
+helper tools for the arch user repository
+
+%CSIZE%
+85249
+
+%ISIZE%
+159572
+
+%MD5SUM%
+fc9f09cbd6c4a5ac2451a26421f52b25
+
+%SHA256SUM%
+208eaca46171ee18e2334d1d4644f2d88b13d3325a223a76e5e3813c8c4999de
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmMCd8QACgkQFW138LsgdFDVNQgAkpWZPuhnDH9URtAOYXAbaN6MxGy/1OnFQ919LRmwlZjVf9UmrKECAsaJmfmjDNPJ03G2m9pl9MFrX0qFmLhU0jXhSMtdQQSl0AfnzejA7F6YyiF2Hut17GHX6X8Ip50Zs0xx0a3cvzjoAv5dJQMwCPGI7pQ2dtint27vUhHhN3i1dui92ZaVvIse5X5tP0gQC5dY+n7G2TfKiHk2t96d4eT9gx3An5gSq5+cL/meeqwmkpdFjAabrs/uL6OH2nSfmDrus49ZMUC+irzdO/7CAZNeJXwZ6l3PbWi9LMUP3Yiq4MwdDOwzNNew2PW+CCJvRV0EgNBqeCRjxzjuk1s9pQ==
+
+%URL%
+https://github.com/AladW/aurutils
+
+%LICENSE%
+custom:ISC
+
+%ARCH%
+any
+
+%BUILDDATE%
+1661106112
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/2899466618 <pkgbuild@djpohly.com>
+
+%DEPENDS%
+git
+jq
+pacutils
+curl
+
+%OPTDEPENDS%
+bash-completion: bash completion
+zsh: zsh completion
+devtools: aur-chroot
+vifm: default pager
+ninja: aur-sync ninja support
+
