@@ -14,19 +14,19 @@ picoscope
 gui for picotech oscilloscope
 
 %CSIZE%
-20245864
+19239493
 
 %ISIZE%
 60356419
 
 %MD5SUM%
-cd9c686ef110bd44f6481ce59bac3ab9
+d0dd513084cf7403bcf31e75893dcb93
 
 %SHA256SUM%
-67c5b9823d338a382c0e09fb374c28e57718ebb0ce205a41cb097772d4064889
+9c9c6c26601be3ff1632dd540267345ffe98988a268ab0a496ecf5fa63ba61d0
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmCKRxoACgkQFW138LsgdFB8EQf9F6nmmPkKBeAuHSKMWUDlEpJr7ditcHkiHPXc8EzH9LyjZEsNaxTJ+nSIDOqyxLCSeMEJVxbM20loPMgfnXPKWmEWj1gpC0+muPTNAAzKvy/QH/CTFawFNYJLMOfI3qgBCcucXEEuXQu4YCgvPfWG4XULd+QrQBvWbfael8LgdH9Rjffw0VZz5wCbe3P937GKNqkPGuQHpguI0vV6sYw/hMtAoCEO1Tv511H0BknZnQuAwNIikrC3YnC3se8LglyiR0JHiLyE8Vr1eDcE9OiSJDOkjd6trKgkez7CbTPyXWzX91vbM1K/wqhmn3b2yMw7ksjyyOyGVBBq8ebAyQ6Jig==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmMCrYAACgkQFW138LsgdFClmgf+MOOPeau+wU9yvgfAxzlqCok+3+VULx5jHHYwMvTaQ/nTSidhZSao5MPeYXi2Zx451EOBVWPB7nn8dldiKgLra6ImANn3MtO4zq1g6ylvVjzsj7tf8b1Seexnv+o9ql+Uia0fuR1yo8alD8rsQ5F23thjzCx9EGbfBcAijom4w1skMw6WL5FEaneu0NI1oPdTdb3aPqSy/O+kV53iLnqZadvxv3PSpvqQU6HHwtn4fKZSAnyEZCsITJvElSZysv8o708zHpQY1ec+LU1yliLzCyjVq13bBPiMSwn23t0Sw5e8wuNunB+C5hK+hoj73soruVN6Nj44+co6Ksvrc/NwIw==
 
 %URL%
 http://www.picotech.com/linux.html
@@ -38,10 +38,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1619674882
+1661119860
 
 %PACKAGER%
-https://github.com/djpohly/PKGBUILD/actions/runs/794998157
+https://github.com/djpohly/PKGBUILD/actions/runs/2900104426 <pkgbuild@djpohly.com>
 
 %DEPENDS%
 gtk-sharp-2
