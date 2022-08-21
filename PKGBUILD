@@ -1,6 +1,7 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
+# Co-Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 pkgname=aurutils
-pkgver=3.3.0
+pkgver=10b
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
@@ -9,16 +10,13 @@ license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 changelog=aurutils.changelog
 install=aurutils.install
-sha256sums=('09fca2a67e77947966df2ac2fb56b877dc5904413485c3170aab848f04fcfd45')
-depends=('git' 'jq' 'pacutils' 'curl' 'expect')
+sha256sums=('f66cdb98149365ec520003875762dca527c28d75ea7744a6cfe0a9aa8b94c806')
+depends=('git' 'jq' 'pacutils' 'curl')
 optdepends=('bash-completion: bash completion'
             'zsh: zsh completion'
             'devtools: aur-chroot'
-            'vifm: default pager')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-}
+            'vifm: default pager'
+            'ninja: aur-sync ninja support')
 
 build() {
     cd "$pkgname-$pkgver"
