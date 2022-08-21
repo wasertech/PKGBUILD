@@ -18,6 +18,7 @@ b2sums=('f9570bedd12dc9113c956d0b9c34c4124939b0a855f73a7611ce640b00fd4a7d8288af9
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+  ln -sf ../share/teams/teams "$pkgdir/usr/bin/teams"
 
   # Permissions fix
   find "${pkgdir}" -type d -exec chmod 755 {} \;
