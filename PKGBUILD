@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 # Contributor: midgard <arch.midgard AT janmaes DOT com> 
 # Contributor: TrialnError <autumn-wind AT web DOT de>
 # Contributor: Yardena Cohen <yardenack AT gmail DOT com>
@@ -17,14 +17,14 @@
 
 
 pkgname='tor-browser'
-pkgver='10.0.13'
-pkgrel='1'
+pkgver='11.5.1'
+pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-	'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib'
+	'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
 	'kdialog: KDE dialog boxes'
@@ -73,7 +73,9 @@ validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 # Syntax: _dist_checksum 'linux32'/'linux64'
 _dist_checksum() {
 
-	curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" | grep "${1}-${pkgver}_${_language}.tar.xz" | cut -d ' ' -f1
+	(curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" || \
+		curl --silent --fail "${_urlbase}/sha256sums-unsigned-build.txt") | \
+		grep "${1}-${pkgver}_${_language}.tar.xz\$" | cut -d ' ' -f1
 
 }
 
@@ -93,13 +95,13 @@ source=("${pkgname}.desktop.in"
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
-sha256sums=('0b0614d04d55ac3748775fd34cb6c1f244fd05b5a16cc1e3ae70d887f7eedbc6'
-            '8a6e0945571c332c1fc8b1cef11d15f699a752da2bb403bd0b65ee44821cc643'
+sha256sums=('9af2a432bd6fbcdba8f849350e6f8abd68287d40689e59650bb1ef5d1d766af7'
+            '8e171f7ef77058648a88d6b2683db458b217e47597a7ec9232a9505766916cca'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
-sha256sums_i686=($(_dist_checksum "${_tag_i686}")
+sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
                  'SKIP')
-sha256sums_x86_64=($(_dist_checksum "${_tag_x86_64}")
+sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
 
 noextract=("${pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
@@ -144,15 +146,18 @@ package() {
 	sed "${_sed_subst}" "${pkgname}.in" > "${pkgdir}/usr/bin/${pkgname}"
 	chmod +x "${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm 644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -dm755 \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
+		"${pkgdir}/usr/share/icons/hicolor/128x128/apps"
 
-	install -Dm 644 "${pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+	install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+	install -Dm644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 	sed "${_sed_subst}" "${pkgname}.desktop.in" > \
 		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -Dm 644 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" \
+	install -Dm444 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" \
 		"${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
 
 }
