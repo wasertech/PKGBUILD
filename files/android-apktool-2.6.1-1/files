@@ -1,0 +1,7 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/apktool
+usr/share/
+usr/share/android-apktool/
+usr/share/android-apktool/apktool.jar
