@@ -1,0 +1,11 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/cfr
+usr/share/
+usr/share/java/
+usr/share/java/cfr/
+usr/share/java/cfr/cfr.jar
+usr/share/licenses/
+usr/share/licenses/cfr/
+usr/share/licenses/cfr/LICENSE
