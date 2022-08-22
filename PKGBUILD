@@ -3,7 +3,7 @@
 
 pkgname=siis-ca-cert
 pkgver=0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='SIIS CA certificate'
 arch=('any')
 url='http://siis.cse.psu.edu/ca.html'
