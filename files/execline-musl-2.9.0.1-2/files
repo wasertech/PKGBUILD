@@ -3,6 +3,7 @@ usr/
 usr/bin/
 usr/bin/background
 usr/bin/backtick
+usr/bin/case
 usr/bin/cd
 usr/bin/define
 usr/bin/dollarat
@@ -12,6 +13,8 @@ usr/bin/elglob
 usr/bin/emptyenv
 usr/bin/envfile
 usr/bin/exec
+usr/bin/execline-cd
+usr/bin/execline-umask
 usr/bin/execlineb
 usr/bin/exit
 usr/bin/export
@@ -38,6 +41,8 @@ usr/bin/multidefine
 usr/bin/multisubstitute
 usr/bin/pipeline
 usr/bin/piperw
+usr/bin/posix-cd
+usr/bin/posix-umask
 usr/bin/redirfd
 usr/bin/runblock
 usr/bin/shift
