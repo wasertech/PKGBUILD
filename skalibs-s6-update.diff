@@ -1,0 +1,305 @@
+diff -ur anopa-0.5.0.orig/src/anopa/aa-enable.c anopa-0.5.0/src/anopa/aa-enable.c
+--- anopa-0.5.0.orig/src/anopa/aa-enable.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/anopa/aa-enable.c	2022-08-22 12:21:19.421867457 -0500
+@@ -38,7 +38,7 @@
+ #include <skalibs/direntry.h>
+ #include <skalibs/types.h>
+ #include <skalibs/skamisc.h>
+-#include <s6/s6-supervise.h>
++#include <s6/supervise.h>
+ #include <anopa/common.h>
+ #include <anopa/output.h>
+ #include <anopa/init_repo.h>
+diff -ur anopa-0.5.0.orig/src/anopa/aa-status.c anopa-0.5.0/src/anopa/aa-status.c
+--- anopa-0.5.0.orig/src/anopa/aa-status.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/anopa/aa-status.c	2022-08-22 12:30:57.051913911 -0500
+@@ -42,7 +42,7 @@
+ #include <skalibs/djbtime.h>
+ #include <skalibs/tai.h>
+ #include <skalibs/sig.h>
+-#include <s6/s6-supervise.h>
++#include <s6/supervise.h>
+ #include <anopa/common.h>
+ #include <anopa/output.h>
+ #include <anopa/init_repo.h>
+@@ -72,7 +72,7 @@
+     int si;
+     int is_s6;
+     s6_svstatus_t st6;
+-    tain_t stamp;
++    tain stamp;
+ };
+ 
+ enum
+@@ -126,11 +126,11 @@
+ }
+ 
+ static void
+-put_time (tain_t *st_stamp, int strict)
++put_time (tain *st_stamp, int strict)
+ {
+     char buf[LOCALTMN_FMT];
+-    localtmn_t local;
+-    tain_t stamp;
++    localtmn local;
++    tain stamp;
+     int n;
+ 
+     localtmn_from_tain (&local, st_stamp, 1);
+@@ -398,7 +398,7 @@
+             put_s (" (PID ");
+             buf[uint_fmt (buf, serv->st6.pid)] = '\0';
+             put_s (buf);
+-            if (cfg->mode == MODE_LIST && !serv->st6.flagwant)
++            if (cfg->mode == MODE_LIST && !serv->st6.flagwantup)
+             {
+                 put_s ("; Once");
+             }
+@@ -407,7 +407,7 @@
+             if (cfg->mode != MODE_LIST)
+             {
+                 aa_bs_noflush (AA_OUT, "\nMode:    ");
+-                if (serv->st6.flagwant)
++                if (serv->st6.flagwantup)
+                 {
+                     put_s ("Automatic restart (want up)");
+                 }
+@@ -428,7 +428,7 @@
+             aa_is_noflush (AA_OUT, ANSI_HIGHLIGHT_OFF);
+             put_s (" (");
+             put_wstat (serv->st6.wstat, max, 0);
+-            if (serv->st6.flagwant && serv->st6.flagwantup)
++            if (serv->st6.flagwantup)
+             {
+                 put_s ("; ");
+                 aa_is_noflush (AA_OUT, ANSI_HIGHLIGHT_BLUE_ON);
+@@ -443,7 +443,7 @@
+              * given that one cannot start a service w/out specifying the mode
+              * to be set (-u for up, -o for once))
+              */
+-            if (cfg->mode != MODE_LIST && serv->st6.flagwant && serv->st6.flagwantup)
++            if (cfg->mode != MODE_LIST && serv->st6.flagwantup)
+             {
+                 aa_bs_noflush (AA_OUT, "\nMode:    ");
+                 put_s ("Automatic restart (want up)");
+diff -ur anopa-0.5.0.orig/src/anopa/aa-stop.c anopa-0.5.0/src/anopa/aa-stop.c
+--- anopa-0.5.0.orig/src/anopa/aa-stop.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/anopa/aa-stop.c	2022-08-22 12:21:31.545259132 -0500
+@@ -36,7 +36,7 @@
+ #include <skalibs/types.h>
+ #include <skalibs/tai.h>
+ #include <skalibs/djbunix.h>
+-#include <s6/s6-supervise.h>
++#include <s6/supervise.h>
+ #include <anopa/common.h>
+ #include <anopa/err.h>
+ #include <anopa/init_repo.h>
+diff -ur anopa-0.5.0.orig/src/anopa/start-stop.c anopa-0.5.0/src/anopa/start-stop.c
+--- anopa-0.5.0.orig/src/anopa/start-stop.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/anopa/start-stop.c	2022-08-22 12:29:58.892133489 -0500
+@@ -45,7 +45,7 @@
+ genalloc ga_iop = GENALLOC_ZERO;
+ genalloc ga_progress = GENALLOC_ZERO;
+ genalloc ga_pid = GENALLOC_ZERO;
+-tain_t iol_deadline;
++tain iol_deadline;
+ unsigned int draw = 0;
+ int nb_already = 0;
+ int nb_done = 0;
+@@ -158,7 +158,7 @@
+     char buf[UINT_FMT];
+     int nb;
+     int si;
+-    tain_t ts;
++    tain ts;
+     int secs;
+ 
+     if (already_drawn)
+@@ -1052,9 +1052,9 @@
+     int si;
+     size_t l;
+     size_t i;
+-    tain_t ts_timeout;
+-    tain_t ts;
+-    tain_t tms;
++    tain ts_timeout;
++    tain ts;
++    tain tms;
+     int ms = -1;
+     int scan = 0;
+ 
+@@ -1237,7 +1237,7 @@
+         int nb_iop;
+         int r;
+         int ms1, ms2;
+-        tain_t tms;
++        tain tms;
+ 
+         if (mode & AA_MODE_IS_DRY)
+         {
+diff -ur anopa-0.5.0.orig/src/anopa/start-stop.h anopa-0.5.0/src/anopa/start-stop.h
+--- anopa-0.5.0.orig/src/anopa/start-stop.h	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/anopa/start-stop.h	2022-08-22 12:29:39.388883445 -0500
+@@ -42,7 +42,7 @@
+ extern genalloc ga_iop;
+ extern genalloc ga_progress;
+ extern genalloc ga_pid;
+-extern tain_t iol_deadline;
++extern tain iol_deadline;
+ extern unsigned int draw;
+ extern int nb_already;
+ extern int nb_done;
+diff -ur anopa-0.5.0.orig/src/include/anopa/service.h anopa-0.5.0/src/include/anopa/service.h
+--- anopa-0.5.0.orig/src/include/anopa/service.h	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/include/anopa/service.h	2022-08-22 12:20:21.624925297 -0500
+@@ -85,7 +85,7 @@
+     unsigned int secs_timeout;
+     aa_ls ls;
+     aa_service_status st;
+-    tain_t ts_exec;
++    tain ts_exec;
+     /* longrun */
+     uint16_t ft_id;
+     int gets_ready;
+diff -ur anopa-0.5.0.orig/src/include/anopa/service_status.h anopa-0.5.0/src/include/anopa/service_status.h
+--- anopa-0.5.0.orig/src/include/anopa/service_status.h	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/include/anopa/service_status.h	2022-08-22 12:20:12.104880370 -0500
+@@ -52,7 +52,7 @@
+ 
+ typedef struct
+ {
+-    tain_t stamp;
++    tain stamp;
+     aa_evt event;
+     int code;
+     stralloc sa;
+diff -ur anopa-0.5.0.orig/src/libanopa/exec_longrun.c anopa-0.5.0/src/libanopa/exec_longrun.c
+--- anopa-0.5.0.orig/src/libanopa/exec_longrun.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/libanopa/exec_longrun.c	2022-08-22 12:20:47.121712946 -0500
+@@ -26,7 +26,7 @@
+ #include <skalibs/djbunix.h>
+ #include <skalibs/bytestr.h>
+ #include <skalibs/tai.h>
+-#include <s6/s6-supervise.h>
++#include <s6/supervise.h>
+ #include <s6/ftrigr.h>
+ #include <anopa/service.h>
+ #include <anopa/err.h>
+@@ -40,7 +40,7 @@
+     s6_svstatus_t st6 = S6_SVSTATUS_ZERO;
+     size_t l_sn = strlen (aa_service_name (s));
+     char fifodir[l_sn + 1 + sizeof (S6_SUPERVISE_EVENTDIR)];
+-    tain_t deadline;
++    tain deadline;
+     int is_start = (mode & AA_MODE_START) ? 1 : 0;
+     const char *event = (is_start) ? ((s->gets_ready) ? "[udU]" : "u") : "D";
+     const char *cmd = (is_start) ? "u" : (mode & AA_MODE_STOP_ALL) ? "dx" : "d";
+@@ -248,7 +248,7 @@
+ int
+ aa_unsubscribe_for (uint16_t id)
+ {
+-    tain_t deadline;
++    tain deadline;
+ 
+     tain_addsec_g (&deadline, 1);
+     return (ftrigr_unsubscribe_g (&_aa_ft, id, &deadline)) ? 0 : -1;
+diff -ur anopa-0.5.0.orig/src/libanopa/service.c anopa-0.5.0/src/libanopa/service.c
+--- anopa-0.5.0.orig/src/libanopa/service.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/libanopa/service.c	2022-08-22 12:24:10.281253325 -0500
+@@ -30,7 +30,7 @@
+ #include <skalibs/direntry.h>
+ #include <skalibs/types.h>
+ #include <skalibs/tai.h>
+-#include <s6/s6-supervise.h>
++#include <s6/supervise.h>
+ #include <s6/ftrigr.h>
+ #include <anopa/service.h>
+ #include <anopa/ga_int_list.h>
+@@ -258,7 +258,7 @@
+                 if (is_up && aa_service (si)->gets_ready && st6.flagready)
+                     is_up = 2;
+                 else if ((mode & (AA_MODE_STOP | AA_MODE_STOP_ALL))
+-                            && !is_up && st6.flagwant && st6.flagwantup)
++                            && !is_up && st6.flagwantup)
+                     /* it is down, but to be restarted soon by s6-supervise; so
+                      * for our intent & purposes, it shall be considered up, so
+                      * that we stop the restart and place the down file.
+@@ -554,7 +554,7 @@
+ 
+     if (has_longrun)
+     {
+-        tain_t deadline;
++        tain deadline;
+ 
+         tain_addsec_g (&deadline, 1);
+         if (!ftrigr_startf_g (&_aa_ft, &deadline))
+diff -ur anopa-0.5.0.orig/src/utils/aa-chroot.c anopa-0.5.0/src/utils/aa-chroot.c
+--- anopa-0.5.0.orig/src/utils/aa-chroot.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/utils/aa-chroot.c	2022-08-22 12:26:09.230153643 -0500
+@@ -25,6 +25,7 @@
+ #include <getopt.h>
+ #include <unistd.h>
+ #include <skalibs/djbunix.h>
++#include <skalibs/exec.h>
+ #include <anopa/common.h>
+ #include <anopa/output.h>
+ 
+@@ -84,6 +85,6 @@
+         aa_strerr_diefu1sys (3, "chroot");
+     if (chdir ("/") < 0)
+         aa_strerr_diefu1sys (3, "chdir to new root");
+-    pathexec_run (argv[1], (char const * const *) argv + 1, (char const * const *) envp);
++    exec_ae (argv[1], (char const * const *) argv + 1, (char const * const *) envp);
+     aa_strerr_dieexec (4, argv[1]);
+ }
+diff -ur anopa-0.5.0.orig/src/utils/aa-ctty.c anopa-0.5.0/src/utils/aa-ctty.c
+--- anopa-0.5.0.orig/src/utils/aa-ctty.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/utils/aa-ctty.c	2022-08-22 12:26:35.936615764 -0500
+@@ -25,6 +25,7 @@
+ #include <sys/ioctl.h>
+ #include <skalibs/types.h>
+ #include <skalibs/djbunix.h>
++#include <skalibs/exec.h>
+ #include <anopa/common.h>
+ #include <anopa/output.h>
+ 
+@@ -96,6 +97,6 @@
+     if (ioctl (fd, TIOCSCTTY, steal) < 0)
+         aa_strerr_warnu1sys ("set controlling terminal");
+ 
+-    pathexec_run (argv[0], (char const * const *) argv, envp);
++    exec_ae (argv[0], (char const * const *) argv, envp);
+     aa_strerr_dieexec (111, argv[0]);
+ }
+diff -ur anopa-0.5.0.orig/src/utils/aa-service.c anopa-0.5.0/src/utils/aa-service.c
+--- anopa-0.5.0.orig/src/utils/aa-service.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/utils/aa-service.c	2022-08-22 12:29:01.902391528 -0500
+@@ -28,6 +28,7 @@
+ #include <skalibs/sgetopt.h>
+ #include <skalibs/genalloc.h>
+ #include <skalibs/stralloc.h>
++#include <skalibs/exec.h>
+ #include <execline/execline.h>
+ #include <anopa/common.h>
+ #include <anopa/output.h>
+@@ -254,7 +255,7 @@
+         if (!env_make (v, r, dst.s, dst.len))
+             aa_strerr_diefu1sys (5, "env_make");
+         v[r] = 0;
+-        pathexec_r (v, envp, env_len (envp), info.modifs.s, info.modifs.len);
++        mexec_fm (v, envp, env_len (envp), info.modifs.s, info.modifs.len);
+     }
+ 
+     aa_strerr_dieexec (6, dst.s);
+diff -ur anopa-0.5.0.orig/src/utils/aa-setready.c anopa-0.5.0/src/utils/aa-setready.c
+--- anopa-0.5.0.orig/src/utils/aa-setready.c	2017-06-20 12:37:10.000000000 -0500
++++ anopa-0.5.0/src/utils/aa-setready.c	2022-08-22 12:21:10.688492209 -0500
+@@ -26,7 +26,7 @@
+ #include <skalibs/djbunix.h>
+ #include <skalibs/bytestr.h>
+ #include <s6/ftrigw.h>
+-#include <s6/s6-supervise.h>
++#include <s6/supervise.h>
+ #include <anopa/common.h>
+ #include <anopa/output.h>
+ 

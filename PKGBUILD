@@ -10,10 +10,16 @@ license=('GPL3+')
 depends=('execline-musl' 's6-musl')
 makedepends=('musl' 'skalibs-musl')
 options=('staticlibs')
-source=(https://jjacky.com/$_pkgname/$_pkgname-$pkgver.tar.xz)
-sha256sums=('a9f3f7024220c665e11853cde6371907d92752b73bf3524ef1f3746b51705d89')
+source=(https://jjacky.com/$_pkgname/$_pkgname-$pkgver.tar.xz skalibs-s6-update.diff)
+sha256sums=('a9f3f7024220c665e11853cde6371907d92752b73bf3524ef1f3746b51705d89'
+            'bfeee0f6e8a634cc88309cacb8647cee5e405bb3eb7032b518e9fffd1dccd5ad')
 provides=($_pkgname)
 conflicts=($_pkgname)
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/skalibs-s6-update.diff"
+}
 
 build() {
   cd "$_pkgname-$pkgver"
