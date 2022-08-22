@@ -5,11 +5,14 @@ usr/include/skalibs/
 usr/include/skalibs/alarm.h
 usr/include/skalibs/alloc.h
 usr/include/skalibs/allreadwrite.h
+usr/include/skalibs/ancil.h
 usr/include/skalibs/avlnode.h
 usr/include/skalibs/avltree.h
 usr/include/skalibs/avltreen.h
+usr/include/skalibs/bigkv.h
 usr/include/skalibs/biguint.h
 usr/include/skalibs/bitarray.h
+usr/include/skalibs/bsdsnowflake.h
 usr/include/skalibs/bufalloc.h
 usr/include/skalibs/buffer.h
 usr/include/skalibs/bytestr.h
@@ -28,6 +31,7 @@ usr/include/skalibs/env.h
 usr/include/skalibs/envalloc.h
 usr/include/skalibs/environ.h
 usr/include/skalibs/error.h
+usr/include/skalibs/exec.h
 usr/include/skalibs/fmtscan.h
 usr/include/skalibs/functypes.h
 usr/include/skalibs/gccattributes.h
@@ -82,7 +86,6 @@ usr/include/skalibs/unix-transactional.h
 usr/include/skalibs/unixconnection.h
 usr/include/skalibs/unixmessage.h
 usr/include/skalibs/unixonacid.h
-usr/include/skalibs/webipc.h
 usr/lib/
 usr/lib/skalibs/
 usr/lib/skalibs/libskarnet.a
@@ -91,8 +94,6 @@ usr/lib/skalibs/sysdeps/socket.lib
 usr/lib/skalibs/sysdeps/spawn.lib
 usr/lib/skalibs/sysdeps/sysclock.lib
 usr/lib/skalibs/sysdeps/sysdeps
-usr/lib/skalibs/sysdeps/sysdeps.h
-usr/lib/skalibs/sysdeps/tainnow.lib
 usr/lib/skalibs/sysdeps/target
 usr/lib/skalibs/sysdeps/timer.lib
 usr/lib/skalibs/sysdeps/util.lib
