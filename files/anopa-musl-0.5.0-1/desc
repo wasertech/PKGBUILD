@@ -1,5 +1,5 @@
 %FILENAME%
-anopa-musl-0.5.0-1-x86_64.pkg.tar.xz
+anopa-musl-0.5.0-1-x86_64.pkg.tar.zst
 
 %NAME%
 anopa-musl
@@ -14,19 +14,19 @@ anopa-musl
 init system/service manager built around s6 supervision suite [musl]
 
 %CSIZE%
-241596
+296860
 
 %ISIZE%
-1145447
+1281555
 
 %MD5SUM%
-2192900bb532c0a0630a77db06c18021
+f0a5c5741504db55beceee2e8ddc2996
 
 %SHA256SUM%
-c470bcbbc532589c0a746d372b63ad4f8ff65daf79cc30b3bc51f403ef0f3433
+93fa9cf62d94e7beaf2873290e9f35753998743844bcb65478f955e63c4e1db4
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAl4PdFEACgkQFW138LsgdFCy6AgAkzHwltSq6/7Ayr6LFbTsOPHYA0JD72fnBFo+FupY2McH69RD3XYlpG3ZIXSyFUuQO/teMqSsock/wIAA2BHqxLDPaGWiEMo3TUDGhPmsPGs/mMjOVcL9hFK2B1TqvohyZ7RvRAI1/rZh9Mv0qoxG/Ye5LclD5hY1WgkUDGzbkH0OhmVZ7EqjLHJCL/+QmQq3WcCUigEcgDYrcSjABupkzK7uB2J758snq3Oak23lr/ExcwdcmfGWVoBmsmOrZzboIVJh6LukP54+JPO63fO5z+uOTZcIZR2izD4jjxRDWUIwwyRN3vo5sI9SA5OgjYxSl5/uPdOH81DmsDdxgbgd+Q==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmMDwIsACgkQFW138LsgdFAE9Qf/fX3lclxrgBZ9ejikij0S1cQU5sS8/RsOnAqpXzSoVRq96L+pkgshLd/J3csYbsonq5vBA/8K7W/k3RGMdfNEu2yWoxW2MWE9RO9igGGpUIo9SFjD3+ZVdJYzb6fHLylc/uGQZqy7nQhCBqfxSwx9yVZtIMtQi/GWES1iNRcFrmZ0sftqBeHHxx+qU9yK+R5ek7om8qK8dkmfKQQTDmEbj43MLi3ovcAtn5OlEEudSaEoKiuE7dQ/LGCBjtLbSoCDlqTfwanoma+XK7kj5CdJETgEDp6WUp1iJTkSHgH9lD9TOCQm6i2Yyya93z1oBFaoZlrJMJ8gzFsEtyQgjCND5Q==
 
 %URL%
 https://jjacky.com/anopa
@@ -38,10 +38,10 @@ GPL3+
 x86_64
 
 %BUILDDATE%
-1578071111
+1661190272
 
 %PACKAGER%
-https://travis-ci.org/djpohly/PKGBUILD/builds/632366525
+https://github.com/djpohly/PKGBUILD/actions/runs/2905943061 <pkgbuild@djpohly.com>
 
 %CONFLICTS%
 anopa
