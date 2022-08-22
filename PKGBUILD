@@ -1,7 +1,7 @@
 # Maintainer: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
 # Contributor: David Arroyo <droyo@aqwari.us>
 pkgname=skalibs-musl
-pkgver=2.10.0.0
+pkgver=2.12.0.1
 pkgrel=1
 pkgdesc="A set of general-purpose C programming libraries"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=(skalibs)
 options=('staticlibs')
 changelog=CHANGELOG
 source=(${url}/skalibs-$pkgver.tar.gz)
-sha256sums=('c1acf81f47cad74174e18fe85b6b6d16bde11093f50ce99ad35c19d8d78d5d88')
+sha256sums=('3e228f72f18d88c17f6c4e0a66881d6d3779427b7e7e889f3142b6f26da30285')
 
 build() {
   cd "$srcdir/skalibs-$pkgver"
