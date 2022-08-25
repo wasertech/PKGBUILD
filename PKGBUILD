@@ -2,7 +2,7 @@
 _pkgname=anopa
 pkgname=$_pkgname-musl
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="init system/service manager built around s6 supervision suite [musl]"
 arch=('i686' 'x86_64')
 url="https://jjacky.com/anopa"
@@ -10,9 +10,10 @@ license=('GPL3+')
 depends=('execline-musl' 's6-musl')
 makedepends=('musl' 'skalibs-musl')
 options=('staticlibs')
-source=(https://jjacky.com/$_pkgname/$_pkgname-$pkgver.tar.xz skalibs-s6-update.diff)
+source=(https://jjacky.com/$_pkgname/$_pkgname-$pkgver.tar.xz
+        skalibs-s6-update.diff)
 sha256sums=('a9f3f7024220c665e11853cde6371907d92752b73bf3524ef1f3746b51705d89'
-            'bfeee0f6e8a634cc88309cacb8647cee5e405bb3eb7032b518e9fffd1dccd5ad')
+            '3c43c027a953dc9a8e0c418b9f44cbebb6cc1167f683f9b4a3a45644e740f5fd')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
